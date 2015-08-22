@@ -1,0 +1,25 @@
+
+#content {
+padding: 1em;
+
+}
+
+#content .main.container {
+  margin-left: auto;
+  margin-right: auto;
+  min-width: 300px;
+  max-width: 800px;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.right {
+	float: right;
+}
+
+.left {
+	float: left;
+}

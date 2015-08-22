@@ -1,0 +1,49 @@
+
+<div class="ui bottom attached segment" ng-controller="TasksCtrl">
+
+	<div class="ui two column grid">
+		<div class="column">
+			<a id="new-button" class="left ui blue labeled icon button" href="#/task/new">
+				<i class="add icon"></i> New Task 
+			</a>
+			
+			<a id="edit-button" ng-class="{hidden: selectedTask==false}" href="#/task/{{selectedTask.id}}" class="ui orange labeled icon button" >
+				<i class="edit icon"></i> Edit 
+			</a>
+			
+			<a id="delete-button" ng-class="{hidden: selectedTask==false}" ng-click="deleteTask(selectedTask)" class="ui negative labeled icon button" >
+				<i class="trash icon"></i> Delete 
+			</a>
+			
+			<a id="done-button" ng-class="{hidden: selectedTask==false}" class="ui positive labeled icon button" >
+				<i class="checkmark icon"></i> Done 
+			</a>
+
+		</div>
+		<div class="column">
+			<div class="right ui icon input">
+				<input type="text" placeholder="Search" ng-model="query"><i class="search icon"></i>
+			</div>
+		</div>
+	</div>
+
+	<table class="ui padded tasks table segment">
+		<thead><tr>
+			<th class="twelve wide">Task</th>
+			<th class="five wide"><div class="center">Date</div></th>
+		</tr></thead>
+		<tbody>
+		<tr 
+			class="task" 
+			ng-click="selectTask(task)"
+			ng-repeat="task in tasks | filter:query | orderBy:taskOrderBy"
+			ng-class="{selected: task.selected==true}"
+		>
+			<td> {{task.title}}</td>
+			<td> <div class="center"> {{task.dateCreated}} </div></td>
+		</tr>
+		</tbody>
+	</table>
+
+</div>
+

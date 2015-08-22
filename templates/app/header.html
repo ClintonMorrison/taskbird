@@ -1,0 +1,31 @@
+<div class="masthead segment">
+	<div class="ui transparent inverted main top menu">
+
+		<div class="left menu" ng-controller="HeaderCtrl">
+			<a class="item large title" href="/">
+				<strong>Task Bird</strong>
+			</a>
+{% verbatim taskApp %}
+		<span ng-repeat="menuItem in menuItems">
+			<a class="item large" ng-class="{active: isActive(menuItem.path)}" href="{{menuItem.path}}"><i class="{{menuItem.icon}} icon"> </i> {{menuItem.title}} </a>
+		</span>
+	{% endverbatim taskApp %}
+
+		</div>		
+
+		<div class="right menu">
+	
+			<div class="bordlerless item">
+				<div class="ui dropdown">
+					{{ user.username }}
+					<i class="dropdown icon"></i>
+					<div class="menu">
+						<a class="item" href="taskbird"> My Schedule </a>
+						<a class="item" href="logout"> Logout </a>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>

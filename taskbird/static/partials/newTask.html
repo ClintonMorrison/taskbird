@@ -1,0 +1,42 @@
+
+<div class="ui bottom attached segment" ng-controller="NewTaskCtrl">
+
+
+<div class="ui two column grid">
+	<div class="ui column form">
+		
+		<div class="field" >
+			<label>Task Name:</label>
+			<input type='text' ng-model="title" id="new-task-name">
+		</div>
+		
+		<div class="field" >
+			<label> Task Description: </label>
+			<textarea ng-model="description" id="new-task-description"></textarea>
+		</div>
+
+		<div class="field" >
+			<label>Task Deadline:</label>
+			<input type='text' ng-model="due_date" id="new-task-deadline">
+		</div>
+		
+		 <div class="ui error message"></div>
+	</div>
+
+
+
+	<div class="ui column">
+		<p> Add this task to a list? </p>
+		
+		
+		<div class="right" style="position: absolute; bottom: 1em; right: 1em;"> 
+			<a class="ui gray button" href="#/tasks">Cancel</a>
+			&nbsp;&nbsp;&nbsp;
+			<div class="ui green submit button" ng-click="createTask();">Submit</div>
+		</div>
+
+	</div>
+
+</div>
+
+</div>

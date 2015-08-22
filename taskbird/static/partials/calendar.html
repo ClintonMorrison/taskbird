@@ -1,0 +1,69 @@
+
+<div class="ui bottom attached" ng-controller="CalendarCtrl" >
+
+<div class="ui three column grid">
+	<div class="column">
+		<a><i class="left icon reply mail"></i></a> 
+	</div>
+
+	<div class="column">
+		<span class="center"><b>{{currentDate}}</b></span>
+	</div>
+
+	<div class="column">
+		<a><i class="right icon forward mail"></i></a> 
+	</div>
+
+</div>
+
+	<div class="ui grid">
+		<div class="column eleven wide">
+			<table class="ui celled padded calendar table stacked segment">
+			<thead>
+				<th class="two wide">Monday</th>
+				<th class="two wide">Tuesday</th>
+				<th class="two wide">Wednesday</th>
+				<th class="two wide">Thursday</th>
+				<th class="two wide">Friday</th>
+				<th class="two wide">Saturday</th>
+				<th class="two wide">Sunday</th>
+			</thead>
+			<tbody>
+			<tr ng-repeat="week in weeks" >
+				<td  ng-repeat="day in week.days"><span ng-class="{disabled: day.disabled == true}">
+					<b>{{day.number}}</b><br><br> </span>
+					<!-- <span class="small" style="color:#333333"> 0 task(s) </span> -->
+				</td>
+			</tr>
+			</tbody>
+			
+		</table>
+	</div>
+
+	<div class="column five wide">
+		<br>
+		<div class="ui selection list" style="width: 100%">
+			<a class="active item"> My Task #1 </a>
+			<a class="item"> My Task #2 </a>
+			<a class="item"> My Task #3 </a>
+			<a class="item"> My Task #4 </a>
+		</div>
+		
+		<div class="ui piled segment">
+			<b class="large">My Task #1</b> <a 
+			class="ui blue right mini icon button" style="margin-right: 10px"><i class="ui mini edit icon"> </i></a>
+			<div class="ui divider"></div> <br>
+			Do some things to finish this task.
+			
+			<br><br><b>Deadline</b>: November 12, 2014 <br>
+		</div>
+
+
+		<div id="new-button" class="right ui blue labeled icon button">
+			<i class="add icon"></i> New Task 
+		</div>
+	</div>
+	</div>
+
+</div>
+

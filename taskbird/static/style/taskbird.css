@@ -1,0 +1,35 @@
+
+/* CALENDAR STYLES */
+
+.calendar td:hover {
+	background-color: #6ECFF5;
+	transition: background-color 150ms ease-in;
+}
+
+.calendar i:hover {
+	color: #6ECFF5;
+	transition: color 150ms ease-in;
+}
+
+.disabled {
+	color: #CCC;
+}
+
+.ui.table.tasks tbody tr:hover:nth-child(n) {
+	background-color: #6ECFF5;
+	transition: background-color 150ms ease-in;
+}
+
+.selected {
+	background-color: #6ECFF5;
+	transition: background-color 150ms ease-in;
+}
+
+.hidden {
+	display: none !important;
+}
+
+#content .app.container {
+  min-width: 900px;
+  
+}

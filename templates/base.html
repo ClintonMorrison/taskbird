@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{{ current_site.name }}{% endblock %}</title>
+
+	 <!-- STYLES -->
+    <link rel="stylesheet" href="{{ STATIC_URL}}style/base.css" type="text/css" media="screen">    
+	 <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}thirdparty/semantic/semantic.css">
+	 <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+
+    <!-- FONTS -->
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- ICON -->
+   <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/favicon.ico" type="image/x-icon">
+
+
+  </head>
+  <body>
+	{% csrf_token %}
+	<div ng-app="taskApp">
+   <div id="wrapper">
+      <div id="header">
+      	{% block header %}
+			{% endblock %}
+		</div>
+      <div id="content">
+        {% block content %}
+        {% endblock %}
+      </div>
+    </div>
+    <div id="footer">
+    </div>
+
+	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+	<script type="text/javascript" src="{{ STATIC_URL }}thirdparty/semantic/semantic.js"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.min.js"></script>
+
+    {% block js %}
+    {% endblock %}
+
+    {%  include "modals.html" %}
+
+  </div>
+  </body>
+</html>
+

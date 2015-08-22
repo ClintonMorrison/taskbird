@@ -1,0 +1,32 @@
+{% extends "site/base.html" %}
+
+{% block title %} Contact {% endblock %}
+
+
+{% block body %}
+  <p>
+    Do you have questions or comments about Task Bird? We would love to
+    hear from you!
+  </p>
+   
+  <form action="" method="post" class="ui form">
+    {% csrf_token %}
+    <div class="field">
+      <label> Name </label>
+      <input type="text" name="name" placeholder="">
+    </div>
+    
+    <div class="field">
+      <label> Email </label>
+      <input type="text" name="email" placeholder="">
+    </div>
+
+    <div class="field" >
+    <label> Message </label>
+    <textarea id="message"></textarea>
+  </div>
+
+    <input class='ui blue button' type="submit" value="Send">
+  </form>
+{% endblock %}
+
