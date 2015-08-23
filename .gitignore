@@ -59,6 +59,7 @@ target/
 # Web stuff
 .htaccess
 taskbird.fcgi
+db.sqlite3
 
 # PyCharm stuff
 .idea
