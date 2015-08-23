@@ -10,6 +10,9 @@ appControllers.controller('NewTaskCtrl', function($scope, $http, $route, $routeP
 			taskAPI.get('task/' + $routeParams.taskID).then(
 				function (result) {
 					window.test = result.data;
+					if (result.data.date_due) {
+						result.data.date_due = moment(result.data.date_due).format("MM/DD/YYYY");
+					}
 					$.extend($scope, result.data);
 				},
 				function (error) {
@@ -26,28 +29,36 @@ appControllers.controller('NewTaskCtrl', function($scope, $http, $route, $routeP
 		}
 	};
 
-	$scope.createTask = function() {
-        var taskData = {
+	$scope.submitTask = function() {
+	    var taskData = {
             title: $scope.title,
             description: $scope.description,
         };
 
-		if ($scope.due_date) {
-			taskData.due_date = $scope.due_date + "T00:00:00.000000";
+		if ($scope.date_due) {
+			taskData.date_due = $scope.date_due.replace('/', '-') + "T00:00:00.000000";
+		}
+		console.log("TASK DATA IS: ",  taskData);
+
+		var taskPromise;
+		if (!$routeParams.taskID) {
+			taskPromise = taskAPI.post("task/", {}, taskData);
+		} else {
+			taskPromise = taskAPI.put('task/' + $routeParams.taskID, {}, taskData);
 		}
 
-        taskAPI.post("task/", {}, taskData).then(
-            function () {
+		taskPromise.then(
+			function () {
                 $location.path('/tasks/');
                 $route.reload();
             },
             function () {
                 ModalService.alert(
                     "Error",
-                    "There was a problem creating the task"
+                    "There was a problem saving the task"
                 );
             }
-        );
+		);
 	};
 
 	$scope.init();

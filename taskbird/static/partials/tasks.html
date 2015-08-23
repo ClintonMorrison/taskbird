@@ -15,7 +15,7 @@
 				<i class="trash icon"></i> Delete 
 			</a>
 			
-			<a id="done-button" ng-class="{hidden: selectedTask==false}" class="ui positive labeled icon button" >
+			<a id="done-button" ng-class="{hidden: selectedTask==false}" ng-click="doneTask(selectedTask)" class="ui positive labeled icon button" >
 				<i class="checkmark icon"></i> Done 
 			</a>
 
@@ -36,7 +36,7 @@
 		<tr 
 			class="task" 
 			ng-click="selectTask(task)"
-			ng-repeat="task in tasks | filter:query | orderBy:taskOrderBy"
+			ng-repeat="task in tasks | filter:query | filter:isNotDoneFilter | orderBy:taskOrderBy"
 			ng-class="{selected: task.selected==true}"
 		>
 			<td> {{task.title}}</td>

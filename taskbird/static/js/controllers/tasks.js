@@ -1,9 +1,13 @@
 
-appControllers.controller('TasksCtrl', function ($scope, $http, taskAPI) {
-
+appControllers.controller('TasksCtrl', function ($scope, $http, taskAPI, loaderService) {
+	window.loader = loaderService;
 	$scope.taskOrderBy = "date_created";
 	
 	$scope.selectedTask = false;
+
+    $scope.isNotDoneFilter = {
+        done: false
+    };
 
 	$scope.refresh = function() {
 		taskAPI.getTasks().success(function (data) {
@@ -32,6 +36,12 @@ appControllers.controller('TasksCtrl', function ($scope, $http, taskAPI) {
 			deleteModalCallback
 		);
 	};
+
+    $scope.doneTask = function(task) {
+        taskAPI.put('task/' + task.id, {}, {done: true}).then(function (){
+            $scope.refresh();
+        });
+    };
 	
 	$scope.selectTask = function(task) {
 		// Deselect task if currently selected task clicked
