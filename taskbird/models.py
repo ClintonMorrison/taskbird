@@ -22,6 +22,6 @@ class Task(models.Model):
 
 
 class UserSettings(models.Model):
-  user = models.ForeignKey(User)
+  user = models.OneToOneField(User)
   notes = models.CharField(max_length=1000, blank=True, default="")
   metadata = models.CharField(max_length=1000, blank=True, default="")

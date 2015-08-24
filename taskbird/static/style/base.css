@@ -23,3 +23,7 @@ padding: 1em;
 .left {
 	float: left;
 }
+
+.wide {
+  width: 100%;
+}

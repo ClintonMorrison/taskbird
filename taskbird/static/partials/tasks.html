@@ -1,46 +1,46 @@
 
 <div class="ui bottom attached segment" ng-controller="TasksCtrl">
 
-	<div class="ui two column grid">
-		<div class="column">
+	<div class="ui stackable two column grid">
+		<div class="column twelve wide">
 			<a id="new-button" class="left ui blue labeled icon button" href="#/task/new">
-				<i class="add icon"></i> New Task 
+				<i class="add icon"></i> New Task
 			</a>
-			
+
 			<a id="edit-button" ng-class="{hidden: selectedTask==false}" href="#/task/{{selectedTask.id}}" class="ui orange labeled icon button" >
-				<i class="edit icon"></i> Edit 
+				<i class="edit icon"></i> Edit
 			</a>
-			
+
 			<a id="delete-button" ng-class="{hidden: selectedTask==false}" ng-click="deleteTask(selectedTask)" class="ui negative labeled icon button" >
-				<i class="trash icon"></i> Delete 
+				<i class="trash icon"></i> Delete
 			</a>
-			
+
 			<a id="done-button" ng-class="{hidden: selectedTask==false}" ng-click="doneTask(selectedTask)" class="ui positive labeled icon button" >
-				<i class="checkmark icon"></i> Done 
+				<i class="checkmark icon"></i> Done
 			</a>
 
 		</div>
-		<div class="column">
-			<div class="right ui icon input">
+		<div class="column four wide">
+			<div class="ui icon input">
 				<input type="text" placeholder="Search" ng-model="query"><i class="search icon"></i>
 			</div>
 		</div>
 	</div>
 
-	<table class="ui padded tasks table segment">
+	<table class="ui unstackable tasks table segment">
 		<thead><tr>
 			<th class="twelve wide">Task</th>
 			<th class="five wide"><div class="center">Date</div></th>
 		</tr></thead>
 		<tbody>
-		<tr 
+		<tr
 			class="task" 
 			ng-click="selectTask(task)"
 			ng-repeat="task in tasks | filter:query | filter:isNotDoneFilter | orderBy:taskOrderBy"
 			ng-class="{selected: task.selected==true}"
 		>
 			<td> {{task.title}}</td>
-			<td> <div class="center"> {{task.dateCreated}} </div></td>
+			<td> <div class="center"> {{task.date_due}} </div></td>
 		</tr>
 		</tbody>
 	</table>

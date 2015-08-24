@@ -31,5 +31,13 @@
 
 #content .app.container {
   min-width: 900px;
-  
+}
+
+.ui.selection.list {
+	margin: 0;
+	margin-top: 5px;
+}
+.day.message {
+    padding: 5px;
+    font-size: 20%;
 }

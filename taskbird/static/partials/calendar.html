@@ -16,9 +16,9 @@
 
 </div>
 
-	<div class="ui grid">
+	<div class="ui stackable grid">
 		<div class="column eleven wide">
-			<table class="ui celled padded calendar table stacked segment">
+			<table class="ui celled padded unstackable calendar table stacked segment">
 			<thead>
 				<th class="two wide">Monday</th>
 				<th class="two wide">Tuesday</th>
@@ -30,8 +30,18 @@
 			</thead>
 			<tbody>
 			<tr ng-repeat="week in weeks" >
-				<td  ng-repeat="day in week.days"><span ng-class="{disabled: day.disabled == true}">
-					<b>{{day.number}}</b><br><br> </span>
+				<td  ng-repeat="day in week.days"
+                     ng-click="selectDay(day)"
+                     ng-class="{selected: day.number == selectedDay.number}">
+                    <span ng-class="{disabled: day.disabled == true}">
+                        <b>{{day.number}}</b>
+                        <br>
+                        <br ng-if="day.tasks.length == 0">
+                        <br ng-if="day.tasks.length == 0">
+                        <span class="right ui small compact blue message day" ng-if="day.tasks.length > 0">
+                             {{ day.tasks.length }}
+                         </span>
+                    </span>
 					<!-- <span class="small" style="color:#333333"> 0 task(s) </span> -->
 				</td>
 			</tr>
@@ -41,26 +51,27 @@
 	</div>
 
 	<div class="column five wide">
-		<br>
-		<div class="ui selection list" style="width: 100%">
-			<a class="active item"> My Task #1 </a>
-			<a class="item"> My Task #2 </a>
-			<a class="item"> My Task #3 </a>
-			<a class="item"> My Task #4 </a>
+        <a id="new-button" class="ui blue wide labeled icon button" href="#/task/new">
+			<i class="add icon"></i>
+            New Task
+		</a>
+        <br/><br/><br/>
+        <b class="large" ng-if="selectedDay.tasks.length > 0">Tasks</b>
+		<div class="ui selection list" ng-repeat="task in selectedDay.tasks" ng-click="selectTask(selectedDay, task)">
+			<a class="item" ng-class="{active: task.id == selectedDay.selectedTask.id}">
+                {{ task.title }}
+            </a>
 		</div>
-		
-		<div class="ui piled segment">
-			<b class="large">My Task #1</b> <a 
-			class="ui blue right mini icon button" style="margin-right: 10px"><i class="ui mini edit icon"> </i></a>
+
+		<div class="ui piled segment" ng-if="selectedDay && selectedDay.selectedTask">
+			<b class="large">{{selectedDay.selectedTask.title}}</b>
+            <a class="ui blue right mini icon button" style="margin-right: 10px" href="#/task/{{selectedDay.selectedTask.id}}">
+                <i class="ui mini edit icon"> </i>
+            </a>
 			<div class="ui divider"></div> <br>
-			Do some things to finish this task.
+			{{selectedDay.selectedTask.description}}
 			
-			<br><br><b>Deadline</b>: November 12, 2014 <br>
-		</div>
-
-
-		<div id="new-button" class="right ui blue labeled icon button">
-			<i class="add icon"></i> New Task 
+			<br><br><b>Deadline</b>: {{selectedDay.selectedTask.date_due}} <br>
 		</div>
 	</div>
 	</div>
