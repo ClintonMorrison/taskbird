@@ -1,49 +1,154 @@
-
 <div class="ui bottom attached segment" ng-controller="TasksCtrl">
 
-	<div class="ui stackable two column grid">
-		<div class="column twelve wide">
-			<a id="new-button" class="left ui blue labeled icon button" href="#/task/new">
-				<i class="add icon"></i> New Task
-			</a>
+    <div class="ui stackable two column grid">
+        <div class="ui column seven wide">
+            <a class="left ui blue labeled icon button" ng-click="createTask()">
+                <i class="add icon"></i> New Task
+            </a>
 
-			<a id="edit-button" ng-class="{hidden: selectedTask==false}" href="#/task/{{selectedTask.id}}" class="ui orange labeled icon button" >
-				<i class="edit icon"></i> Edit
-			</a>
+            <a ng-class="{hidden: selectedTask==false}" ng-click="deleteTask(selectedTask)" class="ui negative labeled icon button" >
+                <i class="trash icon"></i> Delete
+            </a>
+        </div>
 
-			<a id="delete-button" ng-class="{hidden: selectedTask==false}" ng-click="deleteTask(selectedTask)" class="ui negative labeled icon button" >
-				<i class="trash icon"></i> Delete
-			</a>
+        <div class="ui column nine wide">
+            <div class="ui floating labeled icon dropdown button task-filter" ng-model="filterProject">
+                <i class="filter icon"></i>
+                <span class="text">Select Project</span>
+                <div class="menu">
+                    <div class="item" data-value="all">All Tasks</div>
+                    <div class="item" ng-repeat="project in projects" data-value="{{project.id}}">
+                        <i class="circle icon"></i>
+                        {{project.title}}
+                    </div>
+                </div>
+            </div>
 
-			<a id="done-button" ng-class="{hidden: selectedTask==false}" ng-click="doneTask(selectedTask)" class="ui positive labeled icon button" >
-				<i class="checkmark icon"></i> Done
-			</a>
+            <div class="ui icon task-search input">
+                <input type="text" placeholder="Search" ng-model="query"><i class="search icon"></i>
+            </div>
+        </div>
+    </div>
 
-		</div>
-		<div class="column four wide">
-			<div class="ui icon input">
-				<input type="text" placeholder="Search" ng-model="query"><i class="search icon"></i>
-			</div>
-		</div>
-	</div>
+    <br/>
 
-	<table class="ui unstackable tasks table segment">
-		<thead><tr>
-			<th class="twelve wide">Task</th>
-			<th class="five wide"><div class="center">Date</div></th>
-		</tr></thead>
-		<tbody>
-		<tr
-			class="task" 
-			ng-click="selectTask(task)"
-			ng-repeat="task in tasks | filter:query | filter:isNotDoneFilter | orderBy:taskOrderBy"
-			ng-class="{selected: task.selected==true}"
-		>
-			<td> {{task.title}}</td>
-			<td> <div class="center"> {{task.date_due}} </div></td>
-		</tr>
-		</tbody>
-	</table>
+    <div class="ui stackable two column grid">
+        <div class="ui column">
+
+            <div class="ui relaxed divided list">
+                <!-- | filter:isNotDoneFilter -->
+                <div class="task item"
+                     ng-repeat = "task in tasks | filter:query | withProjectID:filterProject | orderBy:taskOrderBy"
+                     ng-class  = "{selected: task.selected==true}">
+
+                    <i class="large clickable {{priorityColors[task.priority]}} middle aligned icon"
+                       ng-class="{'checkmark box': !!task.done, 'square outline thin':!task.done}"
+                       ng-click="doneTask(task)">
+                    </i>
+
+                    <div class="wide content clickable task-box" ng-click = "selectTask(task)">
+                        <div class="header">
+                            <div class="title">{{task.title | limitTo: 30}}</div>
+                            <div class="date"> {{task.date_due | toEnglishDate}}</div>
+                        </div>
+
+                        <div class="clear"></div>
+                        <br/>
+                        <div class="description">{{task.description | limitTo:60}}</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="ui column">
+            <form class="ui form" ng-show="selectedTask">
+                <div class="field">
+                    <label>Title</label>
+                    <input type="text" placeholder="My Task" ng-model="selectedTask.title">
+                </div>
+
+                <div class="field">
+                    <label>Details</label>
+                    <textarea placeholder="Task description" ng-model="selectedTask.description" rows="2">
+                    </textarea>
+                </div>
+
+                <div class="two fields">
+                    <div class="field">
+                        <label>Priority</label>
+                        <div class="ui fluid search selection dropdown" ng-model="selectedTask.priority">
+                            <input type="hidden" name="selectedTask.priority">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">Select Priority</div>
+                            <div class="menu">
+                                <div class="item" ng-repeat="priority in priorities" data-value="{{priority.name}}">
+                                    <i class="{{priority.color}} circle icon"></i>
+                                    {{priority.name}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                  <div class="field">
+                        <label>Due Date</label>
+                        <task-datepicker ng-model="selectedTask.date_due">
+                        </task-datepicker>
+                    </div>
+
+                </div>
+
+                <div class="two fields">
+                    <div class="field">
+                        <label>Project</label>
+                        <div class="ui fluid search selection dropdown" ng-model="selectedTask.projectID" placeholder="Select Project">
+                            <input type="hidden">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">Select Project</div>
+                            <div class="menu">
+                                <div class="item" data-value="false">Select Project</div>
+                                <div class="item" ng-repeat="project in projects" data-value="{{project.id}}">
+                                    <i class="circle icon"></i>
+                                    {{project.title}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <br/>
+                        <div class="ui blue icon button" ng-click="createProject()">
+                            <i class="ui plus icon"></i>
+                            New Project
+                        </div>
+                    </div>
+                </div>
+
+                <div class="two fields">
+
+                    <div class="field">
+                        <task-checkbox label="Task complete" ng-model="selectedTask.done"></task-checkbox>
+                        <!--
+                        <div class="ui checkbox">
+                            <input type="checkbox" tabindex="0" class="hidden">
+                            <label>Task complete</label>
+                        </div>
+                     -->
+                    </div>
+
+                    <div class="field">
+                        <!--
+                        <div class="ui checkbox">
+                            <input type="checkbox" tabindex="0" class="hidden">
+                            <label>Send reminder</label>
+                        </div>
+                        -->
+                    </div>
+               </div>
+
+            </form>
+        </div>
+    </div>
 
 </div>
 

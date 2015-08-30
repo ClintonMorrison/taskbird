@@ -4,7 +4,7 @@ from django.conf import settings
 from django.contrib import admin
 from taskbird import views
 
-from taskbird.api import TaskResource, UserResource, UserSettingsResource
+from taskbird.api import TaskResource, UserResource, UserSettingsResource, ProjectResource
 
 from models import Task
 from models import User
@@ -12,6 +12,7 @@ from models import User
 task_resource = TaskResource()
 user_resource = UserResource()
 userSettings_resource = UserSettingsResource()
+project_resource = ProjectResource()
 
 urlpatterns = patterns('',
     # Examples:
@@ -31,6 +32,7 @@ urlpatterns = patterns('',
     url(r'^app/$', views.appIndex, name='appIndex'),
     url(r'^api/', include(task_resource.urls)),
     url(r'^api/', include(user_resource.urls)),
-    url(r'^api/', include(userSettings_resource.urls))
+    url(r'^api/', include(userSettings_resource.urls)),
+    url(r'^api/', include(project_resource.urls)),
 ) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

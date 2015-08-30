@@ -3,7 +3,6 @@ appControllers.controller('NewTaskCtrl', function($scope, $http, $route, $routeP
     window.$scope = $scope;
 
 	$scope.init = function() {
-		jQuery("#new-task-deadline").datepicker();
 
 		if ($routeParams.taskID) {
             // moment().format("YYYY/MM/DD\T00:00:00.000000");

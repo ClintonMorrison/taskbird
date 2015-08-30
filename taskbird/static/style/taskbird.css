@@ -29,8 +29,12 @@
 	display: none !important;
 }
 
+.clickable {
+    cursor: pointer;
+}
+
 #content .app.container {
-  min-width: 900px;
+  min-width: 300px;
 }
 
 .ui.selection.list {
@@ -40,4 +44,35 @@
 .day.message {
     padding: 5px;
     font-size: 20%;
+}
+
+.task-box .title {
+	float: left;
+	display: inline-block;
+}
+
+.task-box .header {
+	clear: both;
+	padding-top: 5px;
+	padding-bottom: 10px;
+}
+
+.task-box .date {
+	float: right;
+	display: inline-block;
+	font-weight: 200;
+	color: rgba(0,0,0,0.7)
+}
+
+.task-search {
+	width: calc(100% - 180px);
+    float: right;
+}
+
+.task-filter {
+	width: 170px;
+}
+.ui.list.relaxed.divided.list .task.item {
+    padding-left: 10px;
+    padding-right: 10px;
 }

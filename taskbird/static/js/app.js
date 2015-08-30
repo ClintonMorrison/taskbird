@@ -1,5 +1,3 @@
-// Initialize dropdown
-$('.ui.dropdown').dropdown();
 
 var taskApp = angular.module('taskApp', [
 	'ngRoute',
@@ -19,17 +17,13 @@ var taskApp = angular.module('taskApp', [
 			templateUrl: '/static/partials/tasks.html',
 			controller: 'TasksCtrl'
 		})
-		.when('/lists', {
-			templateUrl: '/static/partials/lists.html',
+		.when('/projects', {
+			templateUrl: '/static/partials/projects.html',
 			controller: 'ListsCtrl'
 		})
 		.when('/calendar', {
 			templateUrl: '/static/partials/calendar.html',
 			controller: 'CalendarCtrl'
-		})
-		.when('/', {
-			templateUrl: '/static/partials/home.html',
-			controller: 'HomeCtrl'
 		})
 		.otherwise({
 			redirectTo: '/tasks/'

@@ -2,15 +2,15 @@ from django.db import models
 from django.contrib.auth.models import User
 
 
-class List(models.Model):
+class Project(models.Model):
   user = models.ForeignKey(User)
-  title = models.CharField(max_length=50, default="Unnamed List")
+  title = models.CharField(max_length=50, default="New Project")
   date_created = models.DateTimeField(auto_now_add=True)
 
 
 class Task(models.Model):
   user = models.ForeignKey(User)
-  title = models.CharField(max_length=50, default="Unnamed Task")
+  title = models.CharField(max_length=50, default="New Task")
   description = models.CharField(max_length=300, blank=True, default="")
   type = models.CharField(max_length=50, default="task") #'task' or 'event'
   done = models.BooleanField(default=False)
@@ -18,7 +18,12 @@ class Task(models.Model):
   date_completed = models.DateTimeField(null=True, blank=True)
   date_modified = models.DateTimeField(auto_now=True)
   date_due = models.DateTimeField(null=True, blank=True)
-  lists = models.ManyToManyField(List)
+  priority = models.CharField(max_length=10, default="Normal", choices = (
+    ('Low', 'Low'),
+    ('Normal', 'Normal'),
+    ('High', 'High')
+  ))
+  projects = models.ManyToManyField(Project, blank=True, null=True)
 
 
 class UserSettings(models.Model):

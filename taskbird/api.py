@@ -3,8 +3,9 @@ __author__ = 'Clinton Morrison'
 from tastypie.resources import ModelResource
 from tastypie.authorization import Authorization
 from tastypie.authentication import SessionAuthentication
-from taskbird.models import Task, User, UserSettings, List
+from taskbird.models import Task, User, UserSettings, Project
 from tastypie.exceptions import Unauthorized
+from tastypie import fields
 
 
 class UserAuthorization(Authorization):
@@ -71,8 +72,26 @@ class OwnerOnlyAuthorization(Authorization):
         return bundle.obj.user == bundle.request.user
 
 
-class TaskResource(ModelResource):
+class ProjectResource(ModelResource):
     class Meta:
+        queryset = Project.objects.all()
+        resource_name = 'project'
+        authorization = OwnerOnlyAuthorization()
+        authentication = SessionAuthentication()
+
+    def hydrate(self, bundle, request=None):
+        bundle.obj.user = bundle.request.user
+        if not hasattr(bundle.obj, 'projects'):
+            bundle.obj.projects = []
+
+        return bundle
+
+
+class TaskResource(ModelResource):
+    projects = fields.ToManyField(ProjectResource, 'projects', full=True, null=True)
+
+    class Meta:
+        always_return_data=True
         queryset = Task.objects.all()
         resource_name = 'task'
         authorization = OwnerOnlyAuthorization()
@@ -100,10 +119,6 @@ class UserSettingsResource(ModelResource):
         authorization = OwnerOnlyAuthorization()
         authentication = SessionAuthentication()
 
-
-class ListResource(ModelResource):
-    class Meta:
-        queryset = List.objects.all()
-        resource_name = 'list'
-        authorization = OwnerOnlyAuthorization()
-        authentication = SessionAuthentication()
+    def hydrate(self, bundle, request=None):
+        bundle.obj.user = bundle.request.user
+        return bundle

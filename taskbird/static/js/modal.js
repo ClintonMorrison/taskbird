@@ -42,6 +42,21 @@ window.ModalService = {};
         });
         _showModal('#modal-confirm', title, message);
     };
+
+    ModalService.promptText = function(title, message, callback) {
+        if (!callback) {
+            callback = function() {};
+        }
+        $('#modal-prompt').modal({
+            onApprove: function() {
+                callback($('#modal-text-input').val());
+            },
+            onDeny: function() {
+                callback(false);
+            }
+        });
+        _showModal('#modal-prompt', title, message);
+    };
 })();
 
 $(document).ready(function () {

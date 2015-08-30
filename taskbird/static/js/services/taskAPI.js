@@ -26,9 +26,7 @@ taskApp.service('taskAPI', ['$http', 'loaderService', function($http, loaderServ
         format: 'json'
     };
 
-    this.request = function(method, path, params, data) {
-        loaderService.begin();
-
+    this.request = function(method, path, params, data, suppressLoader) {
         if (!path) {
             method = "";
         }
@@ -41,6 +39,11 @@ taskApp.service('taskAPI', ['$http', 'loaderService', function($http, loaderServ
             data = {};
         }
 
+        if (!suppressLoader) {
+            loaderService.begin();
+        }
+
+
         var requestPromise = $http({
             method: method,
             url: self._getBaseUrl() + path,
@@ -49,26 +52,28 @@ taskApp.service('taskAPI', ['$http', 'loaderService', function($http, loaderServ
         });
 
         requestPromise.finally(function () {
-           loaderService.done();
+            if (!suppressLoader) {
+                loaderService.done();
+            }
         });
 
         return requestPromise;
     };
 
-    this.get = function(path, params) {
-        return self.request('GET', path, params);
+    this.get = function(path, params, options) {
+        return self.request('GET', path, params, options);
     };
 
-    this.post = function(path, params, data) {
-        return self.request('POST', path, params, data);
+    this.post = function(path, params, data, options) {
+        return self.request('POST', path, params, data, options);
     };
 
-    this.put = function(path, params, data) {
-        return self.request('PUT', path, params, data);
+    this.put = function(path, params, data, options) {
+        return self.request('PUT', path, params, data, options);
     };
 
-    this.delete = function(path, params) {
-        return self.request('DELETE', path, params);
+    this.delete = function(path, params, options) {
+        return self.request('DELETE', path, params, options);
     };
 
     this.getTask = function(id) {
