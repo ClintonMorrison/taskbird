@@ -19,7 +19,7 @@ var taskApp = angular.module('taskApp', [
 		})
 		.when('/projects', {
 			templateUrl: '/static/partials/projects.html',
-			controller: 'ListsCtrl'
+			controller: 'ProjectsCtrl'
 		})
 		.when('/calendar', {
 			templateUrl: '/static/partials/calendar.html',

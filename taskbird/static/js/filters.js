@@ -26,3 +26,15 @@ taskApp.filter('withProjectID', function() {
       return _.filter(input, {projectID: projectID});
   };
 });
+
+/**
+ * Taken from https://gist.github.com/paulakreuger/b2af1958f3d67f46447e
+ * @author paulakreuger @ https://github.com/paulakreuger
+ */
+taskApp.filter('capitalize', function() {
+  return function(input, scope) {
+    if (input!=null)
+    input = input.toLowerCase();
+    return input.substring(0,1).toUpperCase()+input.substring(1);
+  }
+});

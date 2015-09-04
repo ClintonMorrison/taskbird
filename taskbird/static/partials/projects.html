@@ -1,42 +1,123 @@
+<div class="ui bottom attached segment" ng-controller="ProjectsCtrl">
 
-<div class="ui bottom attached segment" ng-controller="ListsCtrl">
+    <div class="ui stackable two column grid">
+        <div class="ui column eight wide">
+            <a class="left ui blue labeled icon button" ng-click="createProject()">
+                <i class="add icon"></i> New Project
+            </a>
 
-    <div class="ui two column grid">
-        <div class="column">
-            <a id="new-button" class="left ui blue labeled icon button" href="#/tasks/new">
-				<i class="add icon"></i> New List
-			</a>
+            <a class="left ui green labeled icon button" href="#/tasks/{{selectedProject.slug}}/">
+                <i class="inbox icon"></i> View Tasks
+            </a>
+
+            <a ng-class="{hidden: selectedProject==false}" ng-click="delete(selectedProject)" class="ui negative labeled icon button" >
+                <i class="trash icon"></i> Delete
+            </a>
         </div>
-        <div class="column">
-            <div class="right ui icon input">
-                <input type="text" placeholder="Search" ng-model="query"><i class="search icon"></i>
+
+        <div class="ui column eight wide">
+            <div class="ui icon wide input">
+                <input type="text" placeholder="Search" ng-model="query">
+                <i class="wide search icon"></i>
             </div>
         </div>
     </div>
 
-	<table class="ui padded table segment">
-		<thead><tr>
-			<th class="twelve wide">List</th>
-			<th class="five wide"><div class="center">Tasks</div></th>
-		</tr></thead>
-		<tbody>
-		<tr ng-repeat="list in lists | filter:query | orderBy:listOrderBy" >
-			<td> {{list.title}}</td>
-			<td> <div class="center"> {{llist.tasks}} </div></td>
-		</tr>
-		</tbody>
-		
-		<tfoot>
-			<tr>
-				<th colspan="3">
-					<div id="new-button" class="right ui blue labeled icon button">
-						<i class="add icon"></i> New List 
-					</div>
-				</th>
-			</tr>
-		</tfoot>
+    <br/>
 
-	</table>
+    <div class="ui stackable two column grid">
+        <div class="ui column">
+            <div class="ui relaxed divided list">
+                <div class="clickable task item"
+                     ng-click = "selectProject(project)"
+                     ng-dblclick = "console.log('TODO')"
+                     ng-repeat = "project in projects | filter:query | orderBy:title"
+                     ng-class  = "{selected: selectedProject.id === project.id}">
+
+                    <i class="large {{project.icon}} {{project.color}} middle aligned icon">
+                    </i>
+
+                    <div class="wide content task-box" >
+                        <div class="header">
+                            <div class="title">{{project.title | limitTo: 30}}</div>
+                            <div class="date"> {{project.date_created | toEnglishDate}}</div>
+                        </div>
+
+                        <div class="clear"></div>
+                        <br/>
+                        <div class="description">{{project.description | limitTo:60}}</div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="ui column">
+            <form class="ui form" ng-show="selectedProject">
+                <div class="field">
+                    <label>Title</label>
+                    <input type="text" placeholder="My Task" ng-model="selectedProject.title">
+                </div>
+
+                <div class="field">
+                    <label>Details</label>
+                    <textarea placeholder="Task description" ng-model="selectedProject.description" rows="2">
+                    </textarea>
+                </div>
+
+                <div class="two fields">
+                    <div class="field">
+                        <label>Icon</label>
+                        <div class="ui fluid search selection dropdown" ng-model="selectedProject.icon">
+                            <input type="hidden" name="selectedProject.priority">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">Select Icon</div>
+                            <div class="menu">
+                                <div class="item" ng-repeat="icon in icons" data-value="{{icon}}">
+                                    <i class="large {{icon}} icon"></i>
+                                    {{icon | capitalize}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label>Color</label>
+                        <div class="ui fluid search selection dropdown" ng-model="selectedProject.color" placeholder="Select Project">
+                            <input type="hidden">
+                            <i class="dropdown icon"></i>
+                            <div class="default text">Select Color</div>
+                            <div class="menu">
+                                <div class="item" ng-repeat="color in colors" data-value="{{color}}">
+                                    <i class="large {{color}} circle icon"></i>
+                                    {{color | capitalize}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="two fields">
+
+
+                    <div class="field">
+                        <br/>
+                    </div>
+                </div>
+
+                <div class="two fields">
+
+                    <div class="field">
+                    </div>
+
+                    <div class="field">
+                    </div>
+               </div>
+
+            </form>
+        </div>
+    </div>
 
 </div>
 
