@@ -72,6 +72,15 @@
 .task-filter {
 	width: 170px;
 }
+
+.task-project-icon {
+	float: right;
+}
+
+.task-checkbox {
+	padding-top: 6px !important;
+}
+
 .ui.list.relaxed.divided.list .task.item {
     padding-left: 10px;
     padding-right: 10px;

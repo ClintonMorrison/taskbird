@@ -74,6 +74,7 @@ class OwnerOnlyAuthorization(Authorization):
 
 class ProjectResource(ModelResource):
     class Meta:
+        always_return_data=True
         queryset = Project.objects.all()
         resource_name = 'project'
         authorization = OwnerOnlyAuthorization()
@@ -81,8 +82,8 @@ class ProjectResource(ModelResource):
 
     def hydrate(self, bundle, request=None):
         bundle.obj.user = bundle.request.user
-        if not hasattr(bundle.obj, 'projects'):
-            bundle.obj.projects = []
+        if not hasattr(bundle.obj, 'project'):
+            bundle.obj.project = None
 
         return bundle
 

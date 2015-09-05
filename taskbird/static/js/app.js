@@ -5,13 +5,13 @@ var taskApp = angular.module('taskApp', [
 ])
 .config(function ($routeProvider) {
 	$routeProvider
-		.when('/task/new', {
-			templateUrl: '/static/partials/newTask.html',
-			controller: 'NewTaskCtrl'
+		.when('/tasks/:projectID/:taskID', {
+			templateUrl: '/static/partials/tasks.html',
+			controller: 'TasksCtrl'
 		})
-		.when('/task/:taskID', {
-			templateUrl: '/static/partials/newTask.html',
-			controller: 'NewTaskCtrl'
+		.when('/tasks/:projectID', {
+			templateUrl: '/static/partials/tasks.html',
+			controller: 'TasksCtrl'
 		})
 		.when('/tasks/', {
 			templateUrl: '/static/partials/tasks.html',

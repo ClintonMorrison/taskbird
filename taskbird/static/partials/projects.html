@@ -6,11 +6,11 @@
                 <i class="add icon"></i> New Project
             </a>
 
-            <a class="left ui green labeled icon button" href="#/tasks/{{selectedProject.slug}}/">
+            <a class="left ui green labeled icon button" href="#/tasks/{{selectedProject.id}}/" ng-show="selectedProject">
                 <i class="inbox icon"></i> View Tasks
             </a>
 
-            <a ng-class="{hidden: selectedProject==false}" ng-click="delete(selectedProject)" class="ui negative labeled icon button" >
+            <a ng-show="selectedProject" ng-click="deleteProject(selectedProject)" class="ui negative labeled icon button" >
                 <i class="trash icon"></i> Delete
             </a>
         </div>
@@ -59,11 +59,13 @@
                     <input type="text" placeholder="My Task" ng-model="selectedProject.title">
                 </div>
 
+                <!--
                 <div class="field">
                     <label>Details</label>
                     <textarea placeholder="Task description" ng-model="selectedProject.description" rows="2">
                     </textarea>
                 </div>
+                -->
 
                 <div class="two fields">
                     <div class="field">
@@ -98,22 +100,6 @@
 
                 </div>
 
-                <div class="two fields">
-
-
-                    <div class="field">
-                        <br/>
-                    </div>
-                </div>
-
-                <div class="two fields">
-
-                    <div class="field">
-                    </div>
-
-                    <div class="field">
-                    </div>
-               </div>
 
             </form>
         </div>

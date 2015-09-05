@@ -5,6 +5,9 @@ from django.contrib.auth.models import User
 class Project(models.Model):
   user = models.ForeignKey(User)
   title = models.CharField(max_length=50, default="New Project")
+  icon = models.CharField(max_length=50, default="cube")
+  color = models.CharField(max_length=50, default="black")
+  description = models.CharField(max_length=300, blank=True, default="")
   date_created = models.DateTimeField(auto_now_add=True)
 
 
@@ -23,7 +26,7 @@ class Task(models.Model):
     ('Normal', 'Normal'),
     ('High', 'High')
   ))
-  projects = models.ManyToManyField(Project, blank=True, null=True)
+  projects = models.ManyToManyField(Project, blank=True)
 
 
 class UserSettings(models.Model):

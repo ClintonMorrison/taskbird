@@ -23,7 +23,7 @@ taskApp.filter('withProjectID', function() {
           return input;
       }
 
-      return _.filter(input, {projectID: projectID});
+      return _.filter(input, {projectID: parseInt(projectID)});
   };
 });
 

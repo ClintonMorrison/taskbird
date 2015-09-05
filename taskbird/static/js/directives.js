@@ -10,6 +10,7 @@ taskApp.directive('dropdown', function ($timeout) {
         link: function (scope, elm, attr) {
             elm.dropdown('save defaults')
             scope.$watch('ngModel', function(newValue, oldValue) {
+                console.log(scope.ngModel);
                 if (newValue === oldValue) {
                     return;
                 }

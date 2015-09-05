@@ -18,7 +18,7 @@
                 <div class="menu">
                     <div class="item" data-value="all">All Tasks</div>
                     <div class="item" ng-repeat="project in projects" data-value="{{project.id}}">
-                        <i class="circle icon"></i>
+                        <i class="{{project.color}} {{project.icon}} icon"></i>
                         {{project.title}}
                     </div>
                 </div>
@@ -41,20 +41,30 @@
                      ng-repeat = "task in tasks | filter:query | withProjectID:filterProject | orderBy:taskOrderBy"
                      ng-class  = "{selected: task.selected==true}">
 
-                    <i class="large clickable {{priorityColors[task.priority]}} middle aligned icon"
+                    <i class="large clickable {{priorityColors[task.priority]}} icon task-checkbox"
                        ng-class="{'checkmark box': !!task.done, 'square outline thin':!task.done}"
                        ng-click="doneTask(task)">
                     </i>
 
                     <div class="wide content clickable task-box" ng-click = "selectTask(task)">
                         <div class="header">
-                            <div class="title">{{task.title | limitTo: 30}}</div>
-                            <div class="date"> {{task.date_due | toEnglishDate}}</div>
+                            <div class="title">
+                                {{task.title | limitTo: 30}}
+                            </div>
+
+                            <div class="date">
+                                {{task.date_due | toEnglishDate}}
+                            </div>
                         </div>
 
                         <div class="clear"></div>
                         <br/>
-                        <div class="description">{{task.description | limitTo:60}}</div>
+                        <div class="description">
+                            {{task.description | limitTo:40}}
+                            <span class="task-project-icon" ng-if="task.projects[0]">
+                                <i class="mini {{getProjectByID(task.projectID).icon}} {{getProjectByID(task.projectID).color}} icon"></i>
+                            </span>
+                        </div>
                     </div>
 
                 </div>
@@ -108,7 +118,7 @@
                             <div class="menu">
                                 <div class="item" data-value="false">Select Project</div>
                                 <div class="item" ng-repeat="project in projects" data-value="{{project.id}}">
-                                    <i class="circle icon"></i>
+                                    <i class="{{project.color}} {{project.icon}} icon"></i>
                                     {{project.title}}
                                 </div>
                             </div>

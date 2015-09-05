@@ -1,6 +1,6 @@
 
-appControllers.controller('TasksCtrl', function ($scope, $http, taskAPI, loaderService) {
-	window.loader = loaderService;
+appControllers.controller('TasksCtrl', function ($scope, $routeParams, $http, taskAPI, $timeout, loaderService) {
+    window.scope = $scope;
 	$scope.taskOrderBy = "date_created";
 	
 	$scope.selectedTask = false;
@@ -57,6 +57,14 @@ appControllers.controller('TasksCtrl', function ($scope, $http, taskAPI, loaderS
         // Get projects
         taskAPI.get('project/').success(function (data) {
             $scope.projects = data.objects;
+
+            // Filter by project ID in URL
+            $timeout(function () {
+                $scope.filterProject = "all";
+                if ($routeParams.projectID) {
+                    $scope.filterProject = parseInt($routeParams.projectID, 10);
+                }
+            });
         });
 	};
 
@@ -116,6 +124,7 @@ appControllers.controller('TasksCtrl', function ($scope, $http, taskAPI, loaderS
 
         taskAPI.post("task/", taskData).then(function (response) {
             console.log("Created task: ", response.data);
+            response.data.projectID = false;
             $scope.tasks.push(response.data);
             $scope.selectTask(_.last($scope.tasks));
         });
@@ -187,6 +196,10 @@ appControllers.controller('TasksCtrl', function ($scope, $http, taskAPI, loaderS
 
         return (task.projectID == projectID);
     };
+
+    $scope.getProjectByID = function(projectID) {
+        return _.findWhere($scope.projects, {id: projectID});
+    }
 
 	$scope.refresh();
 });
