@@ -1,11 +1,11 @@
 
-appControllers.controller('TasksCtrl', function ($scope, $routeParams, $http, taskAPI, $timeout, loaderService) {
+appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams, $http, taskAPI, taskData, loaderService) {
     window.scope = $scope;
 	$scope.taskOrderBy = "date_created";
 	
 	$scope.selectedTask = false;
     $scope.$watch('selectedTask', function(newValue, oldValue) {
-        if (newValue === false || oldValue === false) {
+        if (!newValue  || !oldValue) {
             return;
         }
 
@@ -20,9 +20,13 @@ appControllers.controller('TasksCtrl', function ($scope, $routeParams, $http, ta
         $scope.saveTask(newValue);
     }, true);
 
-    $scope.isNotDoneFilter = {
-        done: false
-    };
+    $scope.$watch('filterProject', function(newValue, oldValue) {
+        if ($scope.selectedTask) {
+            if ($scope.selectedTask.projectID !== newValue && newValue !== 'all') {
+                $scope.selectedTask = false;
+            }
+        }
+    });
 
 	$scope.priorities = [
 		{name: "Low",    color: "green"},
@@ -35,7 +39,7 @@ appControllers.controller('TasksCtrl', function ($scope, $routeParams, $http, ta
         $scope.priorityColors[priority.name] = priority.color;
     });
 
-	$scope.refresh = function() {
+	$scope.refresh = function(firstLoad) {
 		// Get tasks
         taskAPI.getTasks().success(function (data) {
 			$scope.tasks = data.objects;
@@ -50,6 +54,11 @@ appControllers.controller('TasksCtrl', function ($scope, $routeParams, $http, ta
                 task.projectID = (task.projects.length > 0) ? task.projects[0].id : false;
             });
 
+            if ($routeParams.taskID && firstLoad) {
+                var taskID = parseInt($routeParams.taskID);
+                $scope.selectTask(_.findWhere($scope.tasks, {id: taskID}));
+            }
+
 			// debug only
 			window.tasks = $scope.tasks;
 		});
@@ -61,7 +70,7 @@ appControllers.controller('TasksCtrl', function ($scope, $routeParams, $http, ta
             // Filter by project ID in URL
             $timeout(function () {
                 $scope.filterProject = "all";
-                if ($routeParams.projectID) {
+                if ($routeParams.projectID && firstLoad) {
                     $scope.filterProject = parseInt($routeParams.projectID, 10);
                 }
             });
@@ -72,6 +81,7 @@ appControllers.controller('TasksCtrl', function ($scope, $routeParams, $http, ta
 		var deleteModalCallback = function(approved) {
 			if (approved) {
 				taskAPI.delete('task/' + task.id).then(function () {
+                    $scope.selectedProject = false;
 					$scope.refresh();
 				});
 			}
@@ -92,22 +102,18 @@ appControllers.controller('TasksCtrl', function ($scope, $routeParams, $http, ta
     }, 150);
 	
 	$scope.selectTask = function(task) {
+
 		// Deselect task if currently selected task clicked
 		if ( $scope.selectedTask && $scope.selectedTask.id == task.id) {
-			$scope.deselectAllTasks();
+			$scope.selectedTask = false;
 			return;
 		}
-
-		$scope.deselectAllTasks();
-		
-		task.selected = true;
 		$scope.selectedTask = task;
 		window.selectedTask = task;
 	};
 
 	$scope.deselectAllTasks = function() {
-		_.chain($scope.tasks).forEach(function(task) { task.selected = false });
-		$scope.selectedTask = false;
+
 	};
 
 	$scope.findTaskByID = function(taskId) {
@@ -122,9 +128,13 @@ appControllers.controller('TasksCtrl', function ($scope, $routeParams, $http, ta
             projects: []
         };
 
+        if ($scope.filterProject !== 'all') {
+            taskData.projects = [$scope.filterProject];
+        }
+
+
         taskAPI.post("task/", taskData).then(function (response) {
-            console.log("Created task: ", response.data);
-            response.data.projectID = false;
+            response.data.projectID = ($scope.filterProject === 'all') ? false : ""+$scope.filterProject;
             $scope.tasks.push(response.data);
             $scope.selectTask(_.last($scope.tasks));
         });
@@ -147,8 +157,7 @@ appControllers.controller('TasksCtrl', function ($scope, $routeParams, $http, ta
             taskData.projects = [];
         }
 
-        console.log("Saving task #" + task.id,  taskData);
-
+        console.log("Data: ", taskData);
         if (!task.id) {
             taskPromise = taskAPI.post("task/", {}, taskData, true);
         } else {
@@ -178,7 +187,13 @@ appControllers.controller('TasksCtrl', function ($scope, $routeParams, $http, ta
                 }
 
                 taskAPI.post('project/', {}, {'title': val}).then(
-                    function () {},
+                    function (response) {
+                        $scope.projects.push(response.data);
+                        if ($scope.selectedTask) {
+                            $scope.selectedTask.projectID = response.data.id;
+                            $scope.selectedTask.projects = [response.data];
+                        }
+                    },
                     function () {
                         ModalService.alert(
                             'Error',
@@ -199,8 +214,8 @@ appControllers.controller('TasksCtrl', function ($scope, $routeParams, $http, ta
 
     $scope.getProjectByID = function(projectID) {
         return _.findWhere($scope.projects, {id: projectID});
-    }
+    };
 
-	$scope.refresh();
+	$scope.refresh(true);
 });
 

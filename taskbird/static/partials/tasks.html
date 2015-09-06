@@ -21,6 +21,10 @@
                         <i class="{{project.color}} {{project.icon}} icon"></i>
                         {{project.title}}
                     </div>
+                    <div class="divider"></div>
+                    <div class="field" style="padding: 10px; font-weight: normal">
+                        <task-checkbox label="Show completed tasks" ng-model="showDoneTasks"></task-checkbox>
+                    </div>
                 </div>
             </div>
 
@@ -38,8 +42,8 @@
             <div class="ui relaxed divided list">
                 <!-- | filter:isNotDoneFilter -->
                 <div class="task item"
-                     ng-repeat = "task in tasks | filter:query | withProjectID:filterProject | orderBy:taskOrderBy"
-                     ng-class  = "{selected: task.selected==true}">
+                     ng-repeat = "task in tasks | filter:query | withProjectID:filterProject | filterOutDone:showDoneTasks | orderBy:date_due"
+                     ng-class  = "{selected: task.id == selectedTask.id}">
 
                     <i class="large clickable {{priorityColors[task.priority]}} icon task-checkbox"
                        ng-class="{'checkmark box': !!task.done, 'square outline thin':!task.done}"
@@ -72,7 +76,12 @@
         </div>
 
         <div class="ui column">
-            <form class="ui form" ng-show="selectedTask">
+            <div class="centered-container">
+                <div class="ui message" ng-show="!selectedTask">
+                    <p>Click a task to view its details.</p>
+                </div>
+             </div>
+            <form class="ui form" ng-show="selectedTask.id">
                 <div class="field">
                     <label>Title</label>
                     <input type="text" placeholder="My Task" ng-model="selectedTask.title">

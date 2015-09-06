@@ -1,4 +1,4 @@
-appControllers.controller('CalendarCtrl', function($scope, taskAPI) {
+appControllers.controller('CalendarCtrl', function($scope, taskAPI, $timeout, $routeParams, $location) {
 
     var _createDay = function(number, tasksOnDay) {
         var day = {};
@@ -18,6 +18,20 @@ appControllers.controller('CalendarCtrl', function($scope, taskAPI) {
     $scope.selectedDay = false;
 
     $scope.refresh = function () {
+
+        // Get projects
+        taskAPI.get('project/').success(function (data) {
+            $scope.projects = data.objects;
+
+            // Filter by project ID in URL
+            $timeout(function () {
+                $scope.filterProject = "all";
+                if ($routeParams.projectID) {
+                    $scope.filterProject = parseInt($routeParams.projectID, 10);
+                }
+            });
+        });
+
         $scope.currentDate = moment().format("MMMM D, YYYY");
 
         taskAPI.get('task').then(function (taskData) { // todo: get only for currently month
@@ -33,8 +47,6 @@ appControllers.controller('CalendarCtrl', function($scope, taskAPI) {
                     $scope.tasksOnDay[day].push(task);
                 }
             });
-
-            console.log($scope.tasksOnDay);
 
             var startDayOfWeek = (moment().startOf('month').format('d') + 1) % 7;
             var lastDayOfMonth = moment().endOf('month').format('DD');
@@ -65,7 +77,6 @@ appControllers.controller('CalendarCtrl', function($scope, taskAPI) {
     };
 
     $scope.selectDay = function(day) {
-        console.log("Selecting: ", day)
         if ($scope.selectedDay.number == day.number) {
             $scope.selectedDay = false;
             return;
@@ -76,7 +87,33 @@ appControllers.controller('CalendarCtrl', function($scope, taskAPI) {
 
     $scope.selectTask = function(day, task) {
         day.selectedTask = task;
-    }
+    };
+
+    $scope.getProjectByID = function(projectID) {
+        return _.findWhere($scope.projects, {id: projectID});
+    };
+
+    $scope.createTask = function() {
+         var taskData = {
+            title: 'New Task',
+            description: '',
+            projects: []
+        };
+        if ($scope.selectedDay) {
+            var now = moment();
+            taskData.date_due = now.format('MM-') + $scope.selectedDay.number + now.format('-YYYY') + "T00:00:00.000000";
+            taskData['date due'] = now.format('MM-') + $scope.selectedDay.number + now.format('-YYYY') + "T00:00:00.000000";
+        } else {
+            console.log("NO DAY SELECTED!!", $scope)
+        }
+
+        console.log("SAVING: ", taskData);
+
+        taskAPI.post('task/', taskData).then(function (response) {
+            console.log("Response was: ", response)
+            $location.path("/tasks/all/" + response.data.id)
+        });
+    };
 
 
     $scope.refresh();

@@ -51,7 +51,7 @@
 	</div>
 
 	<div class="column five wide">
-        <a id="new-button" class="ui blue wide labeled icon button" href="#/task/new">
+        <a id="new-button" class="ui blue wide labeled icon button" ng-click="createTask()">
 			<i class="add icon"></i>
             New Task
 		</a>
@@ -65,13 +65,37 @@
 
 		<div class="ui piled segment" ng-if="selectedDay && selectedDay.selectedTask">
 			<b class="large">{{selectedDay.selectedTask.title}}</b>
-            <a class="ui blue right mini icon button" style="margin-right: 10px" href="#/task/{{selectedDay.selectedTask.id}}">
+            <a class="ui blue right mini icon button" style="margin-right: 10px" href="#/tasks/all/{{selectedDay.selectedTask.id}}">
                 <i class="ui mini edit icon"> </i>
             </a>
-			<div class="ui divider"></div> <br>
-			{{selectedDay.selectedTask.description}}
-			
-			<br><br><b>Deadline</b>: {{selectedDay.selectedTask.date_due}} <br>
+
+			<div class="ui divider"></div>
+
+            <span ng-show="selectedDay.selectedTask.description">
+			    {{selectedDay.selectedTask.description}}
+			    <br/><br/>
+            </span>
+            <br/>
+
+
+            <div class="ui unpadded two column grid">
+                <div class="column">
+                    <b>Priority</b>
+                </div>
+                <div class="column">
+                    {{selectedDay.selectedTask.priority}}
+                </div>
+
+                <div class="column" ng-if="selectedDay.selectedTask.projects.length > 0">
+                    <b>Project</b>
+                </div>
+                <div class="column" ng-if="selectedDay.selectedTask.projects.length > 0">
+                    <i class="{{selectedDay.selectedTask.projects[0].icon}} icon"></i>
+                    {{selectedDay.selectedTask.projects[0].title}}
+                </div>
+            </div>
+
+            <br>
 		</div>
 	</div>
 	</div>

@@ -27,3 +27,8 @@ padding: 1em;
 .wide {
   width: 100%;
 }
+
+.ui.unpadded.grid div.column {
+  padding-top: 0;
+  padding-bottom: 5px;
+}

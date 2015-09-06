@@ -85,3 +85,18 @@
     padding-left: 10px;
     padding-right: 10px;
 }
+
+.centered-message-box {
+	height: 100%;
+}
+
+.centered-container {
+	height: 100%;
+}
+
+.centered-container div,  .centered-container div.ui.message {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}

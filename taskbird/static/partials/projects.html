@@ -53,6 +53,13 @@
         </div>
 
         <div class="ui column">
+
+            <div class="centered-container">
+                <div class="ui message" ng-show="!selectedProject">
+                    <p>Click a project to view its details.</p>
+                </div>
+             </div>
+
             <form class="ui form" ng-show="selectedProject">
                 <div class="field">
                     <label>Title</label>

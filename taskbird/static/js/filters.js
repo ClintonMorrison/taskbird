@@ -38,3 +38,14 @@ taskApp.filter('capitalize', function() {
     return input.substring(0,1).toUpperCase()+input.substring(1);
   }
 });
+
+
+taskApp.filter('filterOutDone', function() {
+  return function(input, showDoneTasks) {
+      if (showDoneTasks) {
+          return input;
+      }
+
+      return _.filter(input, {done: false});
+  }
+});
