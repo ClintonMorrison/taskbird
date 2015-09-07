@@ -1,4 +1,4 @@
-appControllers.controller('ProjectsCtrl', function ($scope, taskAPI) {
+appControllers.controller('ProjectsCtrl', function ($scope, taskAPI, projectData) {
 
     $scope.colors = ['black', 'blue', 'green', 'red', 'yellow', 'orange'];
 
@@ -11,15 +11,7 @@ appControllers.controller('ProjectsCtrl', function ($scope, taskAPI) {
 	$scope.listOrderBy = "titled";
     $scope.selectedProject = false;
     $scope.$watch('selectedProject', function(newValue, oldValue) {
-        if (newValue === false || oldValue === false) {
-            return;
-        }
-
-        if (newValue.id !== oldValue.id) {
-            return;
-        }
-
-        if (_.isEqual(newValue, oldValue)) {
+        if (newValue === false || oldValue === false || newValue.id !== oldValue.id || _.isEqual(newValue, oldValue)) {
             return;
         }
 
@@ -27,13 +19,8 @@ appControllers.controller('ProjectsCtrl', function ($scope, taskAPI) {
     }, true);
 
     $scope.refresh = function() {
-        taskAPI.get('project').then(function (response) {
-            $scope.projects = response.data.objects;
-
-            _.each($scope.projects, function(project) {
-               //project.icon = "cube";
-               //project.color = "black";
-            });
+        projectData.getProjects().then(function (projects) {
+            $scope.projects = projects;
         });
     };
 
@@ -43,19 +30,12 @@ appControllers.controller('ProjectsCtrl', function ($scope, taskAPI) {
         } else {
             $scope.selectedProject = project;
         }
-    }
+    };
 
     var _submitProject = function (project) {
         console.log("Saving project #" + project.id,  project);
 
-        var projectPromise;
-        if (!project.id) {
-            projectPromise = taskAPI.post("project/", {}, project, true);
-        } else {
-            projectPromise = taskAPI.put('project/' + project.id, {}, project, true);
-        }
-
-        projectPromise.then(
+        projectData.saveProject(project).then(
             function () {},
             function () {
                 ModalService.alert(
@@ -69,22 +49,16 @@ appControllers.controller('ProjectsCtrl', function ($scope, taskAPI) {
     $scope.saveProject = _.debounce(_submitProject, 750);
 
     $scope.createProject = function () {
-        var projectData = {
-            title: 'New Project'
-        };
-
-        taskAPI.post("project/", projectData).then(function (response) {
-            console.log("Created task: ", response.data);
-            $scope.projects.push(response.data);
-            $scope.selectProject(_.last($scope.projects));
+        projectData.createProject().then(function (project) {
+           $scope.selectProject(project);
         });
     };
 
     $scope.deleteProject = function(project) {
         var deleteModalCallback = function(approved) {
-            taskAPI.delete("project/" + project.id).then(function (response) {
-                $scope.refresh();
-            });
+            if (approved) {
+                projectData.deleteProject(project);
+            }
         };
 
         ModalService.confirm(

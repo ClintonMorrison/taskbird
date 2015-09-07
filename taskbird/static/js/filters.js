@@ -1,6 +1,6 @@
 taskApp.filter('nl2br', function() {
   return function(input) {
-    return input.replace('\n', '<br/>');
+    return _.escape(input).replace(/\n/g, '<br/>');
   };
 });
 
@@ -49,3 +49,9 @@ taskApp.filter('filterOutDone', function() {
       return _.filter(input, {done: false});
   }
 });
+
+taskApp.filter('toTrusted', ['$sce', function($sce){
+        return function(text) {
+            return $sce.trustAsHtml(text);
+        };
+}]);

@@ -1,20 +1,16 @@
 
-appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams, $http, taskAPI, taskData, loaderService) {
+appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams, $http, taskAPI, taskData, projectData) {
     window.scope = $scope;
 	$scope.taskOrderBy = "date_created";
 	
 	$scope.selectedTask = false;
     $scope.$watch('selectedTask', function(newValue, oldValue) {
-        if (!newValue  || !oldValue) {
+        if (!newValue  || !oldValue || newValue.id !== oldValue.id || _.isEqual(newValue, oldValue)) {
             return;
         }
 
-        if (newValue.id !== oldValue.id) {
-            return;
-        }
-
-        if (_.isEqual(newValue, oldValue)) {
-            return;
+        if ($scope.selectedTask.projectID) {
+            $scope.selectedTask.projects = [$scope.projectMap[$scope.selectedTask.projectID]];
         }
 
         $scope.saveTask(newValue);
@@ -40,32 +36,19 @@ appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams,
     });
 
 	$scope.refresh = function(firstLoad) {
-		// Get tasks
-        taskAPI.getTasks().success(function (data) {
-			$scope.tasks = data.objects;
-			$scope.deselectAllTasks();
+        firstLoad = true;
 
-            // Format task dates
-            _.each($scope.tasks, function(task) {
-                if (task.date_due) {
-                    task.date_due = moment(task.date_due).format('MM/DD/YYYY');
-                }
-
-                task.projectID = (task.projects.length > 0) ? task.projects[0].id : false;
-            });
-
-            if ($routeParams.taskID && firstLoad) {
-                var taskID = parseInt($routeParams.taskID);
-                $scope.selectTask(_.findWhere($scope.tasks, {id: taskID}));
+        // Get tasks
+        taskData.getTasks().then(function (tasks) {
+            $scope.tasks = tasks;
+            if (firstLoad && $routeParams.taskID) {
+                $scope.selectedTask = _($scope.tasks).filter({id: parseInt($routeParams.taskID)}).first();
             }
-
-			// debug only
-			window.tasks = $scope.tasks;
-		});
+        });
 
         // Get projects
-        taskAPI.get('project/').success(function (data) {
-            $scope.projects = data.objects;
+        projectData.getProjects().then(function (projects) {
+            $scope.projects = projects;
 
             // Filter by project ID in URL
             $timeout(function () {
@@ -75,15 +58,19 @@ appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams,
                 }
             });
         });
+
+        projectData.getProjectMap().then(function (projectMap) {
+           console.log("GOT MAP", projectMap);
+            $scope.projectMap = projectMap;
+        });
 	};
 
 	$scope.deleteTask = function(task) {
 		var deleteModalCallback = function(approved) {
 			if (approved) {
-				taskAPI.delete('task/' + task.id).then(function () {
-                    $scope.selectedProject = false;
-					$scope.refresh();
-				});
+                taskData.deleteTask(task).then(function (response) {
+                    $scope.selectedTask = false;
+                });
 			}
 		};
 
@@ -97,12 +84,15 @@ appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams,
     $scope.doneTask = _.debounce(function(task) {
         task.done = !task.done;
         taskAPI.put('task/' + task.id, {}, {done: task.done}, true).then(function (){
-            //$scope.refresh();
+            if (!$scope.showDoneTasks) {
+                if ($scope.selectedTask.id == task.id) {
+                    $scope.selectedTask = false;
+                }
+            }
         });
     }, 150);
 	
 	$scope.selectTask = function(task) {
-
 		// Deselect task if currently selected task clicked
 		if ( $scope.selectedTask && $scope.selectedTask.id == task.id) {
 			$scope.selectedTask = false;
@@ -112,59 +102,21 @@ appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams,
 		window.selectedTask = task;
 	};
 
-	$scope.deselectAllTasks = function() {
-
-	};
-
 	$scope.findTaskByID = function(taskId) {
 		var task = _.chain($scope.tasks).find({id: taskId.toString()}).value();
 		return task;
 	};
 
     $scope.createTask = function () {
-        var taskData = {
-            title: 'New Task',
-            description: '',
-            projects: []
-        };
-
-        if ($scope.filterProject !== 'all') {
-            taskData.projects = [$scope.filterProject];
-        }
-
-
-        taskAPI.post("task/", taskData).then(function (response) {
-            response.data.projectID = ($scope.filterProject === 'all') ? false : ""+$scope.filterProject;
-            $scope.tasks.push(response.data);
+        var projectID = ($scope.filterProject === 'all') ? false : ""+$scope.filterProject;
+        taskData.createTask({projectID: projectID}).then(function (task) {
             $scope.selectTask(_.last($scope.tasks));
         });
     };
 
     var _submitTaskData = function (task) {
-        var taskData = {
-            title: task.title,
-            priority: task.priority,
-            description: task.description
-        };
 
-        if (task.date_due) {
-            taskData.date_due = task.date_due.replace(/\//g, '-') + "T00:00:00.000000";
-        }
-
-        if (task.projectID) {
-            taskData.projects = [_.find($scope.projects, {'id': task.projectID})];
-        } else {
-            taskData.projects = [];
-        }
-
-        console.log("Data: ", taskData);
-        if (!task.id) {
-            taskPromise = taskAPI.post("task/", {}, taskData, true);
-        } else {
-            taskPromise = taskAPI.put('task/' + task.id, {}, taskData, true);
-        }
-
-        taskPromise.then(
+        taskData.saveTask(task).then(
             function () {},
             function () {
                 ModalService.alert(
@@ -186,19 +138,11 @@ appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams,
                     return;
                 }
 
-                taskAPI.post('project/', {}, {'title': val}).then(
-                    function (response) {
-                        $scope.projects.push(response.data);
-                        if ($scope.selectedTask) {
-                            $scope.selectedTask.projectID = response.data.id;
-                            $scope.selectedTask.projects = [response.data];
-                        }
-                    },
-                    function () {
-                        ModalService.alert(
-                            'Error',
-                            'There was a problem creating your project. Please try again later'
-                        );
+                projectData.createProject({title: val}).then(function (project) {
+                    if ($scope.selectedTask) {
+                        $scope.selectedTask.projectID = project.id;
+                        $scope.selectedTask.projects = [project.id];
+                    }
                 });
             }
         );
@@ -218,4 +162,3 @@ appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams,
 
 	$scope.refresh(true);
 });
-

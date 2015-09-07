@@ -1,7 +1,8 @@
 
 var taskApp = angular.module('taskApp', [
 	'ngRoute',
-	'appControllers'
+	'appControllers',
+	'ngSanitize'
 ])
 .config(function ($routeProvider) {
 	$routeProvider

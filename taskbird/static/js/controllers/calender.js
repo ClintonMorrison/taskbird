@@ -1,4 +1,4 @@
-appControllers.controller('CalendarCtrl', function($scope, taskAPI, $timeout, $routeParams, $location) {
+appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $routeParams, $location, taskAPI, taskData) {
 
     var _createDay = function(number, tasksOnDay) {
         var day = {};
@@ -34,8 +34,9 @@ appControllers.controller('CalendarCtrl', function($scope, taskAPI, $timeout, $r
 
         $scope.currentDate = moment().format("MMMM D, YYYY");
 
-        taskAPI.get('task').then(function (taskData) { // todo: get only for currently month
-            $scope.tasks = taskData.data.objects;
+        // todo: get only for currently month
+        taskData.getTasks().then(function (tasks) {
+            $scope.tasks = tasks;
             $scope.tasksOnDay = {};
 
             _.each($scope.tasks, function (task) {
@@ -83,7 +84,7 @@ appControllers.controller('CalendarCtrl', function($scope, taskAPI, $timeout, $r
         }
 
         $scope.selectedDay = day;
-    }
+    };
 
     $scope.selectTask = function(day, task) {
         day.selectedTask = task;
@@ -94,24 +95,10 @@ appControllers.controller('CalendarCtrl', function($scope, taskAPI, $timeout, $r
     };
 
     $scope.createTask = function() {
-         var taskData = {
-            title: 'New Task',
-            description: '',
-            projects: []
-        };
-        if ($scope.selectedDay) {
-            var now = moment();
-            taskData.date_due = now.format('MM-') + $scope.selectedDay.number + now.format('-YYYY') + "T00:00:00.000000";
-            taskData['date due'] = now.format('MM-') + $scope.selectedDay.number + now.format('-YYYY') + "T00:00:00.000000";
-        } else {
-            console.log("NO DAY SELECTED!!", $scope)
-        }
-
-        console.log("SAVING: ", taskData);
-
-        taskAPI.post('task/', taskData).then(function (response) {
-            console.log("Response was: ", response)
-            $location.path("/tasks/all/" + response.data.id)
+        taskData.createTask().then(function (task) {
+            console.log(task);
+            $location.path('/tasks/all/' + task.id);
+            $route.reload();
         });
     };
 

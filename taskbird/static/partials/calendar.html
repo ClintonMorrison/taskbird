@@ -51,11 +51,14 @@
 	</div>
 
 	<div class="column five wide">
+        <!--
         <a id="new-button" class="ui blue wide labeled icon button" ng-click="createTask()">
 			<i class="add icon"></i>
             New Task
 		</a>
         <br/><br/><br/>
+        -->
+
         <b class="large" ng-if="selectedDay.tasks.length > 0">Tasks</b>
 		<div class="ui selection list" ng-repeat="task in selectedDay.tasks" ng-click="selectTask(selectedDay, task)">
 			<a class="item" ng-class="{active: task.id == selectedDay.selectedTask.id}">
@@ -71,10 +74,8 @@
 
 			<div class="ui divider"></div>
 
-            <span ng-show="selectedDay.selectedTask.description">
-			    {{selectedDay.selectedTask.description}}
-			    <br/><br/>
-            </span>
+            <span ng-show="selectedDay.selectedTask.description" ng-bind-html="selectedDay.selectedTask.description | toTrusted | nl2br"></span>
+            <br/><br/>
             <br/>
 
 
