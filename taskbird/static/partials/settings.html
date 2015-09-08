@@ -1,0 +1,34 @@
+<div class="main-container">
+
+    <div class="ui top attached segment">
+      <h3 class="ui header">Account Settings</h3>
+    </div>
+    <div class="ui bottom attached segment form">
+        <div class="field">
+            <p>
+                Your email address "{{user.email}}" is not verified.
+                <div class="ui button">Resend</div>
+            </p>
+        </div>
+        <div class="field">
+            <div class="ui button">Reset Password</div>
+        </div>
+    </div>
+
+
+    <div class="ui top attached segment">
+      <h3 class="ui header">Subscription Settings</h3>
+    </div>
+    <div class="ui bottom attached segment form">
+        <div class="two fields">
+            <div class="field">
+                <task-checkbox label="Receive reminder emails" ng-model="userSettings.reminderOptin"></task-checkbox>
+            </div>
+
+            <div class="field">
+                <task-checkbox label="Receive promotional emails" ng-model="userSettings.promoOptin"></task-checkbox>
+            </div>
+        </div>
+    </div>
+
+</div>

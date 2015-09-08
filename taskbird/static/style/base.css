@@ -4,16 +4,16 @@ padding: 1em;
 
 }
 
-#content .main.container {
-  margin-left: auto;
-  margin-right: auto;
-  min-width: 300px;
-  max-width: 800px;
+#content .main-container {
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 300px;
+    max-width: 900px;
 }
 
 .center {
-  margin-left: auto;
-  margin-right: auto;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .right {
@@ -31,4 +31,8 @@ padding: 1em;
 .ui.unpadded.grid div.column {
   padding-top: 0;
   padding-bottom: 5px;
+}
+
+.limit-width {
+    max-width: 800px;
 }

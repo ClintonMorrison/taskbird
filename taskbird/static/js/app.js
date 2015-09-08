@@ -2,7 +2,8 @@
 var taskApp = angular.module('taskApp', [
 	'ngRoute',
 	'appControllers',
-	'ngSanitize'
+	'ngSanitize',
+	'ng-fusioncharts'
 ])
 .config(function ($routeProvider) {
 	$routeProvider
@@ -25,6 +26,14 @@ var taskApp = angular.module('taskApp', [
 		.when('/calendar', {
 			templateUrl: '/static/partials/calendar.html',
 			controller: 'CalendarCtrl'
+		})
+        .when('/analytics', {
+			templateUrl: '/static/partials/analytics.html',
+			controller: 'AnalyticsCtrl'
+		})
+        .when('/settings', {
+			templateUrl: '/static/partials/settings.html',
+			controller: 'SettingsCtrl'
 		})
 		.otherwise({
 			redirectTo: '/tasks/'
