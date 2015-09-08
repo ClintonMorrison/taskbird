@@ -6,6 +6,13 @@
     <p>
       Task Bird is free and signing up is easy!
     </p>
+    <br/>
+
+    {% if error_message %}
+    <div class="ui error message">
+        {{ error_message }}
+    </div>
+    {% endif %}
      
     <form action="" method="post" class="ui form">
 		  {% csrf_token %}
