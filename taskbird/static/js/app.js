@@ -8,31 +8,31 @@ var taskApp = angular.module('taskApp', [
 .config(function ($routeProvider) {
 	$routeProvider
 		.when('/tasks/:projectID/:taskID', {
-			templateUrl: '/static/partials/tasks.html',
+			templateUrl: TaskBirdData.staticURL + 'partials/tasks.html',
 			controller: 'TasksCtrl'
 		})
 		.when('/tasks/:projectID', {
-			templateUrl: '/static/partials/tasks.html',
+			templateUrl: TaskBirdData.staticURL + 'partials/tasks.html',
 			controller: 'TasksCtrl'
 		})
 		.when('/tasks/', {
-			templateUrl: '/static/partials/tasks.html',
+			templateUrl: TaskBirdData.staticURL + 'partials/tasks.html',
 			controller: 'TasksCtrl'
 		})
 		.when('/projects', {
-			templateUrl: '/static/partials/projects.html',
+			templateUrl: TaskBirdData.staticURL + 'partials/projects.html',
 			controller: 'ProjectsCtrl'
 		})
 		.when('/calendar', {
-			templateUrl: '/static/partials/calendar.html',
+			templateUrl: TaskBirdData.staticURL + 'partials/calendar.html',
 			controller: 'CalendarCtrl'
 		})
         .when('/analytics', {
-			templateUrl: '/static/partials/analytics.html',
+			templateUrl: TaskBirdData.staticURL + 'partials/analytics.html',
 			controller: 'AnalyticsCtrl'
 		})
         .when('/settings', {
-			templateUrl: '/static/partials/settings.html',
+			templateUrl: TaskBirdData.staticURL + 'partials/settings.html',
 			controller: 'SettingsCtrl'
 		})
 		.otherwise({
