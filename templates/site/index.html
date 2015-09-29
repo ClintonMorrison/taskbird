@@ -1,12 +1,95 @@
-{% extends "site/base.html" %}
+{% extends "base.html" %}
+
+{% block header %}
+    {% include "site/header.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="main-container">
+        <div class="ui segment attached top">
+            <h1 class="ui header">
+                <div class="content">
+                    Task Bird
+                    <div class="sub header">
+                        A better way to get work done and stay organized.
+                    </div>
+                </div>
+            </h1>
+        </div>
+
+        <div class="ui bottom attached segment">
+             <img class="ui centered fluid image" style="width: 70%" src="{{ STATIC_URL }}images/sample.png"/>
+        </div>
+        <br/><br/>
+
+        <div class="ui three column stackable grid">
+            <div class="ui column">
+                <div class="ui segment">
+                    <i class="ui center massive checkmark box icon"></i>
+                    <h3 class="ui header">
+                        <div class="content">
+                            Tasks
+                            <div class="sub header">
+                                Create, schedule, prioritize, and filter your tasks.
+                            </div>
+                        </div>
+                    </h3>
+                </div>
+            </div>
+
+            <div class="ui column">
+                <div class="ui segment">
+                    <i class="ui center massive tasks icon"></i>
+                    <h3 class="ui header">
+                        <div class="content">
+                            Projects
+                            <div class="sub header">
+                                Stay organized by grouping your tasks into projects.
+                            </div>
+                        </div>
+                    </h3>
+                </div>
+            </div>
+
+            <div class="ui column">
+                <div class="ui segment">
+                    <i class="ui center massive bar chart icon"></i>
+                    <h3 class="ui header">
+                        <div class="content">
+                            Analytics
+                            <div class="sub header">
+                                Track progress and gain insight from trends.
+                            </div>
+                        </div>
+                    </h3>
+                </div>
+            </div>
+
+            <!--
+            <div class="ui column">
+                <div class="ui segment">
+                    <i class="ui center massive dollar icon"></i>
+                    <h3 class="ui header">
+                        <div class="content">
+                            Free
+                            <div class="sub header">
+                                Task Bird is completely free to use.
+                            </div>
+                        </div>
+                    </h3>
+                </div>
+            </div>
+            -->
+
+        </div>
+
+        <br/><br/>
+
+        <a class="ui green massive center button" style="width: 60%" href="/signup">
+            Get Started Now
+        </a>
+
+    </div>
 
 
-{% block title %} Task Bird {% endblock %}
-
-
-{% block body %}
-  <p>
-    <strong>Task Bird</strong> is the best task management app on the internet.
-  </p>
-   
 {% endblock %}
