@@ -36,6 +36,7 @@ LOGIN_REDIRECT_URL = '/login'
 
 ALLOWED_HOSTS = []
 
+ADMINS = (('TaskBird Admin', 'contact@taskbird.com'))
 
 # Application definition
 
