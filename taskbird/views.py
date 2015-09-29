@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as djangoLogin
 from models import User, generate_demo_data
+from django.core.mail import send_mail
 
 import json
 
@@ -25,6 +26,13 @@ def siteAbout(request):
 
 
 def siteContact(request):
+  email = request.POST.get('email')
+  name = request.POST.get('name', '[no name]')
+  message = request.POST.get('message', '[no message]')
+
+  if email:
+      send_mail('Feedback from "%s"' % name, message, email, ['contact@taskbird.ca'])
+
   return render(request, "site/contact.html", {})
 
 
@@ -48,6 +56,8 @@ def siteSignup(request):
 
 
 def login(request):
+  if request.user.is_authenticated():
+      return HttpResponseRedirect("/app/")
   username = request.POST.get('username')
   password = request.POST.get('password')
   user = authenticate(username=username, password=password)

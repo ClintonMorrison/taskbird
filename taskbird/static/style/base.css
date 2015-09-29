@@ -11,9 +11,10 @@ padding: 1em;
     max-width: 900px;
 }
 
-.center {
+.center, i.icon.center, .ui.button.center {
     margin-left: auto;
     margin-right: auto;
+    display: block;
 }
 
 .right {
@@ -35,4 +36,8 @@ padding: 1em;
 
 .limit-width {
     max-width: 800px;
+}
+
+div.ui.attached.bottom.segment {
+    margin-bottom: 30px;
 }

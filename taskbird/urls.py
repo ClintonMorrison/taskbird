@@ -28,7 +28,8 @@ urlpatterns = patterns('',
     url(r'^contact/$', views.siteContact, name='siteContact'),
     url(r'^signup/$', views.siteSignup, name='siteSignup'),
     url(r'^login/$', views.login, name='login'),
-    
+    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
+
     url(r'^app/$', views.appIndex, name='appIndex'),
     url(r'^api/', include(task_resource.urls)),
     url(r'^api/', include(user_resource.urls)),
