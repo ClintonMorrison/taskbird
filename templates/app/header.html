@@ -16,7 +16,11 @@
 
         <div class="bordlerless right item">
             <div class="ui dropdown">
-                {{ user.username }}
+                {% if not user.first_name and not user.last_name %}
+                    {{ user.username }}
+                {% else %}
+                    {{ user.first_name }} {{ user.last_name }}
+                {% endif %}
                 <i class="dropdown icon"></i>
                 <div class="menu">
                     <a class="item" href="#/settings">Account Settings</a>

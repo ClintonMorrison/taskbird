@@ -1,0 +1,29 @@
+- title: Tasks
+  icon: checkmark box
+  description: >
+    Create tasks to keep track of what you need to do.
+    Set a due date and priority for each task to make sure
+    the most important things get done.
+
+- title: Projects
+  icon: tasks
+  description: >
+    Create and customize projects to organize your tasks.
+    You can choose a name, icon, and color to associate with each project.
+    You can associate each task with a project.
+
+- title: Filtering
+  icon: filter
+  description: >
+    Quickly find tasks by filtering by project, priority, due date, and other fields.
+
+#- title: Calendar
+#  icon: calendar
+#  description: >
+#    View and edit upcoming tasks on a calednar.
+
+- title: Reports
+  icon: bar graph
+  description: >
+    Track metrics such as projects progess and average task completion time.
+    Create custom reports to understand and optimize your productivity.

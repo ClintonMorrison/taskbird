@@ -8,20 +8,15 @@
     Do you have questions or comments about Task Bird? We would love to
     hear from you!
   </p>
-   
+
   <form action="" method="post" class="ui form">
     {% csrf_token %}
-    <div class="field">
+    <div class="field {% if form.name.errors %}error{% endif %}">
       <label> Name </label>
       <input type="text" name="name" placeholder="">
     </div>
-    
-    <div class="field">
-      <label> Email </label>
-      <input type="text" name="email" placeholder="">
-    </div>
 
-    <div class="field" >
+    <div class="field {% if form.email.errors %}message{% endif %}" >
     <label> Message </label>
     <textarea id="message" name="message"></textarea>
   </div>

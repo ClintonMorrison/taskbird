@@ -4,36 +4,43 @@
 
 {% block body %}
     <p>
-      Task Bird is free and signing up is easy!
+        Task Bird is free and signing up is easy!
     </p>
     <br/>
 
     {% if error_message %}
-    <div class="ui error message">
-        {{ error_message }}
-    </div>
+        <div class="ui error message">
+            {{ error_message }}
+        </div>
     {% endif %}
-     
-    <form action="" method="post" class="ui form">
-		  {% csrf_token %}
-      <div class="field">
-        <label> Name </label>
-        <input type="text" name="name" placeholder="">
-      </div>
-      
-      <div class="field">
-        <label> Email </label>
-        <input type="text" name="email" placeholder="">
-      </div>
 
-      <div class="field">
-         <label> Password </label>
-         <input type="password" name="password" placeholder="">
-      </div> 
-   
-      <input class='ui blue button' type="submit" value="Send">
-	</form>
-     
- 
+    <form action="" method="post" class="ui form">
+        {% csrf_token %}
+        <div class="two fields">
+            <div class="field">
+                <label> First Name </label>
+                <input type="text" name="first_name" placeholder=""/>
+            </div>
+
+            <div class="field">
+                <label> Last Name </label>
+                <input type="text" name="last_name" placeholder=""/>
+            </div>
+        </div>
+
+        <div class="field">
+            <label> Email </label>
+            <input type="text" name="email" placeholder=""/>
+        </div>
+
+        <div class="field">
+            <label> Password </label>
+            <input type="password" name="password" placeholder=""/>
+        </div>
+
+        <input class='ui blue button' type="submit" value="Submit">
+    </form>
+
+
 {% endblock %}
 

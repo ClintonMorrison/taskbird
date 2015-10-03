@@ -5,6 +5,49 @@
 {% endblock %}
 
 {% block content %}
+    <script type="text/javascript">
+
+        (function () {
+            window.MarqueeTitle = {};
+            var MarqueeTitle = window.MarqueeTitle;
+            MarqueeTitle.elapsedTime = 0;
+            MarqueeTitle.title = '';
+            MarqueeTitle.events = [];
+
+            MarqueeTitle._update = function (interval) {
+
+                if (!MarqueeTitle.events || MarqueeTitle.events.length === 0) {
+                    console.log(MarqueeTitle.events);
+                    return;
+                }
+
+                console.log("Running _update() after ", interval, " Time is now: ", MarqueeTitle.elapsedTime);
+                var event = MarqueeTitle.events[0];
+                if (MarqueeTitle.elapsedTime >= event.time) {
+                    MarqueeTitle.events.push(MarqueeTitle.events.shift());
+                    document.title = MarqueeTitle.events[0].text;
+                    MarqueeTitle.elapsedTime = 0;
+                }
+                MarqueeTitle.elapsedTime += interval;
+                setTimeout(function () {MarqueeTitle._update(interval);}, interval);
+            };
+
+            var _generateBasicAnimation = function (title) {
+                var i, events = [];
+                for (i = 0; i < title.length; i++) {
+                    events.push({text: title.substr(0, i), time: 300});
+                }
+                return events;
+            };
+
+            MarqueeTitle.init = function(text, animation) {
+                MarqueeTitle.title = text;
+                document.title = '';
+                MarqueeTitle.events = _generateBasicAnimation(text);
+                MarqueeTitle._update(100);
+            };
+        })();
+    </script>
     <div class="main-container">
         <div class="ui segment attached top">
             <h1 class="ui header">

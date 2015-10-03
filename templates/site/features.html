@@ -1,12 +1,56 @@
-{% extends "site/base.html" %}
+{% extends "base.html" %}
 
-{% block title %}
-Features
+{% block header %}
+    {% include "site/header.html" %}
 {% endblock %}
 
-{% block body %}
-     <p>
-         Task Bird has lots of awesome features.
-     </p>
-{% endblock %}
+<!--
+Ideas:
+- priority
+- calendar
+- projects (customize, organize)
+- filtering
+- email reminders
+- analytics
+-->
 
+{% block content %}
+
+    <div class="main-container">
+
+        <div class="ui one column grid">
+            {% for feature in features %}
+                <div class="ui column">
+                    <div class="ui segment attached top">
+                        <h2 class="ui header">
+                            <div class="content">
+                                {{ feature.title }}
+                            </div>
+                        </h2>
+                    </div>
+                    <div class="ui bottom attached segment">
+                        <div class="ui two column grid">
+                            <div class="ui column three wide">
+                                <i class="ui huge middle aligned {{ feature.icon }} icon"></i>
+                            </div>
+                            <div class="ui column ten wide">
+                                <p>
+                                    {{ feature.description }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            {% endfor %}
+        </div>
+        <br/><br/>
+
+        <a class="ui green massive center button" style="width: 60%" href="/signup">
+            Get Started Now
+        </a>
+
+    </div>
+
+
+{% endblock %}
