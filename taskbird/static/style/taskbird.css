@@ -104,3 +104,7 @@
 .data.grid {
     min-height: 320px;
 }
+
+.details.column {
+	min-height: 100px;
+}
