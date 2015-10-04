@@ -6,6 +6,7 @@ from tastypie.authentication import SessionAuthentication
 from taskbird.models import Task, User, UserSettings, Project
 from tastypie.exceptions import Unauthorized
 from tastypie import fields
+from json import dumps
 
 
 class UserAuthorization(Authorization):
@@ -89,7 +90,7 @@ class ProjectResource(ModelResource):
 
 
 class TaskResource(ModelResource):
-    projects = fields.ToManyField(ProjectResource, 'projects', full=True, null=True)
+    project = fields.ToOneField(ProjectResource, 'project', full=True, null=True)
 
     class Meta:
         always_return_data=True
@@ -100,6 +101,10 @@ class TaskResource(ModelResource):
 
     def hydrate(self, bundle, request=None):
         bundle.obj.user = bundle.request.user
+        return bundle
+
+    def dehydrate(self, bundle):
+        bundle.data['extra'] = 'hi'
         return bundle
 
 

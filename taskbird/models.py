@@ -26,7 +26,7 @@ class Task(models.Model):
     ('Normal', 'Normal'),
     ('High', 'High')
     ))
-    projects = models.ManyToManyField(Project, blank=True)
+    project = models.ForeignKey(Project, blank=True, default=None, null=True)
 
 
 class UserSettings(models.Model):

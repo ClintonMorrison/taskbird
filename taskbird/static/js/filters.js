@@ -23,7 +23,15 @@ taskApp.filter('withProjectID', function() {
           return input;
       }
 
-      return _.filter(input, {projectID: parseInt(projectID)});
+      var results = [];
+
+      _.each(input, function (task) {
+          if (task.project && task.project.id == projectID) {
+              results.push(task);
+          }
+      });
+
+      return results; //_.filter(input, {projectID: parseInt(projectID)});
   };
 });
 

@@ -12,7 +12,7 @@
         </div>
 
         <div class="ui column nine wide">
-            <div class="ui floating labeled icon dropdown button task-filter" ng-model="filterProject">
+            <dropdown class="ui floating labeled icon dropdown button task-filter" ng-model="filterProject">
                 <i class="filter icon"></i>
                 <span class="text">Select Project</span>
                 <div class="menu">
@@ -26,7 +26,7 @@
                         <task-checkbox label="Show completed tasks" ng-model="showDoneTasks"></task-checkbox>
                     </div>
                 </div>
-            </div>
+            </dropdown>
 
             <div class="ui icon task-search input">
                 <input type="text" placeholder="Search" ng-model="query"><i class="search icon"></i>
@@ -64,8 +64,8 @@
                         <br/>
                         <div class="description">
                             {{task.description | limitTo:40}}
-                            <span class="task-project-icon" ng-if="task.projects[0]">
-                                <i class="mini {{projectMap[task.projectID].icon}} {{[projectMaptask.projectID].color}} icon"></i>
+                            <span class="task-project-icon" ng-if="task.project">
+                                <i class="mini {{task.project.icon}} icon"></i>
                             </span>
                         </div>
                     </div>
@@ -95,7 +95,7 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Priority</label>
-                        <div class="ui fluid search selection dropdown" ng-model="selectedTask.priority">
+                        <dropdown class="ui fluid search selection dropdown" ng-model="selectedTask.priority">
                             <input type="hidden" name="selectedTask.priority">
                             <i class="dropdown icon"></i>
                             <div class="default text">Select Priority</div>
@@ -105,7 +105,7 @@
                                     {{priority.name}}
                                 </div>
                             </div>
-                        </div>
+                        </dropdown>
                     </div>
 
                   <div class="field">
@@ -119,6 +119,9 @@
                 <div class="two fields">
                     <div class="field">
                         <label>Project</label>
+                        <project-selector ng-model="selectedTask.project" projects="projects"></project-selector>
+                        <!--
+                        <label>Project</label>
                         <div class="ui fluid search selection dropdown" ng-model="selectedTask.projectID" placeholder="Select Project">
                             <input type="hidden">
                             <i class="dropdown icon"></i>
@@ -130,7 +133,7 @@
                                     {{project.title}}
                                 </div>
                             </div>
-                        </div>
+                        </div>-->
                     </div>
 
                     <div class="field">

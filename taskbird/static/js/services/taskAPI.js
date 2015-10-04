@@ -74,10 +74,6 @@ taskApp.service('taskAPI', ['$http', 'loaderService', function($http, loaderServ
         return self.request('DELETE', path, params, options);
     };
 
-    this.getTask = function(id) {
-        return $http.get('task');
-    };
-
     this.getTasks = function() {
         return self.request('GET', 'task');
     };

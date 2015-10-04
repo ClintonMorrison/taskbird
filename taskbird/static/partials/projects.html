@@ -66,18 +66,10 @@
                     <input type="text" placeholder="My Task" ng-model="selectedProject.title">
                 </div>
 
-                <!--
-                <div class="field">
-                    <label>Details</label>
-                    <textarea placeholder="Task description" ng-model="selectedProject.description" rows="2">
-                    </textarea>
-                </div>
-                -->
-
                 <div class="two fields">
                     <div class="field">
                         <label>Icon</label>
-                        <div class="ui fluid search selection dropdown" ng-model="selectedProject.icon">
+                        <dropdown class="ui fluid search selection dropdown" ng-model="selectedProject.icon">
                             <input type="hidden" name="selectedProject.priority">
                             <i class="dropdown icon"></i>
                             <div class="default text">Select Icon</div>
@@ -87,12 +79,12 @@
                                     {{icon | capitalize}}
                                 </div>
                             </div>
-                        </div>
+                        </dropdown>
                     </div>
 
                     <div class="field">
                         <label>Color</label>
-                        <div class="ui fluid search selection dropdown" ng-model="selectedProject.color" placeholder="Select Project">
+                        <dropdown class="ui fluid search selection dropdown" ng-model="selectedProject.color" placeholder="Select Project">
                             <input type="hidden">
                             <i class="dropdown icon"></i>
                             <div class="default text">Select Color</div>
@@ -102,7 +94,7 @@
                                     {{color | capitalize}}
                                 </div>
                             </div>
-                        </div>
+                        </dropdown>
                     </div>
 
                 </div>

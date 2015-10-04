@@ -9,16 +9,12 @@ appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams,
             return;
         }
 
-        if ($scope.selectedTask.projectID) {
-            $scope.selectedTask.projects = [$scope.projectMap[$scope.selectedTask.projectID]];
-        }
-
         $scope.saveTask(newValue);
     }, true);
 
     $scope.$watch('filterProject', function(newValue, oldValue) {
         if ($scope.selectedTask) {
-            if ($scope.selectedTask.projectID !== newValue && newValue !== 'all') {
+            if ($scope.selectedTask.project && $scope.selectedTask.id !== newValue && newValue !== 'all') {
                 $scope.selectedTask = false;
             }
         }
@@ -98,6 +94,14 @@ appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams,
 			$scope.selectedTask = false;
 			return;
 		}
+
+        if ($scope.filterProject !== 'all') {
+            if (task.project && task.project.id != $scope.filterProject) {
+            }
+
+
+        }
+
 		$scope.selectedTask = task;
 		window.selectedTask = task;
 	};
@@ -108,8 +112,14 @@ appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams,
 	};
 
     $scope.createTask = function () {
-        var projectID = ($scope.filterProject === 'all') ? false : ""+$scope.filterProject;
-        taskData.createTask({projectID: projectID}).then(function (task) {
+        data = {};
+
+        taskData.createTask(data).then(function (task) {
+            if ($scope.filterProject) {
+                task.project = $scope.projectMap[$scope.filterProject];
+                taskData.saveTask(task);
+            }
+
             $scope.selectTask(_.last($scope.tasks));
         });
     };
@@ -140,8 +150,6 @@ appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams,
 
                 projectData.createProject({title: val}).then(function (project) {
                     if ($scope.selectedTask) {
-                        $scope.selectedTask.projectID = project.id;
-                        $scope.selectedTask.projects = [project.id];
                     }
                 });
             }

@@ -17,7 +17,6 @@ taskApp.service('taskData', function($q, taskAPI, projectData) {
                 task.date_due = moment(task.date_due).format('MM/DD/YYYY');
             }
 
-            task.projectID = (task.projects.length > 0) ? task.projects[0].id : false;
         });
         return tasks;
     });
@@ -36,22 +35,14 @@ taskApp.service('taskData', function($q, taskAPI, projectData) {
         var taskData = {
             title: 'New Task',
             description: '',
-            projects: []
         };
 
+        console.log("Submitting data: ", taskData);
 
-        if (data && data.projectID && data.projectID !== 'all') {
-            taskData.projects = [data.projectID];
-        }
 
         return taskAPI.post("task/", taskData).then(function (response) {
             var task = response.data;
-
-            if (data && data.projectID && data.projectID !== 'all') {
-                task.projectID = data.projectID; //($scope.filterProject === 'all') ? false : ""+$scope.filterProject;
-            } else {
-                task.projectID = false;
-            }
+            console.log("Got task: ", task);
             tasks.push(task);
             return task;
         });
@@ -63,17 +54,12 @@ taskApp.service('taskData', function($q, taskAPI, projectData) {
             var taskData = {
                 title: task.title,
                 priority: task.priority,
-                description: task.description
+                description: task.description,
+                project: task.project ? task.project : null
             };
 
             if (task.date_due) {
                 taskData.date_due = task.date_due.replace(/\//g, '-') + "T00:00:00.000000";
-            }
-
-            if (task.projectID) {
-                taskData.projects = [projectMap[task.projectID]];
-            } else {
-                taskData.projects = [];
             }
 
             return taskAPI.put('task/' + task.id, {}, taskData, true).then(function (response) {
