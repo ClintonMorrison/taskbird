@@ -33,7 +33,6 @@ appControllers.controller('ProjectsCtrl', function ($scope, taskAPI, projectData
     };
 
     var _submitProject = function (project) {
-        console.log("Saving project #" + project.id,  project);
 
         projectData.saveProject(project).then(
             function () {},

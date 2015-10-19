@@ -118,12 +118,12 @@ appControllers.controller('AnalyticsCtrl', function ($scope, $q, $timeout, taskA
                 var startDay = moment(task.date_modified).format('ddd');
                daysOfWeek[startDay] += 1;
             });
-            console.log('hi');
+
             var tasksDoneByDayOfWeek = [];
             _.each(daysOfWeek, function (count, day) {
                tasksDoneByDayOfWeek.push({label: day, value: count});
             });
-            console.log(tasksDoneByDayOfWeek);
+
             $scope.tasksDoneByDayOfWeek = _formatBarData('Tasks completed by day of week', tasksDoneByDayOfWeek, '', 'Tasks');
 
 

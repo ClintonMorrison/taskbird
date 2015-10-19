@@ -41,7 +41,7 @@
             <div class="ui relaxed divided list">
                 <!-- | filter:isNotDoneFilter -->
                 <div class="task item"
-                     ng-repeat = "task in tasks | filter:query | withProjectID:filterProject | filterOutDone:showDoneTasks | orderBy:date_due"
+                     ng-repeat = "task in tasks | filter:query | withProjectID:filterProject | filterOutDone:showDoneTasks | orderByDate:'date_due'"
                      ng-class  = "{selected: task.id == selectedTask.id}">
 
                     <i class="large clickable {{priorityColors[task.priority]}} icon task-checkbox"
@@ -65,7 +65,7 @@
                         <div class="description">
                             {{task.description | limitTo:40}}
                             <span class="task-project-icon" ng-if="task.project">
-                                <i class="mini {{task.project.icon}} icon"></i>
+                                <i class="mini {{task.project.icon}} {{task.project.color}} icon"></i>
                             </span>
                         </div>
                     </div>
@@ -120,20 +120,6 @@
                     <div class="field">
                         <label>Project</label>
                         <project-selector ng-model="selectedTask.project" projects="projects"></project-selector>
-                        <!--
-                        <label>Project</label>
-                        <div class="ui fluid search selection dropdown" ng-model="selectedTask.projectID" placeholder="Select Project">
-                            <input type="hidden">
-                            <i class="dropdown icon"></i>
-                            <div class="default text">Select Project</div>
-                            <div class="menu">
-                                <div class="item" data-value="false">Select Project</div>
-                                <div class="item" ng-repeat="project in projects" data-value="{{project.id}}">
-                                    <i class="{{project.color}} {{project.icon}} icon"></i>
-                                    {{project.title}}
-                                </div>
-                            </div>
-                        </div>-->
                     </div>
 
                     <div class="field">
@@ -149,21 +135,6 @@
 
                     <div class="field">
                         <task-checkbox label="Task complete" ng-model="selectedTask.done"></task-checkbox>
-                        <!--
-                        <div class="ui checkbox">
-                            <input type="checkbox" tabindex="0" class="hidden">
-                            <label>Task complete</label>
-                        </div>
-                     -->
-                    </div>
-
-                    <div class="field">
-                        <!--
-                        <div class="ui checkbox">
-                            <input type="checkbox" tabindex="0" class="hidden">
-                            <label>Send reminder</label>
-                        </div>
-                        -->
                     </div>
                </div>
 
@@ -174,4 +145,3 @@
 
 
 </div>
-

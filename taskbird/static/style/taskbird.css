@@ -21,7 +21,7 @@
 }
 
 .selected {
-	background-color: #6ECFF5;
+	background-color: #6ECFF5 !important;
 	transition: background-color 150ms ease-in;
 }
 
@@ -44,6 +44,10 @@
 .day.message {
     padding: 5px;
     font-size: 20%;
+}
+
+.day.important {
+	background-color: #FFFFD5;
 }
 
 .task-box .title {

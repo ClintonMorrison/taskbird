@@ -58,6 +58,14 @@ taskApp.filter('filterOutDone', function() {
   }
 });
 
+taskApp.filter('orderByDate', function() {
+  return function(input, sortField, reverse) {
+      return _.sortBy(input, function (element) {
+          return moment(element[sortField]).unix();
+      });
+  }
+});
+
 taskApp.filter('toTrusted', ['$sce', function($sce){
         return function(text) {
             return $sce.trustAsHtml(text);

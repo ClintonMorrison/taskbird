@@ -16,9 +16,34 @@
 
 </div>
 
+    <table class="ui celled unstackable calendar table segment" style="max-width: 100%">
+        <thead>
+            <th ng-repeat="day in days">
+                <span ng-show="windowWidth >= 576">{{day.title}}</span>
+                <span ng-show="windowWidth < 576 && windowWidth > 350">{{day.mediumTitle}}</span>
+                <span ng-show="windowWidth <= 350">{{day.shortTitle}}</span>
+            </th>
+        </thead>
+
+        <tbody>
+			<tr ng-repeat="week in weeks" >
+				<td  ng-repeat="day in week.days"
+                     class="day"
+                     ng-click="selectDay(day)"
+                     ng-class="{selected: day.number == selectedDay.number, important: day.tasks.length > 0}">
+                    <b ng-class="{disabled: day.disabled == true}">{{day.number}}</b>
+                    <span class="right" ng-show="day.tasks.length > 0 && windowWidth >= 576">
+
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!--
 	<div class="ui stackable grid">
 		<div class="column eleven wide">
-			<table class="ui celled padded unstackable calendar table stacked segment">
+			<table class="ui celled padded fluid unstackable calendar table stacked segment">
 			<thead>
 				<th class="two wide">Monday</th>
 				<th class="two wide">Tuesday</th>
@@ -42,7 +67,6 @@
                              {{ day.tasks.length }}
                          </span>
                     </span>
-					<!-- <span class="small" style="color:#333333"> 0 task(s) </span> -->
 				</td>
 			</tr>
 			</tbody>
@@ -51,14 +75,6 @@
 	</div>
 
 	<div class="column five wide">
-        <!--
-        <a id="new-button" class="ui blue wide labeled icon button" ng-click="createTask()">
-			<i class="add icon"></i>
-            New Task
-		</a>
-        <br/><br/><br/>
-        -->
-
         <b class="large" ng-if="selectedDay.tasks.length > 0">Tasks</b>
 		<div class="ui selection list" ng-repeat="task in selectedDay.tasks" ng-click="selectTask(selectedDay, task)">
 			<a class="item" ng-class="{active: task.id == selectedDay.selectedTask.id}">
@@ -100,6 +116,7 @@
 		</div>
 	</div>
 	</div>
+    -->
 
 </div>
 

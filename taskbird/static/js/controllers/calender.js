@@ -1,5 +1,31 @@
 appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $routeParams, $location, taskAPI, taskData) {
 
+    /*
+    $scope.days = {
+        sun: 'Sunday',
+        mon: 'Monday',
+        tue: 'Tuesday',
+        wed: 'Wednesday',
+        thu: 'Thursday',
+        fri: 'Friday',
+        sat: 'Saturday'
+    };
+    */
+    window.$scope = $scope;
+    var fullDays =  ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+    $scope.days = [];
+    _.each(fullDays, function (day) {
+       $scope.days.push({title: day, mediumTitle: day.substr(0, 3), shortTitle: day.substr(0, 1)})
+    });
+
+    $scope.windowWidth = $(window).width();
+    $(window).resize(_.debounce(function() {
+        $scope.$apply(function () {
+            $scope.windowWidth = $(window).width();
+        });
+    }, 500));
+
+
     var _createDay = function(number, tasksOnDay) {
         var day = {};
         if (tasksOnDay[number]) {
@@ -49,7 +75,7 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
                 }
             });
 
-            var startDayOfWeek = (moment().startOf('month').format('d') + 1) % 7;
+            var startDayOfWeek = (moment().startOf('month').format('d')) % 7;
             var lastDayOfMonth = moment().endOf('month').format('DD');
             var num = 1;
             var days = [];
@@ -96,7 +122,6 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
 
     $scope.createTask = function() {
         taskData.createTask().then(function (task) {
-            console.log(task);
             $location.path('/tasks/all/' + task.id);
             $route.reload();
         });

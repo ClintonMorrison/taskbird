@@ -78,8 +78,6 @@ taskApp.directive('projectSelector', function ($timeout) {
 
 
 
-
-
 taskApp.directive('taskDatepicker', function () {
     return {
         restrict: "E",
@@ -125,6 +123,20 @@ taskApp.directive('taskCheckbox', function ($timeout) {
                     });
                 }
             });
+        }
+    };
+});
+
+
+taskApp.directive('tasksViewer', function ($timeout) {
+    return {
+        restrict: "E",
+        replace: 'true',
+        templateUrl: TaskBirdData.staticURL + 'directives/tasksViewer.html',
+        scope: {
+            tasks: '='
+        },
+        link: function (scope, elm, attr) {
         }
     };
 });

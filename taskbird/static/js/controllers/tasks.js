@@ -56,7 +56,6 @@ appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams,
         });
 
         projectData.getProjectMap().then(function (projectMap) {
-           console.log("GOT MAP", projectMap);
             $scope.projectMap = projectMap;
         });
 	};

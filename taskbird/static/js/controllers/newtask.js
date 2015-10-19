@@ -37,7 +37,6 @@ appControllers.controller('NewTaskCtrl', function($scope, $http, $route, $routeP
 		if ($scope.date_due) {
 			taskData.date_due = $scope.date_due.replace('/', '-') + "T00:00:00.000000";
 		}
-		console.log("TASK DATA IS: ",  taskData);
 
 		var taskPromise;
 		if (!$routeParams.taskID) {
