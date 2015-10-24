@@ -4,6 +4,27 @@ taskApp.filter('nl2br', function() {
   };
 });
 
+taskApp.filter('preview', function () {
+    return function(input, maxLength) {
+        if (!maxLength || input.length < maxLength) {
+            return input;
+        }
+
+        if (maxLength <= 3) {
+            return "...";
+        }
+
+        return input.substr(0, maxLength - 3) + "...";
+    };
+});
+
+taskApp.filter('top', function () {
+    return function(input, maxLength) {
+        return _.take(input, maxLength);
+    };
+});
+
+
 taskApp.filter('toNumericDate', function() {
   return function(input) {
     return moment(input).format("MM/DD/YYYY");

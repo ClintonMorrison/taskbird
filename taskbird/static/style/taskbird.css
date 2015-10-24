@@ -11,6 +11,34 @@
 	transition: color 150ms ease-in;
 }
 
+.calendar {
+	max-width: 1000px !important;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.calendar td {
+}
+
+.calendar td .day-container {
+    height: 40px;
+    overflow: hidden;
+}
+
+.calendar td .day-container .task-list {
+    font-size: 70%;
+    line-height: 10px;
+}
+
+.calendar td.today {
+    border: 1px solid #aaaaaa !important;
+}
+
+
+.calendar td .label {
+    margin-top: -50px !important;
+}
+
 .disabled {
 	color: #CCC;
 }
@@ -34,7 +62,7 @@
 }
 
 #content .app.container {
-  min-width: 300px;
+  min-width: 250px;
 }
 
 .ui.selection.list {
@@ -106,7 +134,7 @@
 }
 
 .data.grid {
-    min-height: 320px;
+    min-height: 100px;
 }
 
 .details.column {

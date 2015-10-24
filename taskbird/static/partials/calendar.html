@@ -1,122 +1,64 @@
 
 <div class="ui bottom attached" ng-controller="CalendarCtrl" >
 
-<div class="ui three column grid">
-	<div class="column">
-		<a><i class="left icon reply mail"></i></a> 
-	</div>
 
-	<div class="column">
-		<span class="center"><b>{{currentDate}}</b></span>
-	</div>
+    <div class="calendar">
 
-	<div class="column">
-		<a><i class="right icon forward mail"></i></a> 
-	</div>
-
-</div>
-
-    <table class="ui celled unstackable calendar table segment" style="max-width: 100%">
-        <thead>
-            <th ng-repeat="day in days">
-                <span ng-show="windowWidth >= 576">{{day.title}}</span>
-                <span ng-show="windowWidth < 576 && windowWidth > 350">{{day.mediumTitle}}</span>
-                <span ng-show="windowWidth <= 350">{{day.shortTitle}}</span>
-            </th>
-        </thead>
-
-        <tbody>
-			<tr ng-repeat="week in weeks" >
-				<td  ng-repeat="day in week.days"
-                     class="day"
-                     ng-click="selectDay(day)"
-                     ng-class="{selected: day.number == selectedDay.number, important: day.tasks.length > 0}">
-                    <b ng-class="{disabled: day.disabled == true}">{{day.number}}</b>
-                    <span class="right" ng-show="day.tasks.length > 0 && windowWidth >= 576">
-
-                    </span>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!--
-	<div class="ui stackable grid">
-		<div class="column eleven wide">
-			<table class="ui celled padded fluid unstackable calendar table stacked segment">
-			<thead>
-				<th class="two wide">Monday</th>
-				<th class="two wide">Tuesday</th>
-				<th class="two wide">Wednesday</th>
-				<th class="two wide">Thursday</th>
-				<th class="two wide">Friday</th>
-				<th class="two wide">Saturday</th>
-				<th class="two wide">Sunday</th>
-			</thead>
-			<tbody>
-			<tr ng-repeat="week in weeks" >
-				<td  ng-repeat="day in week.days"
-                     ng-click="selectDay(day)"
-                     ng-class="{selected: day.number == selectedDay.number}">
-                    <span ng-class="{disabled: day.disabled == true}">
-                        <b>{{day.number}}</b>
-                        <br>
-                        <br ng-if="day.tasks.length == 0">
-                        <br ng-if="day.tasks.length == 0">
-                        <span class="right ui small compact blue message day" ng-if="day.tasks.length > 0">
-                             {{ day.tasks.length }}
-                         </span>
-                    </span>
-				</td>
-			</tr>
-			</tbody>
-			
-		</table>
-	</div>
-
-	<div class="column five wide">
-        <b class="large" ng-if="selectedDay.tasks.length > 0">Tasks</b>
-		<div class="ui selection list" ng-repeat="task in selectedDay.tasks" ng-click="selectTask(selectedDay, task)">
-			<a class="item" ng-class="{active: task.id == selectedDay.selectedTask.id}">
-                {{ task.title }}
-            </a>
-		</div>
-
-		<div class="ui piled segment" ng-if="selectedDay && selectedDay.selectedTask">
-			<b class="large">{{selectedDay.selectedTask.title}}</b>
-            <a class="ui blue right mini icon button" style="margin-right: 10px" href="#/tasks/all/{{selectedDay.selectedTask.id}}">
-                <i class="ui mini edit icon"> </i>
-            </a>
-
-			<div class="ui divider"></div>
-
-            <span ng-show="selectedDay.selectedTask.description" ng-bind-html="selectedDay.selectedTask.description | toTrusted | nl2br"></span>
-            <br/><br/>
-            <br/>
-
-
-            <div class="ui unpadded two column grid">
-                <div class="column">
-                    <b>Priority</b>
-                </div>
-                <div class="column">
-                    {{selectedDay.selectedTask.priority}}
-                </div>
-
-                <div class="column" ng-if="selectedDay.selectedTask.projects.length > 0">
-                    <b>Project</b>
-                </div>
-                <div class="column" ng-if="selectedDay.selectedTask.projects.length > 0">
-                    <i class="{{selectedDay.selectedTask.projects[0].icon}} icon"></i>
-                    {{selectedDay.selectedTask.projects[0].title}}
+        <div class="ui three column grid">
+            <div class="column">
+                <div class="ui left mini icon button" ng-click="incrementMonth(-1)">
+                    <i class="icon reply mail"></i>
                 </div>
             </div>
 
-            <br>
-		</div>
-	</div>
-	</div>
-    -->
+            <div class="column">
+                <h3 class="ui center aligned icon header">
+                    {{currentDate}}
+                </h3>
+            </div>
+
+            <div class="column">
+                <div class="ui right mini icon button" ng-click="incrementMonth(1)">
+                    <i class="icon forward mail"></i>
+                </div>
+            </div>
+        </div>
+        <table class="ui celled top attached unstackable calendar table segment" style="max-width: 100%">
+            <thead>
+                <th ng-repeat="day in days">
+                    <span ng-show="windowWidth >= 576">{{day.title}}</span>
+                    <span ng-show="windowWidth < 576 && windowWidth > 350">{{day.mediumTitle}}</span>
+                    <span ng-show="windowWidth <= 350">{{day.shortTitle}}</span>
+                </th>
+            </thead>
+
+            <tbody>
+                <tr ng-repeat="week in weeks" >
+                    <td  ng-repeat="day in week.days"
+                         class="day"
+                         ng-click="selectDay(day)"
+                         ng-class="{selected: day.number == selectedDay.number, important: day.tasks.length > 0, today: todaysDate == day.date}">
+
+                        <div class="day-container">
+                            <b class="date" ng-class="{disabled: day.disabled == true}">{{day.number}}</b>
+
+                            <span class="right task-list" ng-show="day.tasks.length > 0 && windowWidth >= 576">
+                                <span ng-repeat="task in day.tasks|top:2">
+                                    {{task.title | preview: 10}}<br/>
+                                </span>
+                                <span ng-show="day.tasks.length > 2">...</span>
+
+                            </span>
+                        </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <div ng-show="selectedDay && selectedDay.tasks.length > 0">
+            <task-viewer tasks="selectedDay.tasks" hide-filter-options="1"></task-viewer>
+        </div>
+    </div>
+
 
 </div>
 

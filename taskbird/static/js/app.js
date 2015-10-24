@@ -27,6 +27,10 @@ var taskApp = angular.module('taskApp', [
 			templateUrl: TaskBirdData.staticURL + 'partials/calendar.html',
 			controller: 'CalendarCtrl'
 		})
+		.when('/calendar/:year/:month', {
+			templateUrl: TaskBirdData.staticURL + 'partials/calendar.html',
+			controller: 'CalendarCtrl'
+		})
         .when('/analytics', {
 			templateUrl: TaskBirdData.staticURL + 'partials/analytics.html',
 			controller: 'AnalyticsCtrl'

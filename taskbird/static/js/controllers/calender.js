@@ -26,18 +26,14 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
     }, 500));
 
 
-    var _createDay = function(number, tasksOnDay) {
+    var _createDay = function(year, month, num, tasksOnDay) {
         var day = {};
-        if (tasksOnDay[number]) {
-            day = {number: number, tasks: tasksOnDay[number]};
+        var dateString = year + '-' + month + '-' + num;
+        if (tasksOnDay[num]) {
+            day = {date: dateString, number: num, tasks: tasksOnDay[num]};
         } else {
-            day = {number: number, tasks: []};
+            day = {date: dateString, number: num, tasks: []};
         }
-
-        if (day.tasks.length > 0) {
-            day.selectedTask = day.tasks[0];
-        }
-
         return day;
     };
 
@@ -58,15 +54,32 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
             });
         });
 
-        $scope.currentDate = moment().format("MMMM D, YYYY");
+        $scope.year = moment().format('YYYY');
+        $scope.month = moment().format('MM');
 
-        // todo: get only for currently month
+        if ($routeParams.year) {
+            $scope.year = $routeParams.year;
+        }
+        if ($routeParams.month) {
+            $scope.month = $routeParams.month;
+        }
+
+        var dateString = $scope.year + '-' + $scope.month + 'T00:00:00';
+
+        $scope.currentDate = moment(dateString).format("MMMM, YYYY");
+        $scope.todaysDate = moment().format("YYYY-MM-D");
+        var currentYearAndMonth = moment(dateString).format("YYYY-MM");
+
         taskData.getTasks().then(function (tasks) {
             $scope.tasks = tasks;
             $scope.tasksOnDay = {};
 
             _.each($scope.tasks, function (task) {
                 if (task.date_due) {
+                    if (moment(task.date_due).format('YYYY-MM') != currentYearAndMonth) {
+                        return;
+                    }
+
                     var day = moment(task.date_due).format('D');
                     if (!$scope.tasksOnDay[day]) {
                         $scope.tasksOnDay[day] = [];
@@ -75,8 +88,8 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
                 }
             });
 
-            var startDayOfWeek = (moment().startOf('month').format('d')) % 7;
-            var lastDayOfMonth = moment().endOf('month').format('DD');
+            var startDayOfWeek = (moment(dateString).startOf('month').format('d')) % 7;
+            var lastDayOfMonth = moment(dateString).endOf('month').format('DD');
             var num = 1;
             var days = [];
 
@@ -86,7 +99,7 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
             }
 
             for (num = 1; num <= lastDayOfMonth; num++) {
-                days.push(_createDay(num, $scope.tasksOnDay));
+                days.push(_createDay($scope.year, $scope.month, num, $scope.tasksOnDay));
             }
 
             var weeks = [];
@@ -125,6 +138,27 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
             $location.path('/tasks/all/' + task.id);
             $route.reload();
         });
+    };
+
+    $scope.incrementMonth = function (increment) {
+        var month = parseInt($scope.month, 10);
+        var year = parseInt($scope.year, 10);
+
+        month += increment;
+        if (month > 12) {
+            month -= 12;
+            year += 1;
+        } else if (month < 1) {
+            month += 12;
+            year -= 1;
+        }
+
+        if (month <= 9) {
+            month = '0' + month;
+        }
+
+        $location.path('/calendar/' + year + '/' + month);
+        $location.reload();
     };
 
 
