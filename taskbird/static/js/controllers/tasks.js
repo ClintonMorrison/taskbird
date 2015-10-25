@@ -1,6 +1,9 @@
 
 appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams, $http, taskAPI, taskData, projectData) {
     window.scope = $scope;
+    $scope.filterProject = 'all';
+
+
 
 	$scope.refresh = function(firstLoad) {
         firstLoad = true;
@@ -14,10 +17,18 @@ appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams,
                 $scope.projects = projects;
                 projectData.getProjectMap().then(function (projectMap) {
                     $scope.projectMap = projectMap;
+                    if ($routeParams.projectID && parseInt($routeParams.projectID, 10)) {
+                        $timeout(function () {
+                           $scope.filterProject = $routeParams.projectID;
+                        })
+
+                    }
                 });
             });
         });
     };
+
+
 
     $scope.refresh(true);
 });

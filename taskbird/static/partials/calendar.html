@@ -55,7 +55,7 @@
             </tbody>
         </table>
         <div ng-show="selectedDay && selectedDay.tasks.length > 0">
-            <task-viewer tasks="selectedDay.tasks" hide-filter-options="1"></task-viewer>
+            <task-viewer tasks="selectedDay.tasks" hide-filter-options="1" filter-project="filterProject"></task-viewer>
         </div>
     </div>
 

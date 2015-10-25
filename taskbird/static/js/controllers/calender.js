@@ -1,8 +1,6 @@
 appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $routeParams, $location, taskAPI, taskData, windowService) {
-
-    window.$scope = $scope;
-
     $scope.windowSize = windowService.getDimensions();
+    $scope.filterProject = 'all';
 
     var fullDays =  ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     $scope.days = [];

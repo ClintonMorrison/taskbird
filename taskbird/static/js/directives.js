@@ -24,6 +24,7 @@ taskApp.directive('dropdown', function ($timeout) {
                     });
                 }
             });
+            elm.dropdown('set selected', scope.ngModel);
         }
     };
 });
@@ -52,8 +53,6 @@ taskApp.directive('projectSelector', function ($timeout) {
             projects: '='
         },
         link: function (scope, elm, attr) {
-            window.t1 = attr;
-            window.t2 = scope;
             elm.dropdown('save defaults')
             scope.$watch('ngModel', function(newValue, oldValue) {
                 if (newValue === oldValue) {
@@ -134,9 +133,14 @@ taskApp.directive('taskViewer', function ($timeout, $location, windowService) {
         templateUrl: TaskBirdData.staticURL + 'directives/taskViewer.html',
         scope: {
             tasks: '=',
-            hideFilterOptions: '='
+            hideFilterOptions: '=',
+            filterProject: '='
         },
         link: function ($scope, elm, attr) {
+            if (!$scope.filterProject) {
+                $scope.filterProject = 'all';
+            }
+
             $scope.windowSize = windowService.getDimensions();
             $scope.$watch('windowSize.width', function (w) {
                if (w > 767) {
