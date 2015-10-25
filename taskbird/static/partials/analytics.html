@@ -20,6 +20,22 @@
     </div>
 
     <div class="ui top attached segment">
+        <h3 class="ui header">Productivity</h3>
+    </div>
+    <div class="ui bottom attached segment">
+        <div class="ui two one stackable grid">
+            <div class="column">
+                <div fusioncharts
+                     ng-if="tasksByDate"
+                     width="100%"
+                     type="msline"
+                     dataSource="{{tasksByDate}}">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="ui top attached segment">
         <h3 class="ui header">Project Statistics</h3>
     </div>
     <div class="ui bottom attached segment">
@@ -27,7 +43,8 @@
             <div class="column">
                 <div fusioncharts
                      ng-if="tasksCreatedByProject"
-                     type="pie2d"
+                     width="100%"
+                     type="column2d"
                      dataSource="{{tasksCreatedByProject}}">
                 </div>
             </div>
@@ -35,28 +52,11 @@
             <div class="column">
                  <div fusioncharts
                      ng-if="tasksDoneByProject"
-                     type="pie2d"
+                     type="column2d"
+                      width="100%"
                      dataSource="{{tasksDoneByProject}}">
                 </div>
             </div>
-
-            <div class="column">
-                <div fusioncharts
-                     ng-if="taskCompletionByProject"
-                     type="column2d"
-                     dataSource="{{taskCompletionByProject}}">
-                </div>
-            </div>
-
-            <div class="column">
-                <div fusioncharts
-                     ng-if="taskTurnaroundByProject"
-                     type="column2d"
-                     dataSource="{{taskTurnaroundByProject}}">
-                </div>
-            </div>
-
-
 
         </div>
 
@@ -73,6 +73,7 @@
                 <div fusioncharts
                      ng-if="tasksCreatedByDayOfWeek"
                      type="column2d"
+                     width="100%"
                      dataSource="{{tasksCreatedByDayOfWeek}}">
                 </div>
             </div>
@@ -80,6 +81,7 @@
                 <div fusioncharts
                      ng-if="tasksDoneByDayOfWeek"
                      type="column2d"
+                     width="100%"
                      dataSource="{{tasksDoneByDayOfWeek}}">
                 </div>
             </div>

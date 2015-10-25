@@ -126,7 +126,7 @@ taskApp.directive('taskCheckbox', function ($timeout) {
 });
 
 
-taskApp.directive('taskViewer', function ($timeout, $location, windowService) {
+taskApp.directive('taskViewer', function ($timeout, taskAPI, $location, windowService) {
     return {
         restrict: "E",
         replace: 'true',
