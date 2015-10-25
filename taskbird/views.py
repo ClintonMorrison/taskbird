@@ -4,7 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as djangoLogin
 from models import User, generate_demo_data
-from django.core.mail import send_mail
+import taskbird.email
 
 from forms import ContactForm
 
@@ -29,6 +29,7 @@ def siteFeatures(request):
 
 
 def siteAbout(request):
+    taskbird.email.send_password_reset_email('contact@taskbird.ca')
     return render(request, "site/about.html", {})
 
 
@@ -39,12 +40,7 @@ def siteContact(request):
         form = ContactForm(request.POST)
         data['form'] = form
         if form.is_valid():
-            send_mail(
-                'Feedback from "%s"' % form.cleaned_data.get('name', ''),
-                form.cleaned_data.get('message', ''),
-                'contact@taskbird.ca',
-                ['contact@taskbird.ca']
-            )
+            taskbird.email.send_admin_email('Feedback from "%s"' % form.cleaned_data.get('name', ''), form.cleaned_data.get('message', ''))
 
     return render(request, "site/contact.html", data)
 
