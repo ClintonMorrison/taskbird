@@ -30,6 +30,10 @@ taskApp.service('windowService', ['$rootScope', '$timeout', function($rootScope,
     }
 
     this.scrollToElement = function (selector) {
-        $("html, body").animate({ scrollTop: $(selector).offset().top - 20 }, "slow");
+        var current = $(document).scrollTop();
+        var target = $(selector).offset().top - 20;
+        if (Math.abs(current - target) > 110) {
+            $("html, body").animate({scrollTop: $(selector).offset().top - 20}, "slow");
+        }
     }
 }]);
