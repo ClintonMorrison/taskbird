@@ -14,7 +14,7 @@ taskApp.service('taskData', function($q, taskAPI, projectData) {
         // Format task dates
         _.each(tasks, function(task) {
             if (task.date_due) {
-                task.date_due = moment(task.date_due).format('MM/DD/YYYY');
+                task.date_due = moment(task.date_due, moment.ISO_8601).format('MM/DD/YYYY');
             }
 
         });
@@ -59,7 +59,7 @@ taskApp.service('taskData', function($q, taskAPI, projectData) {
             };
 
             if (task.date_due) {
-                taskData.date_due = task.date_due.replace(/\//g, '-') + "T00:00:00.000000";
+                taskData.date_due = moment(task.date_due, 'MM-DD-YYYY').format('YYYY-MM-DD') + "T00:00:00.000000";
             }
 
             return taskAPI.put('task/' + task.id, {}, taskData, true).then(function (response) {

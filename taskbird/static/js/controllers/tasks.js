@@ -14,7 +14,7 @@ appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams,
 
             // Get projects
             projectData.getProjects().then(function (projects) {
-                $scope.projects = projects;
+                $scope.projects = projects;6
                 projectData.getProjectMap().then(function (projectMap) {
                     $scope.projectMap = projectMap;
                     if ($routeParams.projectID && parseInt($routeParams.projectID, 10)) {
