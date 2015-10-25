@@ -43,7 +43,7 @@
                             <b class="date" ng-class="{disabled: day.disabled == true}">{{day.number}}</b>
 
                             <span class="right task-list" ng-show="day.tasks.length > 0 && windowSize.width >= 576">
-                                <span ng-repeat="task in day.tasks|top:2">
+                                <span ng-repeat="task in day.tasks|top:2" ng-class="{strikeout: task.done}">
                                     {{task.title | preview: 10}}<br/>
                                 </span>
                                 <span ng-show="day.tasks.length > 2">...</span>
@@ -55,7 +55,7 @@
             </tbody>
         </table>
         <div ng-show="selectedDay && selectedDay.tasks.length > 0">
-            <task-viewer tasks="selectedDay.tasks" hide-filter-options="1" filter-project="filterProject"></task-viewer>
+            <task-viewer tasks="selectedDay.tasks" hide-filter-options="1" filter-project="filterProject" show-done-tasks="showDoneTasks"></task-viewer>
         </div>
     </div>
 

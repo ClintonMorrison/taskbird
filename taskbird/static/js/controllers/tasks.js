@@ -2,6 +2,7 @@
 appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams, $http, taskAPI, taskData, projectData) {
     window.scope = $scope;
     $scope.filterProject = 'all';
+    $scope.showDoneTasks = false;
 
 
 

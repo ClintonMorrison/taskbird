@@ -134,7 +134,8 @@ taskApp.directive('taskViewer', function ($timeout, taskAPI, $location, windowSe
         scope: {
             tasks: '=',
             hideFilterOptions: '=',
-            filterProject: '='
+            filterProject: '=',
+            showDoneTasks: '='
         },
         link: function ($scope, elm, attr) {
             if (!$scope.filterProject) {
@@ -252,10 +253,7 @@ taskApp.directive('taskViewer', function ($timeout, taskAPI, $location, windowSe
                 taskData.saveTask(task).then(
                     function () {},
                     function () {
-                        ModalService.alert(
-                            "Error",
-                            "There was a problem saving the task"
-                        );
+                        ModalService.alert("Error", "There was a problem saving the task");
                     }
                 );
             };

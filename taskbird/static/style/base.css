@@ -41,3 +41,7 @@ padding: 1em;
 div.ui.attached.bottom.segment {
     margin-bottom: 15px;
 }
+
+.strikeout {
+    text-decoration: line-through;
+}
