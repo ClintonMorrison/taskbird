@@ -26,9 +26,9 @@
         <table class="ui celled top attached unstackable calendar table segment" style="max-width: 100%">
             <thead>
                 <th ng-repeat="day in days">
-                    <span ng-show="windowWidth >= 576">{{day.title}}</span>
-                    <span ng-show="windowWidth < 576 && windowWidth > 350">{{day.mediumTitle}}</span>
-                    <span ng-show="windowWidth <= 350">{{day.shortTitle}}</span>
+                    <span ng-show="windowSize.width >= 576">{{day.title}}</span>
+                    <span ng-show="windowSize.width < 576 && windowSize.width > 350">{{day.mediumTitle}}</span>
+                    <span ng-show="windowSize.width <= 350">{{day.shortTitle}}</span>
                 </th>
             </thead>
 
@@ -42,7 +42,7 @@
                         <div class="day-container">
                             <b class="date" ng-class="{disabled: day.disabled == true}">{{day.number}}</b>
 
-                            <span class="right task-list" ng-show="day.tasks.length > 0 && windowWidth >= 576">
+                            <span class="right task-list" ng-show="day.tasks.length > 0 && windowSize.width >= 576">
                                 <span ng-repeat="task in day.tasks|top:2">
                                     {{task.title | preview: 10}}<br/>
                                 </span>

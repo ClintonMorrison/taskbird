@@ -1,17 +1,9 @@
-appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $routeParams, $location, taskAPI, taskData) {
+appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $routeParams, $location, taskAPI, taskData, windowService) {
 
-    /*
-    $scope.days = {
-        sun: 'Sunday',
-        mon: 'Monday',
-        tue: 'Tuesday',
-        wed: 'Wednesday',
-        thu: 'Thursday',
-        fri: 'Friday',
-        sat: 'Saturday'
-    };
-    */
     window.$scope = $scope;
+
+    $scope.windowSize = windowService.getDimensions();
+
     var fullDays =  ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
     $scope.days = [];
     _.each(fullDays, function (day) {
@@ -122,6 +114,9 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
             return;
         }
 
+        if (day.tasks.length > 0) {
+            windowService.scrollToBottom();
+        }
         $scope.selectedDay = day;
     };
 
@@ -158,7 +153,6 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
         }
 
         $location.path('/calendar/' + year + '/' + month);
-        $location.reload();
     };
 
 

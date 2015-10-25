@@ -1,4 +1,4 @@
-appControllers.controller('ProjectsCtrl', function ($scope, taskAPI, projectData) {
+appControllers.controller('ProjectsCtrl', function ($scope, taskAPI, projectData, windowService) {
 
     $scope.colors = ['black', 'blue', 'green', 'red', 'yellow', 'orange'];
 
@@ -29,6 +29,7 @@ appControllers.controller('ProjectsCtrl', function ($scope, taskAPI, projectData
             $scope.selectedProject = false;
         } else {
             $scope.selectedProject = project;
+            windowService.scrollToElement('.ui.details.column');
         }
     };
 

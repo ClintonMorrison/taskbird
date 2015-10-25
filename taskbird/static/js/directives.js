@@ -66,7 +66,6 @@ taskApp.directive('projectSelector', function ($timeout) {
             elm.dropdown().dropdown('setting', {
                 onChange: function (value) {
                     $timeout(function () {
-                        //console.log(_.chain(scope.projects).filter({id : value}).first().value());
                         scope.ngModel = _.chain(scope.projects).filter({id : value}).first().value();
                         scope.$parent.$apply();
                     });
@@ -128,7 +127,7 @@ taskApp.directive('taskCheckbox', function ($timeout) {
 });
 
 
-taskApp.directive('taskViewer', function ($timeout) {
+taskApp.directive('taskViewer', function ($timeout, $location, windowService) {
     return {
         restrict: "E",
         replace: 'true',
@@ -138,6 +137,14 @@ taskApp.directive('taskViewer', function ($timeout) {
             hideFilterOptions: '='
         },
         link: function ($scope, elm, attr) {
+            $scope.windowSize = windowService.getDimensions();
+            $scope.$watch('windowSize.width', function (w) {
+               if (w > 767) {
+                   $scope.previewLength = 15 + _.round((w - 767) * 0.045);
+               } else {
+                   $scope.previewLength = _.round(w * 0.035);
+               }
+            });
 
             $scope.refresh = function() {
                 // Get projects
@@ -159,7 +166,6 @@ taskApp.directive('taskViewer', function ($timeout) {
             }, true);
 
             $scope.$watch('tasks', function () {
-                console.log("TASKS CHANGED!!!");
                if ($scope.selectedTask) {
                    $scope.selectTask($scope.selectedTask);
                }
@@ -217,6 +223,7 @@ taskApp.directive('taskViewer', function ($timeout) {
 
                 $scope.selectedTask = task;
                 window.selectedTask = task;
+                windowService.scrollToElement('.ui.details.column');
             };
 
             $scope.findTaskByID = function(taskId) {
@@ -252,20 +259,7 @@ taskApp.directive('taskViewer', function ($timeout) {
             $scope.saveTask = _.debounce(_submitTaskData, 750);
 
             $scope.createProject = function () {
-                ModalService.promptText(
-                    'New Project',
-                    'Please enter a name for the new project:',
-                    function(val) {
-                        if (!val) {
-                            return;
-                        }
-
-                        projectData.createProject({title: val}).then(function (project) {
-                            if ($scope.selectedTask) {
-                            }
-                        });
-                    }
-                );
+                $location.path('/projects');
             };
 
             $scope.isInProject = function(task, projectID) {

@@ -52,7 +52,7 @@
                         <div class="wide content clickable task-box" ng-click = "selectTask(task)">
                             <div class="header">
                                 <div class="title">
-                                    {{task.title | preview: 30}}
+                                    {{task.title | preview: previewLength}}
                                 </div>
 
                                 <div class="date">
@@ -63,7 +63,7 @@
                             <div class="clear"></div>
                             <br/>
                             <div class="description">
-                                {{task.description | preview:40}}
+                                {{task.description | preview:previewLength}}
                                 <span class="task-project-icon" ng-if="task.project">
                                     <i class="mini {{task.project.icon}} {{task.project.color}} icon"></i>
                                 </span>
@@ -125,8 +125,8 @@
                         <div class="field">
                             <br/>
                             <div class="ui blue icon button" ng-click="createProject()">
-                                <i class="ui plus icon"></i>
-                                New Project
+                                <i class="ui setting icon"></i>
+                                Manage Projects
                             </div>
                         </div>
                     </div>
