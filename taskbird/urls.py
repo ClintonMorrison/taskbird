@@ -19,7 +19,7 @@ urlpatterns = patterns('',
     # url(r'^$', 'taskbird.views.home', name='home'),
     # url(r'^blog/', include('blog.urls')),
 
-    url(r'^admin/$', include(admin.site.urls)),
+    #url(r'^admin/$', include(admin.site.urls)),
     # url(r'^$', views.index, name='index'),
 
     url(r'^$', views.siteIndex, name='siteIndex'),

@@ -11,4 +11,6 @@ appControllers.controller('HeaderCtrl', function($scope, $location) {
 		return viewLocation === '#'+$location.path();
 	};
 
+	$('.ui.dropdown.account').dropdown()
+
 });
