@@ -29,7 +29,7 @@ def siteFeatures(request):
 
 
 def siteAbout(request):
-    taskbird.email.send_password_reset_email('contact@taskbird.ca')
+    #taskbird.email.send_password_reset_email('contact@taskbird.ca')
     return render(request, "site/about.html", {})
 
 
@@ -86,6 +86,14 @@ def login(request):
             return HttpResponseRedirect("/")
     else:
         return render(request, "site/login.html", {})
+
+def request_password_reset(request):
+    data = {}
+    return render(request, "site/requestPasswordReset.html", data)
+
+def password_reset(request):
+    return JsonResponse({'a': 'a'})
+
 
 @login_required
 def appIndex(request):

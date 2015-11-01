@@ -29,6 +29,8 @@ urlpatterns = patterns('',
     url(r'^signup/$', views.siteSignup, name='siteSignup'),
     url(r'^login/$', views.login, name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
+    url(r'^requestPasswordReset/$', views.request_password_reset, name='requestPasswordReset'),
+    url(r'^passwordReset/$', views.password_reset, name='passwordReset'),
 
     url(r'^app/$', views.appIndex, name='appIndex'),
     url(r'^api/', include(task_resource.urls)),

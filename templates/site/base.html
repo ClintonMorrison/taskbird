@@ -5,11 +5,13 @@
 {% endblock %}
 
 {% block content %}
+<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}style/site.css">
 <div class="ui segment attached top main-container">
   <h1 class="ui header">{% block title %}{% endblock %}</h1>
 </div>
 
 <div class="ui segment attached bottom main-container">
+<h1>Test</h1>
   {% block body %}
   {% endblock %}
 </div>

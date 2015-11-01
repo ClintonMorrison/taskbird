@@ -28,6 +28,19 @@ class Task(models.Model):
     ))
     project = models.ForeignKey(Project, blank=True, default=None, null=True)
 
+class SecurityToken(models.Model):
+    user = models.ForeignKey(User)
+    type = models.CharField(max_length=50, default="") #'task' or 'event'
+    done = models.BooleanField(default=False)
+    date_created = models.DateTimeField(auto_now_add=True)
+    date_completed = models.DateTimeField(null=True, blank=True)
+    date_modified = models.DateTimeField(auto_now=True)
+    date_due = models.DateTimeField(null=True, blank=True)
+    priority = models.CharField(max_length=10, default="Normal", choices = (
+    ('Low', 'Low'),
+    ('Normal', 'Normal'),
+    ('High', 'High')
+    ))
 
 class UserSettings(models.Model):
     user = models.OneToOneField(User)
@@ -38,7 +51,7 @@ class UserSettings(models.Model):
 def generate_demo_data(user):
     sample_tasks = [
         ['Start Using Task Bird', 'Thanks for trying Task Bird!'],
-        ['Get The Most Out Of Task Bird', 'See http://taskbird.ca/resources'],
+        ['Sample Task', 'This is a sample task'],
     ]
 
     sample_projects = [
