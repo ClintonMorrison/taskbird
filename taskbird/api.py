@@ -98,6 +98,8 @@ class TaskResource(ModelResource):
         resource_name = 'task'
         authorization = OwnerOnlyAuthorization()
         authentication = SessionAuthentication()
+        limit = 0
+        max_limit = 0
 
     def hydrate(self, bundle, request=None):
         bundle.obj.user = bundle.request.user
