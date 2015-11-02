@@ -55,8 +55,8 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
             $scope.month = $routeParams.month;
         }
 
-        var dateString = $scope.year + '-' + $scope.month + 'T00:00:00';
-
+        var dateString = $scope.year + '-' + $scope.month + '-01T00:00:00';
+        console.log(dateString);
         $scope.currentDate = moment(dateString).format("MMMM, YYYY");
         $scope.todaysDate = moment().format("YYYY-MM-D");
         var currentYearAndMonth = moment(dateString).format("YYYY-MM");
