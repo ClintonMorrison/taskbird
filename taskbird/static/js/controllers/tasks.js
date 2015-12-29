@@ -15,11 +15,12 @@ appControllers.controller('TasksCtrl', function ($scope, $timeout, $routeParams,
 
             // Get projects
             projectData.getProjects().then(function (projects) {
-                $scope.projects = projects;6
+                $scope.projects = projects;
                 projectData.getProjectMap().then(function (projectMap) {
                     $scope.projectMap = projectMap;
                     if ($routeParams.projectID && parseInt($routeParams.projectID, 10)) {
                         $timeout(function () {
+                            console.log("SETTING FILTER PROJECT: ", $routeParams.projectID);
                            $scope.filterProject = $routeParams.projectID;
                         })
 
