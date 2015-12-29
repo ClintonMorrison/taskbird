@@ -45,3 +45,8 @@ div.ui.attached.bottom.segment {
 .strikeout {
     text-decoration: line-through;
 }
+
+.truncated {
+    white-space: nowrap;
+    overflow: hidden;
+}

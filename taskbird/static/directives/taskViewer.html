@@ -44,19 +44,57 @@
                          ng-repeat = "task in tasks | filter:query | withProjectID:filterProject | filterOutDone:showDoneTasks | orderByDate:'date_due'"
                          ng-class  = "{selected: task.id == selectedTask.id}">
 
-                        <i class="large clickable {{priorityColors[task.priority]}} icon task-checkbox"
-                           ng-class="{'checkmark box': !!task.done, 'square outline thin':!task.done}"
-                           ng-click="doneTask(task)">
-                        </i>
+                        <div class="ui three column grid">
+                            <div class="column one wide">
+                                <i class="large clickable {{priorityColors[task.priority]}} icon task-checkbox"
+                                   ng-class="{'checkmark box': !!task.done, 'square outline thin':!task.done}"
+                                   ng-click="doneTask(task)">
+                                </i>
+                            </div>
+
+                            <div class="column fourteen wide">
+                              <div class="wide content clickable task-box" ng-click = "selectTask(task)">
+
+                                  <div class="ui grid">
+                                      <div class="column twelve wide" style="padding-bottom: 0;">
+                                        <div class="title">
+                                            {{task.title}}
+                                        </div>
+                                      </div>
+                                      <div class="column four wide">
+                                          <div class="date">
+                                            {{task.date_due | toEnglishDate}}
+                                          </div>
+                                      </div>
+                                  </div>
+
+                                    <div class="clear"></div>
+                                    <br/>
+
+                                    <div class="ui grid">
+                                        <div class="truncated column thirteen wide">
+                                            {{task.description}}
+                                        </div>
+                                        <div class="column three wide" ng-if="task.project">
+                                            <i class="mini right {{task.project.icon}} {{task.project.color}} icon"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!--
+
 
                         <div class="wide content clickable task-box" ng-click = "selectTask(task)">
                             <div class="header">
-                                <div class="title">
-                                    {{task.title | preview: previewLength}}
-                                </div>
+                                <div style="width: 100%">
+                                    <div class="title">
+                                        {{task.title | preview: previewLength}}
+                                    </div>
 
-                                <div class="date">
-                                    {{task.date_due | toEnglishDate}}
+                                    <div class="date">
+                                        {{task.date_due | toEnglishDate}}
+                                    </div>
                                 </div>
                             </div>
 
@@ -69,7 +107,7 @@
                                 </span>
                             </div>
                         </div>
-
+                        -->
                     </div>
                 </div>
             </div>

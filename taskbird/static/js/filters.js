@@ -6,6 +6,7 @@ taskApp.filter('nl2br', function() {
 
 taskApp.filter('preview', function () {
     return function(input, maxLength) {
+
         if (!maxLength || input.length < maxLength) {
             return input;
         }
@@ -33,7 +34,8 @@ taskApp.filter('toNumericDate', function() {
 
 taskApp.filter('toEnglishDate', function() {
   return function(input) {
-      var result = moment(input).format("MMMM DD, YYYY");
+      var result = moment(input).format("MMM D");
+      // TODO: Use 'MMM D, YYYY' if not current year?
       return result === 'Invalid date' ? '' : result
   };
 });
