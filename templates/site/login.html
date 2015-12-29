@@ -2,20 +2,23 @@
 {% block title %} Login {% endblock %}
 
 {% block body %}
-  <p>Login to your Task Bird account.</p> <br/>
-  
-	<form action="/login/" method="post" class="ui form">
-		{% csrf_token %}
-      <div class="field">
-         <label> Email </label>
-         <input type="text" name="username" placeholder="">
-      </div>
+    <p>Login to your Task Bird account.</p> <br/>
 
-      <div class="field">
-         <label> Password </label>
-         <input type="password" name="password" placeholder="">
-      </div> 
-   
-      <input class='ui blue button' type="submit" value="Submit">
-	</form>
+    <form action="/login/" method="post" class="ui form">
+    {% csrf_token %}
+        <div class="field">
+            <label> Email </label>
+            <input type="text" name="username" placeholder="">
+        </div>
+
+        <div class="field">
+            <label> Password </label>
+            <input type="password" name="password" placeholder="">
+        </div>
+
+        <input class='ui blue button' type="submit" value="Submit">
+    </form>
+
+    <br/><br/>
+    <p><a href="/requestPasswordReset">Forgot your password?</a></p>
 {% endblock %}
