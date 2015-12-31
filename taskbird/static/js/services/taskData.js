@@ -3,7 +3,7 @@
  */
 
 taskApp.service('taskData', function($q, taskAPI, projectData) {
-    var self = this;
+    var that = this;
     window.taskData = this;
 
     var tasks = [];
@@ -16,7 +16,6 @@ taskApp.service('taskData', function($q, taskAPI, projectData) {
             if (task.date_due) {
                 task.date_due = moment(task.date_due, moment.ISO_8601).format('MM/DD/YYYY');
             }
-
         });
         return tasks;
     });
@@ -37,14 +36,21 @@ taskApp.service('taskData', function($q, taskAPI, projectData) {
             description: '',
         };
 
-        console.log("Submitting data: ", taskData);
-
-
+        var newTask = false;
         return taskAPI.post("task/", taskData).then(function (response) {
-            var task = response.data;
-            console.log("Got task: ", task);
-            tasks.push(task);
-            return task;
+            newTask = response.data;
+            tasks.push(newTask);
+            return newTask;
+        }).then(function (task) {
+            // Update fields that aren't set on creation
+            if (data.date_due) {
+                task.date_due = moment(data.date_due, 'YYYY-MM-DD').format('MM-DD-YYYY');
+            }
+
+            return that.saveTask(task);
+        }).then(function (task) {
+            newTask = task;
+            return newTask;
         });
     };
 
@@ -59,7 +65,14 @@ taskApp.service('taskData', function($q, taskAPI, projectData) {
             };
 
             if (task.date_due) {
-                taskData.date_due = moment(task.date_due, 'MM-DD-YYYY').format('YYYY-MM-DD') + "T00:00:00.000000";
+                var dateDue = moment(task.date_due, 'MM-DD-YYYY').format('YYYY-MM-DD');
+                if (dateDue === 'Invalid date') {
+                    dateDue = task.date_due;
+                } else {
+                    dateDue += "T00:00:00.000000";
+                }
+
+                taskData.date_due = dateDue;
             }
 
             return taskAPI.put('task/' + task.id, {}, taskData, true).then(function (response) {

@@ -135,7 +135,10 @@ taskApp.directive('taskViewer', function ($timeout, taskAPI, $location, windowSe
             tasks: '=',
             hideFilterOptions: '=',
             filterProject: '=',
-            showDoneTasks: '='
+            showDoneTasks: '=',
+            creationDefaults: '=',
+            postCreationCallback: '=',
+            postUpdateCallback: '='
         },
         link: function ($scope, elm, attr) {
             if (!$scope.filterProject) {
@@ -237,12 +240,20 @@ taskApp.directive('taskViewer', function ($timeout, taskAPI, $location, windowSe
             };
 
             $scope.createTask = function () {
-                data = {};
+                var data = {};
+
+                if ($scope.creationDefaults) {
+                  data = $scope.creationDefaults;
+                }
 
                 taskData.createTask(data).then(function (task) {
                     if ($scope.filterProject) {
                         task.project = $scope.projectMap[$scope.filterProject];
                         taskData.saveTask(task);
+                    }
+
+                    if ($scope.postCreationCallback) {
+                        $scope.postCreationCallback(task);
                     }
 
                     $scope.selectTask(_.last($scope.tasks));

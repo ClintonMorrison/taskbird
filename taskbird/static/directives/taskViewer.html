@@ -11,7 +11,7 @@
                 </a>
             </div>
 
-            <div class="ui column nine wide">
+            <div class="ui column nine wide" ng-show="tasks && tasks.length > 0">
                 <dropdown class="ui floating labeled icon dropdown button task-filter" ng-model="filterProject">
                     <i class="filter icon"></i>
                     <span class="text">Select Project</span>
@@ -35,7 +35,7 @@
         </div>
     </div>
 
-    <div class="ui bottom attached segment">
+    <div class="ui bottom attached segment" ng-show="tasks && tasks.length > 0">
         <div class="ui stackable two column data grid">
             <div class="ui column">
 

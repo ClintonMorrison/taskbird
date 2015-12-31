@@ -3,11 +3,7 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
     $scope.filterProject = 'all';
     $scope.showDoneTasks = true;
 
-    var fullDays =  ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    $scope.days = [];
-    _.each(fullDays, function (day) {
-       $scope.days.push({title: day, mediumTitle: day.substr(0, 3), shortTitle: day.substr(0, 1)})
-    });
+
 
     $scope.windowWidth = $(window).width();
     $(window).resize(_.debounce(function() {
@@ -31,6 +27,11 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
     $scope.selectedDay = false;
 
     $scope.refresh = function () {
+        var fullDays =  ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+        $scope.days = [];
+        _.each(fullDays, function (day) {
+           $scope.days.push({title: day, mediumTitle: day.substr(0, 3), shortTitle: day.substr(0, 1)})
+        });
 
         // Get projects
         taskAPI.get('project/').success(function (data) {
@@ -56,7 +57,6 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
         }
 
         var dateString = $scope.year + '-' + $scope.month + '-01T00:00:00';
-        console.log(dateString);
         $scope.currentDate = moment(dateString).format("MMMM, YYYY");
         $scope.todaysDate = moment().format("YYYY-MM-D");
         var currentYearAndMonth = moment(dateString).format("YYYY-MM");
@@ -64,7 +64,6 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
         taskData.getTasks().then(function (tasks) {
             $scope.tasks = tasks;
             $scope.tasksOnDay = {};
-
             _.each($scope.tasks, function (task) {
                 if (task.date_due) {
                     if (moment(task.date_due).format('YYYY-MM') != currentYearAndMonth) {
@@ -108,6 +107,8 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
     };
 
     $scope.selectDay = function(day) {
+        $scope.taskDefaults = {date_due: day.date};
+
         if ($scope.selectedDay.number == day.number) {
             $scope.selectedDay = false;
             return;
@@ -152,6 +153,11 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
         }
 
         $location.path('/calendar/' + year + '/' + month);
+    };
+
+    $scope.postTaskCreation = function(task) {
+        $scope.refresh();
+        $scope.selectDay($scope.selectedDay);
     };
 
 
