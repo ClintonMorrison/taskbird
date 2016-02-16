@@ -24,12 +24,31 @@ taskApp.directive('dropdown', function ($timeout) {
                     });
                 }
             });
-            elm.dropdown('set selected', scope.ngModel);
+
+            $timeout(function () {
+                elm.dropdown('set selected', scope.ngModel);
+            }, 0);
         }
     };
 });
 
-taskApp.directive('projectSelector', function ($timeout) {
+taskApp.directive('popupTrigger', function ($timeout) {
+    return {
+        restrict: "A",
+        scope: {},
+        link: function (scope, elm, attr) {
+            $(elm).popup({
+                inline   : true,
+                position : 'bottom left',
+                on: 'click'
+            });
+        }
+    };
+});
+
+
+
+taskApp.directive('projectSelector', function ($timeout, resources) {
     return {
         restrict: "E",
         replace: 'true',
@@ -41,9 +60,9 @@ taskApp.directive('projectSelector', function ($timeout) {
             '<div class="default text">Select Project</div>',
             '<div class="menu">',
             '<div class="item" data-value="false">Select Project</div>',
-            '<div class="item" ng-repeat="project in projects" data-value="{{project.id}}">',
-            '<i class="{{project.color}} {{project.icon}} icon"></i>',
-            '{{project.title}}',
+            '<div class="item" ng-repeat="project in projects" data-value="{{project.data.id}}">',
+            '<i class="{{project.data.color}} {{project.data.icon}} icon"></i>',
+            '{{project.data.title}}',
             '</div>',
             '</div>',
             '</div>'
@@ -53,23 +72,41 @@ taskApp.directive('projectSelector', function ($timeout) {
             projects: '='
         },
         link: function (scope, elm, attr) {
-            elm.dropdown('save defaults')
-            scope.$watch('ngModel', function(newValue, oldValue) {
-                if (newValue === oldValue) {
-                    return;
-                }
+            resources.getAll(resources.Project).then(function (projects) {
+                scope.projects = projects;
+            }).then(function () {
+                elm.dropdown('save defaults');
+                scope.$watch('ngModel', function(newValue, oldValue) {
+                    if (newValue === oldValue) {
+                        return;
+                    }
 
-                elm.dropdown('set selected', scope.ngModel ? scope.ngModel.id : false);
+                    elm.dropdown('set selected', scope.ngModel ? scope.ngModel.id : false);
+                });
+
+                elm.dropdown().dropdown('setting', {
+                    onChange: function (value) {
+                        $timeout(function () {
+                            var project = _.chain(scope.projects).filter({id : value}).first().value();
+                            if (project) {
+                                scope.ngModel = project._formatForAPI();
+                            } else {
+                                scope.ngModel = null;
+                            }
+
+                            scope.$parent.$apply();
+                        });
+                    }
+                });
+
+                $timeout(function () {
+                    if (scope.ngModel && scope.ngModel.id) {
+                        elm.dropdown('set selected', scope.ngModel.id);
+                    }
+                }, 0);
             });
 
-            elm.dropdown().dropdown('setting', {
-                onChange: function (value) {
-                    $timeout(function () {
-                        scope.ngModel = _.chain(scope.projects).filter({id : value}).first().value();
-                        scope.$parent.$apply();
-                    });
-                }
-            });
+
         }
     };
 });

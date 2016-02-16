@@ -80,6 +80,7 @@
 
 .task-box {
 	overflow: hidden;
+	min-height: 49px;
 }
 
 .task-box .title {
