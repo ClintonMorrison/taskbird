@@ -98,16 +98,13 @@ taskApp.filter('toTrusted', ['$sce', function($sce){
         };
 }]);
 
-taskApp.filter('applyResourceFilters', [function(){
+taskApp.filter('applyResourceFilters', ['resources', function(resources) {
     var _getDateRange = function (str) {
         if (!str || str === 'all') {
             return null;
         }
-
         var start, end, format = 'YYYY-MM-DD\\Thh:mm:ss';
         var parts = str.split(':')
-
-
         if (parts[0] === 'this') {
             start = moment().startOf(parts[1]);
             end = moment().endOf(parts[1]);
@@ -118,6 +115,9 @@ taskApp.filter('applyResourceFilters', [function(){
             } else {
                 end = moment().subtract(parseInt(parts[2], 10), 'days').endOf('day');
             }
+        } else if (parts[0] === 'date') {
+            start = moment(parts[1], 'YYYY-MM-DD').startOf('day');
+            end = moment(parts[1], 'YYYY-MM-DD').endOf('day');
         }
 
         if (!start || !end) {
@@ -125,12 +125,10 @@ taskApp.filter('applyResourceFilters', [function(){
         }
 
         return [start, end];
-        start = start.format(format);
-        end = end.format(format);
-        console.log(start, '=>', end);
     };
 
     return function(input, filters) {
+        //console.log('Applying: ', filters);
         // Filter by date
         dateRange = _getDateRange(filters.dateRange);
         if (dateRange) {
@@ -146,9 +144,7 @@ taskApp.filter('applyResourceFilters', [function(){
                 }
 
                 var date = moment(obj.data[dateCol], 'MM/DD/YYYY');
-                console.log(obj.data[dateCol], '=>', date.format('YYYY-MM-DD'));
                 return start <= date && end >= date;
-                //return moment(start).isBefore(date) && moment(end).isAfter(date);
             });
         }
 
@@ -188,6 +184,45 @@ taskApp.filter('applyResourceFilters', [function(){
             });
         }
 
+        // Apply resource specific filters
+        /*_.each(filters, function (query, name) {
+            if (!resources.getResourceClass(name)) {
+                return;
+            }
+
+            input = _.filter(input, function (obj) {
+                if (obj.config.type !== name) {
+                    return true;
+                }
+
+                var passes = true;
+                _.each(query, function (clause) {
+
+                    var field = obj.data[clause[0]];
+                    if (obj.config.fields[clause[0]].type.name === 'date') {
+                        if (field) {
+                            field = moment(field, 'MM/DD/YYYY').format('YYYY-MM-DD');
+                        } else {
+                            field = '';
+                        }
+                    }
+
+                    var op = clause[1];
+                    var target = clause[2];
+
+                    switch (op) {
+                        case 'CONTAINS':
+                            passes &= field.indexOf(target) !== -1;
+                            break;
+                        default:
+                            throw new Error('Bad query: ', query);
+                    }
+                });
+                return passes;
+            });
+
+        });*/
+
         // Sort results
         var sortField = filters.sortBy;
         if (sortField) {
@@ -198,7 +233,7 @@ taskApp.filter('applyResourceFilters', [function(){
                     return '~~~~~~~~~~~~~~~~~~~~~~~';
                 }
 
-                var value = obj.data[field];
+                var value = obj.data[field].toLowerCase();
                 if (sortField === 'targetDate') {
                     value = moment(value, 'MM/DD/YYYY').format('YYYY-MM-DD\\Thh:mm:ss');
                 }

@@ -55,6 +55,8 @@
             </tbody>
         </table>
         <div ng-show="selectedDay">
+            <collection-view filters="filters" resources="task"></collection-view>
+            <!--
             <task-viewer
                     tasks="selectedDay.tasks"
                     hide-filter-options="0"
@@ -63,6 +65,7 @@
                     post-creation-callback="postTaskCreation"
                     creation-defaults="taskDefaults">
             </task-viewer>
+            -->
         </div>
     </div>
 

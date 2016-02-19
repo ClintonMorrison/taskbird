@@ -39,9 +39,18 @@ taskApp.service('resources', function($q, taskAPI) {
     };
 
     this.Resource.prototype.delete = function () {
+        var self = this;
         console.log("Deleting ID: ", this.data.id);
         return taskAPI.delete(this.config.endpoint + '/' + this.data.id).then(function (response) {
-
+            // Remove cached copies of this object
+            if (fetchedResources[self.config.name]) {
+                fetchedResources[self.config.name] = _.filter(
+                    fetchedResources[self.config.name],
+                    function (obj) {
+                        return obj.data.id != self.id;
+                    }
+                );
+            }
         }).catch(function () {
             ModalService.alert('Error', 'There was a problem deleting object. Please try again later');
         });
@@ -120,24 +129,40 @@ taskApp.service('resources', function($q, taskAPI) {
     var projectDropdown = _.defaults({name: 'projectDropdown'}, choiceField);
 
     // ----- Public methods ------ //
+    var fetchedResources = {};
     this.getAll = function (type) {
+        console.log('REQUEST TO GET ALL', type.prototype.config.name);
         if (!type) {
             throw new Error('No type given.');
         }
 
+        // Return cached copy
+        if (fetchedResources[type.prototype.config.name]) {
+            console.log('RETURNING CACHED COPY!!!');
+            return $q.when(fetchedResources[type.prototype.config.name]);
+        }
+
+        // Get all objects
         return taskAPI.get(type.prototype.config.endpoint + '/').then(function (response) {
             var collection = [];
             _.each(response.data.objects, function (obj) {
                collection.push(that._getResourceFromAPI(type, obj));
             });
-           return collection;
+
+            fetchedResources[type.prototype.config.name] = collection;
+            return collection;
         });
     };
 
     this.createObject = function (type) {
         var that = this;
         return taskAPI.post(type.prototype.config.endpoint + '/', {}).then(function (response) {
-            return that._getResourceFromAPI(type, response.data);
+            var newObj = that._getResourceFromAPI(type, response.data);
+            // Add to cache
+            if (fetchedResources[newObj.config.name]) {
+                fetchedResources[newObj.config.name].push(newObj);
+            }
+            return newObj;
         });
     };
 
@@ -163,6 +188,15 @@ taskApp.service('resources', function($q, taskAPI) {
             data[name] = value;
         });
         return new type(data);
+    };
+
+    this.getResourceClass = function (name) {
+        var map = {
+            task: that.Task,
+            project: that.Project
+        };
+
+        return map[name];
     };
 
 
@@ -265,15 +299,5 @@ taskApp.service('resources', function($q, taskAPI) {
 
     }
     this.Project.prototype = _.create(this.Resource.prototype, _project);
-
-    this.getResourceClass = function (name) {
-        var map = {
-            task: that.Task,
-            project: that.Project
-        };
-
-        return map[name];
-    };
-
 });
 

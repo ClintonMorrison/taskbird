@@ -2,6 +2,7 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
     $scope.windowSize = windowService.getDimensions();
     $scope.filterProject = 'all';
     $scope.showDoneTasks = true;
+    $scope.filters = {};
 
 
 
@@ -118,6 +119,7 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
             windowService.scrollToBottom();
         }
         $scope.selectedDay = day;
+        $scope.filters.dateRange = 'date:'+day.date;
     };
 
     $scope.selectTask = function(day, task) {
