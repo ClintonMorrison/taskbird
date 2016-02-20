@@ -98,39 +98,18 @@ taskApp.filter('toTrusted', ['$sce', function($sce){
         };
 }]);
 
-taskApp.filter('applyResourceFilters', ['resources', function(resources) {
-    var _getDateRange = function (str) {
-        if (!str || str === 'all') {
-            return null;
-        }
-        var start, end, format = 'YYYY-MM-DD\\Thh:mm:ss';
-        var parts = str.split(':')
-        if (parts[0] === 'this') {
-            start = moment().startOf(parts[1]);
-            end = moment().endOf(parts[1]);
-        } else if (parts[0] === 'days') {
-            start = moment().startOf('day');
-            if (parts[1] === '+') {
-                end = moment().add(parseInt(parts[2], 10), 'days').endOf('day');
-            } else {
-                end = moment().subtract(parseInt(parts[2], 10), 'days').endOf('day');
-            }
-        } else if (parts[0] === 'date') {
-            start = moment(parts[1], 'YYYY-MM-DD').startOf('day');
-            end = moment(parts[1], 'YYYY-MM-DD').endOf('day');
-        }
-
-        if (!start || !end) {
-            return null;
-        }
-
-        return [start, end];
+taskApp.filter('count', function () {
+    return function (input) {
+        return input.length ? input.length : 0;
     };
+})
+
+taskApp.filter('applyResourceFilters', ['resources', 'util', function(resources, util) {
 
     return function(input, filters) {
         //console.log('Applying: ', filters);
         // Filter by date
-        dateRange = _getDateRange(filters.dateRange);
+        dateRange = util.toDateRange(filters.dateRange);
         if (dateRange) {
             var start = dateRange[0], end = dateRange[1];
             input = _.filter(input, function (obj) {

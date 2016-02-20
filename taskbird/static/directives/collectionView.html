@@ -21,13 +21,17 @@
                         </div>
 
                         <!-- Select time range -->
-                        <div class="item">
+                        <div class="item" ng-show="filters.dateRange.indexOf('date') == -1">
                             <div class="header">Time Range</div>
                             <dropdown class="ui fluid search selection dropdown" ng-model="filters.dateRange">
                                 <input type="hidden">
                                 <i class="dropdown icon"></i>
                                 <div class="default text">Select Time</div>
                                 <div class="menu">
+                                    <div class="item" data-value="all">
+                                        <i class="icon history"></i>
+                                        All
+                                    </div>
                                     <div class="item" data-value="this:day">
                                         <i class="icon calendar"></i>
                                         Today
@@ -55,10 +59,6 @@
                                     <div class="item" data-value="days:-:30">
                                         <i class="icon fast backward"></i>
                                         Last 30 Days
-                                    </div>
-                                    <div class="item" data-value="all">
-                                        <i class="icon history"></i>
-                                        All
                                     </div>
                                 </div>
                             </dropdown>

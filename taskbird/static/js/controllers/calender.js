@@ -1,18 +1,10 @@
-appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $routeParams, $location, taskAPI, taskData, windowService) {
+appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $routeParams, $location, resources, windowService) {
     $scope.windowSize = windowService.getDimensions();
     $scope.filterProject = 'all';
     $scope.showDoneTasks = true;
     $scope.filters = {};
-
-
-
-    $scope.windowWidth = $(window).width();
-    $(window).resize(_.debounce(function() {
-        $scope.$apply(function () {
-            $scope.windowWidth = $(window).width();
-        });
-    }, 500));
-
+    $scope.tasks = [];
+    window.calendarTasks = $scope.tasks;
 
     var _createDay = function(year, month, num, tasksOnDay) {
         var day = {};
@@ -27,7 +19,8 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
 
     $scope.selectedDay = false;
 
-    $scope.refresh = function () {
+    $scope.refresh = function (firstTime) {
+        $scope.tasks = [];
         var fullDays =  ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
         $scope.days = [];
         _.each(fullDays, function (day) {
@@ -35,16 +28,8 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
         });
 
         // Get projects
-        taskAPI.get('project/').success(function (data) {
-            $scope.projects = data.objects;
-
-            // Filter by project ID in URL
-            $timeout(function () {
-                $scope.filterProject = "all";
-                if ($routeParams.projectID) {
-                    $scope.filterProject = parseInt($routeParams.projectID, 10);
-                }
-            });
+        resources.getAll(resources.Project).then(function (projects) {
+           $scope.projects = projects;
         });
 
         $scope.year = moment().format('YYYY');
@@ -62,16 +47,18 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
         $scope.todaysDate = moment().format("YYYY-MM-D");
         var currentYearAndMonth = moment(dateString).format("YYYY-MM");
 
-        taskData.getTasks().then(function (tasks) {
-            $scope.tasks = tasks;
+        resources.getAll(resources.Task).then(function (tasks) {
+            _.each(tasks, function (task) {
+                $scope.tasks.push(task);
+            });
             $scope.tasksOnDay = {};
             _.each($scope.tasks, function (task) {
-                if (task.date_due) {
-                    if (moment(task.date_due).format('YYYY-MM') != currentYearAndMonth) {
+                if (task.data.date_due) {
+                    if (moment(task.data.date_due, 'MM/DD/YYYY').format('YYYY-MM') != currentYearAndMonth) {
                         return;
                     }
 
-                    var day = moment(task.date_due).format('D');
+                    var day = moment(task.data.date_due, 'MM/DD/YYYY').format('D');
                     if (!$scope.tasksOnDay[day]) {
                         $scope.tasksOnDay[day] = [];
                     }
@@ -162,6 +149,9 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
         $scope.selectDay($scope.selectedDay);
     };
 
+    resources.onChange('task', _.debounce(function () {
+        $scope.refresh();
+    }, 400));
 
     $scope.refresh();
 

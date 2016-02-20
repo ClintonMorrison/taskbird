@@ -54,9 +54,7 @@ taskApp.directive('collectionView', function ($timeout, taskAPI, $location, wind
                     name: name,
                     icon: resource.prototype.config.display.icon,
                     callback: function () {
-                        console.log('Clicked for ' + name);
-                        resources.createObject(resource).then(function (obj) {
-                            console.log(obj);
+                        resources.createObject(resource, $scope.filters).then(function (obj) {
                             $scope.collection.push(obj);
                             $scope.selectObject(obj);
                         });
@@ -65,8 +63,6 @@ taskApp.directive('collectionView', function ($timeout, taskAPI, $location, wind
             });
 
             $scope.selectObject = function (obj) {
-                console.log(obj);
-
                 if ($scope.selectedObject && $scope.selectedObject.data.id === obj.data.id) {
                     window.selected = null;
                     $scope.selectedObject = false;

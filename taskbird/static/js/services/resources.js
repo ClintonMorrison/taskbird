@@ -2,7 +2,7 @@
  * Created by clinton on 12/31/2015.
  */
 
-taskApp.service('resources', function($q, taskAPI) {
+taskApp.service('resources', function($q, taskAPI, util) {
     var that = this;
 
     // ---- Resource ---- //
@@ -12,6 +12,7 @@ taskApp.service('resources', function($q, taskAPI) {
     };
 
     this.Resource.prototype.config = {};
+    this.Resource.prototype.on = {};
 
     this.Resource.prototype._formatForAPI = function() {
         var fields = this.config.fields;
@@ -27,20 +28,22 @@ taskApp.service('resources', function($q, taskAPI) {
         return data;
     };
     this.Resource.prototype.save = function () {
-        console.log("Saving obect!", this);
+        var self = this;
         return taskAPI.put(
             this.config.endpoint + '/' + this.data.id,
             {},
             this._formatForAPI(),
             true
         ).then(function (response) {
-
+            if (self.on && self.on['changed']) {
+                self.on['changed']();
+            }
+            return self;
         });
     };
 
     this.Resource.prototype.delete = function () {
         var self = this;
-        console.log("Deleting ID: ", this.data.id);
         return taskAPI.delete(this.config.endpoint + '/' + this.data.id).then(function (response) {
             // Remove cached copies of this object
             if (fetchedResources[self.config.name]) {
@@ -51,9 +54,17 @@ taskApp.service('resources', function($q, taskAPI) {
                     }
                 );
             }
+            if (self.on && self.on['changed']) {
+                self.on['changed']();
+            }
         }).catch(function () {
             ModalService.alert('Error', 'There was a problem deleting object. Please try again later');
         });
+    };
+
+    this.onChange = function (resourceName, handler) {
+        var resource = that.getResourceClass(resourceName);
+        resource.prototype.on['changed'] = handler;
     };
 
     // ------ Field types ------- ///
@@ -130,39 +141,62 @@ taskApp.service('resources', function($q, taskAPI) {
 
     // ----- Public methods ------ //
     var fetchedResources = {};
+    window.fetchedResources = fetchedResources;
+
+    var existingGetAllPromises = {};
     this.getAll = function (type) {
-        console.log('REQUEST TO GET ALL', type.prototype.config.name);
+        var resourceName = type.prototype.config.name;
+
         if (!type) {
             throw new Error('No type given.');
         }
 
         // Return cached copy
-        if (fetchedResources[type.prototype.config.name]) {
-            console.log('RETURNING CACHED COPY!!!');
-            return $q.when(fetchedResources[type.prototype.config.name]);
+        if (fetchedResources[resourceName]) {
+            return $q.when(fetchedResources[resourceName]);
+        }
+
+        if (existingGetAllPromises[resourceName]) {
+            return existingGetAllPromises[resourceName];
         }
 
         // Get all objects
-        return taskAPI.get(type.prototype.config.endpoint + '/').then(function (response) {
+        existingGetAllPromises[resourceName] = taskAPI.get(type.prototype.config.endpoint + '/').then(function (response) {
             var collection = [];
             _.each(response.data.objects, function (obj) {
                collection.push(that._getResourceFromAPI(type, obj));
             });
 
-            fetchedResources[type.prototype.config.name] = collection;
-            return collection;
+            fetchedResources[resourceName] = collection;
+            return fetchedResources[resourceName];
         });
+        return existingGetAllPromises[resourceName];
     };
 
-    this.createObject = function (type) {
-        var that = this;
+    this.createObject = function (type, filters) {
+        var self = this;
         return taskAPI.post(type.prototype.config.endpoint + '/', {}).then(function (response) {
-            var newObj = that._getResourceFromAPI(type, response.data);
+            var obj = self._getResourceFromAPI(type, response.data);
             // Add to cache
-            if (fetchedResources[newObj.config.name]) {
-                fetchedResources[newObj.config.name].push(newObj);
+            if (fetchedResources[obj.config.name]) {
+                fetchedResources[obj.config.name].push(obj);
             }
-            return newObj;
+            if (self.on && self.on['changed']) {
+                self.on['changed']();
+            }
+
+            if (filters.selectedProject) {
+                obj.data.project = filters.selectedProject;
+            }
+            if (filters.dateRange) {
+                range = util.toDateRange(filters.dateRange);
+                if (range && obj.config.forms.collection.targetDate) {
+                    obj.data[obj.config.forms.collection.targetDate] = moment(range[0]).format('MM/DD/YYYY');
+                }
+            }
+            return obj;
+        }).then(function (obj) {
+            return obj.save();
         });
     };
 
