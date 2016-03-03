@@ -120,12 +120,8 @@
                             <div class="column one wide">
                                 <i class="large clickable icon task-checkbox"
                                    ng-class="object.getBigIcon()"
-                                   ng-click="">
+                                   ng-click="object.handleBigIconClick()">
                                 </i>
-                                <!--<i class="large clickable {{priorityColors[task.priority]}} icon task-checkbox"
-                                   ng-class="{'checkmark box': !!object.data.done, 'square outline thin':!task.done}"
-                                   ng-click="">
-                                </i>-->
                             </div>
 
                             <div class="column fourteen wide">

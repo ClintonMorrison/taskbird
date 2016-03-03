@@ -8,7 +8,8 @@ taskApp.directive('collectionView', function ($timeout, taskAPI, $location, wind
         templateUrl: TaskBirdData.staticURL + 'directives/collectionView.html',
         scope: {
             filters: '=',
-            resources: '@'
+            resources: '@',
+            collectionAPI: '='
         },
         link: function ($scope, elm, attr) {
             window.filters = $scope.filters;
@@ -28,11 +29,10 @@ taskApp.directive('collectionView', function ($timeout, taskAPI, $location, wind
                 }
             }, 0);
 
-
-
             $scope.refresh = function () {
                 alreadyRefreshed = true;
                 $scope.collection = [];
+                window.collection = $scope.collection;
                 $scope.selectedObject = false;
 
                 _.each($scope.resourceNames, function (resourceName) {

@@ -295,6 +295,11 @@ taskApp.service('resources', function($q, taskAPI, util) {
         return '';
     };
 
+    _task.handleBigIconClick = function () {
+        this.data.done = !this.data.done;
+        this.save();
+    };
+
     this.Task.prototype = _.create(this.Resource.prototype, _task);
 
     // ------- Project ------- //
@@ -330,8 +335,9 @@ taskApp.service('resources', function($q, taskAPI, util) {
 
     _project.getBigIcon = function () {
         return this.data.icon + ' ' + this.data.color;
+    };
 
-    }
+    _project.handleBigIconClick = function () {};
     this.Project.prototype = _.create(this.Resource.prototype, _project);
 });
 

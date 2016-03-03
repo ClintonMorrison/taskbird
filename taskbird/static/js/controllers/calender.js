@@ -4,6 +4,7 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
     $scope.showDoneTasks = true;
     $scope.filters = {};
     $scope.tasks = [];
+    $scope.collectionAPI = {};
     window.calendarTasks = $scope.tasks;
 
     var _createDay = function(year, month, num, tasksOnDay) {
@@ -107,6 +108,8 @@ appControllers.controller('CalendarCtrl', function($scope, $route, $timeout, $ro
         }
         $scope.selectedDay = day;
         $scope.filters.dateRange = 'date:'+day.date;
+        $scope.filters.search = '';
+        // TODO: Clear selected task
     };
 
     $scope.selectTask = function(day, task) {
