@@ -92,7 +92,6 @@ appControllers.controller('AnalyticsCtrl', function ($scope, $q, $timeout, $root
                 var created = false, due = false, done = false;
                 if (task.data.date_created) {
                     created = moment(task.data.date_created, 'MM/DD/YYYY').format('YYYY-MM-DD');
-                    console.log('Created date', created)
                 }
 
                 if (task.data.date_due) {
@@ -102,8 +101,6 @@ appControllers.controller('AnalyticsCtrl', function ($scope, $q, $timeout, $root
                 if (task.data.date_completed) {
                     done = moment(task.data.date_completed, 'MM/DD/YYYY').format('YYYY-MM-DD');
                 }
-
-                console.log(_inRange(start, end, created) || _inRange(start, end, due) || _inRange(start, end, done));
 
                 return _inRange(start, end, created) || _inRange(start, end, due) || _inRange(start, end, done);
             });
@@ -152,13 +149,13 @@ appControllers.controller('AnalyticsCtrl', function ($scope, $q, $timeout, $root
 
                 date = moment(date, 'YYYY-MM-DD').add('days', 1).format('YYYY-MM-DD');
             }
-            console.log(tasksByDate);
+
             _.each($scope.projects, function (project) {
                 var tasksInProject = _.filter(
                     $scope.tasks,
                     function (task) { return task.data.project && task.data.project.id == project.id}
                 );
-                var tasksDoneInProject = _.filter(tasksInProject, {done: true});
+                var tasksDoneInProject = _.filter(tasksInProject, function (task) { return task.data.done == true; });
                 allTasksByProject[project.id] = tasksInProject;
 
                 createdByProject.push({
@@ -178,7 +175,7 @@ appControllers.controller('AnalyticsCtrl', function ($scope, $q, $timeout, $root
             // Tasks created by day of the week
             var daysOfWeek = {'Mon': 0, 'Tue': 0, 'Wed': 0, 'Thu': 0, 'Fri': 0, 'Sat': 0, 'Sun': 0};
             _.each($scope.tasks, function (task) {
-                var startDay = moment(task.date_created).format('ddd');
+                var startDay = moment(task.data.date_created, 'MM/DD/YYYY').format('ddd');
                daysOfWeek[startDay] += 1;
             });
             var taskCreateByDayOfWeek = [];
@@ -190,7 +187,7 @@ appControllers.controller('AnalyticsCtrl', function ($scope, $q, $timeout, $root
 
             // Tasks completed by day of the week
             var daysOfWeek = {'Mon': 0, 'Tue': 0, 'Wed': 0, 'Thu': 0, 'Fri': 0, 'Sat': 0, 'Sun': 0};
-            var allDoneTasks = _.filter($scope.tasks, {done: true});
+            var allDoneTasks = _.filter($scope.tasks, function (task) { return task.data.done == true; });
             _.each(allDoneTasks, function (task) {
                 var startDay = moment(task.data.date_modified, 'MM/DD/YYYY').format('ddd');
                daysOfWeek[startDay] += 1;
