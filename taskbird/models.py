@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
-
+from django.db.models.signals import post_save
 
 class Project(models.Model):
     user = models.ForeignKey(User)
@@ -50,8 +50,21 @@ class UserSettings(models.Model):
 
 def generate_demo_data(user):
     sample_tasks = [
-        ['Start Using Task Bird', 'Thanks for trying Task Bird!'],
         ['Sample Task', 'This is a sample task'],
+        ['Try Making a Project', '\n'.join([
+            'Click "Projects" on the top menu. ',
+            'Next, click the "New Project" button. ',
+            'You can associate tasks with projects. '
+        ])],
+        ['Check out the Calendar Page', '\n'.join([
+            'Click "Calendar" on the top menu. ',
+            'Click a day to view the tasks due on that day. ',
+            'You can add new tasks by clicking the "New Task" button. '
+        ])],
+        ['Check out the Analytics Page', '\n'.join([
+            'Click "Analytics" on the top menu. ',
+            'This page shows statistics and trends about your what you have been working on. ',
+        ])],
     ]
 
     sample_projects = [
@@ -69,3 +82,9 @@ def generate_demo_data(user):
         task = Task(user=user, title=title, description=description)
         task.save()
 
+def user_created(sender, **kwargs):
+    user = kwargs['instance']
+    if kwargs['created']:
+        generate_demo_data(user)
+
+post_save.connect(user_created, sender=User)

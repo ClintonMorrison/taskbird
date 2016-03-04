@@ -3,10 +3,12 @@ from django.shortcuts import get_object_or_404, render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as djangoLogin
+from django.shortcuts import redirect
 from models import User, generate_demo_data
 import taskbird.email
 
 from forms import ContactForm
+from forms import SignupForm
 
 import json
 import yaml
@@ -40,19 +42,24 @@ def siteContact(request):
         form = ContactForm(request.POST)
         data['form'] = form
         if form.is_valid():
-            taskbird.email.send_admin_email('Feedback from "%s"' % form.cleaned_data.get('name', ''), form.cleaned_data.get('message', ''))
+            taskbird.email.send_admin_email(
+                'Feedback from "%s"' % form.cleaned_data.get('name', ''),
+                form.cleaned_data.get('message', '')
+            )
 
     return render(request, "site/contact.html", data)
 
 
 def siteSignup(request):
+    return redirect('login')
     if request.method == 'POST':
-        first_name = request.POST.get('first_name', '')
-        last_name = request.POST.get('last_name', '')
-        email = request.POST.get('email')
-        password = request.POST.get('password')
+        form = SignupForm(request.POST)
+        if form.is_valid():
+            first_name = form.cleaned_data.get('fist_name', '')
+            last_name = form.cleaned_data.get('last_name', '')
+            email = form.cleaned_data.get('email', '')
+            password = form.cleaned_data.get('password', '')
 
-        if email and password:
             user = User.objects.create_user(
                 first_name = first_name,
                 last_name = last_name,
@@ -66,7 +73,11 @@ def siteSignup(request):
             djangoLogin(request, user)
             return HttpResponseRedirect("/app/")
         else:
-            return render(request, "site/signup.html", {'error_message': "You must enter a valid email, and password."})
+            return render(
+                request,
+                "site/signup.html",
+                {'error_message': "You must enter a valid name, email, and password." + json.dumps(form.errors)}
+            )
 
     return render(request, "site/signup.html", {})
 

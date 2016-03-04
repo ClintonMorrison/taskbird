@@ -48,6 +48,7 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'tastypie',
+    'social.apps.django_app.default',
     'taskbird'
 )
 
@@ -99,3 +100,10 @@ STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(PROJECT_DIR,'static')
 # STATIC_ROOT = '/home1/clintor1/public_html/static/taskbird'
 
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '262580710536-jjsrja4992n5n5o4jiq2atb0p8qlrve1'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'K8GzypN4kF7Gtlu46Y2ipgzR'
+
+AUTHENTICATION_BACKENDS = (
+    'social.backends.google.GoogleOAuth2',
+    'django.contrib.auth.backends.ModelBackend'
+)

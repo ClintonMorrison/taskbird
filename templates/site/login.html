@@ -2,8 +2,15 @@
 {% block title %} Login {% endblock %}
 
 {% block body %}
-    <p>Login to your Task Bird account.</p> <br/>
+    <p>Currently a Google account is required to use Task Bird. More login options are coming soon!</p> <br/>
 
+
+    <a class="ui google plus button" href="/soc/login/google-oauth2/?next=/app/#/tasks/">
+      <i class="google plus icon"></i>
+      Login with Google
+    </a>
+
+    <!--
     <form action="/login/" method="post" class="ui form">
     {% csrf_token %}
         <div class="field">
@@ -19,6 +26,8 @@
         <input class='ui blue button' type="submit" value="Submit">
     </form>
 
+
     <br/><br/>
     <p><a href="/requestPasswordReset">Forgot your password?</a></p>
+    -->
 {% endblock %}

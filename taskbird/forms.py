@@ -10,4 +10,10 @@ class PasswordResetRequestForm(forms.Form):
 
 class ContactForm(forms.Form):
 	name = forms.CharField(label='Name', max_length=100)
-	message = forms.CharField(label='Name', max_length=100, required=False)
+	message = forms.CharField(label='Message', max_length=100, required=False)
+
+class SignupForm(forms.Form):
+    first_name = forms.CharField(label='First Name', max_length=100, required=True)
+    last_name = forms.CharField(label='Last Name', max_length=100, required=True)
+    email = forms.EmailField(label='Email', required=True)
+    password = forms.CharField(label='Password', required=True)

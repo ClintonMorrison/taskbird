@@ -21,7 +21,7 @@ urlpatterns = patterns('',
 
     #url(r'^admin/$', include(admin.site.urls)),
     # url(r'^$', views.index, name='index'),
-
+    url("^soc/", include("social.apps.django_app.urls", namespace="social")),
     url(r'^$', views.siteIndex, name='siteIndex'),
     url(r'^features/$', views.siteFeatures, name='siteFeatures'),
     url(r'^about/$', views.siteAbout, name='siteAbout'),
