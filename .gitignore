@@ -7,7 +7,7 @@ __pycache__/
 
 # Django stuff:
 *.log
-settings.py
+taskbird/settings.py
 taskbird/migrations
 manage.py
 
