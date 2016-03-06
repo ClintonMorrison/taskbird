@@ -43,6 +43,10 @@ taskApp.directive('collectionView', function ($timeout, taskAPI, $location, wind
                         });
                     });
                 });
+
+                resources.getAll(resources.Project).then(function (projects) {
+                   $scope.projects = projects;
+                });
             };
 
             $scope.createActions = [];

@@ -14,7 +14,7 @@ class Project(models.Model):
 class Task(models.Model):
     user = models.ForeignKey(User)
     title = models.CharField(max_length=50, default="New Task")
-    description = models.CharField(max_length=300, blank=True, default="")
+    description = models.CharField(max_length=800, blank=True, default="")
     type = models.CharField(max_length=50, default="task") #'task' or 'event'
     done = models.BooleanField(default=False)
     date_created = models.DateTimeField(auto_now_add=True)

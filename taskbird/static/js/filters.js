@@ -109,7 +109,17 @@ taskApp.filter('applyResourceFilters', ['resources', 'util', function(resources,
     return function(input, filters) {
         // Filter by date
         dateRange = util.toDateRange(filters.dateRange);
-        if (dateRange) {
+
+        if (filters.dateRange === 'none') {
+            input = _.filter(input, function (obj) {
+                var dateCol = obj.config.forms.collection.targetDate;
+                if (!dateCol || !obj.data[dateCol]) {
+                    return true;
+                }
+
+                return false;
+            });
+        } else if (dateRange) {
             var start = dateRange[0], end = dateRange[1];
             input = _.filter(input, function (obj) {
                 var dateCol = obj.config.forms.collection.targetDate;
@@ -127,13 +137,17 @@ taskApp.filter('applyResourceFilters', ['resources', 'util', function(resources,
         }
 
         // Filter by project
-        if (filters.selectedProject && filters.selectedProject.id) {
+        if (filters.selectedProjectID && filters.selectedProjectID !== 'all') {
             input = _.filter(input, function (obj) {
+                if (filters.selectedProjectID === 'none') {
+                    return !obj.data.project || !obj.data.project.id;
+                }
+
                 if (!obj.data.project || !obj.data.project.id) {
                     return false;
                 }
 
-                return obj.data.project.id === filters.selectedProject.id;
+                return obj.data.project.id === filters.selectedProjectID;
             });
         }
 

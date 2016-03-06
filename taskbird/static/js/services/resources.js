@@ -185,9 +185,7 @@ taskApp.service('resources', function($q, taskAPI, util) {
                 self.on['changed']();
             }
 
-            if (filters.selectedProject) {
-                obj.data.project = filters.selectedProject;
-            }
+
             if (filters.dateRange) {
                 range = util.toDateRange(filters.dateRange);
                 if (range && obj.config.forms.collection.targetDate) {
@@ -195,6 +193,17 @@ taskApp.service('resources', function($q, taskAPI, util) {
                 }
             }
             return obj;
+        }).then(function (obj) {
+            if (filters.selectedProjectID) {
+                return that.getAll(that.Project).then(function (projects) {
+                    var project = _.chain(projects).filter({id: filters.selectedProjectID}).first().value();
+                    if (project) {
+                        obj.data.project = project._formatForAPI();
+                    }
+                    return $q.when(obj);
+                });
+            }
+            return $q.when(obj);
         }).then(function (obj) {
             return obj.save();
         });

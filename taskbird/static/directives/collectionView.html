@@ -17,7 +17,28 @@
                         <!-- Select project -->
                         <div class="item">
                             <div class="header">Project</div>
+                            <dropdown class="ui fluid search selection dropdown" ng-model="filters.selectedProjectID">
+                                <input type="hidden">
+                                <i class="dropdown icon"></i>
+                                <div class="default text">Select Project</div>
+                                <div class="menu">
+                                    <div class="item" data-value="all">
+                                        <i class="ui icon history"></i>
+                                        All
+                                    </div>
+                                    <div class="item" ng-repeat="project in projects" data-value="{{project.data.id}}">
+                                        <i class="{{project.data.color}} {{project.data.icon}} icon"></i>
+                                        {{project.data.title}}
+                                    </div>
+                                    <div class="item" data-value="none">
+                                        <i class="icon remove circle"></i>
+                                        No Project
+                                    </div>
+                                </div>
+                            </dropdown>
+                            <!--
                             <project-selector ng-model="filters.selectedProject" projects="projects"></project-selector>
+                            -->
                         </div>
 
                         <!-- Select time range -->
@@ -59,6 +80,10 @@
                                     <div class="item" data-value="days:-:30">
                                         <i class="icon fast backward"></i>
                                         Last 30 Days
+                                    </div>
+                                    <div class="item" data-value="none">
+                                        <i class="icon remove circle"></i>
+                                        No Date
                                     </div>
                                 </div>
                             </dropdown>
