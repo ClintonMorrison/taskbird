@@ -111,79 +111,20 @@ taskApp.directive('projectSelector', function ($timeout, resources) {
     };
 });
 
-
-taskApp.directive('projectFilter', function ($timeout, resources) {
-    return {
-        restrict: "E",
-        replace: 'true',
-        template: [
-            //'<label>Project</label>',
-            '<div class="ui fluid search selection dropdown">',
-            '<input type="hidden">',
-            '<i class="dropdown icon"></i>',
-            '<div class="default text">Select Project</div>',
-            '<div class="menu">',
-            '<div class="item" data-value="false"><i class="ui icon history"></i>All</div>',
-            '<div class="item" ng-repeat="project in projects" data-value="{{project.data.id}}">',
-            '<i class="{{project.data.color}} {{project.data.icon}} icon"></i>',
-            '{{project.data.title}}',
-            '</div>',
-            '</div>',
-            '</div>'
-        ].join('\n'),
-        scope: {
-            ngModel: '=',
-            projects: '='
-        },
-        link: function (scope, elm, attr) {
-            resources.getAll(resources.Project).then(function (projects) {
-                scope.projects = projects;
-            }).then(function () {
-                elm.dropdown('save defaults');
-                scope.$watch('ngModel', function(newValue, oldValue) {
-                    if (newValue === oldValue) {
-                        return;
-                    }
-
-                    elm.dropdown('set selected', scope.ngModel ? scope.ngModel.id : false);
-                });
-
-                elm.dropdown().dropdown('setting', {
-                    onChange: function (value) {
-                        $timeout(function () {
-                            var project = _.chain(scope.projects).filter({id : value}).first().value()._formatForAPI();
-                            if (project) {
-                                scope.ngModel = project._formatForAPI();
-                            } else {
-                                scope.ngModel = null;
-                            }
-
-                            scope.$parent.$apply();
-                        });
-                    }
-                });
-
-                $timeout(function () {
-                    if (scope.ngModel && scope.ngModel.id) {
-                        elm.dropdown('set selected', scope.ngModel.id);
-                    }
-                }, 0);
-            });
-
-
-        }
-    };
-});
-
-
-
 taskApp.directive('taskDatepicker', function () {
     return {
         restrict: "E",
         replace: 'true',
-        template: "<input class='datepicker' type='text' >",
+        scope: {
+            ngModel: '=',
+        },
+        templateUrl: TaskBirdData.staticURL + 'directives/taskDatepicker.html',
         link: function (scope, elm, attr) {
-            $(elm).datepicker();
+            console.log("DATE PICKER ELM", elm);
+            $(elm).find('input').datepicker();
+            scope.clearSelection = function () {
+                scope.ngModel = "";
+            };
         }
     };
 });
