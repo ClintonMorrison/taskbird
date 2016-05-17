@@ -30,7 +30,7 @@ taskApp.service('resources', function($q, taskAPI, util) {
     this.Resource.prototype.save = function () {
         var self = this;
         return taskAPI.put(
-            this.config.endpoint + '/' + this.data.id,
+            this.config.endpoint + '/' + this.data.id + '/',
             {},
             this._formatForAPI(),
             true
@@ -44,7 +44,7 @@ taskApp.service('resources', function($q, taskAPI, util) {
 
     this.Resource.prototype.delete = function () {
         var self = this;
-        return taskAPI.delete(this.config.endpoint + '/' + this.data.id).then(function (response) {
+        return taskAPI.delete(this.config.endpoint + '/' + this.data.id + '/').then(function (response) {
             // Remove cached copies of this object
             if (fetchedResources[self.config.name]) {
                 fetchedResources[self.config.name] = _.filter(
