@@ -26,12 +26,10 @@ def siteIndex(request):
 def siteFeatures(request):
     file_path = os.path.join(settings.STATIC_ROOT, 'content/features.yaml')
     features = yaml.load(open(file_path, 'r'))
-    #return JsonResponse({'1': features})
     return render(request, "site/features.html", {'features': features})
 
 
 def siteAbout(request):
-    #taskbird.email.send_password_reset_email('contact@taskbird.ca')
     return render(request, "site/about.html", {})
 
 
