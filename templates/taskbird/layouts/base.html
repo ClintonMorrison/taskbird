@@ -1,0 +1,36 @@
+{% load static %}
+
+<!doctype html>
+
+<html lang="en">
+    <head>
+      <meta charset="utf-8">
+    
+      <title>
+         {% block title %}{% endblock %}
+         – Task Bird
+       </title>
+       
+      <meta name="description" content="An awesome productivity app">
+      <meta name="author" content="Clinton Morrison">
+    
+    <link rel="stylesheet" href="{% static 'semantic/dist/semantic.css' %}">
+    <link rel="stylesheet" href="{% static 'taskbird/layouts/header.css' %}">
+
+      {% block styles %}{% endblock %}
+
+    </head>
+    
+    <body>
+        {% block body %}{% endblock %}
+        
+        <script
+          src="https://code.jquery.com/jquery-3.1.1.slim.min.js"
+          integrity="sha256-/SIrNqv8h6QGKDuNoLGA4iret+kyesCkHGzVUUV0shc="
+          crossorigin="anonymous"></script>
+          
+        <script src="{% static 'semantic/dist/semantic.js' %}"></script>
+        
+        {% block scripts %}{% endblock %}
+    </body>
+</html>

@@ -1,0 +1,15 @@
+header.ui.menu .actions.item > .button {
+    /* font-size: .95em; */
+}
+
+header.ui.menu .item {
+    justify-content: center; /* TODO: use vendor prefiexes? */
+}
+
+header.ui.menu .actions.item > .button + .button {
+    margin-left: .75em;
+}
+
+header.ui.menu {
+    border-radius: 0;
+}

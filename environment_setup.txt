@@ -1,0 +1,12 @@
+TODO: replace this with a script
+
+# install Python 3.4.3
+# sudo apt-get install python3
+# install pip3
+
+sudo pip3 install virtualenv
+virtualenv venv
+source venv/bin/activate
+
+# other
+pip install django

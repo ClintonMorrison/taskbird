@@ -1,0 +1,10 @@
+{% extends "layouts/base.html" %}
+
+
+{% block body %}
+    {% include 'layouts/header.html' %}
+    
+    <div class="ui main container">
+        {% block content %}{% endblock %}
+    </div>
+{% endblock %}
