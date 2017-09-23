@@ -17,3 +17,6 @@ manage.py
 # Apache
 .htaccess
 *.fcgi
+
+# PyCharm
+.idea/
