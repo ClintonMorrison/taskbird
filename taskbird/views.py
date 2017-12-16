@@ -4,16 +4,16 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as djangoLogin
 from django.shortcuts import redirect
-from models import User, generate_demo_data
+from .models import User, generate_demo_data
 import taskbird.email
 
-from forms import ContactForm
-from forms import SignupForm
+from .forms import ContactForm
+from .forms import SignupForm
 
 import json
 import yaml
 import os
-import settings
+from . import settings
 
 def index(request):
     return render(request, "index.html", {})

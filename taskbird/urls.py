@@ -6,8 +6,8 @@ from taskbird import views
 
 from taskbird.api import TaskResource, UserResource, UserSettingsResource, ProjectResource
 
-from models import Task
-from models import User
+from .models import Task
+from .models import User
 
 task_resource = TaskResource()
 user_resource = UserResource()
