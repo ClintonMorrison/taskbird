@@ -1,41 +1,33 @@
-from django.conf.urls import patterns, include, url
 from django.conf.urls.static import static
-from django.conf import settings
-from django.contrib import admin
+import taskbird.settings
 from taskbird import views
+from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
+
+from social.apps.django_app import urls as social_urls
+
+from django.contrib.auth.views import logout
 
 from taskbird.api import TaskResource, UserResource, UserSettingsResource, ProjectResource
-
-from .models import Task
-from .models import User
 
 task_resource = TaskResource()
 user_resource = UserResource()
 userSettings_resource = UserSettingsResource()
 project_resource = ProjectResource()
 
-urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'taskbird.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
-
-    #url(r'^admin/$', include(admin.site.urls)),
-    # url(r'^$', views.index, name='index'),
-    url("^soc/", include("social.apps.django_app.urls", namespace="social")),
-    url(r'^$', views.siteIndex, name='siteIndex'),
-    url(r'^features/$', views.siteFeatures, name='siteFeatures'),
-    url(r'^about/$', views.siteAbout, name='siteAbout'),
-    url(r'^contact/$', views.siteContact, name='siteContact'),
-    url(r'^signup/$', views.siteSignup, name='siteSignup'),
-    url(r'^login/$', views.login, name='login'),
-    url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
-    url(r'^requestPasswordReset/$', views.request_password_reset, name='requestPasswordReset'),
-    url(r'^passwordReset/$', views.password_reset, name='passwordReset'),
-
-    url(r'^app/$', views.appIndex, name='appIndex'),
-    url(r'^api/', include(task_resource.urls)),
-    url(r'^api/', include(user_resource.urls)),
-    url(r'^api/', include(userSettings_resource.urls)),
-    url(r'^api/', include(project_resource.urls)),
-) + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+urlpatterns = [
+    path('', include(social_urls, namespace="social")),
+    path('', views.siteIndex, name='siteIndex'),
+    path('features', views.siteFeatures, name='siteFeatures'),
+    path('about', views.siteAbout, name='siteAbout'),
+    path('contact', views.siteContact, name='siteContact'),
+    path('login', views.login, name='login'),
+    path('logout', logout, name='logout'),
+    path('app/', views.appIndex, name='appIndex'),
+    #path('api', include(TaskResource.urls)),
+    #path('api', include(UserResource.urls)),
+    #path('api', include(UserSettingsResource.urls)),
+    #path('api', include(ProjectResource.urls)),
+]# + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

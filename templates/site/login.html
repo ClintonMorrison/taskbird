@@ -4,8 +4,7 @@
 {% block body %}
     <p>Currently a Google account is required to use Task Bird. More login options are coming soon!</p> <br/>
 
-
-    <a class="ui google plus button" href="/soc/login/google-oauth2/?next=/app/#/tasks/">
+    <a class="ui google plus button" href="{% url "social:begin" "google-oauth2" %}">
       <i class="google plus icon"></i>
       Login with Google
     </a>

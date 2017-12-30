@@ -1,4 +1,6 @@
-<script type="text/javascript" src="{{ STATIC_URL }}js/modal.js"></script>
+{% load static %}
+
+<script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
 
 <!-- Confirm dialog -->
 <div id="modal-confirm" class="ui small modal">

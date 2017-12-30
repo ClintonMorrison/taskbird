@@ -1,0 +1,999 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="42290428-8893-4b30-be8e-287c1a29d33c" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/taskbird/apps.py" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taskbird/migrations/0001_initial.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taskbird/migrations/0002_auto_20150820_1914.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taskbird/migrations/0003_auto_20150821_1521.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taskbird/migrations/0004_task_date_completed.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/taskbird/migrations/__init__.py" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/css/base.css" afterPath="$PROJECT_DIR$/static/admin/css/base.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/css/changelists.css" afterPath="$PROJECT_DIR$/static/admin/css/changelists.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/css/dashboard.css" afterPath="$PROJECT_DIR$/static/admin/css/dashboard.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/css/forms.css" afterPath="$PROJECT_DIR$/static/admin/css/forms.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/css/ie.css" afterPath="$PROJECT_DIR$/static/admin/css/ie.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/css/login.css" afterPath="$PROJECT_DIR$/static/admin/css/login.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/css/rtl.css" afterPath="$PROJECT_DIR$/static/admin/css/rtl.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/css/widgets.css" afterPath="$PROJECT_DIR$/static/admin/css/widgets.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/changelist-bg.gif" afterPath="$PROJECT_DIR$/static/admin/img/changelist-bg.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/changelist-bg_rtl.gif" afterPath="$PROJECT_DIR$/static/admin/img/changelist-bg_rtl.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/default-bg-reverse.gif" afterPath="$PROJECT_DIR$/static/admin/img/default-bg-reverse.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/default-bg.gif" afterPath="$PROJECT_DIR$/static/admin/img/default-bg.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/deleted-overlay.gif" afterPath="$PROJECT_DIR$/static/admin/img/deleted-overlay.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/gis/move_vertex_off.png" afterPath="$PROJECT_DIR$/static/admin/img/gis/move_vertex_off.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/gis/move_vertex_on.png" afterPath="$PROJECT_DIR$/static/admin/img/gis/move_vertex_on.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/icon-no.gif" afterPath="$PROJECT_DIR$/static/admin/img/icon-no.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/icon-unknown.gif" afterPath="$PROJECT_DIR$/static/admin/img/icon-unknown.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/icon-yes.gif" afterPath="$PROJECT_DIR$/static/admin/img/icon-yes.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/icon_addlink.gif" afterPath="$PROJECT_DIR$/static/admin/img/icon_addlink.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/icon_alert.gif" afterPath="$PROJECT_DIR$/static/admin/img/icon_alert.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/icon_calendar.gif" afterPath="$PROJECT_DIR$/static/admin/img/icon_calendar.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/icon_changelink.gif" afterPath="$PROJECT_DIR$/static/admin/img/icon_changelink.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/icon_clock.gif" afterPath="$PROJECT_DIR$/static/admin/img/icon_clock.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/icon_deletelink.gif" afterPath="$PROJECT_DIR$/static/admin/img/icon_deletelink.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/icon_error.gif" afterPath="$PROJECT_DIR$/static/admin/img/icon_error.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/icon_searchbox.png" afterPath="$PROJECT_DIR$/static/admin/img/icon_searchbox.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/icon_success.gif" afterPath="$PROJECT_DIR$/static/admin/img/icon_success.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/inline-delete-8bit.png" afterPath="$PROJECT_DIR$/static/admin/img/inline-delete-8bit.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/inline-delete.png" afterPath="$PROJECT_DIR$/static/admin/img/inline-delete.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/inline-restore-8bit.png" afterPath="$PROJECT_DIR$/static/admin/img/inline-restore-8bit.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/inline-restore.png" afterPath="$PROJECT_DIR$/static/admin/img/inline-restore.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/inline-splitter-bg.gif" afterPath="$PROJECT_DIR$/static/admin/img/inline-splitter-bg.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/nav-bg-grabber.gif" afterPath="$PROJECT_DIR$/static/admin/img/nav-bg-grabber.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/nav-bg-reverse.gif" afterPath="$PROJECT_DIR$/static/admin/img/nav-bg-reverse.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/nav-bg-selected.gif" afterPath="$PROJECT_DIR$/static/admin/img/nav-bg-selected.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/nav-bg.gif" afterPath="$PROJECT_DIR$/static/admin/img/nav-bg.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/selector-icons.gif" afterPath="$PROJECT_DIR$/static/admin/img/selector-icons.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/selector-search.gif" afterPath="$PROJECT_DIR$/static/admin/img/selector-search.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/sorting-icons.gif" afterPath="$PROJECT_DIR$/static/admin/img/sorting-icons.gif" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/tooltag-add.png" afterPath="$PROJECT_DIR$/static/admin/img/tooltag-add.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/img/tooltag-arrowright.png" afterPath="$PROJECT_DIR$/static/admin/img/tooltag-arrowright.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/LICENSE-JQUERY.txt" afterPath="$PROJECT_DIR$/static/admin/js/LICENSE-JQUERY.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/SelectBox.js" afterPath="$PROJECT_DIR$/static/admin/js/SelectBox.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/SelectFilter2.js" afterPath="$PROJECT_DIR$/static/admin/js/SelectFilter2.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/actions.js" afterPath="$PROJECT_DIR$/static/admin/js/actions.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/actions.min.js" afterPath="$PROJECT_DIR$/static/admin/js/actions.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/admin/DateTimeShortcuts.js" afterPath="$PROJECT_DIR$/static/admin/js/admin/DateTimeShortcuts.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/admin/RelatedObjectLookups.js" afterPath="$PROJECT_DIR$/static/admin/js/admin/RelatedObjectLookups.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/calendar.js" afterPath="$PROJECT_DIR$/static/admin/js/calendar.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/collapse.js" afterPath="$PROJECT_DIR$/static/admin/js/collapse.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/collapse.min.js" afterPath="$PROJECT_DIR$/static/admin/js/collapse.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/core.js" afterPath="$PROJECT_DIR$/static/admin/js/core.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/inlines.js" afterPath="$PROJECT_DIR$/static/admin/js/inlines.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/inlines.min.js" afterPath="$PROJECT_DIR$/static/admin/js/inlines.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/jquery.init.js" afterPath="$PROJECT_DIR$/static/admin/js/jquery.init.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/jquery.js" afterPath="$PROJECT_DIR$/static/admin/js/jquery.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/jquery.min.js" afterPath="$PROJECT_DIR$/static/admin/js/jquery.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/prepopulate.js" afterPath="$PROJECT_DIR$/static/admin/js/prepopulate.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/prepopulate.min.js" afterPath="$PROJECT_DIR$/static/admin/js/prepopulate.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/timeparse.js" afterPath="$PROJECT_DIR$/static/admin/js/timeparse.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/admin/js/urlify.js" afterPath="$PROJECT_DIR$/static/admin/js/urlify.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/content/features.yaml" afterPath="$PROJECT_DIR$/static/content/features.yaml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/directives/actionSelector.html" afterPath="$PROJECT_DIR$/static/directives/actionSelector.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/directives/collectionView.html" afterPath="$PROJECT_DIR$/static/directives/collectionView.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/directives/objectEditor.html" afterPath="$PROJECT_DIR$/static/directives/objectEditor.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/directives/taskDatepicker.html" afterPath="$PROJECT_DIR$/static/directives/taskDatepicker.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/directives/taskViewer.html" afterPath="$PROJECT_DIR$/static/directives/taskViewer.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/images/sample.png" afterPath="$PROJECT_DIR$/static/images/sample.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/app.js" afterPath="$PROJECT_DIR$/static/js/app.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/controllers/analytics.js" afterPath="$PROJECT_DIR$/static/js/controllers/analytics.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/controllers/calender.js" afterPath="$PROJECT_DIR$/static/js/controllers/calender.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/controllers/header.js" afterPath="$PROJECT_DIR$/static/js/controllers/header.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/controllers/home.js" afterPath="$PROJECT_DIR$/static/js/controllers/home.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/controllers/newtask.js" afterPath="$PROJECT_DIR$/static/js/controllers/newtask.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/controllers/projects.js" afterPath="$PROJECT_DIR$/static/js/controllers/projects.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/controllers/settings.js" afterPath="$PROJECT_DIR$/static/js/controllers/settings.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/controllers/tasks.js" afterPath="$PROJECT_DIR$/static/js/controllers/tasks.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/directives.js" afterPath="$PROJECT_DIR$/static/js/directives.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/directives/actionSelector.js" afterPath="$PROJECT_DIR$/static/js/directives/actionSelector.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/directives/collectionView.js" afterPath="$PROJECT_DIR$/static/js/directives/collectionView.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/directives/objectEditor.js" afterPath="$PROJECT_DIR$/static/js/directives/objectEditor.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/filters.js" afterPath="$PROJECT_DIR$/static/js/filters.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/modal.js" afterPath="$PROJECT_DIR$/static/js/modal.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/services/loader.js" afterPath="$PROJECT_DIR$/static/js/services/loader.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/services/projectData.js" afterPath="$PROJECT_DIR$/static/js/services/projectData.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/services/resources.js" afterPath="$PROJECT_DIR$/static/js/services/resources.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/services/taskAPI.js" afterPath="$PROJECT_DIR$/static/js/services/taskAPI.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/services/taskData.js" afterPath="$PROJECT_DIR$/static/js/services/taskData.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/services/util.js" afterPath="$PROJECT_DIR$/static/js/services/util.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/js/services/window.js" afterPath="$PROJECT_DIR$/static/js/services/window.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/partials/analytics.html" afterPath="$PROJECT_DIR$/static/partials/analytics.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/partials/calendar.html" afterPath="$PROJECT_DIR$/static/partials/calendar.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/partials/home.html" afterPath="$PROJECT_DIR$/static/partials/home.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/partials/newTask.html" afterPath="$PROJECT_DIR$/static/partials/newTask.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/partials/projects.html" afterPath="$PROJECT_DIR$/static/partials/projects.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/partials/settings.html" afterPath="$PROJECT_DIR$/static/partials/settings.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/partials/tasks.html" afterPath="$PROJECT_DIR$/static/partials/tasks.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/style/base.css" afterPath="$PROJECT_DIR$/static/style/base.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/style/site.css" afterPath="$PROJECT_DIR$/static/style/site.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/style/taskbird.css" afterPath="$PROJECT_DIR$/static/style/taskbird.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/.gitignore" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/.gitignore" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/Gruntfile.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/Gruntfile.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/LICENSE" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/LICENSE" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/README.md" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/README.md" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/.gitignore" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/.gitignore" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/bower.json" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/bower.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/data/data.json" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/data/data.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/data/data.xml" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/data/data.xml" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex1/config.json" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex1/config.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex1/index.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex1/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex1/index.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex1/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex1/src.ejs" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex1/src.ejs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex2/config.json" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex2/config.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex2/index.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex2/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex2/index.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex2/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex2/src.ejs" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex2/src.ejs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex3/config.json" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex3/config.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex3/index.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex3/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex3/index.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex3/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex3/src.ejs" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex3/src.ejs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex4/config.json" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex4/config.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex4/index.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex4/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex4/index.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex4/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex4/src.ejs" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex4/src.ejs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex5/config.json" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex5/config.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex5/index.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex5/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex5/index.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex5/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex5/src.ejs" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex5/src.ejs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex5a/config.json" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex5a/config.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex5a/index.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex5a/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex5a/index.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex5a/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex5a/src.ejs" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex5a/src.ejs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex6/config.json" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex6/config.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex6/index.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex6/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex6/index.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex6/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex6/src.ejs" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex6/src.ejs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex7/config.json" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex7/config.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex7/index.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex7/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex7/index.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex7/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex7/src.ejs" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex7/src.ejs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex8/config.json" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex8/config.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex8/index.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex8/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex8/index.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex8/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex8/src.ejs" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex8/src.ejs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex9/config.json" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex9/config.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex9/index.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex9/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex9/index.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex9/index.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex9/src.ejs" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/demosources/ex9/src.ejs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/images/ng-fc-logo.png" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/images/ng-fc-logo.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/index.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/js/.gitignore" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/js/.gitignore" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/js/app.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/js/app.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex1.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex1.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex10.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex10.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex2.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex2.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex3.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex3.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex4.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex4.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex5.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex5.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex5a.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex5a.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex6.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex6.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex7.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex7.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex8.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex8.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex9.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/js/demos/ex9.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/src/codebox.ejs" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/src/codebox.ejs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/src/data.json" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/src/data.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/src/index.ejs" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/src/index.ejs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/src/index.ghpages.ejs" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/src/index.ghpages.ejs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex1.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex1.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex10.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex10.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex2.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex2.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex3.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex3.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex4.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex4.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex5.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex5.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex5a.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex5a.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex6.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex6.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex7.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex7.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex8.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex8.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex9.html" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/demos/views/ex9.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/dist/angular-fusioncharts.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/dist/angular-fusioncharts.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/grunt-tasks/compile_demos.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/grunt-tasks/compile_demos.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex1.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex1.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex2.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex2.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex3.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex3.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex4.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex4.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex5.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex5.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex5a.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex5a.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex6.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex6.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex7.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex7.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex8.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex8.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex9.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/js/demos/ex9.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/package.json" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/package.json" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/angular-fusioncharts-3.1/src/angular-fusioncharts.js" afterPath="$PROJECT_DIR$/static/thirdparty/angular-fusioncharts-3.1/src/angular-fusioncharts.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/css/mainstyle.css" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/css/mainstyle.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/css/style.css" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/css/style.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/blog-icon.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/blog-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/chart-fiddles-thumbnail.jpg" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/chart-fiddles-thumbnail.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/chart-fiddles-thumbnail.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/chart-fiddles-thumbnail.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/dashboard-example-thumbnail.jpg" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/dashboard-example-thumbnail.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/dashboard-example-thumbnail.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/dashboard-example-thumbnail.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/dashboard.jpg" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/dashboard.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/dashboard.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/dashboard.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/favicon.ico" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/favicon.ico" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/fc-logo-gray.jpg" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/fc-logo-gray.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/fc-logo-gray.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/fc-logo-gray.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/fusionchart-xt-doc-logo.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/fusionchart-xt-doc-logo.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/fusioncharts-logo.jpg" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/fusioncharts-logo.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/fusioncharts-logo.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/fusioncharts-logo.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/fusioncharts-suite-logo.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/fusioncharts-suite-logo.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/glyphicons-halflings-white.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/glyphicons-halflings-white.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/glyphicons-halflings.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/glyphicons-halflings.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/homepage-device-img.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/homepage-device-img.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/icons.jpg" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/icons.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/icons.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/icons.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/left-bracket.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/left-bracket.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/logo-docs-landing-library-only.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/logo-docs-landing-library-only.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/logo-main-footer.jpg" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/logo-main-footer.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/logo-main-footer.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/logo-main-footer.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/logo-main-header.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/logo-main-header.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/logo-main-header@2x.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/logo-main-header@2x.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/logo-maps-landing.jpg" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/logo-maps-landing.jpg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/logo-maps-landing.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/logo-maps-landing.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/logo.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/logo.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/nav-arrows.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/nav-arrows.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/open-folder.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/open-folder.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/or-bg.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/or-bg.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/right-bracket.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/right-bracket.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/section-divider.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/section-divider.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/sprite.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/sprite.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/support-icon.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/support-icon.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/top-repeat-bg.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/top-repeat-bg.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/white-texture.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/white-texture.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/img/world-map.png" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/img/world-map.png" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/assets/scripts/html5shiv.js" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/assets/scripts/html5shiv.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Converters.dll" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Converters.dll" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Core.dll" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Core.dll" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Css.dll" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Css.dll" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Dom.dll" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Dom.dll" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Model.dll" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Model.dll" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Rendering.Gdi.dll" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Rendering.Gdi.dll" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Rendering.Wpf.dll" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Rendering.Wpf.dll" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Runtime.dll" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Bin/FusionCharts.SharpVectors.Runtime.dll" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Exported_Images/readme.txt" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Exported_Images/readme.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/FCExporter.aspx" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/FCExporter.aspx" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/FCExporter.aspx.cs" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/FCExporter.aspx.cs" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Web.config" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/Web.config" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/readme.txt" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/asp-export-handler/readme.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/java-export-handler/fcexporter.jar" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/java-export-handler/fcexporter.jar" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/java-export-handler/readme.txt" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/java-export-handler/readme.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/java-export-handler/sample-application.war" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/java-export-handler/sample-application.war" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/php-export-handler/Resources/FCExporter_SVG2ALL.php" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/php-export-handler/Resources/FCExporter_SVG2ALL.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/php-export-handler/index.php" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/php-export-handler/index.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/php-export-handler/readme.txt" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/php-export-handler/readme.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/export-handlers/php-export-handler/sanitizer.php" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/export-handlers/php-export-handler/sanitizer.php" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/index.html" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/index.html" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/js/fusioncharts.charts.js" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/js/fusioncharts.charts.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/js/fusioncharts.gantt.js" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/js/fusioncharts.gantt.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/js/fusioncharts.js" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/js/fusioncharts.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/js/fusioncharts.maps.js" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/js/fusioncharts.maps.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/js/fusioncharts.powercharts.js" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/js/fusioncharts.powercharts.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/js/fusioncharts.widgets.js" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/js/fusioncharts.widgets.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/js/maps/fusioncharts.usa.js" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/js/maps/fusioncharts.usa.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/js/maps/fusioncharts.world.js" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/js/maps/fusioncharts.world.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/js/maps/readme.txt" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/js/maps/readme.txt" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/js/themes/fusioncharts.theme.carbon.js" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/js/themes/fusioncharts.theme.carbon.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/js/themes/fusioncharts.theme.fint.js" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/js/themes/fusioncharts.theme.fint.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/js/themes/fusioncharts.theme.ocean.js" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/js/themes/fusioncharts.theme.ocean.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/js/themes/fusioncharts.theme.zune.js" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/js/themes/fusioncharts.theme.zune.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/fusioncharts-suite-xt/license/FusionCharts Suite License Agreement - Evaluation.rtf" afterPath="$PROJECT_DIR$/static/thirdparty/fusioncharts-suite-xt/license/FusionCharts Suite License Agreement - Evaluation.rtf" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/accordion.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/accordion.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/accordion.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/accordion.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/accordion.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/accordion.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/accordion.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/accordion.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/api.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/api.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/api.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/api.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/breadcrumb.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/breadcrumb.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/breadcrumb.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/breadcrumb.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/button.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/button.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/button.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/button.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/card.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/card.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/card.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/card.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/checkbox.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/checkbox.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/checkbox.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/checkbox.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/checkbox.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/checkbox.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/checkbox.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/checkbox.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/comment.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/comment.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/comment.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/comment.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/dimmer.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/dimmer.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/dimmer.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/dimmer.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/dimmer.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/dimmer.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/dimmer.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/dimmer.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/divider.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/divider.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/divider.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/divider.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/dropdown.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/dropdown.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/dropdown.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/dropdown.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/dropdown.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/dropdown.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/dropdown.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/dropdown.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/feed.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/feed.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/feed.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/feed.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/flag.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/flag.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/flag.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/flag.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/form.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/form.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/form.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/form.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/form.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/form.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/form.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/form.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/grid.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/grid.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/grid.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/grid.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/header.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/header.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/header.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/header.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/icon.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/icon.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/icon.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/icon.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/image.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/image.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/image.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/image.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/input.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/input.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/input.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/input.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/item.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/item.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/item.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/item.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/label.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/label.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/label.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/label.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/list.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/list.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/list.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/list.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/loader.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/loader.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/loader.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/loader.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/menu.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/menu.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/menu.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/menu.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/message.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/message.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/message.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/message.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/modal.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/modal.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/modal.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/modal.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/modal.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/modal.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/modal.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/modal.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/nag.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/nag.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/nag.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/nag.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/nag.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/nag.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/nag.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/nag.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/popup.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/popup.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/popup.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/popup.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/popup.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/popup.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/popup.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/popup.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/progress.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/progress.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/progress.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/progress.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/progress.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/progress.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/progress.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/progress.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/rail.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/rail.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/rail.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/rail.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/rating.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/rating.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/rating.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/rating.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/rating.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/rating.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/rating.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/rating.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/reset.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/reset.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/reset.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/reset.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/reveal.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/reveal.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/reveal.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/reveal.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/search.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/search.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/search.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/search.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/search.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/search.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/search.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/search.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/segment.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/segment.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/segment.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/segment.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/shape.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/shape.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/shape.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/shape.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/shape.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/shape.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/shape.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/shape.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/sidebar.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/sidebar.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/sidebar.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/sidebar.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/sidebar.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/sidebar.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/sidebar.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/sidebar.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/site.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/site.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/site.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/site.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/site.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/site.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/site.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/site.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/state.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/state.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/state.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/state.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/statistic.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/statistic.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/statistic.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/statistic.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/step.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/step.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/step.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/step.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/sticky.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/sticky.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/sticky.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/sticky.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/sticky.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/sticky.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/sticky.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/sticky.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/tab.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/tab.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/tab.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/tab.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/tab.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/tab.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/tab.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/tab.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/table.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/table.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/table.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/table.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/transition.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/transition.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/transition.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/transition.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/transition.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/transition.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/transition.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/transition.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/visibility.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/visibility.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/components/visibility.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/components/visibility.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/semantic.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/semantic.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/semantic.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/semantic.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/semantic.min.css" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/semantic.min.css" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/semantic.min.js" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/semantic.min.js" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/themes/basic/assets/fonts/icons.eot" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/themes/basic/assets/fonts/icons.eot" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/themes/basic/assets/fonts/icons.svg" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/themes/basic/assets/fonts/icons.svg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/themes/basic/assets/fonts/icons.ttf" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/themes/basic/assets/fonts/icons.ttf" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/themes/basic/assets/fonts/icons.woff" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/themes/basic/assets/fonts/icons.woff" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/themes/default/assets/fonts/icons.eot" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/themes/default/assets/fonts/icons.eot" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/themes/default/assets/fonts/icons.svg" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/themes/default/assets/fonts/icons.svg" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/themes/default/assets/fonts/icons.ttf" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/themes/default/assets/fonts/icons.ttf" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/themes/default/assets/fonts/icons.woff" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/themes/default/assets/fonts/icons.woff" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/taskbird/static/thirdparty/semantic/themes/default/assets/images/flags.png" afterPath="$PROJECT_DIR$/static/thirdparty/semantic/themes/default/assets/images/flags.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/manage.py" afterPath="$PROJECT_DIR$/manage.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/requirements.txt" afterPath="$PROJECT_DIR$/requirements.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taskbird/models.py" afterPath="$PROJECT_DIR$/taskbird/models.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taskbird/urls.py" afterPath="$PROJECT_DIR$/taskbird/urls.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/taskbird/views.py" afterPath="$PROJECT_DIR$/taskbird/views.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/app/index.html" afterPath="$PROJECT_DIR$/templates/app/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/app/js.html" afterPath="$PROJECT_DIR$/templates/app/js.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/base.html" afterPath="$PROJECT_DIR$/templates/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/modals.html" afterPath="$PROJECT_DIR$/templates/modals.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/site/base.html" afterPath="$PROJECT_DIR$/templates/site/base.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/site/features.html" afterPath="$PROJECT_DIR$/templates/site/features.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/site/index.html" afterPath="$PROJECT_DIR$/templates/site/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/templates/site/login.html" afterPath="$PROJECT_DIR$/templates/site/login.html" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/taskbird$wsgi.coverage" NAME="wsgi Coverage Results" MODIFIED="1513796276126" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/taskbird" />
+  </component>
+  <component name="DjangoConsoleOptions" custom-start-script="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)">
+    <option name="myCustomStartScript" value="import sys; print('Python %s on %s' % (sys.version, sys.platform))&#10;import django; print('Django %s' % django.get_version())&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;if 'setup' in dir(django): django.setup()&#10;import django_manage_shell; django_manage_shell.run(PROJECT_ROOT)" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="apps.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/taskbird/apps.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="urls.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/taskbird/urls.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="196">
+              <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+              <folding>
+                <element signature="e#0#42#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="login.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/site/login.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="135">
+              <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resolvers.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/urls/resolvers.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="7890">
+              <caret line="544" column="0" lean-forward="false" selection-start-line="544" selection-start-column="0" selection-end-line="544" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="conf.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/urls/conf.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="870">
+              <caret line="65" column="16" lean-forward="false" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="views.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/taskbird/views.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="525">
+              <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+              <folding>
+                <element signature="e#0#72#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="settings.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/taskbird/settings.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="186">
+              <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>TEMPLATES</find>
+      <find>STATIC_URL</find>
+      <find>{{ STATIC_URL }}</find>
+      <find>{{STATIC_URL}}</find>
+      <find>static ''</find>
+      <find>static</find>
+      <find>url(</find>
+      <find>STATKC</find>
+      <find>def feature</find>
+      <find>settk gs</find>
+      <find>SessionAuthenticationMiddleware</find>
+      <find>#path</find>
+      <find>AUTHEN</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>{% static '' %}</replace>
+      <replace>path(</replace>
+      <replace>path</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/manage.py" />
+        <option value="$PROJECT_DIR$/templates/base.html" />
+        <option value="$PROJECT_DIR$/templates/app/js.html" />
+        <option value="$PROJECT_DIR$/templates/site/features.html" />
+        <option value="$PROJECT_DIR$/templates/modals.html" />
+        <option value="$PROJECT_DIR$/templates/site/index.html" />
+        <option value="$PROJECT_DIR$/templates/site/base.html" />
+        <option value="$PROJECT_DIR$/templates/app/index.html" />
+        <option value="$PROJECT_DIR$/taskbird/views.py" />
+        <option value="$PROJECT_DIR$/taskbird/settings.py" />
+        <option value="$PROJECT_DIR$/templates/site/login.html" />
+        <option value="$PROJECT_DIR$/taskbird/urls.py" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="ProjectFrameBounds">
+    <option name="y" value="23" />
+    <option name="width" value="1440" />
+    <option name="height" value="821" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="taskbird" type="b2602c69:ProjectViewProjectNode" />
+              <item name="taskbird" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="taskbird" type="b2602c69:ProjectViewProjectNode" />
+              <item name="taskbird" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="taskbird" type="b2602c69:ProjectViewProjectNode" />
+              <item name="taskbird" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="taskbird" type="b2602c69:ProjectViewProjectNode" />
+              <item name="taskbird" type="462c0819:PsiDirectoryNode" />
+              <item name="taskbird" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="taskbird" type="b2602c69:ProjectViewProjectNode" />
+              <item name="taskbird" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="taskbird" type="b2602c69:ProjectViewProjectNode" />
+              <item name="taskbird" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="site" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scratches" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/venv/bin/python" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="settings.editor.selected.configurable" value="com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Django server.Run Django">
+    <configuration name="Run Django" type="Python.DjangoServer" factoryName="Django server">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+        <env name="DJANGO_SETTINGS_MODULE" value="taskbird.settings" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="taskbird" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <option name="port" value="8000" />
+      <option name="host" value="" />
+      <option name="additionalOptions" value="" />
+      <option name="browserUrl" value="" />
+      <option name="runTestServer" value="false" />
+      <option name="runNoReload" value="false" />
+      <option name="useCustomRunCommand" value="false" />
+      <option name="customRunCommand" value="" />
+    </configuration>
+    <configuration name="wsgi" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/taskbird" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="taskbird" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" enabled="false" sample_coverage="true" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/taskbird/wsgi.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+    </configuration>
+    <list size="2">
+      <item index="0" class="java.lang.String" itemvalue="Django server.Run Django" />
+      <item index="1" class="java.lang.String" itemvalue="Python.wsgi" />
+    </list>
+    <recent_temporary>
+      <list size="1">
+        <item index="0" class="java.lang.String" itemvalue="Python.wsgi" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="42290428-8893-4b30-be8e-287c1a29d33c" name="Default" comment="" />
+      <created>1513444675449</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1513444675449</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="1440" height="821" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="combo" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.39919892" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32977304" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager />
+    <watches-manager />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/taskbird/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="6" lean-forward="false" selection-start-line="4" selection-start-column="6" selection-end-line="4" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taskbird/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="19" column="16" lean-forward="false" selection-start-line="19" selection-start-column="16" selection-end-line="19" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/urls/resolvers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7890">
+          <caret line="544" column="0" lean-forward="false" selection-start-line="544" selection-start-column="0" selection-end-line="544" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/urls/conf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="65" column="16" lean-forward="false" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taskbird/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="50" column="0" lean-forward="true" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#72#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/core/servers/basehttp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taskbird/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/utils/module_loading.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/core/management/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5760">
+          <caret line="393" column="0" lean-forward="false" selection-start-line="393" selection-start-column="0" selection-end-line="393" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taskbird/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="585">
+          <caret line="39" column="20" lean-forward="false" selection-start-line="39" selection-start-column="20" selection-end-line="39" selection-end-column="20" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/manage.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="12" lean-forward="false" selection-start-line="11" selection-start-column="12" selection-end-line="11" selection-end-column="12" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/apps/config.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="9" column="6" lean-forward="false" selection-start-line="9" selection-start-column="6" selection-end-line="9" selection-end-column="6" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/conf/global_settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="151">
+          <caret line="285" column="0" lean-forward="false" selection-start-line="285" selection-start-column="0" selection-end-line="285" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/modals.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="14" lean-forward="false" selection-start-line="0" selection-start-column="14" selection-end-line="0" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="8" lean-forward="true" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/site/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/site/features.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="16" column="0" lean-forward="true" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/site/base.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/app/js.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" column="0" lean-forward="true" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/app/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="0" lean-forward="true" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/core/management/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="5760">
+          <caret line="393" column="0" lean-forward="false" selection-start-line="393" selection-start-column="0" selection-end-line="393" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/urls/resolvers.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="7890">
+          <caret line="544" column="0" lean-forward="false" selection-start-line="544" selection-start-column="0" selection-end-line="544" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/core/servers/basehttp.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="600">
+          <caret line="48" column="0" lean-forward="false" selection-start-line="48" selection-start-column="0" selection-end-line="48" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/utils/module_loading.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="300">
+          <caret line="23" column="0" lean-forward="false" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taskbird/wsgi.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taskbird/views.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="525">
+          <caret line="50" column="0" lean-forward="false" selection-start-line="50" selection-start-column="0" selection-end-line="50" selection-end-column="0" />
+          <folding>
+            <element signature="e#0#72#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/venv/lib/python3.6/site-packages/django/urls/conf.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="870">
+          <caret line="65" column="16" lean-forward="false" selection-start-line="65" selection-start-column="16" selection-end-line="65" selection-end-column="16" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taskbird/settings.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="186">
+          <caret line="82" column="0" lean-forward="false" selection-start-line="82" selection-start-column="0" selection-end-line="82" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taskbird/apps.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="21" lean-forward="true" selection-start-line="4" selection-start-column="21" selection-end-line="4" selection-end-column="21" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/templates/site/login.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="9" column="8" lean-forward="false" selection-start-line="9" selection-start-column="8" selection-end-line="9" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/taskbird/urls.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="27" column="5" lean-forward="true" selection-start-line="27" selection-start-column="5" selection-end-line="27" selection-end-column="5" />
+          <folding>
+            <element signature="e#0#42#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

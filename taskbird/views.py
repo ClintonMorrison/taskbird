@@ -24,7 +24,7 @@ def siteIndex(request):
 
 
 def siteFeatures(request):
-    file_path = os.path.join(settings.STATIC_ROOT, 'content/features.yaml')
+    file_path = os.path.join(settings.BASE_STATIC_PATH, 'content/features.yaml')
     features = yaml.load(open(file_path, 'r'))
     #return JsonResponse({'1': features})
     return render(request, "site/features.html", {'features': features})
@@ -49,41 +49,8 @@ def siteContact(request):
 
     return render(request, "site/contact.html", data)
 
-
-def siteSignup(request):
-    return redirect('login')
-    if request.method == 'POST':
-        form = SignupForm(request.POST)
-        if form.is_valid():
-            first_name = form.cleaned_data.get('fist_name', '')
-            last_name = form.cleaned_data.get('last_name', '')
-            email = form.cleaned_data.get('email', '')
-            password = form.cleaned_data.get('password', '')
-
-            user = User.objects.create_user(
-                first_name = first_name,
-                last_name = last_name,
-                username = email,
-                email = email,
-                password =password
-            )
-            user.save()
-            user = authenticate(username=email, password=password)
-            generate_demo_data(user)
-            djangoLogin(request, user)
-            return HttpResponseRedirect("/app/")
-        else:
-            return render(
-                request,
-                "site/signup.html",
-                {'error_message': "You must enter a valid name, email, and password." + json.dumps(form.errors)}
-            )
-
-    return render(request, "site/signup.html", {})
-
-
 def login(request):
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         return HttpResponseRedirect("/app/")
 
     username = request.POST.get('username')

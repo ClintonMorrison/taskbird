@@ -1,9 +1,10 @@
 {% extends "app/base.html" %}
 
+{% load static %}
 
 {% block content %}
     <!-- STYLES -->
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}style/taskbird.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/taskbird.css' %}">
 
     <div class="app container" ng-view>
     </div>

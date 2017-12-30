@@ -13,9 +13,10 @@ Ideas:
 - email reminders
 - analytics
 -->
+{% load static %}
 
 {% block content %}
-    <link rel="stylesheet" type="text/css" href="{{STATIC_URL}}style/site.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'style/site.css' %}">
     <div class="main-container">
 
         <div class="ui one column grid">

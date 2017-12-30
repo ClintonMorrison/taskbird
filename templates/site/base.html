@@ -1,11 +1,13 @@
 {% extends "base.html" %}
 
+{% load static %}
+
 {% block header %}
   {% include "site/header.html" %}
 {% endblock %}
 
 {% block content %}
-<link rel="stylesheet" type="text/css" href="{{STATIC_URL}}style/site.css">
+<link rel="stylesheet" type="text/css" href="{% static 'style/site.css' %}">
 <div class="ui segment attached top main-container">
   <h1 class="ui header">{% block title %}{% endblock %}</h1>
 </div>

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.db.models.signals import post_save
 
 class Project(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=50, default="New Project")
     icon = models.CharField(max_length=50, default="cube")
     color = models.CharField(max_length=50, default="black")
@@ -12,7 +12,7 @@ class Project(models.Model):
 
 
 class Task(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     title = models.CharField(max_length=50, default="New Task")
     description = models.CharField(max_length=800, blank=True, default="")
     type = models.CharField(max_length=50, default="task") #'task' or 'event'
@@ -26,10 +26,10 @@ class Task(models.Model):
     ('Normal', 'Normal'),
     ('High', 'High')
     ))
-    project = models.ForeignKey(Project, blank=True, default=None, null=True)
+    project = models.ForeignKey(Project, blank=True, default=None, null=True, on_delete=models.DO_NOTHING)
 
 class SecurityToken(models.Model):
-    user = models.ForeignKey(User)
+    user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
     type = models.CharField(max_length=50, default="") #'task' or 'event'
     done = models.BooleanField(default=False)
     date_created = models.DateTimeField(auto_now_add=True)
@@ -43,7 +43,7 @@ class SecurityToken(models.Model):
     ))
 
 class UserSettings(models.Model):
-    user = models.OneToOneField(User)
+    user = models.OneToOneField(User, on_delete=models.DO_NOTHING)
     notes = models.CharField(max_length=1000, blank=True, default="")
     metadata = models.CharField(max_length=1000, blank=True, default="")
 
