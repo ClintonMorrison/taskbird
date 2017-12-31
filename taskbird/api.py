@@ -6,8 +6,6 @@ from tastypie.authentication import SessionAuthentication
 from taskbird.models import Task, User, UserSettings, Project
 from tastypie.exceptions import Unauthorized
 from tastypie import fields
-from json import dumps
-
 
 class UserAuthorization(Authorization):
     def read_list(self, object_list, bundle):
