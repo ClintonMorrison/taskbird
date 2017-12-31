@@ -17,7 +17,7 @@ taskApp.service('taskAPI', ['$http', 'loaderService', function($http, loaderServ
     $http.defaults.headers.put['Content-Type'] = "application/json";
 
     this._getBaseUrl = function() {
-        return  location.origin + "/api/";
+        return  location.origin + "/api/v1/";
     };
 
     this.defaultParams = {

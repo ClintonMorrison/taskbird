@@ -1,16 +1,12 @@
-from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
-from django.shortcuts import get_object_or_404, render
+from django.http import HttpResponseRedirect, JsonResponse
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from django.contrib.auth import login as djangoLogin
-from django.shortcuts import redirect
-from .models import User, generate_demo_data
 import taskbird.email
 
 from .forms import ContactForm
-from .forms import SignupForm
 
-import json
 import yaml
 import os
 from . import settings
@@ -26,12 +22,10 @@ def siteIndex(request):
 def siteFeatures(request):
     file_path = os.path.join(settings.BASE_STATIC_PATH, 'content/features.yaml')
     features = yaml.load(open(file_path, 'r'))
-    #return JsonResponse({'1': features})
     return render(request, "site/features.html", {'features': features})
 
 
 def siteAbout(request):
-    #taskbird.email.send_password_reset_email('contact@taskbird.ca')
     return render(request, "site/about.html", {})
 
 
