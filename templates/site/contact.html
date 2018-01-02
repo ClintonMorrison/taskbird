@@ -9,19 +9,8 @@
     hear from you!
   </p>
 
-  <form action="" method="post" class="ui form">
-    {% csrf_token %}
-    <div class="field {% if form.name.errors %}error{% endif %}">
-      <label> Name </label>
-      <input type="text" name="name" placeholder="">
-    </div>
-
-    <div class="field {% if form.email.errors %}message{% endif %}" >
-    <label> Message </label>
-    <textarea id="message" name="message"></textarea>
-  </div>
-
-    <input class='ui blue button' type="submit" value="Send">
-  </form>
+  <p>
+    Send us an email at <a href="mailto:clintonmorrison2@gmail.com">clintonmorrison2@gmail.com</a>.
+  </p>
 {% endblock %}
 

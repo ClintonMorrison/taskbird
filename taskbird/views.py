@@ -30,18 +30,7 @@ def siteAbout(request):
 
 
 def siteContact(request):
-    data = {}
-
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-        data['form'] = form
-        if form.is_valid():
-            taskbird.email.send_admin_email(
-                'Feedback from "%s"' % form.cleaned_data.get('name', ''),
-                form.cleaned_data.get('message', '')
-            )
-
-    return render(request, "site/contact.html", data)
+    return render(request, "site/contact.html", {})
 
 def login(request):
     if request.user.is_authenticated:
@@ -65,7 +54,6 @@ def request_password_reset(request):
 
 def password_reset(request):
     return JsonResponse({'a': 'a'})
-
 
 @login_required
 def appIndex(request):
