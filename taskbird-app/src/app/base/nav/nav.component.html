@@ -1,0 +1,10 @@
+<div class="ui inverted menu">
+  <a class="header item">
+    Task Bird
+  </a>
+
+  <a *ngFor="let item of items" class="item">
+    <i class="{{ item.icon }} icon"></i>
+    {{ item.title }}
+  </a>
+</div>
