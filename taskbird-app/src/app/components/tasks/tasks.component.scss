@@ -1,0 +1,26 @@
+.tasks {
+
+  .task {
+
+    border-bottom: 1px solid #c3c3c3;
+    padding: 1em 0;
+
+     &.selected {
+      background-color: #9ED6FF;
+    }
+
+    .description {
+      white-space: pre-line;
+    }
+
+    .header {
+      font-size: 1em;
+      margin: 0;
+    }
+
+    .details {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+}

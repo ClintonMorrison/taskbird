@@ -3,7 +3,7 @@
     Task Bird
   </a>
 
-  <a *ngFor="let item of items" class="item">
+  <a *ngFor="let item of items" class="item" routerLink="{{ item.route }}">
     <i class="{{ item.icon }} icon"></i>
     {{ item.title }}
   </a>

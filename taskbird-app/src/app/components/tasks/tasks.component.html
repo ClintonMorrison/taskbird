@@ -1,0 +1,31 @@
+<h2>My Items</h2>
+
+<div class="ui tasks">
+  <div class="task"
+      *ngFor="let item of items"
+      [class.selected]="item === selectedItem"
+      (click)="onSelect(item)">
+
+      <h3 class="header">{{item.title}}</h3>
+
+      <div class="details">
+        <div class="description">{{ item.description }}</div>
+        <i *ngIf="item.project" class="ui icon {{ item.project.icon }}"></i>
+      </div>
+
+  </div>
+</div>
+
+
+<ul class="items">
+  <li *ngFor="let item of items"
+    [class.selected]="item === selectedItem"
+    (click)="onSelect(item)">
+    <span class="badge">{{item.id}}</span> {{item.title}}
+  </li>
+</ul>
+
+
+<div *ngIf="selectedItem" class="ui form">
+  <task-detail [item]="selectedItem"></task-detail>
+</div>
