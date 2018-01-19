@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Item } from '../../classes/item';
+import { Task } from '../../classes/item';
 import { ItemService } from '../../services/item.service';
 
 @Component({
@@ -8,8 +8,8 @@ import { ItemService } from '../../services/item.service';
   styleUrls: ['./tasks.component.scss']
 })
 export class Tasks implements OnInit {
-  items: Item[];
-  selectedItem: Item;
+  items: Task[];
+  selectedItem: Task;
 
   constructor(private itemService: ItemService) { }
 
@@ -17,7 +17,7 @@ export class Tasks implements OnInit {
     this.getItems();
   }
 
-  getProjectIcon(item: Item): string {
+  getProjectIcon(item: Task): string {
     if (item.project) {
       return item.project.icon;
     }
@@ -25,12 +25,12 @@ export class Tasks implements OnInit {
     return '';
   }
 
-  onSelect(item: Item): void {
+  onSelect(item: Task): void {
     this.selectedItem = item;
   }
 
   getItems(): void {
-    this.itemService.getItems()
+    this.itemService.getTasks()
       .subscribe(items => this.items = items);
   }
 

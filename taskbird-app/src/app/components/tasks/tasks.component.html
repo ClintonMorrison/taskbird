@@ -3,28 +3,35 @@
 <div class="ui tasks">
   <div class="task"
       *ngFor="let item of items"
-      [class.selected]="item === selectedItem"
-      (click)="onSelect(item)">
+      [class.done]="item.done"
+      [class.selected]="item === selectedItem">
 
-      <h3 class="header">{{item.title}}</h3>
+    <div class="ui checkbox">
+      <input aria-label="" type="checkbox" name="task-{{ item.id }}-done" [(ngModel)]="item.done">
+      <label id="task-{{ item.id }}">
+        <span class="sr-only">
+          Mark task as complete, {{ item.title }}
+        </span>
+      </label>
+    </div>
+
+    <a (click)="onSelect(item)" class="item">
+      <div class="title">{{item.title}}</div>
 
       <div class="details">
-        <div class="description">{{ item.description }}</div>
-        <i *ngIf="item.project" class="ui icon {{ item.project.icon }}"></i>
+        <i *ngIf="item.project" class="icon {{ item.project.icon }} {{ item.project.color }}"></i>
+        <i *ngIf="!item.project" class="thin circle icon"></i>
+
+        <span class="priority-indicator">
+          <i *ngIf="item.priority === 'High'" class="red long up arrow icon"></i>
+          <i *ngIf="item.priority === 'Low'" class="green long down arrow icon"></i>
+          <i *ngIf="item.priority === 'Normal'" class="minus icon"></i>
+        </span>
       </div>
+    </a>
 
   </div>
 </div>
-
-
-<ul class="items">
-  <li *ngFor="let item of items"
-    [class.selected]="item === selectedItem"
-    (click)="onSelect(item)">
-    <span class="badge">{{item.id}}</span> {{item.title}}
-  </li>
-</ul>
-
 
 <div *ngIf="selectedItem" class="ui form">
   <task-detail [item]="selectedItem"></task-detail>

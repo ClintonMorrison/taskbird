@@ -15,6 +15,7 @@ import { MessageService } from './services/message.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { TaskStatisticsComponent } from './components/task-statistics/task-statistics.component';
+import { TaskItemComponent } from './components/task-item/task-item.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { TaskStatisticsComponent } from './components/task-statistics/task-stati
     TaskDetailComponent,
     MessagesComponent,
     DashboardComponent,
-    TaskStatisticsComponent
+    TaskStatisticsComponent,
+    TaskItemComponent
   ],
   imports: [
     BrowserModule,

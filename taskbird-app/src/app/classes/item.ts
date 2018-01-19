@@ -1,6 +1,6 @@
 import { Project } from './project';
 
-export class Item {
+export class Task {
   id: number;
   description: string;
   priority: string;
@@ -13,3 +13,6 @@ export class Item {
 }
 
 
+export interface TaskMap {
+  [key: number]: Task;
+}

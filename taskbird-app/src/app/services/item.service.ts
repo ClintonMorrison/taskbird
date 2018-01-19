@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Item } from '../classes/item';
+import { Task, TaskMap } from '../classes/item';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { MessageService } from './message.service';
@@ -10,26 +10,51 @@ import MockTaskResponse from '../mocks/mock-task-api-response';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/mergeMap';
 
 @Injectable()
 export class ItemService {
 
   private baseUrl = 'http://localhost/api/v1/task/?format=json';
-  private items : Item[] = null;
+  private tasks : Task[] = null;
+  private tasksById : TaskMap = null;
 
   constructor(
     private http: HttpClient,
     private messageService: MessageService
   ) { }
 
-  getItems(): Observable<Item[]> {
-    if (this.items) {
-      return of(this.items);
+  getTask(id): Observable<Task> {
+    return this.getTaskMap().map(itemsById => {
+      return itemsById[id];
+    });
+  }
+
+  getTasks(): Observable<Task[]> {
+    if (this.tasks) {
+      return of(this.tasks);
     }
 
     return of(MockTaskResponse)
       .map(response => {
-        return response.objects;
+        this.tasks = response.objects;
+        return this.tasks;
       });
+  }
+
+  getTaskMap(): Observable<TaskMap> {
+    if (this.tasksById) {
+      return of(this.tasksById);
+    }
+
+    return this.getTasks().map(tasks => {
+      const map = {};
+      for (let task of tasks) {
+        map[task.id] = task;
+      }
+
+      this.tasksById = map;
+      return this.tasksById;
+    });
   }
 }
