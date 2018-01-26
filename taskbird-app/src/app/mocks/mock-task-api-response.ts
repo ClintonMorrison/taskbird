@@ -461,7 +461,7 @@ export default {
         "title": "Work"
       },
       "resource_uri": "/api/v1/task/25/",
-      "title": "Day of the Dead potluck",
+      "title": "CalendarDay of the Dead potluck",
       "type": "task"
     },
     {
@@ -2040,7 +2040,7 @@ export default {
         "title": "Personal"
       },
       "resource_uri": "/api/v1/task/103/",
-      "title": "Munro Day - Dal closed",
+      "title": "Munro CalendarDay - Dal closed",
       "type": "task"
     },
     {
@@ -2744,7 +2744,7 @@ export default {
         "title": "Personal"
       },
       "resource_uri": "/api/v1/task/137/",
-      "title": "Valentines Day",
+      "title": "Valentines CalendarDay",
       "type": "task"
     },
     {
@@ -10457,7 +10457,7 @@ export default {
         "title": "Work"
       },
       "resource_uri": "/api/v1/task/555/",
-      "title": "BiblioCommons: First Day of Work!!!!",
+      "title": "BiblioCommons: First CalendarDay of Work!!!!",
       "type": "task"
     },
     {
@@ -18116,7 +18116,7 @@ export default {
         "title": "Holdiay"
       },
       "resource_uri": "/api/v1/task/925/",
-      "title": "Christmas Day",
+      "title": "Christmas CalendarDay",
       "type": "task"
     },
     {
@@ -18139,7 +18139,7 @@ export default {
         "title": "Holdiay"
       },
       "resource_uri": "/api/v1/task/926/",
-      "title": "Boxing Day",
+      "title": "Boxing CalendarDay",
       "type": "task"
     },
     {
@@ -18162,7 +18162,7 @@ export default {
         "title": "Holdiay"
       },
       "resource_uri": "/api/v1/task/927/",
-      "title": "New Years Day",
+      "title": "New Years CalendarDay",
       "type": "task"
     },
     {
@@ -18560,7 +18560,7 @@ export default {
         "title": "Holdiay"
       },
       "resource_uri": "/api/v1/task/945/",
-      "title": "Remembrance Day",
+      "title": "Remembrance CalendarDay",
       "type": "task"
     },
     {
@@ -18866,7 +18866,7 @@ export default {
         "title": "Holdiay"
       },
       "resource_uri": "/api/v1/task/962/",
-      "title": "Vacation Day Today",
+      "title": "Vacation CalendarDay Today",
       "type": "task"
     },
     {
@@ -18889,7 +18889,7 @@ export default {
         "title": "Holdiay"
       },
       "resource_uri": "/api/v1/task/963/",
-      "title": "Vacation Day Today",
+      "title": "Vacation CalendarDay Today",
       "type": "task"
     },
     {

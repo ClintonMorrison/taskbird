@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Task, TaskMap } from '../classes/item';
+import { Task, TaskMap } from '../models/item';
 import { Observable } from 'rxjs/Observable';
 import { of } from 'rxjs/observable/of';
 import { MessageService } from './message.service';

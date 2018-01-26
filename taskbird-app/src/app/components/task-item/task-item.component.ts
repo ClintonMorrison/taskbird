@@ -1,6 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Task } from "../../classes/item";
-import { ItemService } from "../../services/item.service";
+import { Task } from "../../models/item";
 
 @Component({
   selector: 'task-item',
@@ -10,15 +9,12 @@ import { ItemService } from "../../services/item.service";
 export class TaskItemComponent implements OnInit {
 
   @Input()
-  private taskId : number;
+  private task : Task;
 
   constructor() { }
 
-  getTask() : Task {
-    return null;
-  }
-
   ngOnInit() {
+    console.log(this.task);
   }
 
 }

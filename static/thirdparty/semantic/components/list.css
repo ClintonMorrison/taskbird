@@ -40,7 +40,7 @@ ol.ui.list:last-child,
 *******************************/
 
 
-/* List Item */
+/* List Task */
 ul.ui.list li,
 ol.ui.list li,
 .ui.list > .item,
@@ -84,7 +84,7 @@ ol.ui.list ol,
   padding: 0.75em 0em 0.25em 0.5em;
 }
 
-/* Child Item */
+/* Child Task */
 ul.ui.list ul li,
 ol.ui.list ol li,
 .ui.list .list > .item {
@@ -178,7 +178,7 @@ ol.ui.list ol li,
   cursor: pointer;
 }
 
-/* Linking Item */
+/* Linking Task */
 .ui.list .list > a.item,
 .ui.list > a.item {
   cursor: pointer;
@@ -189,7 +189,7 @@ ol.ui.list ol li,
   color: #1e70bf;
 }
 
-/* Linked Item Icons */
+/* Linked Task Icons */
 .ui.list .list > a.item i.icon,
 .ui.list > a.item i.icon {
   color: rgba(0, 0, 0, 0.4);
@@ -353,7 +353,7 @@ ol.ui.list ol li,
   color: rgba(255, 255, 255, 0.7);
 }
 
-/* Item Link */
+/* Task Link */
 .ui.inverted.list .list > a.item,
 .ui.inverted.list > a.item {
   cursor: pointer;

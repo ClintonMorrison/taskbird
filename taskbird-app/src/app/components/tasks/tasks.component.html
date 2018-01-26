@@ -1,36 +1,5 @@
-<h2>My Items</h2>
-
 <div class="ui tasks">
-  <div class="task"
-      *ngFor="let item of items"
-      [class.done]="item.done"
-      [class.selected]="item === selectedItem">
-
-    <div class="ui checkbox">
-      <input aria-label="" type="checkbox" name="task-{{ item.id }}-done" [(ngModel)]="item.done">
-      <label id="task-{{ item.id }}">
-        <span class="sr-only">
-          Mark task as complete, {{ item.title }}
-        </span>
-      </label>
-    </div>
-
-    <a (click)="onSelect(item)" class="item">
-      <div class="title">{{item.title}}</div>
-
-      <div class="details">
-        <i *ngIf="item.project" class="icon {{ item.project.icon }} {{ item.project.color }}"></i>
-        <i *ngIf="!item.project" class="thin circle icon"></i>
-
-        <span class="priority-indicator">
-          <i *ngIf="item.priority === 'High'" class="red long up arrow icon"></i>
-          <i *ngIf="item.priority === 'Low'" class="green long down arrow icon"></i>
-          <i *ngIf="item.priority === 'Normal'" class="minus icon"></i>
-        </span>
-      </div>
-    </a>
-
-  </div>
+  <task-item *ngFor="let task of items | slice:0:50" [task]="task"></task-item>
 </div>
 
 <div *ngIf="selectedItem" class="ui form">

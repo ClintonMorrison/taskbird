@@ -100,7 +100,7 @@
 }
 
 /*--------------
-    Menu Item
+    Menu Task
 ---------------*/
 
 .ui.dropdown .menu > .item {
@@ -187,7 +187,7 @@
 }
 
 /*-----------------
-  Item Description
+  Task Description
 -------------------*/
 
 .ui.dropdown > .text > .description,
@@ -287,13 +287,13 @@
 ---------------*/
 
 
-/* Remove Menu Item Divider */
+/* Remove Menu Task Divider */
 .ui.dropdown .ui.menu > .item:before,
 .ui.menu .ui.dropdown .menu > .item:before {
   display: none;
 }
 
-/* Prevent Menu Item Border */
+/* Prevent Menu Task Border */
 .ui.menu .ui.dropdown .menu .active.item {
   border-left: none;
 }
@@ -443,7 +443,7 @@ select.ui.dropdown {
   }
 }
 
-/* Menu Item */
+/* Menu Task */
 .ui.selection.dropdown .menu > .item {
   border-top: 1px solid #fafafa;
   padding: 0.71428571rem 1.14285714rem !important;
@@ -709,7 +709,7 @@ select.ui.dropdown {
 ----------------------*/
 
 
-/* Menu Item Active */
+/* Menu Task Active */
 .ui.dropdown .menu .active.item {
   background: transparent;
   font-weight: bold;
@@ -723,7 +723,7 @@ select.ui.dropdown {
 ----------------------*/
 
 
-/* Menu Item Hover */
+/* Menu Task Hover */
 .ui.dropdown .menu > .item:hover {
   background: rgba(0, 0, 0, 0.05);
   color: rgba(0, 0, 0, 0.95);
@@ -838,7 +838,7 @@ select.ui.dropdown {
 ----------------------*/
 
 
-/* Selected Item */
+/* Selected Task */
 .ui.dropdown.selected,
 .ui.dropdown .menu .selected.item {
   background: rgba(0, 0, 0, 0.03);
@@ -850,7 +850,7 @@ select.ui.dropdown {
 ----------------------*/
 
 
-/* Filtered Item */
+/* Filtered Task */
 .ui.dropdown > .filtered.text {
   visibility: hidden;
 }
@@ -885,12 +885,12 @@ select.ui.dropdown {
   border-color: #e0b4b4;
 }
 
-/* Item Hover */
+/* Task Hover */
 .ui.dropdown.error > .menu > .item:hover {
   background-color: #fff2f2;
 }
 
-/* Item Active */
+/* Task Active */
 .ui.dropdown.error > .menu .active.item {
   background-color: #fdcfcf;
 }

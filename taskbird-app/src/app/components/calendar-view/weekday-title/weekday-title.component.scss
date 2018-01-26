@@ -1,0 +1,23 @@
+.short-name,
+.medium-name,
+.full-name {
+  display: none;
+}
+
+@media screen and (max-width: 500px) {
+  .short-name {
+    display: inline-block;
+  }
+}
+
+@media screen and (min-width: 501px) and (max-width: 700px) {
+  .medium-name {
+    display: inline-block;
+  }
+}
+
+@media screen and (min-width: 701px) {
+  .full-name {
+    display: inline-block;
+  }
+}
