@@ -8,6 +8,5 @@ export class CalendarDay {
   constructor(date : Date, tasks = []) {
     this.date = date;
     this.tasks = tasks;
-    console.log('day', this);
   }
 }

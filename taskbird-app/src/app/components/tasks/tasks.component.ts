@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Task } from '../../models/item';
-import { ItemService } from '../../services/item.service';
+import { TaskService } from '../../services/item.service';
 
 @Component({
   selector: 'tasks',
@@ -11,7 +11,7 @@ export class Tasks implements OnInit {
   items: Task[];
   selectedItem: Task;
 
-  constructor(private itemService: ItemService) { }
+  constructor(private itemService: TaskService) { }
 
   ngOnInit() {
     this.getItems();

@@ -9,7 +9,7 @@ import { ButtonComponent } from './components/base/button/button.component';
 import { NavComponent } from './components/base/nav/nav.component';
 import { TaskDetailComponent } from './components/task-detail/task-detail.component';
 
-import { ItemService } from './services/item.service';
+import { TaskService } from './services/item.service';
 import { MessagesComponent } from './components/messages/messages.component';
 import { MessageService } from './services/message.service';
 import { DateService } from './services/date.service';
@@ -21,6 +21,7 @@ import { CalendarComponent } from './components/calendar-view/calendar/calendar.
 import { CalendarPageComponent } from './components/calendar-view/calendar-page/calendar-page.component';
 import { WeekdayTitleComponent } from './components/calendar-view/weekday-title/weekday-title.component';
 import { CalendarDayComponent } from './components/calendar-view/calendar-day/calendar-day.component';
+import { CalendarTaskComponent } from './components/calendar-view/calendar-task/calendar-task.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { CalendarDayComponent } from './components/calendar-view/calendar-day/ca
     CalendarComponent,
     CalendarPageComponent,
     WeekdayTitleComponent,
-    CalendarDayComponent
+    CalendarDayComponent,
+    CalendarTaskComponent
   ],
   imports: [
     BrowserModule,
@@ -45,7 +47,7 @@ import { CalendarDayComponent } from './components/calendar-view/calendar-day/ca
     AppRoutingModule,
     HttpClientModule
   ],
-providers: [ ItemService, MessageService, DateService ],
+providers: [ TaskService, MessageService, DateService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

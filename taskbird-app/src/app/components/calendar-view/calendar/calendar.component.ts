@@ -1,8 +1,9 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CalendarDay } from "../../../models/calendar-day";
-import { utc, Moment } from "moment";
-import { Month } from '../../../models/dates';
-import { DateService } from "../../../services/date.service";
+import { CalendarDay } from '../../../models/calendar-day';
+import { utc, Moment } from 'moment';
+import { Date, Month } from '../../../models/dates';
+import { DateService } from '../../../services/date.service';
+import { TaskService } from '../../../services/item.service';
 
 @Component({
   selector: 'calendar',
@@ -12,24 +13,31 @@ import { DateService } from "../../../services/date.service";
 export class CalendarComponent implements OnInit {
 
   @Input()
-  private month : Month;
+  private month: Month;
 
-  private daysOfWeek : String[];
+  private daysOfWeek: String[];
 
   constructor(
-    private dateService : DateService
+    private dateService: DateService,
+    private taskService: TaskService
   ) {
     this.daysOfWeek = dateService.getDaysOfWeek();
   }
 
-  private getCalendarDays() : CalendarDay[] {
+  private getCalendarDays(): CalendarDay[] {
     const dates = this.dateService.getDatesForCalendar(this.month);
 
     const calendarDays = [];
 
-    for (let date of dates) {
+    for (const date of dates) {
       // TODO: get list of tasks for day
-      calendarDays.push(new CalendarDay(date));
+      const calendarDay = new CalendarDay(date);
+      /*this.taskService.getTasksOnDay(date).subscribe((tasks) => {
+        console.log(tasks);
+        calendarDay.tasks = tasks;
+      });*/
+
+      calendarDays.push(calendarDay);
     }
 
     return calendarDays;
@@ -38,6 +46,10 @@ export class CalendarComponent implements OnInit {
   getWeeks () {
     const calendarDays = this.getCalendarDays();
     return this.dateService.groupIntoWeeks(calendarDays);
+  }
+
+  dayIsInCurrentMonth(date: Date): boolean {
+    return date.month === this.month.month;
   }
 
   ngOnInit() {

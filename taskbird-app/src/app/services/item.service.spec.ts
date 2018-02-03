@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { ItemService } from './item.service';
+import { TaskService } from './item.service';
 
 describe('ItemService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [ItemService]
+      providers: [TaskService]
     });
   });
 
-  it('should be created', inject([ItemService], (service: ItemService) => {
+  it('should be created', inject([TaskService], (service: TaskService) => {
     expect(service).toBeTruthy();
   }));
 });

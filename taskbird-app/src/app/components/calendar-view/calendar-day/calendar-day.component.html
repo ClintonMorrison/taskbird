@@ -1,3 +1,5 @@
-<p>
-  calendar-day works!
-</p>
+<a class="{{ getClass() }}" href="#day-{{ date.day }}" (click)="handleClick($event)">
+  <span class="number">{{ date.day }}</span>
+  
+  <calendar-task  *ngFor="let task of tasks" [task]="task"></calendar-task>
+</a>

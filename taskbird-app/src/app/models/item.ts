@@ -12,7 +12,10 @@ export class Task {
   project?: Project;
 }
 
-
 export interface TaskMap {
   [key: number]: Task;
+}
+
+export interface StringTaskMap {
+  [key: string]: Task[];
 }

@@ -1,0 +1,21 @@
+a {
+  color: black;
+  display: inline-block;
+  height: 100%;
+  min-height: 5em;
+  padding: .5em;
+  width: 100%;
+
+  &.inactive {
+    background-color: #f7f7f7;
+
+    .number {
+      font-weight: normal;
+      font-style: italic;
+    }
+  }
+
+  .number {
+    font-weight: bold;
+  }
+}
