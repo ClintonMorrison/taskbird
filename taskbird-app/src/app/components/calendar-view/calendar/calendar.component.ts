@@ -4,6 +4,7 @@ import { utc, Moment } from 'moment';
 import { Date, Month } from '../../../models/dates';
 import { DateService } from '../../../services/date.service';
 import { TaskService } from '../../../services/item.service';
+import { StringTaskMap } from '../../../models/item';
 
 @Component({
   selector: 'calendar',
@@ -29,16 +30,13 @@ export class CalendarComponent implements OnInit {
 
     const calendarDays = [];
 
-    for (const date of dates) {
-      // TODO: get list of tasks for day
-      const calendarDay = new CalendarDay(date);
-      /*this.taskService.getTasksOnDay(date).subscribe((tasks) => {
-        console.log(tasks);
-        calendarDay.tasks = tasks;
-      });*/
-
-      calendarDays.push(calendarDay);
-    }
+    this.taskService.groupTasksByDayDue().subscribe((tasksByDay) => {
+      for (const date of dates) {
+        const tasksOnDate = tasksByDay[date.toString()];
+        const calendarDay = new CalendarDay(date, tasksOnDate ? tasksOnDate : []);
+        calendarDays.push(calendarDay);
+      }
+    });
 
     return calendarDays;
   }
