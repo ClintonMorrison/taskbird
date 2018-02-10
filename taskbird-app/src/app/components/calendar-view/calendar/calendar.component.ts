@@ -14,9 +14,11 @@ import { StringTaskMap } from '../../../models/item';
 export class CalendarComponent implements OnInit {
 
   @Input()
-  private month: Month;
+  month: Month;
 
-  private daysOfWeek: String[];
+  private selectedDay: Date;
+
+  daysOfWeek: String[];
 
   constructor(
     private dateService: DateService,
@@ -48,6 +50,22 @@ export class CalendarComponent implements OnInit {
 
   dayIsInCurrentMonth(date: Date): boolean {
     return date.month === this.month.month;
+  }
+
+  dayIsSelected(date: Date): boolean {
+    return date.equals(this.selectedDay);
+  }
+
+  dayIsToday(date: Date): boolean {
+    return date.equals(Date.fromMoment(utc()));
+  }
+
+  handleDateSelected(date) {
+    if (date.equals(this.selectedDay)) {
+      this.selectedDay = null;
+    }
+
+    this.selectedDay = date;
   }
 
   ngOnInit() {

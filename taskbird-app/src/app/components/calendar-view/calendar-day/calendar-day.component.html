@@ -1,5 +1,8 @@
-<a class="{{ getClass() }}" href="#day-{{ date.day }}" (click)="handleClick($event)">
-  <span class="number">{{ date.day }}</span>
-  
-  <calendar-task  *ngFor="let task of tasks" [task]="task"></calendar-task>
+<a
+  [ngClass]="{'inactive': !active, 'selected': selected, 'today': today}"
+  href="#day-{{ date.day }}"
+  (click)="handleClick($event)">
+
+  <div class="number">{{ date.day }}</div>
+  <calendar-task *ngFor="let task of tasks" [task]="task"></calendar-task>
 </a>

@@ -1,0 +1,8 @@
+.ui.inverted.menu {
+  border-radius: 0;
+
+  >.item:first-child,
+  >.item:last-child {
+    border-radius: 0;
+  }
+}

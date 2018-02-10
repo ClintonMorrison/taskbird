@@ -1,1 +1,21 @@
+<div class="heading">
+  <button
+    (click)="goToPrevious()"
+    class="ui icon button">
+    <i class="icon chevron left"></i>
+    <span class="hidden-on-small">Previous Month</span>
+  </button>
+
+  <h2>
+    <div class="hidden-on-small">{{ getLongTitle() }}</div>
+    <div class="visible-on-small">{{ getShortTitle() }}</div>
+  </h2>
+
+  <button
+    (click)="goToNext()"
+    class="ui icon button">
+    <span class="hidden-on-small">Previous Month</span>
+    <i class="icon chevron right"></i>
+  </button>
+</div>
 <calendar [month]="month"></calendar>

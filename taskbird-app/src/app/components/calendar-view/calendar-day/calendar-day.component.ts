@@ -1,4 +1,4 @@
-import { Component, OnInit , Input} from '@angular/core';
+import { Component, OnInit , Input, Output, EventEmitter } from '@angular/core';
 import { Task } from '../../../models/item';
 import { Date } from '../../../models/dates';
 import { TaskService } from '../../../services/item.service';
@@ -15,10 +15,19 @@ export class CalendarDayComponent implements OnInit {
   private active: boolean;
 
   @Input()
-  private tasks: Task[];
+  private selected: boolean;
 
   @Input()
-  private date: Date;
+  private today: boolean;
+
+  @Input()
+  tasks: Task[];
+
+  @Input()
+  date: Date;
+
+  @Output()
+  dateSelected = new EventEmitter<Date>();
 
   private getClass(): string {
     return this.active ? '' : 'inactive';
@@ -26,13 +35,16 @@ export class CalendarDayComponent implements OnInit {
 
   private handleClick(e) {
     e.preventDefault();
-    console.log('Clicked', this.date);
+    this.dateSelected.emit(this.date);
   }
   constructor(
     private taskService: TaskService
   ) { }
 
   ngOnInit() {
+    if (this.selected) {
+      console.log('i am selected', this.date);
+    }
   }
 
 }

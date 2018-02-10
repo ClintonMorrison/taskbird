@@ -1,0 +1,26 @@
+<div class="task"
+    [class.done]="task.done"
+    [class.selected]="task === selectedtask">
+
+  <div class="ui checkbox">
+    <input aria-label="" type="checkbox" name="task-{{ task.id }}-done" [(ngModel)]="task.done">
+    <label id="task-{{ task.id }}">
+      <span class="sr-only">
+        Mark task as complete, {{ task.title }}
+      </span>
+    </label>
+  </div>
+
+  <a (click)="onSelect(task)" class="item">
+    <div>
+      <span class="title">
+        {{task.title}}
+      </span>
+    </div>
+
+    <div class="details">
+      <taskbird-project-icon [task]="task"></taskbird-project-icon>
+    </div>
+  </a>
+
+</div>

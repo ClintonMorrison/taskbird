@@ -1,0 +1,38 @@
+.heading {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 2rem;
+
+  h2 {
+    margin-top: 0;
+  }
+
+  button {
+    min-width: 10rem;
+  }
+
+  @media screen and (max-width: 625px) {
+    .visible-on-small {
+      display: inline-block;
+    }
+
+    .hidden-on-small {
+      display: none;
+    }
+
+    button {
+      min-width: 1rem;
+    }
+  }
+
+  @media screen and (min-width: 625px) {
+    .hidden-on-small {
+      display: inline-block;
+    }
+
+    .visible-on-small {
+      display: none;
+    }
+  }
+}
+

@@ -9,7 +9,7 @@ import { Task } from '../../../models/item';
 export class CalendarTaskComponent implements OnInit {
 
   @Input()
-  private task: Task;
+  task: Task;
 
   constructor() { }
 

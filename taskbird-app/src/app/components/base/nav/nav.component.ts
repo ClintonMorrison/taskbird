@@ -9,12 +9,12 @@ import { MenuItem } from '../../../models/menu-item';
 export class NavComponent implements OnInit {
 
   items = [
-    { title: 'Dashboard', route: '/', icon: 'home' },
-    { title: 'Items', route: '/items', icon: 'tasks' },
-    { title: 'Calendar', route: '/calendar', icon: 'calendar' },
-    { title: 'Projects', route: '/projects', icon: 'cubes' },
-    { title: 'Analytics', route: '/analytics', icon: 'bar chart' },
-    { title: 'Settings', route: '/settings', icon: 'settings' }
+    { title: 'Dashboard', route: '/', icon: 'database' },
+    { title: 'Tasks', route: '/items', icon: 'check square' },
+    { title: 'Calendar', route: '/calendar', icon: 'window maximize' },
+    { title: 'Projects', route: '/projects', icon: 'folder' },
+    { title: 'Analytics', route: '/analytics', icon: 'pie chart' },
+    { title: 'Settings', route: '/settings', icon: 'setting' }
   ];
 
   constructor() { }
