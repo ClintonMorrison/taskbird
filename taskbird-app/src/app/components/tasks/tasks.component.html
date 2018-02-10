@@ -1,7 +1,0 @@
-<div class="ui tasks">
-  <task-item *ngFor="let task of items | slice:0:50" [task]="task"></task-item>
-</div>
-
-<div *ngIf="selectedItem" class="ui form">
-  <task-detail [item]="selectedItem"></task-detail>
-</div>

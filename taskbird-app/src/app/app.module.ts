@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule} from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { Tasks } from './components/tasks/tasks.component';
+import { TasksComponent } from './components/tasks-view/tasks/tasks.component';
 import { FormsModule } from '@angular/forms';
 import { ButtonComponent } from './components/base/button/button.component';
 import { NavComponent } from './components/base/nav/nav.component';
@@ -23,12 +23,15 @@ import { WeekdayTitleComponent } from './components/calendar-view/weekday-title/
 import { CalendarDayComponent } from './components/calendar-view/calendar-day/calendar-day.component';
 import { CalendarTaskComponent } from './components/calendar-view/calendar-task/calendar-task.component';
 import { ProjectIconComponent } from './components/tasks-view/project-icon/project-icon.component';
+import { ProjectFilterComponent } from './components/tasks-view/project-filter/project-filter.component';
+import { TasksPageComponent } from './components/tasks-view/tasks-page/tasks-page.component';
+import { TaskSidebarComponent } from './components/tasks-view/task-sidebar/task-sidebar.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    Tasks,
+    TasksComponent,
     ButtonComponent,
     NavComponent,
     TaskDetailComponent,
@@ -41,7 +44,10 @@ import { ProjectIconComponent } from './components/tasks-view/project-icon/proje
     WeekdayTitleComponent,
     CalendarDayComponent,
     CalendarTaskComponent,
-    ProjectIconComponent
+    ProjectIconComponent,
+    ProjectFilterComponent,
+    TasksPageComponent,
+    TaskSidebarComponent
   ],
   imports: [
     BrowserModule,

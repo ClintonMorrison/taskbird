@@ -1,19 +1,14 @@
-<h2>Details</h2>
+<h2>Task Details</h2>
 
-<div>
-  id: {{item.id}}
-</div>
+<form class="ui form">
 
-<div class="field">
-  <label>
-    Title
-    <input [(ngModel)]="item.title" placeholder="title">
-  </label>
-</div>
+  <div class="field">
+    <label>Title</label>
+    <input type="text" name="title" [(ngModel)]="task.title" placeholder="Title">
+  </div>
 
-<div class="field">
-  <label>
-    Description
-    <textarea [(ngModel)]="item.description" placeholder="name"></textarea>
-  </label>
-</div>
+  <div class="field">
+    <label>Description</label>
+    <textarea [(ngModel)]="task.description" placeholder="Description"></textarea>
+  </div>
+</form>
