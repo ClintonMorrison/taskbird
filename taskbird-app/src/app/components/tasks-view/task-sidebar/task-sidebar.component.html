@@ -1,6 +1,12 @@
+
 <div [id]="id" class="ui right vertical menu wide sidebar task-sidebar">
   <taskbird-task-detail [task]="task"></taskbird-task-detail>
+  <button
+    (click)="closeSidebar()"
+    class="ui primary button">
+    Done
+  </button>
 </div>
-<button (click)="showSidebar()" class="ui basic secondary icon button">
-  <i class="ui icon ellipsis horizontal"></i>
+<button (click)="openSidebar()" class="ui basic icon button sidebar-trigger">
+  <i class="ui pencil icon"></i>
 </button>

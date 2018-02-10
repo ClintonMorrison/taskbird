@@ -22,10 +22,19 @@ export class TaskSidebarComponent implements OnInit {
     this.id = uniqueId('task-sidebar-');
   }
 
-  showSidebar() {
-    $(`#${this.id}`)
+  openSidebar() {
+    this.getSidebar()
       .sidebar('setting', 'exclusive', true)
       .sidebar('show');
+  }
+
+  closeSidebar() {
+    this.getSidebar()
+      .sidebar('hide');
+  }
+
+  private getSidebar(): any {
+    return $(`#${this.id}`);
   }
 
 }
