@@ -18,4 +18,14 @@
     <i class="icon chevron right"></i>
   </button>
 </div>
-<calendar [month]="month"></calendar>
+<calendar 
+  (dateSelected)="handleDateSelected($event)"
+  [selectedDay]="selectedDay"
+  [month]="month"></calendar>
+
+<div
+  *ngIf="selectedDay && tasks"
+  class="selected-day-tasks">
+  <h2>Tasks for {{ getSelectedDayTitle() }}</h2>
+  <taskbird-tasks [tasks]="tasks"></taskbird-tasks>
+</div>

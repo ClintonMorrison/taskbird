@@ -4,4 +4,6 @@ a {
   line-height: 1;
   font-size: .8rem;
   text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }

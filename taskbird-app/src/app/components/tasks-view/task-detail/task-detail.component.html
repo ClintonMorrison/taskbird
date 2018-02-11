@@ -1,7 +1,11 @@
-<h2>Task Details</h2>
+<div class="details-heading">
+  <h2>Task Details</h2>
+  <div>
+    <taskbird-status-label [task]="task"></taskbird-status-label>
+  </div>
+</div>
 
 <form class="ui form">
-
   <div class="field">
     <label>Title</label>
     <input type="text" name="title" [(ngModel)]="task.title" placeholder="Title">
@@ -11,4 +15,12 @@
     <label>Description</label>
     <textarea [(ngModel)]="task.description" placeholder="Description"></textarea>
   </div>
+
+  <div class="field" *ngIf="task.date_completed">
+    <label>Date Completed</label>
+    <input type="text" name="title" [(ngModel)]="task.date_completed">
+  </div>
+
+
+  
 </form>

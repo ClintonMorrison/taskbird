@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { CalendarDay } from '../../../models/calendar-day';
 import { utc, Moment } from 'moment';
 import { Date, Month } from '../../../models/dates';
@@ -16,6 +16,10 @@ export class CalendarComponent implements OnInit {
   @Input()
   month: Month;
 
+  @Output()
+  dateSelected = new EventEmitter<Date>();
+
+  @Input()
   private selectedDay: Date;
 
   daysOfWeek: String[];
@@ -61,11 +65,7 @@ export class CalendarComponent implements OnInit {
   }
 
   handleDateSelected(date) {
-    if (date.equals(this.selectedDay)) {
-      this.selectedDay = null;
-    }
-
-    this.selectedDay = date;
+    this.dateSelected.emit(date);
   }
 
   ngOnInit() {

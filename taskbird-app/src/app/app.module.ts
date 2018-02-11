@@ -26,6 +26,8 @@ import { ProjectIconComponent } from './components/tasks-view/project-icon/proje
 import { ProjectFilterComponent } from './components/tasks-view/project-filter/project-filter.component';
 import { TasksPageComponent } from './components/tasks-view/tasks-page/tasks-page.component';
 import { TaskSidebarComponent } from './components/tasks-view/task-sidebar/task-sidebar.component';
+import { StatusLabelComponent } from './components/tasks-view/status-label/status-label.component';
+import { ProjectDropdownComponent } from './components/tasks-view/project-dropdown/project-dropdown.component';
 
 
 @NgModule({
@@ -47,7 +49,9 @@ import { TaskSidebarComponent } from './components/tasks-view/task-sidebar/task-
     ProjectIconComponent,
     ProjectFilterComponent,
     TasksPageComponent,
-    TaskSidebarComponent
+    TaskSidebarComponent,
+    StatusLabelComponent,
+    ProjectDropdownComponent
   ],
   imports: [
     BrowserModule,

@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Month } from '../../../models/dates';
+import { Month, Date } from '../../../models/dates';
+import { Task } from '../../../models/item';
+import { TaskService } from '../../../services/item.service';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: "calendar-page",
@@ -9,8 +12,14 @@ import { Month } from '../../../models/dates';
 export class CalendarPageComponent implements OnInit {
   month: Month = new Month("2017", "12");
 
-  constructor() {}
+  private selectedDay: Date;
+  private tasks: Task[];
 
+  constructor(
+    private taskService: TaskService
+  ) {}
+
+  
   goToPrevious() {
     this.month = this.month.getPrevious();
   }
@@ -27,5 +36,33 @@ export class CalendarPageComponent implements OnInit {
     return this.month.toMoment().format("MMM, YYYY");
   }
 
-  ngOnInit() {}
+  getSelectedDayTitle() {
+    if (this.selectedDay) {
+      return this.selectedDay.toMoment().format('MMMM Do');
+    }
+  }
+
+  handleDateSelected(date) {
+    if (date.equals(this.selectedDay)) {
+      this.selectedDay = null;
+    } else {
+      this.selectedDay = date;
+    }
+
+    this.getTasksForSelectedDay();
+  }
+
+  ngOnInit() {
+  }
+
+  getTasksForSelectedDay() {
+    if (!this.selectedDay) {
+      this.tasks = [];
+      return;
+    }
+
+    return this.taskService.groupTasksByDayDue().subscribe((tasksByDay) => {
+      this.tasks = tasksByDay[this.selectedDay.toString()];
+    });
+  }
 }

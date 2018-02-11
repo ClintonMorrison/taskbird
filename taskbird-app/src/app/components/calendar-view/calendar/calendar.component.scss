@@ -1,5 +1,6 @@
 .calendar {
   margin-top: 1em;
+  overflow-x: scroll;
 
   table {
     width: 100%;
@@ -11,6 +12,7 @@
 
     td {
       padding: 0;
+      width: 100% !important;
     }
   }
 }

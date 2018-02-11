@@ -1,10 +1,10 @@
 
-<div [id]="id" class="ui right vertical menu wide sidebar task-sidebar">
+<div [id]="id" class="ui right vertical menu sidebar task-sidebar">
   <taskbird-task-detail [task]="task"></taskbird-task-detail>
   <button
     (click)="closeSidebar()"
     class="ui primary button">
-    Done
+    Back
   </button>
 </div>
 <button (click)="openSidebar()" class="ui basic icon button sidebar-trigger">
