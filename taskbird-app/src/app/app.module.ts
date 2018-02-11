@@ -14,8 +14,8 @@ import { MessagesComponent } from './components/messages/messages.component';
 import { MessageService } from './services/message.service';
 import { DateService } from './services/date.service';
 import { AppRoutingModule } from './/app-routing.module';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { TaskStatisticsComponent } from './components/task-statistics/task-statistics.component';
+import { DashboardComponent } from './components/dashboard-view/dashboard/dashboard.component';
+import { TaskStatisticsComponent } from './components/dashboard-view/task-statistics/task-statistics.component';
 import { TaskItemComponent } from './components/tasks-view/task-item/task-item.component';
 import { CalendarComponent } from './components/calendar-view/calendar/calendar.component';
 import { CalendarPageComponent } from './components/calendar-view/calendar-page/calendar-page.component';
@@ -29,6 +29,7 @@ import { TaskSidebarComponent } from './components/tasks-view/task-sidebar/task-
 import { StatusLabelComponent } from './components/tasks-view/status-label/status-label.component';
 import { ProjectDropdownComponent } from './components/tasks-view/project-dropdown/project-dropdown.component';
 import { ProjectService } from './services/project.service';
+import { FilterService } from './services/filter.service';
 
 
 @NgModule({
@@ -60,7 +61,7 @@ import { ProjectService } from './services/project.service';
     AppRoutingModule,
     HttpClientModule
   ],
-providers: [ TaskService, ProjectService, MessageService, DateService ],
+providers: [ TaskService, ProjectService, MessageService, DateService, FilterService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
