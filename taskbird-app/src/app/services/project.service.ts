@@ -8,22 +8,25 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mergeMap';
 import { Project } from '../models/project';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 @Injectable()
 export class ProjectService {
 
   private projects: Project[];
+  private projectsSubject: BehaviorSubject<Project[]>;
 
-  constructor() { }
+  constructor() {
+    this.projectsSubject = new BehaviorSubject([]);
+  }
 
   getProjects(): Observable<Project[]> {
     if (this.projects) {
-      return of(this.projects);
+      return this.projectsSubject.asObservable();
     }
 
-    return of(MockProjectResponse).map(response => {
-      this.projects = response.objects;
-      return this.projects;
-    });
+    this.projects = MockProjectResponse.objects;
+    this.projectsSubject.next(this.projects);
+    return this.projectsSubject.asObservable();
   }
 
 }

@@ -11,19 +11,26 @@ import { FilterService } from '../../../services/filter.service';
 export class TasksPageComponent implements OnInit {
 
   constructor(
-    private itemService: TaskService,
+    private taskService: TaskService,
     private filterService: FilterService
   ) {}
   
-  tasks: Task[];
+  tasks: Task[] = [];
+  unfilteredTasks: Task[] = [];
 
-  getTasks(): void {
+  subscribeToTasks(): void {
     this.filterService.getFilteredTasks()
       .subscribe(tasks => this.tasks = tasks);
   }
 
+  subscribeToUnfilteredTasks(): void {
+    this.taskService.getTasks()
+      .subscribe(tasks => this.unfilteredTasks = tasks);
+  }
+
   ngOnInit() {
-    this.getTasks();
+    this.subscribeToTasks();
+    this.subscribeToUnfilteredTasks();
   }
 
 }

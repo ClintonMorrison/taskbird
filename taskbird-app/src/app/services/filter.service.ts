@@ -20,7 +20,7 @@ export class FilterService {
     private taskService: TaskService
   ) {
     this.filteredTasksSubject = new BehaviorSubject([]);
-    this.activeProjectSubject = <BehaviorSubject<Project>>new BehaviorSubject(null);
+    this.activeProjectSubject = <BehaviorSubject<Project>>new BehaviorSubject(undefined);
   
     this.getActiveProjet().subscribe(() => {
       this.updateFilteredTasks();
@@ -34,6 +34,7 @@ export class FilterService {
   }
 
   setProject(project: Project) {
+    console.log('setting active to', project);
     this.activeProject = project;
     this.activeProjectSubject.next(project);
   }
@@ -61,7 +62,7 @@ export class FilterService {
   }
 
   private projectMatchesActive(project: Project) {
-    if (this.activeProject === project) {
+    if (this.activeProject === undefined || this.activeProject === project) {
       return true;
     } else if (this.activeProject && project && this.activeProject.id === project.id) {
       return true;

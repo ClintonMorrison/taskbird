@@ -10,6 +10,8 @@ export class TasksComponent implements OnInit {
   @Input()
   tasks: Task[];
 
+  numberToShow: number;
+
   selectedTask: Task;
 
   constructor() { }
@@ -18,6 +20,12 @@ export class TasksComponent implements OnInit {
     this.selectedTask = task;
   }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.numberToShow = 25;
+  }
+
+  showMore() {
+    this.numberToShow += 25;
+  }
 
 }
