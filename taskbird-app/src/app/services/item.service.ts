@@ -23,6 +23,8 @@ export class TaskService {
   private baseUrl = 'http://localhost/api/v1/task/?format=json';
   private tasks: Task[] = null;
 
+  private tasksSubject: BehaviorSubject<Task[]>;
+
   private tasksById: TaskMap = null;
   private tasksByDayDue: StringTaskMap = null;
 
@@ -30,39 +32,18 @@ export class TaskService {
     private http: HttpClient,
     private messageService: MessageService
   ) {
-  }
-
-  getTask(id): Observable<Task> {
-    return this.getTaskMap().map(itemsById => {
-      return itemsById[id];
-    });
+    this.tasksSubject = new BehaviorSubject([]);
   }
 
   getTasks(): Observable<Task[]> {
     if (this.tasks) {
-      return of(this.tasks);
+      return this.tasksSubject.asObservable();
     }
 
-    return of(MockTaskResponse).map(response => {
-      this.tasks = response.objects;
-      return this.tasks;
-    });
-  }
+    this.tasks = MockTaskResponse.objects;
+    this.tasksSubject.next(this.tasks);
 
-  getTaskMap(): Observable<TaskMap> {
-    if (this.tasksById) {
-      return of(this.tasksById);
-    }
-
-    return this.getTasks().map(tasks => {
-      const map = {};
-      for (const task of tasks) {
-        map[task.id] = task;
-      }
-
-      this.tasksById = map;
-      return this.tasksById;
-    });
+    return this.tasksSubject.asObservable();
   }
 
   groupTasksByDayDue(): Observable<StringTaskMap> {
@@ -93,6 +74,5 @@ export class TaskService {
 
     return result;
   }
-
 
 }
