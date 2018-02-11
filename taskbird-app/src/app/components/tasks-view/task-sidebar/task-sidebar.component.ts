@@ -3,6 +3,9 @@ import { uniqueId } from 'lodash';
 
 import { Task } from '../../../models/item';
 
+declare var $: any;
+
+
 @Component({
   selector: 'taskbird-task-sidebar',
   templateUrl: './task-sidebar.component.html',

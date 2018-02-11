@@ -28,6 +28,7 @@ import { TasksPageComponent } from './components/tasks-view/tasks-page/tasks-pag
 import { TaskSidebarComponent } from './components/tasks-view/task-sidebar/task-sidebar.component';
 import { StatusLabelComponent } from './components/tasks-view/status-label/status-label.component';
 import { ProjectDropdownComponent } from './components/tasks-view/project-dropdown/project-dropdown.component';
+import { ProjectService } from './services/project.service';
 
 
 @NgModule({
@@ -59,7 +60,7 @@ import { ProjectDropdownComponent } from './components/tasks-view/project-dropdo
     AppRoutingModule,
     HttpClientModule
   ],
-providers: [ TaskService, MessageService, DateService ],
+providers: [ TaskService, ProjectService, MessageService, DateService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

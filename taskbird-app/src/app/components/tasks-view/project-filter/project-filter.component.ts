@@ -1,17 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { ProjectService } from '../../../services/project.service';
+import { Project } from '../../../models/project';
 
 @Component({
   selector: 'taskbird-project-filter',
   template: `
     <div class="ui secondary pointing menu">
-      <a class="item">
-      Home
-      </a>
-      <a class="item active">
-      Messages
-      </a>
-      <a class="item">
-      Friends
+      <a *ngFor="let project of projects" class="item">
+      <i *ngIf="project" class="icon {{ project.icon }} {{ project.color }}"></i>
+      {{ project.title }}
       </a>
     </div>
 
@@ -20,9 +17,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProjectFilterComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  projects: Project[];
+
+  constructor(private projectService: ProjectService) { }
 
   ngOnInit() {
+    this.projectService.getProjects()
+      .subscribe(projects => this.projects = projects);
   }
 
 }

@@ -42,9 +42,6 @@ export class CalendarDayComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    if (this.selected) {
-      console.log('i am selected', this.date);
-    }
   }
 
 }

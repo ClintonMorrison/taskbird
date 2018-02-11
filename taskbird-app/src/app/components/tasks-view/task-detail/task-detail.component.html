@@ -8,19 +8,12 @@
 <form class="ui form">
   <div class="field">
     <label>Title</label>
-    <input type="text" name="title" [(ngModel)]="task.title" placeholder="Title">
+    <input type="text" name="title" [(ngModel)]="task.title">
   </div>
 
   <div class="field">
     <label>Description</label>
-    <textarea [(ngModel)]="task.description" placeholder="Description"></textarea>
+    <textarea name="description" [(ngModel)]="task.description"></textarea>
   </div>
-
-  <div class="field" *ngIf="task.date_completed">
-    <label>Date Completed</label>
-    <input type="text" name="title" [(ngModel)]="task.date_completed">
-  </div>
-
-
   
 </form>
