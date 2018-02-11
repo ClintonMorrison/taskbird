@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { TaskService } from '../../../services/item.service';
 import { Task } from '../../../models/item';
+import { FilterService } from '../../../services/filter.service';
 
 @Component({
   selector: 'taskbird-tasks-page',
@@ -9,12 +10,15 @@ import { Task } from '../../../models/item';
 })
 export class TasksPageComponent implements OnInit {
 
-  constructor(private itemService: TaskService) {}
+  constructor(
+    private itemService: TaskService,
+    private filterService: FilterService
+  ) {}
   
   tasks: Task[];
 
   getTasks(): void {
-    this.itemService.getFilteredTasks()
+    this.filterService.getFilteredTasks()
       .subscribe(tasks => this.tasks = tasks);
   }
 

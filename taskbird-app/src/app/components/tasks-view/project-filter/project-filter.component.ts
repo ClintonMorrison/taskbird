@@ -40,7 +40,6 @@ export class ProjectFilterComponent implements OnInit {
   }
 
   projectActive(project: Project) {
-    console.log(this.filterService.projectIsActive(project));
     return this.filterService.projectIsActive(project);
   }
 

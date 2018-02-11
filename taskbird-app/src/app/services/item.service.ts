@@ -25,17 +25,11 @@ export class TaskService {
 
   private tasksById: TaskMap = null;
   private tasksByDayDue: StringTaskMap = null;
-  private filteredTasks: BehaviorSubject<Task[]>;
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService,
-    private filterService: FilterService
+    private messageService: MessageService
   ) {
-    this.filteredTasks = new BehaviorSubject([]);
-    filterService.getActiveProjet().subscribe((activeProject) => {
-      this.updateFilteredTasks(activeProject);
-    });
   }
 
   getTask(id): Observable<Task> {
@@ -53,10 +47,6 @@ export class TaskService {
       this.tasks = response.objects;
       return this.tasks;
     });
-  }
-
-  getFilteredTasks(): Observable<Task[]> {
-    return this.filteredTasks.asObservable();
   }
 
   getTaskMap(): Observable<TaskMap> {
@@ -104,21 +94,5 @@ export class TaskService {
     return result;
   }
 
-  private updateFilteredTasks(activeProject: Project) {
-    this.getTasks().subscribe((tasks) => {
-      const filteredTasks = _(tasks).filter((task) => {
-        if (!activeProject) {
-          return true;
-        }
 
-        if(task.project && activeProject.id === task.project.id) {
-          return true;
-        }
-
-        return false;
-      }).value();
-
-      this.filteredTasks.next(filteredTasks);
-    });
-  }
 }
