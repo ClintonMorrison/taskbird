@@ -9,7 +9,7 @@ import { FilterService } from '../../../services/filter.service';
     <div class="ui secondary pointing menu">
       <a 
         *ngFor="let project of projects"
-        [ngClass]="{'active': projectActive(project)}"
+        [ngClass]="{'active': projectActive(project) | async}"
 
         (click)="handleProjectSelected(project)"
         class="active item">
@@ -40,6 +40,7 @@ export class ProjectFilterComponent implements OnInit {
   }
 
   projectActive(project: Project) {
+    console.log(this.filterService.projectIsActive(project));
     return this.filterService.projectIsActive(project);
   }
 

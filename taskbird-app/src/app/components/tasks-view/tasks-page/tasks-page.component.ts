@@ -9,12 +9,12 @@ import { Task } from '../../../models/item';
 })
 export class TasksPageComponent implements OnInit {
 
-  constructor(private itemService: TaskService) { }
+  constructor(private itemService: TaskService) {}
   
   tasks: Task[];
 
   getTasks(): void {
-    this.itemService.getTasks()
+    this.itemService.getFilteredTasks()
       .subscribe(tasks => this.tasks = tasks);
   }
 

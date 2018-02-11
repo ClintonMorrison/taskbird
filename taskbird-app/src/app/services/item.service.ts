@@ -9,24 +9,34 @@ import * as _ from 'lodash';
 import { Date } from '../models/dates';
 import { utc } from 'moment';
 
-// TODO: remove
 import 'rxjs/add/observable/of';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mergeMap';
+import { FilterService } from './filter.service';
+import { BehaviorSubject } from 'rxjs/BehaviorSubject';
+import { Project } from '../models/project';
 
 @Injectable()
 export class TaskService {
   private baseUrl = 'http://localhost/api/v1/task/?format=json';
   private tasks: Task[] = null;
+
   private tasksById: TaskMap = null;
   private tasksByDayDue: StringTaskMap = null;
+  private filteredTasks: BehaviorSubject<Task[]>;
 
   constructor(
     private http: HttpClient,
-    private messageService: MessageService
-  ) {}
+    private messageService: MessageService,
+    private filterService: FilterService
+  ) {
+    this.filteredTasks = new BehaviorSubject([]);
+    filterService.getActiveProjet().subscribe((activeProject) => {
+      this.updateFilteredTasks(activeProject);
+    });
+  }
 
   getTask(id): Observable<Task> {
     return this.getTaskMap().map(itemsById => {
@@ -43,6 +53,10 @@ export class TaskService {
       this.tasks = response.objects;
       return this.tasks;
     });
+  }
+
+  getFilteredTasks(): Observable<Task[]> {
+    return this.filteredTasks.asObservable();
   }
 
   getTaskMap(): Observable<TaskMap> {
@@ -88,5 +102,23 @@ export class TaskService {
     }
 
     return result;
+  }
+
+  private updateFilteredTasks(activeProject: Project) {
+    this.getTasks().subscribe((tasks) => {
+      const filteredTasks = _(tasks).filter((task) => {
+        if (!activeProject) {
+          return true;
+        }
+
+        if(task.project && activeProject.id === task.project.id) {
+          return true;
+        }
+
+        return false;
+      }).value();
+
+      this.filteredTasks.next(filteredTasks);
+    });
   }
 }
