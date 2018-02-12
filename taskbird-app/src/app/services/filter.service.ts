@@ -11,32 +11,57 @@ import * as _ from 'lodash';
 export class FilterService {
 
   private activeProject: Project;
-  private tasks: Task[];
-
   private activeProjectSubject: BehaviorSubject<Project>;
+
+  private tasks: Task[];
   private filteredTasksSubject: BehaviorSubject<Task[]>;
+
+  private showCompletedTasks: boolean; 
+  private showCompletedTasksSubject: BehaviorSubject<Boolean>;
+
+  private searchQuery: string;
+  private searchQuerySubject: BehaviorSubject<String>;
+
 
   constructor(
     private taskService: TaskService
   ) {
     this.filteredTasksSubject = new BehaviorSubject([]);
     this.activeProjectSubject = <BehaviorSubject<Project>>new BehaviorSubject(undefined);
-  
-    this.getActiveProjet().subscribe(() => {
-      this.updateFilteredTasks();
-    });
+    this.showCompletedTasksSubject = new BehaviorSubject(false);
+    this.searchQuerySubject = new BehaviorSubject('');
+
+    this.getActiveProjet().subscribe(() => this.updateFilteredTasks());
+    this.getShowCompletedTasks().subscribe(() => this.updateFilteredTasks());
+    this.getSearchQuery().subscribe(() => this.updateFilteredTasks());
 
     this.taskService.getTasks().subscribe((tasks) => {
       this.tasks = tasks;
       this.updateFilteredTasks();
     });
+  }
 
+  getSearchQuery(): Observable<String> {
+    return this.searchQuerySubject.asObservable();
+  }
+
+  setSearchQuery(searchQuery: string) {
+    this.searchQuery = searchQuery;
+    this.searchQuerySubject.next(searchQuery);
   }
 
   setProject(project: Project) {
-    console.log('setting active to', project);
     this.activeProject = project;
     this.activeProjectSubject.next(project);
+  }
+
+  setShowCompletedTasks(showCompletedTasks: boolean) {
+    this.showCompletedTasks = showCompletedTasks;
+    this.showCompletedTasksSubject.next(showCompletedTasks);
+  }
+  
+  getShowCompletedTasks(): Observable<Boolean> {
+    return this.showCompletedTasksSubject.asObservable();
   }
 
   getActiveProjet(): Observable<Project> {
@@ -54,8 +79,11 @@ export class FilterService {
   }
 
   private updateFilteredTasks() {
+    console.log('updating...');
     const filteredTasks = _(this.tasks).filter((task) => {
-      return this.projectMatchesActive(task.project);
+      return this.projectMatchesActive(task.project) &&
+        this.taskMatchesCompletedFilter(task) &&
+        this.taskMatchesSearchFilter(task);
     }).value();
 
     this.filteredTasksSubject.next(filteredTasks);
@@ -69,5 +97,34 @@ export class FilterService {
     }
 
     return false;
+  }
+
+  private taskMatchesCompletedFilter(task: Task) {
+    if (this.showCompletedTasks) {
+      return true;
+    }
+
+    return task.done === false;
+  }
+
+  private taskMatchesSearchFilter(task: Task) {
+    if (!this.searchQuery) {
+      return true;
+    }
+
+    const q = this.searchQuery.toLowerCase();
+    
+    const fields = [
+      task.title || '',
+      task.description || '',
+    ];
+
+    if (task.project) {
+      fields.push(task.project.title);
+    }
+
+    return _(fields).filter((field) => (
+      field.toLowerCase().includes(q)
+    )).value().length > 0;
   }
 }

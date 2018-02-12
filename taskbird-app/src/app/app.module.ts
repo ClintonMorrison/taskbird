@@ -30,6 +30,9 @@ import { StatusLabelComponent } from './components/tasks-view/status-label/statu
 import { ProjectDropdownComponent } from './components/tasks-view/project-dropdown/project-dropdown.component';
 import { ProjectService } from './services/project.service';
 import { FilterService } from './services/filter.service';
+import { ShowCompletedToggleComponent } from './components/tasks-view/show-completed-toggle/show-completed-toggle.component';
+import { FilteringControlsComponent } from './components/tasks-view/filtering-controls/filtering-controls.component';
+import { SearchBarComponent } from './components/tasks-view/search-bar/search-bar.component';
 
 
 @NgModule({
@@ -53,7 +56,10 @@ import { FilterService } from './services/filter.service';
     TasksPageComponent,
     TaskSidebarComponent,
     StatusLabelComponent,
-    ProjectDropdownComponent
+    ProjectDropdownComponent,
+    ShowCompletedToggleComponent,
+    FilteringControlsComponent,
+    SearchBarComponent
   ],
   imports: [
     BrowserModule,

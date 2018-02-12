@@ -11,7 +11,7 @@
     </label>
   </div>
 
-  <a (click)="onSelect(task)" class="item">
+  <a (click)="onSelect($event)" class="item" href="#task-{{ task.id }}-done">
     <div>
       <span class="title">
         {{task.title}}
@@ -19,10 +19,9 @@
     </div>
 
     <div class="details">
-      <!--
       <taskbird-project-icon [task]="task"></taskbird-project-icon>
-      -->
     </div>
   </a>
+
   <taskbird-task-sidebar [task]="task"></taskbird-task-sidebar>
 </div>

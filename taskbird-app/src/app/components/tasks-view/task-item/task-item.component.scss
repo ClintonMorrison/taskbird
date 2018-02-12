@@ -2,7 +2,7 @@
   border-bottom: 1px solid #c3c3c3;
   display: flex;
   justify-content: space-between;
-  padding: 1em .5em;
+  padding: 0 .5em;
 
   .item {
     color: rgba(0,0,0,.87);
@@ -10,9 +10,21 @@
     justify-content: space-between;
     margin-left: 1em;
     width: 100%;
+    &:hover,
+    &.selected {
+      background-color: #9ED6FF;
+    }
   }
 
-   &.selected {
+  .item {
+    padding: 1em 0;
+  }
+
+  .ui.checkbox {
+    margin-top: 1em;
+  }
+
+  &:hover {
     background-color: #9ED6FF;
   }
 
