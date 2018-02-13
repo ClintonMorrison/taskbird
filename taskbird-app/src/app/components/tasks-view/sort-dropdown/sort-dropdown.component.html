@@ -1,0 +1,11 @@
+<select
+  (change)="handleChange($event)"
+  [(ngModel)]="sort"
+  name="sort" 
+  class="ui dropdown sort-dropdown">
+  <option value="date_due_asc">Date Due: Old to New</option>
+  <option value="date_due_desc">Date Due: New to Old</option>
+  <option value="date_created_asc">Date Created: Old to New</option>
+  <option value="date_created_desc">Date Created: New to Old</option>
+  <option value="project">Project</option>
+</select>

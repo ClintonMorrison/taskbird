@@ -33,6 +33,7 @@ import { FilterService } from './services/filter.service';
 import { ShowCompletedToggleComponent } from './components/tasks-view/show-completed-toggle/show-completed-toggle.component';
 import { FilteringControlsComponent } from './components/tasks-view/filtering-controls/filtering-controls.component';
 import { SearchBarComponent } from './components/tasks-view/search-bar/search-bar.component';
+import { SortDropdownComponent } from './components/tasks-view/sort-dropdown/sort-dropdown.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { SearchBarComponent } from './components/tasks-view/search-bar/search-ba
     ProjectDropdownComponent,
     ShowCompletedToggleComponent,
     FilteringControlsComponent,
-    SearchBarComponent
+    SearchBarComponent,
+    SortDropdownComponent
   ],
   imports: [
     BrowserModule,

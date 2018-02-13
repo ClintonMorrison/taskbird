@@ -6,9 +6,15 @@
   <taskbird-task-detail [task]="selectedTask"></taskbird-task-detail>
 </div>
 
-<button
-  *ngIf="tasks.length > numberToShow"
-  (click)="showMore()"
-  class="ui secondary button show-more">
-  Show More
-</button>
+<div class="bottom-controls">
+  <div>
+    <button
+      *ngIf="tasks.length > numberToShow"
+      (click)="showMore()"
+      class="ui secondary button show-more">
+      Show More
+    </button>
+  </div>
+
+  <taskbird-show-completed-toggle></taskbird-show-completed-toggle>
+</div>

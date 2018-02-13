@@ -5,6 +5,8 @@ import { Observable } from 'rxjs/Observable';
 import { Task } from '../models/item';
 import { TaskService } from './item.service';
 import * as _ from 'lodash';
+import { utc } from 'moment';
+
 // https://coryrylan.com/blog/angular-observable-data-services
 
 @Injectable()
@@ -22,6 +24,9 @@ export class FilterService {
   private searchQuery: string;
   private searchQuerySubject: BehaviorSubject<String>;
 
+  private sort: string;
+  private sortSubject: BehaviorSubject<String>;
+
 
   constructor(
     private taskService: TaskService
@@ -30,15 +35,26 @@ export class FilterService {
     this.activeProjectSubject = <BehaviorSubject<Project>>new BehaviorSubject(undefined);
     this.showCompletedTasksSubject = new BehaviorSubject(false);
     this.searchQuerySubject = new BehaviorSubject('');
+    this.sortSubject = new BehaviorSubject('date_due_asc');
 
     this.getActiveProjet().subscribe(() => this.updateFilteredTasks());
     this.getShowCompletedTasks().subscribe(() => this.updateFilteredTasks());
     this.getSearchQuery().subscribe(() => this.updateFilteredTasks());
+    this.getSort().subscribe(() => this.updateFilteredTasks());
 
     this.taskService.getTasks().subscribe((tasks) => {
       this.tasks = tasks;
       this.updateFilteredTasks();
     });
+  }
+
+  getSort(): Observable<String> {
+    return this.sortSubject.asObservable();
+  }
+
+  setSort(sort: string) {
+    this.sort = sort;
+    this.sortSubject.next(sort);
   }
 
   getSearchQuery(): Observable<String> {
@@ -79,14 +95,15 @@ export class FilterService {
   }
 
   private updateFilteredTasks() {
-    console.log('updating...');
     const filteredTasks = _(this.tasks).filter((task) => {
       return this.projectMatchesActive(task.project) &&
         this.taskMatchesCompletedFilter(task) &&
         this.taskMatchesSearchFilter(task);
     }).value();
 
-    this.filteredTasksSubject.next(filteredTasks);
+    const sortedTasks = this.sortTasks(filteredTasks);
+
+    this.filteredTasksSubject.next(sortedTasks);
   }
 
   private projectMatchesActive(project: Project) {
@@ -126,5 +143,31 @@ export class FilterService {
     return _(fields).filter((field) => (
       field.toLowerCase().includes(q)
     )).value().length > 0;
+  }
+
+  private getSortFieldForTask(task: Task) {
+    if (!this.sort) {
+      return true;
+    }
+
+    if (this.sort.includes('date_due')) {
+      return utc(task.date_due).unix();
+    } else if (this.sort.includes('date_created')) {
+      return utc(task.date_created).unix();
+    } else if (this.sort === 'project') {
+      return task.project ? task.project.id : null;
+    }
+  }
+
+  private sortTasks(tasks: Task[]) {
+    let sortedTasks = _.sortBy(tasks, (task: Task) => {
+      return this.getSortFieldForTask(task);
+    });
+
+    if (this.sort && this.sort.includes('_asc')) {
+       _.reverse(sortedTasks);
+    }
+
+    return sortedTasks;
   }
 }
