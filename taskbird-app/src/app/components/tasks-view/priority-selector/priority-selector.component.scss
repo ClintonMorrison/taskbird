@@ -1,0 +1,6 @@
+button {
+  &:focus,
+  &:hover {
+    text-decoration: underline;
+  }
+}

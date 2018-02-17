@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterService } from '../../../services/filter.service';
 
+declare var $: any;
+
 @Component({
   selector: 'taskbird-sort-dropdown',
   templateUrl: './sort-dropdown.component.html',

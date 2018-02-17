@@ -58,6 +58,10 @@ export class TaskService {
     });
   }
 
+  updateTask(task: Task) {
+    this.tasksSubject.next(this.tasks);
+  }
+
   private groupByCallback(tasks: Task[], callback: Function): StringTaskMap {
     const result = {};
 

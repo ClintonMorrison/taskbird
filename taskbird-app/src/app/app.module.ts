@@ -34,6 +34,7 @@ import { ShowCompletedToggleComponent } from './components/tasks-view/show-compl
 import { FilteringControlsComponent } from './components/tasks-view/filtering-controls/filtering-controls.component';
 import { SearchBarComponent } from './components/tasks-view/search-bar/search-bar.component';
 import { SortDropdownComponent } from './components/tasks-view/sort-dropdown/sort-dropdown.component';
+import { PrioritySelectorComponent } from './components/tasks-view/priority-selector/priority-selector.component';
 
 
 @NgModule({
@@ -61,7 +62,8 @@ import { SortDropdownComponent } from './components/tasks-view/sort-dropdown/sor
     ShowCompletedToggleComponent,
     FilteringControlsComponent,
     SearchBarComponent,
-    SortDropdownComponent
+    SortDropdownComponent,
+    PrioritySelectorComponent
   ],
   imports: [
     BrowserModule,
