@@ -26,7 +26,6 @@ export class TaskService {
   private tasksSubject: BehaviorSubject<Task[]>;
 
   private tasksById: TaskMap = null;
-  private tasksByDayDue: StringTaskMap = null;
 
   constructor(
     private http: HttpClient,
@@ -47,13 +46,25 @@ export class TaskService {
   }
 
   groupTasksByDayDue(): Observable<StringTaskMap> {
-    if (this.tasksByDayDue) {
-      return of(this.tasksByDayDue);
-    }
-
     return this.getTasks().map((tasks: Task[]) => {
       return this.groupByCallback(tasks, (task) => (
-        task.date_due ? utc(task.date_due).format('YYYY-MM-DD') : null
+        task.date_due ? this.formatDate(task.date_due) : null
+      ));
+    });
+  }
+
+  groupTasksByDayCreated(): Observable<StringTaskMap> {
+    return this.getTasks().map((tasks: Task[]) => {
+      return this.groupByCallback(tasks, (task: Task) => (
+        this.formatDate(task.date_created)
+      ));
+    });
+  }
+
+  groupTasksByDayCompleted(): Observable<StringTaskMap> {
+    return this.getTasks().map((tasks: Task[]) => {
+      return this.groupByCallback(tasks, (task: Task) => (
+        task.done && this.formatDate(task.date_modified)
       ));
     });
   }
@@ -77,6 +88,14 @@ export class TaskService {
     }
 
     return result;
+  }
+
+  private formatDate(date: string): string {
+    if (date) {
+      return utc(date).format('YYYY-MM-DD');
+    }
+
+    return null;
   }
 
 }

@@ -35,6 +35,9 @@ import { FilteringControlsComponent } from './components/tasks-view/filtering-co
 import { SearchBarComponent } from './components/tasks-view/search-bar/search-bar.component';
 import { SortDropdownComponent } from './components/tasks-view/sort-dropdown/sort-dropdown.component';
 import { PrioritySelectorComponent } from './components/tasks-view/priority-selector/priority-selector.component';
+import { AnalyticsPageComponent } from './components/analytics-view/analytics-page/analytics-page.component';
+import { GraphComponent } from './components/analytics-view/graph/graph.component';
+import { ProductivityGraphComponent } from './components/analytics-view/productivity-graph/productivity-graph.component';
 
 
 @NgModule({
@@ -63,7 +66,10 @@ import { PrioritySelectorComponent } from './components/tasks-view/priority-sele
     FilteringControlsComponent,
     SearchBarComponent,
     SortDropdownComponent,
-    PrioritySelectorComponent
+    PrioritySelectorComponent,
+    AnalyticsPageComponent,
+    GraphComponent,
+    ProductivityGraphComponent
   ],
   imports: [
     BrowserModule,
