@@ -46,34 +46,32 @@ export class TaskService {
   }
 
   groupTasksByDayDue(): Observable<StringTaskMap> {
-    return this.getTasks().map((tasks: Task[]) => {
-      return this.groupByCallback(tasks, (task) => (
-        task.date_due ? this.formatDate(task.date_due) : null
-      ));
-    });
+    return this.groupTasksByCallback(
+      (task: Task) => (task.date_due ? this.formatDate(task.date_due) : null)
+    );
   }
 
   groupTasksByDayCreated(): Observable<StringTaskMap> {
-    return this.getTasks().map((tasks: Task[]) => {
-      return this.groupByCallback(tasks, (task: Task) => (
-        this.formatDate(task.date_created)
-      ));
-    });
+    return this.groupTasksByCallback(
+      (task: Task) => (this.formatDate(task.date_created))
+    );
   }
 
   groupTasksByDayCompleted(): Observable<StringTaskMap> {
-    return this.getTasks().map((tasks: Task[]) => {
-      return this.groupByCallback(tasks, (task: Task) => (
-        task.done && this.formatDate(task.date_modified)
-      ));
-    });
+    return this.groupTasksByCallback(
+      (task: Task) => (task.done && this.formatDate(task.date_modified))
+    );
   }
 
   groupTasksByProject(): Observable<StringTaskMap> {
+    return this.groupTasksByCallback(
+      (task: Task) => (task.project && task.project.title)
+    );
+  }
+
+  groupTasksByCallback(callback: Function): Observable<StringTaskMap> {
     return this.getTasks().map((tasks: Task[]) => {
-      return this.groupByCallback(tasks, (task: Task) => (
-        task.project  && task.project.title
-      ));
+      return this.groupByCallback(tasks, callback);
     });
   }
 

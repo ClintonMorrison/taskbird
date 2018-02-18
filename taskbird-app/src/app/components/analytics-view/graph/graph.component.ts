@@ -60,7 +60,7 @@ export class GraphComponent implements OnInit {
     var options = {
       displayModeBar: false
     };
-    console.log('rendering: ', layout);
+
     setTimeout(() => {
       Plotly.newPlot(this.id, this.data, layout, options);
     }, 0);
