@@ -13,6 +13,9 @@ export class GraphComponent implements OnInit {
   private id: string;
   
   @Input()
+  layout: object;
+
+  @Input()
   data: Array<object>;
 
   @Input()
@@ -30,23 +33,21 @@ export class GraphComponent implements OnInit {
   }
 
   ngOnInit() {
-    var layout: any = {
+    let layout: any = {
       showlegend: true,
       legend: { "orientation": "h" },
       margin: {
         l: 50,
         r: 0,
-        b: 0,
+        b: 15,
         t: 5,
         pad: 0
-      }
+      },
     };
 
-    /*
-    if (this.title) {
-      layout.title = this.title;
+    if (this.layout) {
+      layout = { ...layout, ...this.layout }
     }
-    */
 
     if (this.xTitle) {
       layout.xaxis = { title: this.xTitle };
@@ -59,7 +60,7 @@ export class GraphComponent implements OnInit {
     var options = {
       displayModeBar: false
     };
-
+    console.log('rendering: ', layout);
     setTimeout(() => {
       Plotly.newPlot(this.id, this.data, layout, options);
     }, 0);

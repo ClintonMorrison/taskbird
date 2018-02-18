@@ -69,6 +69,14 @@ export class TaskService {
     });
   }
 
+  groupTasksByProject(): Observable<StringTaskMap> {
+    return this.getTasks().map((tasks: Task[]) => {
+      return this.groupByCallback(tasks, (task: Task) => (
+        task.project  && task.project.title
+      ));
+    });
+  }
+
   updateTask(task: Task) {
     this.tasksSubject.next(this.tasks);
   }

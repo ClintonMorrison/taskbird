@@ -38,6 +38,7 @@ import { PrioritySelectorComponent } from './components/tasks-view/priority-sele
 import { AnalyticsPageComponent } from './components/analytics-view/analytics-page/analytics-page.component';
 import { GraphComponent } from './components/analytics-view/graph/graph.component';
 import { ProductivityGraphComponent } from './components/analytics-view/productivity-graph/productivity-graph.component';
+import { ProjectsGraphComponent } from './components/analytics-view/projects-graph/projects-graph.component';
 
 
 @NgModule({
@@ -69,7 +70,8 @@ import { ProductivityGraphComponent } from './components/analytics-view/producti
     PrioritySelectorComponent,
     AnalyticsPageComponent,
     GraphComponent,
-    ProductivityGraphComponent
+    ProductivityGraphComponent,
+    ProjectsGraphComponent
   ],
   imports: [
     BrowserModule,
