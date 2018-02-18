@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { StringTaskMap, Task } from '../../../models/item';
 import * as _ from 'lodash';
+import { utc } from 'moment';
 import { TaskService } from '../../../services/item.service';
 
 @Component({
-  selector: 'taskbird-projects-graph',
+  selector: 'taskbird-project-completion-time-graph',
   template: `
    <taskbird-graph
-     title="Tasks by Project"
-     yTitle="Tasks"
+     title="Average Completion Time by Project"
+     yTitle="Days Task is Open"
      [layout]="layout"
      [data]="getData()">
    </taskbird-graph>
   `,
   styles: []
 })
-export class ProjectsGraphComponent implements OnInit {
-  createdTasksSeries: any;
+export class ProjectCompletionTimeGraphComponent implements OnInit {
   completedTaskSeries: any;
 
   layout: object;
@@ -24,30 +24,21 @@ export class ProjectsGraphComponent implements OnInit {
   constructor(
     private taskService: TaskService
   ) {
-    this.createdTasksSeries = this.createEmptySeries('Tasks Created');
     this.completedTaskSeries = this.createEmptySeries('Tasks Completed');
 
     this.layout = {
-      legend: {
-        orientation: "h",
-        xanchor: "center",
-        y: -0.2,
-        x: .2
-      },
+      showlegend: false,
       margin: {
         l: 50,
         r: 0,
         b: 75,
         t: 5,
         pad: 0
-       }
+      }
     };
 
     taskService.groupTasksByProject().subscribe((tasksByProject) => {
-      const createdTasks = this.countTasksByProject(tasksByProject, () => true);
-      this.createdTasksSeries = { ...this.createdTasksSeries, x: createdTasks.x, y: createdTasks.y };
-
-      const completedTasks = this.countTasksByProject(tasksByProject, (task: Task) => task.done);
+      const completedTasks = this.getTimeOpenByProject(tasksByProject);
       this.completedTaskSeries = { ...this.completedTaskSeries, x: completedTasks.x, y: completedTasks.y };
     });
   }
@@ -57,7 +48,6 @@ export class ProjectsGraphComponent implements OnInit {
 
   getData() {
     return [
-      this.createdTasksSeries,
       this.completedTaskSeries
     ];
   }
@@ -66,18 +56,29 @@ export class ProjectsGraphComponent implements OnInit {
     return { x: [], y: [], type: 'bar', name, hoverinfo: 'y' };
   }
 
-  countTasksByProject(tasksByProject: StringTaskMap, filterCallback: Function) {
+  getTimeOpenByProject(tasksByProject: StringTaskMap) {
     const projects = _(tasksByProject).chain().keys().sort().value();
     const x = [];
     const y = [];
 
     for (const project of projects) {
-      const tasks =  _.filter(tasksByProject[project], filterCallback);
+      const averageTimeOpen = _(tasksByProject[project])
+        .chain()
+        .filter((task: Task) => task.done)
+        .map((task: Task) => ProjectCompletionTimeGraphComponent.getDaysOpen(task))
+        .mean()
+        .value();
 
       x.push(project);
-      y.push(tasks.length);
+      y.push(averageTimeOpen);
     }
 
     return { x, y };
+  }
+
+  static getDaysOpen(task: Task) {
+    const created = utc(task.date_created);
+    const closed = utc(task.date_modified);
+    return closed.diff(created, 'days');
   }
 }

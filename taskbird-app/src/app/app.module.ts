@@ -40,6 +40,7 @@ import { GraphComponent } from './components/analytics-view/graph/graph.componen
 import { ProductivityGraphComponent } from './components/analytics-view/productivity-graph/productivity-graph.component';
 import { ProjectsGraphComponent } from './components/analytics-view/projects-graph/projects-graph.component';
 import { WeekDayGraphComponent } from './components/analytics-view/week-day-graph/week-day-graph.component';
+import { ProjectCompletionTimeGraphComponent } from './components/analytics-view/project-completion-time-graph/project-completion-time-graph.component';
 
 
 @NgModule({
@@ -73,7 +74,8 @@ import { WeekDayGraphComponent } from './components/analytics-view/week-day-grap
     GraphComponent,
     ProductivityGraphComponent,
     ProjectsGraphComponent,
-    WeekDayGraphComponent
+    WeekDayGraphComponent,
+    ProjectCompletionTimeGraphComponent
   ],
   imports: [
     BrowserModule,
