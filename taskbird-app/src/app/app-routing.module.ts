@@ -7,8 +7,7 @@ import { CalendarPageComponent } from "./components/calendar-view/calendar-page/
 import { AnalyticsPageComponent } from './components/analytics-view/analytics-page/analytics-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
-  { path: 'dashboard', component: DashboardComponent },
+  { path: '', redirectTo: '/tasks', pathMatch: 'full' },
   { path: 'tasks', component: TasksPageComponent },
   { path: 'tasks/:id', component: TaskDetailComponent },
   { path: 'calendar', component: CalendarPageComponent },

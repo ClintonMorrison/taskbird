@@ -41,6 +41,7 @@ import { ProductivityGraphComponent } from './components/analytics-view/producti
 import { ProjectsGraphComponent } from './components/analytics-view/projects-graph/projects-graph.component';
 import { WeekDayGraphComponent } from './components/analytics-view/week-day-graph/week-day-graph.component';
 import { ProjectCompletionTimeGraphComponent } from './components/analytics-view/project-completion-time-graph/project-completion-time-graph.component';
+import { CreateTaskButtonComponent } from './components/tasks-view/create-task-button/create-task-button.component';
 
 
 @NgModule({
@@ -75,7 +76,8 @@ import { ProjectCompletionTimeGraphComponent } from './components/analytics-view
     ProductivityGraphComponent,
     ProjectsGraphComponent,
     WeekDayGraphComponent,
-    ProjectCompletionTimeGraphComponent
+    ProjectCompletionTimeGraphComponent,
+    CreateTaskButtonComponent
   ],
   imports: [
     BrowserModule,

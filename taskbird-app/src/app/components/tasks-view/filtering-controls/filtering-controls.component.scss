@@ -1,3 +1,18 @@
 .filters {
   margin-bottom: 2em;
 }
+
+.top-row {
+  display: flex;
+  justify-content: space-between;
+
+  @media screen and (max-width: 600px) {
+    flex-wrap: wrap;
+  }
+}
+
+.right-controls {
+  * + * {
+    margin-left: 1em;
+  }
+}
