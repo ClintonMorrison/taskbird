@@ -3,6 +3,6 @@ export class Project {
   title: string;
   description: string;
   icon: string;
-  color: String;
-  date_created: String;
+  color: string;
+  date_created: string;
 }

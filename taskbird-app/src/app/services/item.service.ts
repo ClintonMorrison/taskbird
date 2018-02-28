@@ -63,15 +63,36 @@ export class TaskService {
     );
   }
 
-  groupTasksByProject(): Observable<StringTaskMap> {
+  groupTasksByProjectTitle(): Observable<StringTaskMap> {
     return this.groupTasksByCallback(
       (task: Task) => (task.project && task.project.title)
+    );
+  }
+
+  groupTasksByProject(): Observable<StringTaskMap> {
+    return this.groupTasksByCallback(
+      (task: Task) => (task.project && task.project.id)
     );
   }
 
   groupTasksByCallback(callback: Function): Observable<StringTaskMap> {
     return this.getTasks().map((tasks: Task[]) => {
       return this.groupByCallback(tasks, callback);
+    });
+  }
+
+  getTaskCountsByProject(): Observable<any> {
+    return this.groupTasksByProject().map((tasksByProject: any) => {
+      const counts = {};
+
+      for (const id in tasksByProject) {
+        const tasks = tasksByProject[id];
+        const totalTaskCount = tasks.length;
+        const completedTaskCount = _.filter(tasks, (task: Task) => task.done).length;
+        
+        counts[id] = { totalTaskCount, completedTaskCount };
+      }
+      return counts;
     });
   }
 

@@ -43,7 +43,7 @@ export class ProjectsGraphComponent implements OnInit {
        }
     };
 
-    taskService.groupTasksByProject().subscribe((tasksByProject) => {
+    taskService.groupTasksByProjectTitle().subscribe((tasksByProject) => {
       const createdTasks = this.countTasksByProject(tasksByProject, () => true);
       this.createdTasksSeries = { ...this.createdTasksSeries, x: createdTasks.x, y: createdTasks.y };
 

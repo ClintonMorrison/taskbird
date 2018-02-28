@@ -5,12 +5,14 @@ import { DashboardComponent } from './components/dashboard-view/dashboard/dashbo
 import { TaskDetailComponent } from './components/tasks-view/task-detail/task-detail.component';
 import { CalendarPageComponent } from "./components/calendar-view/calendar-page/calendar-page.component";
 import { AnalyticsPageComponent } from './components/analytics-view/analytics-page/analytics-page.component';
+import { ProjectsPageComponent } from './components/projects-view/projects-page/projects-page.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/tasks', pathMatch: 'full' },
   { path: 'tasks', component: TasksPageComponent },
   { path: 'tasks/:id', component: TaskDetailComponent },
   { path: 'calendar', component: CalendarPageComponent },
+  { path: 'projects', component: ProjectsPageComponent },
   { path: 'analytics', component: AnalyticsPageComponent }
 ];
 

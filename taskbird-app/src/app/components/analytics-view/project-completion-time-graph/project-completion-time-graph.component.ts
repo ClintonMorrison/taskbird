@@ -37,7 +37,7 @@ export class ProjectCompletionTimeGraphComponent implements OnInit {
       }
     };
 
-    taskService.groupTasksByProject().subscribe((tasksByProject) => {
+    taskService.groupTasksByProjectTitle().subscribe((tasksByProject) => {
       const completedTasks = this.getTimeOpenByProject(tasksByProject);
       this.completedTaskSeries = { ...this.completedTaskSeries, x: completedTasks.x, y: completedTasks.y };
     });

@@ -42,6 +42,12 @@ import { ProjectsGraphComponent } from './components/analytics-view/projects-gra
 import { WeekDayGraphComponent } from './components/analytics-view/week-day-graph/week-day-graph.component';
 import { ProjectCompletionTimeGraphComponent } from './components/analytics-view/project-completion-time-graph/project-completion-time-graph.component';
 import { CreateTaskButtonComponent } from './components/tasks-view/create-task-button/create-task-button.component';
+import { ProjectsPageComponent } from './components/projects-view/projects-page/projects-page.component';
+import { ProjectItemComponent } from './components/projects-view/project-item/project-item.component';
+import { ProjectListComponent } from './components/projects-view/project-list/project-list.component';
+import { ProjectEditorComponent } from './components/projects-view/project-editor/project-editor.component';
+import { ProjectFieldComponent } from './components/projects-view/project-field/project-field.component';
+import { ProjectProgressBarComponent } from './components/projects-view/project-progress-bar/project-progress-bar.component';
 
 
 @NgModule({
@@ -77,7 +83,13 @@ import { CreateTaskButtonComponent } from './components/tasks-view/create-task-b
     ProjectsGraphComponent,
     WeekDayGraphComponent,
     ProjectCompletionTimeGraphComponent,
-    CreateTaskButtonComponent
+    CreateTaskButtonComponent,
+    ProjectsPageComponent,
+    ProjectItemComponent,
+    ProjectListComponent,
+    ProjectEditorComponent,
+    ProjectFieldComponent,
+    ProjectProgressBarComponent
   ],
   imports: [
     BrowserModule,

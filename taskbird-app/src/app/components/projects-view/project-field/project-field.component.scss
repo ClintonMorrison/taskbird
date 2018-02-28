@@ -1,0 +1,17 @@
+.field {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 2em;
+  width: 100%;
+}
+
+.name {
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-right: 3em;
+  min-width: 8em;
+}
+
+.value {
+  width: 100%;
+}
