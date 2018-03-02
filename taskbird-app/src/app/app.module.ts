@@ -48,6 +48,7 @@ import { ProjectListComponent } from './components/projects-view/project-list/pr
 import { ProjectEditorComponent } from './components/projects-view/project-editor/project-editor.component';
 import { ProjectFieldComponent } from './components/projects-view/project-field/project-field.component';
 import { ProjectProgressBarComponent } from './components/projects-view/project-progress-bar/project-progress-bar.component';
+import { ProjectSelectorComponent } from './components/tasks-view/project-selector/project-selector.component';
 
 
 @NgModule({
@@ -89,7 +90,8 @@ import { ProjectProgressBarComponent } from './components/projects-view/project-
     ProjectListComponent,
     ProjectEditorComponent,
     ProjectFieldComponent,
-    ProjectProgressBarComponent
+    ProjectProgressBarComponent,
+    ProjectSelectorComponent
   ],
   imports: [
     BrowserModule,

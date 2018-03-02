@@ -1,0 +1,20 @@
+<div [id]="id" class="ui floating labeled icon dropdown button">
+  <i class="circle outline icon"></i>
+  <span class="text">Uncategorized</span>
+  <div class="menu">
+    <div class="header">
+      <i class="folder icon"></i>
+      Select Project
+    </div>
+    <div class="divider"></div>
+    <div class="item">
+      <i class="circle outline icon"></i>
+      Uncategorized
+    </div>
+
+    <div class="item" *ngFor="let project of projects">
+      <i class="{{ project.icon }} icon"></i>
+      {{ project.title }}
+    </div>
+  </div>
+</div>

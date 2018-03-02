@@ -4,20 +4,44 @@
   justify-content: space-between;
   padding: 0 .5em;
 
+  .title {
+    font-weight: bold;
+  }
+
+  .description {
+    max-width: calc(100% - 3em);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+
   .item {
     color: rgba(0,0,0,.87);
-    display: flex;
-    justify-content: space-between;
+    overflow: hidden;
+    padding: 1em 0;
     margin-left: 1em;
     width: 100%;
+
     &:hover,
     &.selected {
       background-color: #9ED6FF;
     }
   }
 
-  .item {
-    padding: 1em 0;
+
+  .task-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+
+    &.top {
+      align-items: flex-start;
+      margin-bottom: .75em;
+    }
+
+    &.bottom {
+      align-items: flex-end;
+    }
   }
 
   .ui.checkbox {
@@ -29,17 +53,10 @@
   }
 
   &.done {
-    // background-color: #f2f2f2;
-
+    .description,
     .title {
-      padding-left: .5em;
       text-decoration: line-through;
       font-style: italic;
     }
-  }
-
-  .details {
-    display: flex;
-    justify-content: space-between;
   }
 }

@@ -12,13 +12,13 @@
   </div>
 
   <a (click)="onSelect($event)" class="item" href="#task-{{ task.id }}-done">
-    <div>
-      <span class="title">
-        {{task.title}}
-      </span>
+    <div class="top task-row">
+      <div class="title">{{task.title}}</div>
+      <div class="date-due">{{getDateDue()}}</div>
     </div>
 
-    <div class="details">
+    <div class="bottom task-row">
+      <div class="description">{{getDescription()}}</div>
       <taskbird-project-icon [task]="task"></taskbird-project-icon>
     </div>
   </a>
