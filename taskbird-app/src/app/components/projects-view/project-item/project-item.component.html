@@ -1,40 +1,14 @@
-<div class="project">
-  <div class="ui top attached segment">
-    <h2 class="heading">
-      {{ project.title }}
-    </h2>
-  </div>
+<div class="project ui segment">
+  <h2 class="heading">
+    {{ project.title }}
+    <i class="icon {{project.icon}} {{project.color}}"></i>
+  </h2>
+  <taskbird-project-progress-bar [doneTasks]="doneTasks" [totalTasks]="totalTasks">
+  </taskbird-project-progress-bar>
 
-  <div class="ui attached segment">
-    <div class="fields">
-      <taskbird-project-field *ngIf="project.description" name="Description">
-        {{ project.description }}
-      </taskbird-project-field>
-     
-      <taskbird-project-field name="Icon">
-        <i class="ui icon {{project.icon}}"></i>
-        {{ project.icon }}
-      </taskbird-project-field>
-
-      <taskbird-project-field name="Colour">
-        <i class="ui icon circle {{project.color}}"></i>
-        {{ project.color }}
-      </taskbird-project-field>
-
-      <taskbird-project-field name="Date Created">
-        {{ getDateCreated() }}
-      </taskbird-project-field>
-    </div>
-  </div>
-
-  <div class="ui attached segment">
-    <taskbird-project-progress-bar [doneTasks]="doneTasks" [totalTasks]="totalTasks">
-    </taskbird-project-progress-bar>
-  </div>
-
-  <div class="ui bottom attached segment actions">
+  <div class="actions">
     <div>
-    <button class="ui primary button">
+    <button class="ui button">
       Edit Project
     </button>
     </div>
@@ -45,5 +19,5 @@
       </a>
     </div>  
   </div>
-
 </div>
+

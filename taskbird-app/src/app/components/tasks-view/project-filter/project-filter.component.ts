@@ -36,11 +36,11 @@ import { FilterService } from '../../../services/filter.service';
     .ui.secondary.menu.filter-links {
       display: flex;
       flex-wrap: wrap;
-      margin-bottom: 2em;
+      margin-bottom: -1em;
     }
 
     .ui.secondary.menu.filter-links .item {
-        margin-top: 1em;
+        margin-bottom: 1em;
     }
   `]
 })

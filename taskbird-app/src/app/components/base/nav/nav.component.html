@@ -5,6 +5,6 @@
 
   <a *ngFor="let item of items" class="item" routerLink="{{ item.route }}">
     <i class="{{ item.icon }} icon"></i>
-    {{ item.title }}
+    <span class="title">{{ item.title }}</span>
   </a>
 </div>

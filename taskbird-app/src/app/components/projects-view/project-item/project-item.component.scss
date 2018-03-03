@@ -1,9 +1,11 @@
 .project {
-  margin-bottom: 2em;
+  padding-bottom: 2em;
+  margin-bottom: 2em !important;
   width: 100%;
 }
 
 .actions {
+  margin-top: 2.5em;
   display: flex;
   justify-content: space-between;
 }

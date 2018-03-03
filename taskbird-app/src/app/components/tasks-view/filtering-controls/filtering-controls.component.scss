@@ -1,14 +1,8 @@
-.filters {
-  margin-bottom: 2em;
-}
-
 .top-row {
   display: flex;
   justify-content: space-between;
 
-  @media screen and (max-width: 600px) {
-    flex-wrap: wrap;
-  }
+
 }
 
 .right-controls {
@@ -19,5 +13,15 @@
 
 .control {
   display: inline-block;
-  margin-bottom: 1em;
 }
+
+  @media screen and (max-width: 600px) {
+    .top-row {
+      flex-wrap: wrap;
+    }
+
+    .control {
+      margin-bottom: 1em;
+      margin-left: 0;
+    }
+  }

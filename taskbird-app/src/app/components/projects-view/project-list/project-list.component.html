@@ -3,7 +3,6 @@
     *ngFor="let project of projects"
     [project]="project"
     [totalTasks]="taskCountsByProject[project.id].totalTaskCount"
-    [doneTasks]="taskCountsByProject[project.id].completedTaskCount"
-    >
+    [doneTasks]="taskCountsByProject[project.id].completedTaskCount">
   </taskbird-project-item>
 </div>

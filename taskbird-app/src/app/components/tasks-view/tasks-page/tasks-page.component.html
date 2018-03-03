@@ -1,10 +1,9 @@
-<div class="heading">
-  <h1>Tasks</h1>
-  <em>
-    Showing {{ tasks.length }} of {{ unfilteredTasks.length}}
-  </em>
+<div class="ui segment">
+  <taskbird-filtering-controls></taskbird-filtering-controls>
 </div>
-
-<taskbird-filtering-controls></taskbird-filtering-controls>
-
-<taskbird-tasks [tasks]="tasks"></taskbird-tasks>
+<div class="ui top attached segment">
+  <taskbird-project-filter></taskbird-project-filter>
+</div>
+<div class="ui bottom attached segment">
+  <taskbird-tasks [tasks]="tasks"></taskbird-tasks>
+</div>

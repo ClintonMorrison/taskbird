@@ -1,8 +1,31 @@
 .ui.inverted.menu {
   border-radius: 0;
   display: flex;
-  flex-wrap: wrap;
 
+  @media screen and (max-width: 500px) {
+    a.item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 25%;
+
+      &.header {
+        display: none;
+      }
+    }
+
+    .title {
+      font-size: 1em;
+    }
+
+    i {
+      margin-bottom: .5em;
+      font-size: 1em;
+    }
+  }
+
+  /*
   @media screen and (max-width: 750px) {
     .header.item {
       width: 100%;
@@ -12,6 +35,7 @@
       width: 33%;
     }
   }
+  */
 
   >.item:first-child,
   >.item:last-child {

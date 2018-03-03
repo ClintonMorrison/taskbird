@@ -1,4 +1,4 @@
-<div class="heading">
+<div class="heading ui segment">
   <button
     (click)="goToPrevious()"
     class="ui icon button">
@@ -18,14 +18,17 @@
     <i class="icon chevron right"></i>
   </button>
 </div>
+
 <calendar 
   (dateSelected)="handleDateSelected($event)"
   [selectedDay]="selectedDay"
-  [month]="month"></calendar>
+  [month]="month">
+</calendar>
+
 
 <div
   *ngIf="selectedDay && tasks"
-  class="selected-day-tasks">
+  class="selected-day-tasks ui segment">
   <h2>Tasks for {{ getSelectedDayTitle() }}</h2>
   <taskbird-tasks [tasks]="tasks"></taskbird-tasks>
 </div>

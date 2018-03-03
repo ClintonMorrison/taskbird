@@ -8,13 +8,13 @@ import { Observable } from 'rxjs/Observable';
     <button
       *ngIf="shouldShowCompleted() | async"
       (click)="toggleFilter(false)"
-      class="ui primary basic button">
+      class="ui copmact primary basic button">
       Hide Completed Tasks
     </button>
     <button
       *ngIf="!(shouldShowCompleted() | async)"
       (click)="toggleFilter(true)"
-      class="ui primary basic button">
+      class="ui compact primary basic button">
       Show Completed Tasks
     </button>
   `,
