@@ -8,8 +8,9 @@
     font-weight: bold;
   }
 
+  .title,
   .description {
-    max-width: calc(100% - 3em);
+    max-width: calc(100% - 4em);
     text-overflow: ellipsis;
     white-space: nowrap;
     overflow: hidden;
@@ -28,7 +29,6 @@
     }
   }
 
-
   .task-row {
     display: flex;
     justify-content: space-between;
@@ -44,7 +44,7 @@
     }
   }
 
-  .ui.checkbox {
+  .checkbox-wrapper {
     margin-top: 1em;
   }
 

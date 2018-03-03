@@ -10,7 +10,7 @@ import { ProjectsPageComponent } from './components/projects-view/projects-page/
 const routes: Routes = [
   { path: '', redirectTo: '/tasks', pathMatch: 'full' },
   { path: 'tasks', component: TasksPageComponent },
-  { path: 'tasks/:id', component: TaskDetailComponent },
+  { path: 'tasks/:projectId', component: TasksPageComponent },
   { path: 'calendar', component: CalendarPageComponent },
   { path: 'projects', component: ProjectsPageComponent },
   { path: 'analytics', component: AnalyticsPageComponent }

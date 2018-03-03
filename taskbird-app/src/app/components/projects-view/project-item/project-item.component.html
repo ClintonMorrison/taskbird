@@ -1,9 +1,10 @@
 <div class="project">
   <div class="ui top attached segment">
-    <h2 class="heading">{{ project.title }}</h2>
+    <h2 class="heading">
+      {{ project.title }}
+    </h2>
   </div>
 
-  <!--
   <div class="ui attached segment">
     <div class="fields">
       <taskbird-project-field *ngIf="project.description" name="Description">
@@ -25,17 +26,24 @@
       </taskbird-project-field>
     </div>
   </div>
-  -->
 
   <div class="ui attached segment">
     <taskbird-project-progress-bar [doneTasks]="doneTasks" [totalTasks]="totalTasks">
     </taskbird-project-progress-bar>
   </div>
 
-  <div class="ui bottom attached segment">
-    <a href="/tasks/{{ project.id }}" class="ui primary button">
-      View Tasks
-    </a>
+  <div class="ui bottom attached segment actions">
+    <div>
+    <button class="ui primary button">
+      Edit Project
+    </button>
+    </div>
+    
+    <div>
+      <a [routerLink]="['/tasks', project.id]" class="ui primary button">
+        View Tasks
+      </a>
+    </div>  
   </div>
 
 </div>

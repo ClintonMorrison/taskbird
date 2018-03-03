@@ -21,11 +21,11 @@ export class TasksComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.numberToShow = 25;
+    this.numberToShow = 10;
   }
 
   showMore() {
-    this.numberToShow += 25;
+    this.numberToShow += 10;
   }
 
 }

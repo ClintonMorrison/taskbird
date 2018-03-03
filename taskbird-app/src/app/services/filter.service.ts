@@ -6,6 +6,7 @@ import { Task } from '../models/item';
 import { TaskService } from './item.service';
 import * as _ from 'lodash';
 import { utc } from 'moment';
+import { ProjectService } from './project.service';
 
 // https://coryrylan.com/blog/angular-observable-data-services
 
@@ -16,6 +17,7 @@ export class FilterService {
   private activeProjectSubject: BehaviorSubject<Project>;
 
   private tasks: Task[];
+  private projects: Project[];
   private filteredTasksSubject: BehaviorSubject<Task[]>;
 
   private showCompletedTasks: boolean; 
@@ -29,7 +31,8 @@ export class FilterService {
 
 
   constructor(
-    private taskService: TaskService
+    private taskService: TaskService,
+    private projectService: ProjectService
   ) {
     this.filteredTasksSubject = new BehaviorSubject([]);
     this.activeProjectSubject = <BehaviorSubject<Project>>new BehaviorSubject(undefined);
@@ -41,7 +44,7 @@ export class FilterService {
     this.getShowCompletedTasks().subscribe(() => this.updateFilteredTasks());
     this.getSearchQuery().subscribe(() => this.updateFilteredTasks());
     this.getSort().subscribe(() => this.updateFilteredTasks());
-
+    this.projectService.getProjects().subscribe((projects: Project[]) => this.projects = projects)
     this.taskService.getTasks().subscribe((tasks) => {
       this.tasks = tasks;
       this.updateFilteredTasks();
@@ -69,6 +72,13 @@ export class FilterService {
   setProject(project: Project) {
     this.activeProject = project;
     this.activeProjectSubject.next(project);
+  }
+
+  setProjectById(id: number): void {
+    const project = _(this.projects).filter({ id }).first();
+    if (project) {
+      this.setProject(project);
+    }
   }
 
   setShowCompletedTasks(showCompletedTasks: boolean) {

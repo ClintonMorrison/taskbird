@@ -49,6 +49,7 @@ import { ProjectEditorComponent } from './components/projects-view/project-edito
 import { ProjectFieldComponent } from './components/projects-view/project-field/project-field.component';
 import { ProjectProgressBarComponent } from './components/projects-view/project-progress-bar/project-progress-bar.component';
 import { ProjectSelectorComponent } from './components/tasks-view/project-selector/project-selector.component';
+import { TaskCheckboxComponent } from './components/tasks-view/task-checkbox/task-checkbox.component';
 
 
 @NgModule({
@@ -91,7 +92,8 @@ import { ProjectSelectorComponent } from './components/tasks-view/project-select
     ProjectEditorComponent,
     ProjectFieldComponent,
     ProjectProgressBarComponent,
-    ProjectSelectorComponent
+    ProjectSelectorComponent,
+    TaskCheckboxComponent
   ],
   imports: [
     BrowserModule,
