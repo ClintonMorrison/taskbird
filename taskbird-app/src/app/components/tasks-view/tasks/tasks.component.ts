@@ -14,6 +14,9 @@ export class TasksComponent implements OnInit {
 
   selectedTask: Task;
 
+  @Input()
+  showCompletedToggle: boolean;
+
   constructor() { }
 
   onSelect(task: Task): void {
