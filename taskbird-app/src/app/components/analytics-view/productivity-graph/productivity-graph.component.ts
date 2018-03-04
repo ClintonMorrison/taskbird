@@ -25,12 +25,12 @@ export class ProductivityGraphComponent implements OnInit {
     this.createdTasksSeries = this.createEmptySeries('Tasks Created');
     this.completedTaskSeries = this.createEmptySeries('Tasks Completed');
 
-    taskService.groupTasksByDayCreated().subscribe((tasksByDayCreated) => {
+    taskService.groupTasksByDayCreated().first().subscribe((tasksByDayCreated) => {
       const { x, y } = this.countTasksByDate(tasksByDayCreated);
       this.createdTasksSeries = { ...this.createdTasksSeries, x, y };
     });
 
-    taskService.groupTasksByDayCompleted().subscribe((tasksByDayCompleted) => {
+    taskService.groupTasksByDayCompleted().first().subscribe((tasksByDayCompleted) => {
       const { x, y } = this.countTasksByDate(tasksByDayCompleted);
       this.completedTaskSeries = { ...this.completedTaskSeries, x, y };
     });

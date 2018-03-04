@@ -27,8 +27,8 @@
 
 
 <div
-  *ngIf="selectedDay && tasks"
+  *ngIf="selectedDay && taskIds"
   class="selected-day-tasks ui segment">
   <h2>Tasks for {{ getSelectedDayTitle() }}</h2>
-  <taskbird-tasks [tasks]="tasks"></taskbird-tasks>
+  <taskbird-tasks [taskIds]="taskIds"></taskbird-tasks>
 </div>

@@ -17,13 +17,19 @@ import 'rxjs/add/operator/mergeMap';
 import { FilterService } from './filter.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Project } from '../models/project';
+import { ApiResponse } from '../models/api-response';
+
+interface TaskSubjectMap {
+  [key: number]: BehaviorSubject<Task>;
+}
 
 @Injectable()
 export class TaskService {
   private baseUrl = 'http://localhost/api/v1/task/?format=json';
   private tasks: Task[] = null;
 
-  private tasksSubject: BehaviorSubject<Task[]>;
+  private tasksByIdSubject: BehaviorSubject<TaskMap>;
+  private taskSubjectById: TaskSubjectMap;
 
   private tasksById: TaskMap = null;
 
@@ -31,18 +37,40 @@ export class TaskService {
     private http: HttpClient,
     private messageService: MessageService
   ) {
-    this.tasksSubject = new BehaviorSubject([]);
+    this.tasksByIdSubject = new BehaviorSubject({});
+    this.taskSubjectById = {}; 
+  }
+
+  getTasksById(): Observable<TaskMap> {
+    if (!this.tasksById) {
+      this.tasksById = TaskService.mapResponse(MockTaskResponse);
+      this.tasksByIdSubject.next(this.tasksById);
+    }
+
+    return this.tasksByIdSubject.asObservable();
+  }
+
+  getTaskById(id: string): Observable<Task> {
+    if (!this.taskSubjectById[id]) {
+      this.taskSubjectById[id] = new BehaviorSubject(null);
+
+      this.getTasksById().subscribe((tasksById: TaskMap) => {
+        this.taskSubjectById[id].next(tasksById[id]);
+      });
+    }
+
+    return this.taskSubjectById[id].asObservable();
+  }
+
+  getTaskIds(): Observable<string[]> {
+    return this.getTasksById().map((tasksById) => {
+      return _.keys(tasksById);
+    });
   }
 
   getTasks(): Observable<Task[]> {
-    if (this.tasks) {
-      return this.tasksSubject.asObservable();
-    }
-
-    this.tasks = MockTaskResponse.objects;
-    this.tasksSubject.next(this.tasks);
-
-    return this.tasksSubject.asObservable();
+    return this.getTasksById()
+      .map(tasksById => _.values(tasksById));
   }
 
   groupTasksByDayDue(): Observable<StringTaskMap> {
@@ -97,7 +125,8 @@ export class TaskService {
   }
 
   updateTask(task: Task) {
-    this.tasksSubject.next(this.tasks);
+    this.tasksById[task.id] = task;
+    this.tasksByIdSubject.next(this.tasksById);
   }
 
   private groupByCallback(tasks: Task[], callback: Function): StringTaskMap {
@@ -123,6 +152,11 @@ export class TaskService {
     }
 
     return null;
+  }
+
+  static mapResponse(response: ApiResponse): TaskMap {
+    const tasks = response.objects;
+    return _.keyBy(tasks, 'id');
   }
 
 }

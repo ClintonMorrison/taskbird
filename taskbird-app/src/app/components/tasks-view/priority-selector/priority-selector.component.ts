@@ -20,8 +20,8 @@ export class PrioritySelectorComponent implements OnInit {
   }
 
   select(priority: string) {
-    this.task.priority = priority;
-    this.taskService.updateTask(this.task);
+    const updatedTask = { ...this.task, priority };
+    this.taskService.updateTask(updatedTask);
   }
 
 }

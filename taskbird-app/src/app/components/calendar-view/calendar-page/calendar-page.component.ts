@@ -1,9 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Month, Date } from '../../../models/dates';
-import { Task } from '../../../models/item';
+import { Task, StringTaskMap } from '../../../models/item';
 import { TaskService } from '../../../services/item.service';
 import { Observable } from 'rxjs/Observable';
 import { BrowserService } from '../../../browser.service';
+import 'rxjs/add/operator/first';
+import * as _ from 'lodash';
 
 @Component({
   selector: "calendar-page",
@@ -14,7 +16,7 @@ export class CalendarPageComponent implements OnInit {
   month: Month = new Month("2017", "12");
 
   private selectedDay: Date;
-  private tasks: Task[];
+  taskIds: number[];
 
   constructor(
     private taskService: TaskService,
@@ -59,17 +61,18 @@ export class CalendarPageComponent implements OnInit {
 
   getTasksForSelectedDay() {
     if (!this.selectedDay) {
-      this.tasks = [];
+      this.taskIds = [];
       return;
     }
 
-    return this.taskService.groupTasksByDayDue().subscribe((tasksByDay) => {
-      this.tasks = tasksByDay[this.selectedDay.toString()];
+    this.taskService.groupTasksByDayDue().first().subscribe((tasksByDay) => {
+      console.log('grouping task by day');
+      const tasks = tasksByDay[this.selectedDay.toString()];
+      this.taskIds = _.map(tasks, task => task.id);
 
-      if (this.tasks && this.tasks.length > 0) {
-        setTimeout(() => {
-          this.browserService.scrollToBottom();
-        }, 0);
+      console.log(this.taskIds);
+      if (this.taskIds && this.taskIds.length > 0) {
+        this.browserService.scrollToBottom();
       }
     });
   }

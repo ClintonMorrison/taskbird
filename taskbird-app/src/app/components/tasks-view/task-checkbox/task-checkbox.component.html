@@ -1,7 +1,7 @@
 <a href="#complete-task-{{ task.id }}" class="checkmark-button" (click)="handleClick($event)">
   <i *ngIf="!task.done" class="icon big square outline {{getColor()}}"></i>
   <i *ngIf="!task.done" class="icon big check square outline {{getColor()}}"></i>
-  <i *ngIf="task.done" class="icon big check square outline {{getColor()}}"></i>
+  <i *ngIf="task.done" class="icon done big check square outline {{getColor()}}"></i>
 
   <span class="sr-only">
     Mark task as complete, {{ task.title }}

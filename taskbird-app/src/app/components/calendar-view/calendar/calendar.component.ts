@@ -36,7 +36,7 @@ export class CalendarComponent implements OnInit {
 
     const calendarDays = [];
 
-    this.taskService.groupTasksByDayDue().subscribe((tasksByDay) => {
+    this.taskService.groupTasksByDayDue().first().subscribe((tasksByDay) => {
       for (const date of dates) {
         const tasksOnDate = tasksByDay[date.toString()];
         const calendarDay = new CalendarDay(date, tasksOnDate ? tasksOnDate : []);

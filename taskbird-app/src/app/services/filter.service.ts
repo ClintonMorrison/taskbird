@@ -19,6 +19,7 @@ export class FilterService {
   private tasks: Task[];
   private projects: Project[];
   private filteredTasksSubject: BehaviorSubject<Task[]>;
+  private filteredTaskIdsSubject: BehaviorSubject<string[]>;
 
   private showCompletedTasks: boolean; 
   private showCompletedTasksSubject: BehaviorSubject<Boolean>;
@@ -35,6 +36,8 @@ export class FilterService {
     private projectService: ProjectService
   ) {
     this.filteredTasksSubject = new BehaviorSubject([]);
+    this.filteredTaskIdsSubject = new BehaviorSubject([]);
+
     this.activeProjectSubject = <BehaviorSubject<Project>>new BehaviorSubject(undefined);
     this.showCompletedTasksSubject = new BehaviorSubject(false);
     this.searchQuerySubject = new BehaviorSubject('');
@@ -104,6 +107,12 @@ export class FilterService {
     return this.filteredTasksSubject.asObservable();
   }
 
+  getFilteredTaskIds(): Observable<number[]> {
+    return this.getFilteredTasks().map((filteredTasks: Task[]) => {
+      return _.map(filteredTasks, task => task.id);
+    });
+  }
+
   private updateFilteredTasks() {
     const filteredTasks = _(this.tasks).filter((task) => {
       return this.projectMatchesActive(task.project) &&
@@ -159,8 +168,6 @@ export class FilterService {
     if (!this.sort) {
       return true;
     }
-
-    console.log('sorting by ', this.sort);
 
     if (this.sort.includes('date_due')) {
       return utc(task.date_due).unix();

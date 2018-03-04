@@ -29,6 +29,7 @@ export class WeekDayGraphComponent implements OnInit {
 
     taskService
       .groupTasksByCallback(WeekDayGraphComponent.getWeekDayCreated)
+      .first()
       .subscribe((tasksByWeekdayCreated) => {
         const createdTasks = this.countTasksByWeekday(tasksByWeekdayCreated);
         this.createdTasksSeries = { ...this.createdTasksSeries, x: createdTasks.x, y: createdTasks.y };
@@ -36,6 +37,7 @@ export class WeekDayGraphComponent implements OnInit {
     
     taskService
       .groupTasksByCallback(WeekDayGraphComponent.getWeekDayTaskCompleted)
+      .first()
       .subscribe((tasksByWeekdayCompleted) => {
         const completedTasks = this.countTasksByWeekday(tasksByWeekdayCompleted);
         this.completedTaskSeries = { ...this.completedTaskSeries, x: completedTasks.x, y: completedTasks.y };

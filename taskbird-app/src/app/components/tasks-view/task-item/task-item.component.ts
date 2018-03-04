@@ -2,6 +2,7 @@ import { Component, OnInit, Input , ViewChild } from '@angular/core';
 import { Task } from "../../../models/item";
 import { TaskSidebarComponent } from '../task-sidebar/task-sidebar.component';
 import { utc } from 'moment';
+import { TaskService } from '../../../services/item.service';
 
 @Component({
   selector: 'task-item',
@@ -11,14 +12,20 @@ import { utc } from 'moment';
 export class TaskItemComponent implements OnInit {
 
   @Input()
-  task : Task;
+  taskId: number;
+
+  task: Task;
 
   @ViewChild(TaskSidebarComponent)
   private sidebar: TaskSidebarComponent;
 
-  constructor() { }
+  constructor(
+    private taskService: TaskService
+  ) { }
 
   ngOnInit() {
+    this.taskService.getTaskById(String(this.taskId))
+      .subscribe(task => this.task = task);
   }
 
   onSelect(event) {

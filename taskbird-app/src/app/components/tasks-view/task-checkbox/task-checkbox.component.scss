@@ -1,7 +1,7 @@
 a {
 
   i {
-    &.check {
+    &.check:not(.done) {
       display: none;
     }
 

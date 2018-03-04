@@ -8,7 +8,7 @@ import { Task } from '../../../models/item';
 })
 export class TasksComponent implements OnInit {
   @Input()
-  tasks: Task[];
+  taskIds: number[];
 
   numberToShow: number;
 

@@ -31,7 +31,7 @@ export class TaskCheckboxComponent implements OnInit {
 
   handleClick(e) {
     e.preventDefault();
-    this.task.done = !this.task.done;
-    this.taskService.updateTask(this.task);
+    const updatedTask = { ...this.task, done: !this.task.done};
+    this.taskService.updateTask(updatedTask);
   }
 }
