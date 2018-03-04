@@ -50,6 +50,7 @@ import { ProjectFieldComponent } from './components/projects-view/project-field/
 import { ProjectProgressBarComponent } from './components/projects-view/project-progress-bar/project-progress-bar.component';
 import { ProjectSelectorComponent } from './components/tasks-view/project-selector/project-selector.component';
 import { TaskCheckboxComponent } from './components/tasks-view/task-checkbox/task-checkbox.component';
+import { BrowserService } from './browser.service';
 
 
 @NgModule({
@@ -101,7 +102,7 @@ import { TaskCheckboxComponent } from './components/tasks-view/task-checkbox/tas
     AppRoutingModule,
     HttpClientModule
   ],
-providers: [ TaskService, ProjectService, MessageService, DateService, FilterService ],
+providers: [ TaskService, ProjectService, MessageService, DateService, FilterService, BrowserService ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

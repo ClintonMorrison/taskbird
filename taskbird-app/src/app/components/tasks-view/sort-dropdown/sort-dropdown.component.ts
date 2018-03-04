@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FilterService } from '../../../services/filter.service';
 
-declare var $: any;
-
 @Component({
   selector: 'taskbird-sort-dropdown',
   templateUrl: './sort-dropdown.component.html',
@@ -17,11 +15,8 @@ export class SortDropdownComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    // this.getDropdown().dropdown();
-
     this.filterService.getSort().subscribe((sort: string) => {
       this.sort = sort;
-      // this.getDropdown().dropdown('refresh');
     });
 
     this.filterService.setSort('date_due_asc');
@@ -30,9 +25,4 @@ export class SortDropdownComponent implements OnInit {
   handleChange(e) {
     this.filterService.setSort(this.sort);
   }
-
-  private getDropdown() {
-    return $('.sort-dropdown');
-  }
-
 }

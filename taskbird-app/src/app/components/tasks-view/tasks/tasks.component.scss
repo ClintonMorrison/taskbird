@@ -1,6 +1,17 @@
-
 .bottom-controls {
   margin-top: 2em;
   display: flex;
   justify-content: space-between;
+}
+
+.tasks /deep/ .task {
+  border-bottom: 1px solid #c3c3c3;
+}
+
+.tasks {
+  > * {
+    &:last-child /deep/ .task {
+      border-bottom: none;
+    }
+  }
 }

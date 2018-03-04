@@ -3,6 +3,7 @@ import { Month, Date } from '../../../models/dates';
 import { Task } from '../../../models/item';
 import { TaskService } from '../../../services/item.service';
 import { Observable } from 'rxjs/Observable';
+import { BrowserService } from '../../../browser.service';
 
 @Component({
   selector: "calendar-page",
@@ -16,7 +17,8 @@ export class CalendarPageComponent implements OnInit {
   private tasks: Task[];
 
   constructor(
-    private taskService: TaskService
+    private taskService: TaskService,
+    private browserService: BrowserService
   ) {}
 
   
@@ -63,6 +65,12 @@ export class CalendarPageComponent implements OnInit {
 
     return this.taskService.groupTasksByDayDue().subscribe((tasksByDay) => {
       this.tasks = tasksByDay[this.selectedDay.toString()];
+
+      if (this.tasks && this.tasks.length > 0) {
+        setTimeout(() => {
+          this.browserService.scrollToBottom();
+        }, 0);
+      }
     });
   }
 }
