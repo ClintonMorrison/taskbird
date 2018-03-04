@@ -5,34 +5,7 @@ import { FilterService } from '../../../services/filter.service';
 
 @Component({
   selector: 'taskbird-project-filter',
-  template: `
-    <div class="ui secondary menu filter-links">
-      <a
-        [ngClass]="{'active': projectActive(undefined) | async}"
-        class="item"
-        [routerLink]="['/tasks']">
-        <i class="icon certificate"></i>
-        <span class="title">All</span>
-      </a>
-
-      <a 
-        *ngFor="let project of projects"
-        [ngClass]="{'active': projectActive(project) | async}"
-        [routerLink]="['/tasks', project.id]"
-        class="item">
-      <i *ngIf="project" class="icon {{ project.icon }} {{ project.color }}"></i>
-      <div><div class="title">{{ project.title }}</div></div>
-      </a>
-
-      <a
-        [ngClass]="{'active': projectActive(null) | async}"
-        class="item"
-        [routerLink]="['/tasks', 'uncategorized']">
-        <i class="icon thin circle"></i>
-        <span class="title">Uncategorized</span>
-      </a>
-    </div>
-  `,
+  templateUrl: './project-filter.component.html',
   styleUrls: ['./projects-filter.component.scss']
 })
 export class ProjectFilterComponent implements OnInit {
