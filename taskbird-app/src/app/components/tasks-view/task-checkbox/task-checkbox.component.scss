@@ -1,0 +1,26 @@
+a {
+
+  i {
+    &.check {
+      display: none;
+    }
+
+    &:not(.check) {
+      display: inline-block;
+    }
+  }
+  
+
+  &:hover,
+  &:focus {
+    i {
+      &.check {
+        display: inline-block;
+      }
+
+      &:not(.check) {
+        display: none;
+      }
+    }
+  }
+}

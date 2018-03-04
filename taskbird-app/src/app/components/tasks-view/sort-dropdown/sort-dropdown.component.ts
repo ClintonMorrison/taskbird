@@ -23,6 +23,8 @@ export class SortDropdownComponent implements OnInit {
       this.sort = sort;
       this.getDropdown().dropdown('refresh');
     });
+
+    this.filterService.setSort('date_due_asc');
   }
 
   handleChange(e) {

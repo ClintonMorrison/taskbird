@@ -10,7 +10,7 @@ export class NavComponent implements OnInit {
 
   items = [
     { title: 'Tasks', route: '/tasks', icon: 'check square' },
-    { title: 'Calendar', route: '/calendar', icon: 'window maximize' },
+    { title: 'Calendar', route: '/calendar', icon: 'calendar alternate' },
     { title: 'Projects', route: '/projects', icon: 'folder' },
     { title: 'Analytics', route: '/analytics', icon: 'pie chart' },
   ];

@@ -160,6 +160,8 @@ export class FilterService {
       return true;
     }
 
+    console.log('sorting by ', this.sort);
+
     if (this.sort.includes('date_due')) {
       return utc(task.date_due).unix();
     } else if (this.sort.includes('date_created')) {
@@ -174,7 +176,7 @@ export class FilterService {
       return this.getSortFieldForTask(task);
     });
 
-    if (this.sort && this.sort.includes('_asc')) {
+    if (this.sort && !this.sort.includes('_asc')) {
        _.reverse(sortedTasks);
     }
 
