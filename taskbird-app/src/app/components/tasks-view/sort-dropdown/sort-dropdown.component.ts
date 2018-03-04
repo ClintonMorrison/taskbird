@@ -17,11 +17,11 @@ export class SortDropdownComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.getDropdown().dropdown();
+    // this.getDropdown().dropdown();
 
     this.filterService.getSort().subscribe((sort: string) => {
       this.sort = sort;
-      this.getDropdown().dropdown('refresh');
+      // this.getDropdown().dropdown('refresh');
     });
 
     this.filterService.setSort('date_due_asc');

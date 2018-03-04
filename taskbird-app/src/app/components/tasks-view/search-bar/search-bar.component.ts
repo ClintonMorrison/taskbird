@@ -14,7 +14,11 @@ import { Observable } from 'rxjs/Observable';
       <i class="search icon"></i>
     </form>
   `,
-  styles: []
+  styles: [`
+    .task-search {
+      width: 100%;
+    }
+  `]
 })
 export class SearchBarComponent implements OnInit {
 

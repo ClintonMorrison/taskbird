@@ -1,0 +1,27 @@
+.ui.secondary.menu.filter-links {
+  display: flex;
+  margin-bottom: -1em;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.ui.secondary.menu.filter-links .item {
+  margin-bottom: 1em;
+}
+
+@media screen and (max-width: 991px) {
+  .item {
+    &:not(.active) {
+      .title {
+        display: none;
+      }
+
+      &:hover,
+      &:focus {
+        .title {
+          display: inline-block;
+        }
+      }
+    }
+  }
+}

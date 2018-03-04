@@ -12,15 +12,16 @@ import { FilterService } from '../../../services/filter.service';
         class="item"
         [routerLink]="['/tasks']">
         <i class="icon certificate"></i>
-        All
+        <span class="title">All</span>
       </a>
+
       <a 
         *ngFor="let project of projects"
         [ngClass]="{'active': projectActive(project) | async}"
         [routerLink]="['/tasks', project.id]"
         class="item">
       <i *ngIf="project" class="icon {{ project.icon }} {{ project.color }}"></i>
-      {{ project.title }}
+      <div><div class="title">{{ project.title }}</div></div>
       </a>
 
       <a
@@ -28,21 +29,11 @@ import { FilterService } from '../../../services/filter.service';
         class="item"
         [routerLink]="['/tasks', 'uncategorized']">
         <i class="icon thin circle"></i>
-        Uncategorized
+        <span class="title">Uncategorized</span>
       </a>
     </div>
   `,
-  styles: [`
-    .ui.secondary.menu.filter-links {
-      display: flex;
-      flex-wrap: wrap;
-      margin-bottom: -1em;
-    }
-
-    .ui.secondary.menu.filter-links .item {
-        margin-bottom: 1em;
-    }
-  `]
+  styleUrls: ['./projects-filter.component.scss']
 })
 export class ProjectFilterComponent implements OnInit {
 
