@@ -19,7 +19,7 @@ export class SortDropdownComponent implements OnInit {
       this.sort = sort;
     });
 
-    this.filterService.setSort('date_due_asc');
+    setTimeout(() => this.filterService.setSort('date_due_asc'), 0);
   }
 
   handleChange(e) {

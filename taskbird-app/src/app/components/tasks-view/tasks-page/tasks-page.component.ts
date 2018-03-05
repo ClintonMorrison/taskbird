@@ -18,14 +18,10 @@ export class TasksPageComponent implements OnInit {
   ) {}
   
   selectedProjectId: number;
-  tasks: Task[] = [];
   taskIds: number[] = [];
   unfilteredTasks: Task[] = [];
 
   subscribeToTasks(): void {
-    this.filterService.getFilteredTasks()
-      .subscribe(tasks => this.tasks = tasks);
-
     this.filterService.getFilteredTaskIds()
       .subscribe(taskIds => this.taskIds = taskIds);
   }
