@@ -2,10 +2,6 @@
   <task-item *ngFor="let taskId of taskIds | slice:0:numberToShow" [taskId]="taskId"></task-item>
 </div>
 
-<div *ngIf="selectedTask" class="ui form">
-  <taskbird-task-detail [task]="selectedTask"></taskbird-task-detail>
-</div>
-
 <div class="bottom-controls">
   <div>
     <button

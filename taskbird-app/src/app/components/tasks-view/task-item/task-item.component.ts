@@ -1,10 +1,10 @@
 import { Component, OnInit, Input , ViewChild } from '@angular/core';
 import { Task } from "../../../models/item";
-import { TaskSidebarComponent } from '../task-sidebar/task-sidebar.component';
 import { utc } from 'moment';
 import { TaskService } from '../../../services/item.service';
 import { Subscription } from 'rxjs/Subscription';
 import { SidebarComponent } from '../../base/sidebar/sidebar.component';
+import { FilterService } from '../../../services/filter.service';
 
 @Component({
   selector: 'task-item',
@@ -20,11 +20,9 @@ export class TaskItemComponent implements OnInit {
 
   private sub: Subscription;
 
-  @ViewChild(SidebarComponent)
-  private sidebar: SidebarComponent;
-
   constructor(
-    private taskService: TaskService
+    private taskService: TaskService,
+    private filterService: FilterService
   ) { }
 
   ngOnInit() {
@@ -38,7 +36,7 @@ export class TaskItemComponent implements OnInit {
 
   onSelect(event) {
     event.preventDefault();
-    this.sidebar.openSidebar();
+    this.filterService.setActiveTask(this.task);
   }
 
   getDateDue(): string {

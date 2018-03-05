@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TaskService } from '../../../services/item.service';
 import { Task } from '../../../models/item';
 import { FilterService } from '../../../services/filter.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
+import { SidebarComponent } from '../../base/sidebar/sidebar.component';
 
 @Component({
   selector: 'taskbird-tasks-page',
@@ -21,10 +22,16 @@ export class TasksPageComponent implements OnInit {
   selectedProjectId: number;
   taskIds: number[] = [];
   unfilteredTasks: Task[] = [];
+  activeTask: Task;
 
   private filterSub: Subscription;
+  private activeTaskSub: Subscription;
   private taskSub: Subscription;
   private routeSub: Subscription;
+
+  @ViewChild(SidebarComponent)
+  private sidebar: SidebarComponent;
+
 
   subscribeToTasks(): void {
     this.filterSub = this.filterService.getFilteredTaskIds()
@@ -34,6 +41,17 @@ export class TasksPageComponent implements OnInit {
   subscribeToUnfilteredTasks(): void {
     this.taskSub = this.taskService.getTasks()
       .subscribe(tasks => this.unfilteredTasks = tasks);
+  }
+
+  subscribeToActiveTask(): void {
+    this.activeTaskSub = this.filterService.getActiveTask()
+      .subscribe(task => {
+        this.activeTask = task;
+
+        if (this.activeTask) {
+          setTimeout(() => this.sidebar.openSidebar(), 0);
+        }
+      });
   }
 
   subscribeToRouteChanges(): void {
@@ -54,12 +72,14 @@ export class TasksPageComponent implements OnInit {
     this.subscribeToTasks();
     this.subscribeToUnfilteredTasks();
     this.subscribeToRouteChanges();
+    this.subscribeToActiveTask();
   }
 
   ngOnDestroy() {
     this.filterSub.unsubscribe();
     this.taskSub.unsubscribe();
     this.routeSub.unsubscribe();
+    this.activeTaskSub.unsubscribe();    
   }
 
 }

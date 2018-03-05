@@ -7,3 +7,7 @@
 <div class="ui bottom attached segment">
   <taskbird-tasks [taskIds]="taskIds" [showCompletedToggle]="true"></taskbird-tasks>
 </div>
+
+<taskbird-sidebar *ngIf="activeTask">
+  <taskbird-task-detail [taskId]="activeTask.id"></taskbird-task-detail>
+</taskbird-sidebar>

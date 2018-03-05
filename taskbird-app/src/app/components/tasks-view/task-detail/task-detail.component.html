@@ -1,22 +1,24 @@
-<div class="details-heading">
-  <h2>Task Details</h2>
-  <div>
-    <taskbird-status-label [task]="task"></taskbird-status-label>
+<div *ngIf="task">
+  <div class="details-heading">
+    <h2>Task Details</h2>
+    <div>
+      <taskbird-status-label [task]="task"></taskbird-status-label>
+    </div>
   </div>
+
+  <form class="ui form">
+    <div class="field">
+      <label>Title</label>
+      <input type="text" name="title" [(ngModel)]="task.title">
+    </div>
+
+    <div class="field">
+      <label>Description</label>
+      <textarea name="description" [(ngModel)]="task.description"></textarea>
+    </div>
+    
+    <taskbird-priority-selector [task]="task"></taskbird-priority-selector>
+
+    <taskbird-project-selector [task]="task"></taskbird-project-selector>
+  </form>
 </div>
-
-<form class="ui form">
-  <div class="field">
-    <label>Title</label>
-    <input type="text" name="title" [(ngModel)]="task.title">
-  </div>
-
-  <div class="field">
-    <label>Description</label>
-    <textarea name="description" [(ngModel)]="task.description"></textarea>
-  </div>
-  
-  <taskbird-priority-selector [task]="task"></taskbird-priority-selector>
-
-  <taskbird-project-selector [task]="task"></taskbird-project-selector>
-</form>

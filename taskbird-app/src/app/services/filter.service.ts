@@ -16,6 +16,9 @@ export class FilterService {
   private activeProject: Project;
   private activeProjectSubject: BehaviorSubject<Project>;
 
+  private activeTask: Task;
+  private activeTaskSubject: BehaviorSubject<Task>;
+
   private tasks: Task[];
   private projects: Project[];
   private filteredTasksSubject: BehaviorSubject<Task[]>;
@@ -42,6 +45,7 @@ export class FilterService {
     this.showCompletedTasksSubject = new BehaviorSubject(false);
     this.searchQuerySubject = new BehaviorSubject('');
     this.sortSubject = new BehaviorSubject('date_due_asc');
+    this.activeTaskSubject = new BehaviorSubject(null);
 
     this.getActiveProjet().subscribe(() => this.updateFilteredTasks());
     this.getShowCompletedTasks().subscribe(() => this.updateFilteredTasks());
@@ -56,6 +60,10 @@ export class FilterService {
 
   getSort(): Observable<String> {
     return this.sortSubject.asObservable();
+  }
+
+  getActiveTask(): Observable<Task> {
+    return this.activeTaskSubject.asObservable();
   }
 
   setSort(sort: string) {
@@ -87,6 +95,11 @@ export class FilterService {
   setShowCompletedTasks(showCompletedTasks: boolean) {
     this.showCompletedTasks = showCompletedTasks;
     this.showCompletedTasksSubject.next(showCompletedTasks);
+  }
+
+  setActiveTask(task: Task) {
+    this.activeTask = task;
+    this.activeTaskSubject.next(task);
   }
   
   getShowCompletedTasks(): Observable<Boolean> {

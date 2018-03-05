@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../../../models/item';
+import { TaskService } from '../../../services/item.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'taskbird-task-detail',
@@ -8,11 +10,40 @@ import { Task } from '../../../models/item';
 })
 export class TaskDetailComponent implements OnInit {
 
-  @Input() task: Task;
+  @Input() 
+  taskId: number;
 
-  constructor() { }
+  task: Task;
+
+  private taskSub: Subscription;
+
+  constructor(
+    private taskService: TaskService
+  ) { }
 
   ngOnInit() {
+    this.refreshTask();
+  }
+
+  ngOnChanges(changes) {
+    if (changes.taskId) {
+      this.refreshTask();
+    }
+  }
+
+  ngOnDestroy() {
+    if (this.taskSub) {
+      this.taskSub.unsubscribe();
+    }
+  }
+
+  private refreshTask() {
+    if (this.taskSub) {
+      this.taskSub.unsubscribe();
+    }
+
+    this.taskSub = this.taskService.getTaskById(String(this.taskId))
+      .subscribe(task => this.task = task);
   }
 
 }

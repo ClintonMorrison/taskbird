@@ -49,6 +49,12 @@ export class ProjectSelectorComponent implements OnInit {
     this.sub.unsubscribe();
   }
 
+  ngOnChanges(changes) {
+    if (changes.task) {
+      this.selectedProjectId = this.task.project ? String(this.task.project.id) : '';
+    }
+  }
+
   handleChange() {
     const id = parseInt(this.selectedProjectId, 10);
     const project = chain(this.projects).filter({ id }).first().value();
