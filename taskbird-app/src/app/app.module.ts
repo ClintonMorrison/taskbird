@@ -51,6 +51,7 @@ import { ProjectProgressBarComponent } from './components/projects-view/project-
 import { ProjectSelectorComponent } from './components/tasks-view/project-selector/project-selector.component';
 import { TaskCheckboxComponent } from './components/tasks-view/task-checkbox/task-checkbox.component';
 import { BrowserService } from './browser.service';
+import { SidebarComponent } from './components/base/sidebar/sidebar.component';
 
 
 @NgModule({
@@ -94,7 +95,8 @@ import { BrowserService } from './browser.service';
     ProjectFieldComponent,
     ProjectProgressBarComponent,
     ProjectSelectorComponent,
-    TaskCheckboxComponent
+    TaskCheckboxComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,

@@ -12,8 +12,6 @@ declare var $: any;
 })
 export class TaskSidebarComponent implements OnInit {
 
-  id: string;
-
   @Input()
   task: Task;
 
@@ -21,26 +19,6 @@ export class TaskSidebarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.id = uniqueId('task-sidebar-');
-  }
-
-  ngOnDestroy() {
-    this.closeSidebar();
-  }
-
-  openSidebar() {
-    this.getSidebar()
-      .sidebar('setting', 'exclusive', true)
-      .sidebar('show');
-  }
-
-  closeSidebar() {
-    this.getSidebar()
-      .sidebar('hide');
-  }
-
-  private getSidebar(): any {
-    return $(`#${this.id}`);
   }
 
 }

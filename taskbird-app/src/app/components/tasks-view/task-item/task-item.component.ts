@@ -4,6 +4,7 @@ import { TaskSidebarComponent } from '../task-sidebar/task-sidebar.component';
 import { utc } from 'moment';
 import { TaskService } from '../../../services/item.service';
 import { Subscription } from 'rxjs/Subscription';
+import { SidebarComponent } from '../../base/sidebar/sidebar.component';
 
 @Component({
   selector: 'task-item',
@@ -19,8 +20,8 @@ export class TaskItemComponent implements OnInit {
 
   private sub: Subscription;
 
-  @ViewChild(TaskSidebarComponent)
-  private sidebar: TaskSidebarComponent;
+  @ViewChild(SidebarComponent)
+  private sidebar: SidebarComponent;
 
   constructor(
     private taskService: TaskService
