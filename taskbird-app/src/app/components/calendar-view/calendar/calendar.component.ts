@@ -5,6 +5,7 @@ import { Date, Month } from '../../../models/dates';
 import { DateService } from '../../../services/date.service';
 import { TaskService } from '../../../services/item.service';
 import { StringTaskMap } from '../../../models/item';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'calendar',
@@ -24,32 +25,16 @@ export class CalendarComponent implements OnInit {
 
   daysOfWeek: String[];
 
+  days: CalendarDay[];
+  weeks: CalendarDay[][];
+  sub: Subscription;
+  tasksByDayDue: StringTaskMap = {};
+
   constructor(
     private dateService: DateService,
     private taskService: TaskService
   ) {
     this.daysOfWeek = dateService.getDaysOfWeek();
-  }
-
-  private getCalendarDays(): CalendarDay[] {
-    const dates = this.dateService.getDatesForCalendar(this.month);
-
-    const calendarDays = [];
-
-    this.taskService.groupTasksByDayDue().first().subscribe((tasksByDay) => {
-      for (const date of dates) {
-        const tasksOnDate = tasksByDay[date.toString()];
-        const calendarDay = new CalendarDay(date, tasksOnDate ? tasksOnDate : []);
-        calendarDays.push(calendarDay);
-      }
-    });
-
-    return calendarDays;
-  }
-
-  getWeeks () {
-    const calendarDays = this.getCalendarDays();
-    return this.dateService.groupIntoWeeks(calendarDays);
   }
 
   dayIsInCurrentMonth(date: Date): boolean {
@@ -69,6 +54,36 @@ export class CalendarComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.refreshCalendar();
+    this.sub = this.taskService.groupTasksByDayDue()
+      .subscribe(tasksByDayDue => {
+        this.tasksByDayDue = tasksByDayDue;
+        this.refreshCalendar();
+      });
   }
 
+  ngOnChanges(changes) {
+    if (changes.month) {
+      this.refreshCalendar();
+    }
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
+
+  private refreshCalendar() {
+    const dates = this.dateService.getDatesForCalendar(this.month);
+
+    const calendarDays = [];
+
+    for (const date of dates) {
+      const tasksOnDate = this.tasksByDayDue[date.toString()];
+      const calendarDay = new CalendarDay(date, tasksOnDate ? tasksOnDate : []);
+      calendarDays.push(calendarDay);
+    }
+
+    this.days = calendarDays;
+    this.weeks = this.dateService.groupIntoWeeks(this.days);
+  }
 }

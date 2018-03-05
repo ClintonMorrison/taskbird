@@ -66,11 +66,9 @@ export class CalendarPageComponent implements OnInit {
     }
 
     this.taskService.groupTasksByDayDue().first().subscribe((tasksByDay) => {
-      console.log('grouping task by day');
       const tasks = tasksByDay[this.selectedDay.toString()];
       this.taskIds = _.map(tasks, task => task.id);
 
-      console.log(this.taskIds);
       if (this.taskIds && this.taskIds.length > 0) {
         this.browserService.scrollToBottom();
       }

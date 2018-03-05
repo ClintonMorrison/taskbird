@@ -9,7 +9,7 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let week of getWeeks()">
+      <tr *ngFor="let week of weeks">
         <td *ngFor="let day of week">
           <calendar-day
             (dateSelected)="handleDateSelected($event)"
