@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../../../models/item';
 
+declare var window: any;
+
 @Component({
   selector: 'taskbird-tasks',
   templateUrl: './tasks.component.html',
@@ -12,15 +14,10 @@ export class TasksComponent implements OnInit {
 
   numberToShow: number;
 
-  selectedTask: Task;
-
   @Input()
   showCompletedToggle: boolean;
 
-  constructor() { }
-
-  onSelect(task: Task): void {
-    this.selectedTask = task;
+  constructor() {
   }
 
   ngOnInit() {

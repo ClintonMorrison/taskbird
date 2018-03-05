@@ -1,26 +1,25 @@
-<div>
+<div class="field">
   <label>Priority</label>
-</div>
+  <div>
+    <button 
+      (click)="select('Low')" 
+      [ngClass]="{ basic: task.priority !== 'Low' }"
+      class="ui compact basic grey button">
+      Low
+    </button>
 
-<div>
-  <button 
-    (click)="select('Low')" 
-    [ngClass]="{ basic: task.priority !== 'Low' }"
-    class="ui compact basic grey button">
-    Low
-  </button>
+    <button
+      (click)="select('Normal')" 
+      [ngClass]="{ basic: task.priority !== 'Normal' }"
+      class="ui compact basic black button">
+      Medium
+    </button>
 
-  <button
-    (click)="select('Normal')" 
-    [ngClass]="{ basic: task.priority !== 'Normal' }"
-    class="ui compact basic black button">
-    Medium
-  </button>
-
-  <button 
-    (click)="select('High')"
-    [ngClass]="{ basic: task.priority !== 'High' }"
-    class="ui compact basic red button">
-    High
-  </button>
+    <button 
+      (click)="select('High')"
+      [ngClass]="{ basic: task.priority !== 'High' }"
+      class="ui compact basic red button">
+      High
+    </button>
+  </div>
 </div>

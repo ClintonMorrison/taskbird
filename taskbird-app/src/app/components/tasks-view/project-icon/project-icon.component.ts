@@ -5,7 +5,7 @@ import { Task } from '../../../models/item';
   selector: 'taskbird-project-icon',
   template: `
     <i *ngIf="task.project" class="icon {{ task.project.icon }} {{ task.project.color }}"></i>
-    <i *ngIf="!task.project" class="thin circle icon"></i>
+    <i *ngIf="!task.project" class="circle outline icon"></i>
   `,
   styles: []
 })

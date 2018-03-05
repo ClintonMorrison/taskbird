@@ -5,7 +5,6 @@ import { Task } from '../../../models/item';
 
 declare var $: any;
 
-
 @Component({
   selector: 'taskbird-task-sidebar',
   templateUrl: './task-sidebar.component.html',
@@ -23,6 +22,10 @@ export class TaskSidebarComponent implements OnInit {
 
   ngOnInit() {
     this.id = uniqueId('task-sidebar-');
+  }
+
+  ngOnDestroy() {
+    this.closeSidebar();
   }
 
   openSidebar() {
