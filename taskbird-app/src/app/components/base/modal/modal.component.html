@@ -1,0 +1,20 @@
+<div [id]="id" class="ui modal">
+  <i class="close icon"></i>
+  <div class="header">
+    {{ title }}
+  </div>
+  <div class="content">
+    <div class="description">
+      <ng-content></ng-content>
+    </div>
+  </div>
+  <div class="actions">
+    <div class="ui black deny button">
+      Cancel
+    </div>
+    <div class="ui positive right labeled icon button">
+      Okay
+      <i class="checkmark icon"></i>
+    </div>
+  </div>
+</div>

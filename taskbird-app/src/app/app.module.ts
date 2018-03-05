@@ -52,6 +52,8 @@ import { ProjectSelectorComponent } from './components/tasks-view/project-select
 import { TaskCheckboxComponent } from './components/tasks-view/task-checkbox/task-checkbox.component';
 import { BrowserService } from './browser.service';
 import { SidebarComponent } from './components/base/sidebar/sidebar.component';
+import { DueDatePickerComponent } from './components/tasks-view/due-date-picker/due-date-picker.component';
+import { ModalComponent } from './components/base/modal/modal.component';
 
 
 @NgModule({
@@ -96,7 +98,9 @@ import { SidebarComponent } from './components/base/sidebar/sidebar.component';
     ProjectProgressBarComponent,
     ProjectSelectorComponent,
     TaskCheckboxComponent,
-    SidebarComponent
+    SidebarComponent,
+    DueDatePickerComponent,
+    ModalComponent
   ],
   imports: [
     BrowserModule,
