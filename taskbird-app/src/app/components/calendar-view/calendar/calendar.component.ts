@@ -38,7 +38,7 @@ export class CalendarComponent implements OnInit {
   }
 
   dayIsInCurrentMonth(date: Date): boolean {
-    return date.month === this.month.month;
+    return date.month === this.month.month && date.year === this.month.year;
   }
 
   dayIsSelected(date: Date): boolean {

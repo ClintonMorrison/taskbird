@@ -3,6 +3,8 @@ import { TaskService } from '../../../services/item.service';
 import { Task } from '../../../models/item';
 import { utc } from 'moment';
 import { ModalComponent } from '../../base/modal/modal.component';
+import { Month, Date } from '../../../models/dates';
+import { DateService } from '../../../services/date.service';
 
 @Component({
   selector: 'taskbird-due-date-picker',
@@ -17,22 +19,82 @@ export class DueDatePickerComponent implements OnInit {
   @ViewChild(ModalComponent)
   private modal: ModalComponent;
 
+  private today: Date;
+
 
   dateString: string;
+  monthString: string;
+  selectedDate: Date;
+
+  month: Month;
+  weeksForMonth: Date[][];
+
+  daysOfWeek = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
 
   constructor(
-    private taskService: TaskService
+    private taskService: TaskService,
+    private dateService: DateService
   ) { }
 
-  ngOnInit() {
+  ngOnInit(
+  ) {
+    this.today = Date.fromMoment(utc());
+
+    if (this.task.date_due) {
+      const dateDue = utc(this.task.date_due);
+      this.selectedDate = Date.fromMoment(dateDue);
+      this.month = Month.fromMoment(dateDue);
+    } else {
+      this.selectedDate = this.today;
+      this.month = Month.fromMoment(utc());
+    }
+
+    this.refreshMonth();
   }
 
   ngOnChanges(changes) {
-    this.dateString = utc(this.task.date_due).format('MMM DD, YYYY');
+    if (changes.task) {
+      this.dateString = utc(this.task.date_due).format('MMM DD, YYYY');
+    }
+    if (changes.month) {
+      this.refreshMonth();
+    }
   }
 
   showModal() {
     this.modal.showModal();
   }
 
+  refreshMonth() {
+    this.monthString = this.month.toMoment().format('MMM, YYYY');
+
+    const days = this.dateService.getDatesForCalendar(this.month);
+    this.weeksForMonth = this.dateService.groupIntoWeeks(days);
+  }
+
+  dayIsToday(date: Date): boolean {
+    return date.equals(this.today);
+  }
+
+  dayIsInCurrentMonth(date: Date): boolean {
+    return date.month === this.month.month && date.year === this.month.year;
+  }
+
+  dayIsSelected(date: Date): boolean {
+    return date.equals(this.selectedDate);
+  }
+
+  handleDateSelected(e, date) {
+    this.selectedDate = date;
+  }
+
+  goToPrevious() {
+    this.month = this.month.getPrevious();
+    this.refreshMonth();
+  }
+
+  goToNext() {
+    this.month = this.month.getNext();
+    this.refreshMonth();
+  }
 }
