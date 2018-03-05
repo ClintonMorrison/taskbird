@@ -3,6 +3,7 @@ import { Task } from '../../../models/item';
 import { uniqueId } from 'lodash';
 import { ProjectService } from '../../../services/project.service';
 import { Project } from '../../../models/project';
+import { Subscription } from 'rxjs/Subscription';
 
 declare var $: any;
 
@@ -20,6 +21,8 @@ export class ProjectSelectorComponent implements OnInit {
 
   projects: Project[];
 
+  private sub: Subscription;
+
   constructor(
     private projectSerivce: ProjectService
   ) {
@@ -31,7 +34,12 @@ export class ProjectSelectorComponent implements OnInit {
       this.getDropdown().dropdown();
     }, 0);
 
-    this.projectSerivce.getProjects().subscribe((projects) => this.projects = projects);
+    this.sub = this.projectSerivce.getProjects()
+      .subscribe((projects) => this.projects = projects);
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   private getDropdown(): any {

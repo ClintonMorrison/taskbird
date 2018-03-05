@@ -3,6 +3,7 @@ import { TaskService } from '../../../services/item.service';
 import { Task } from '../../../models/item';
 import { FilterService } from '../../../services/filter.service';
 import { ActivatedRoute } from '@angular/router';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'taskbird-tasks-page',
@@ -21,18 +22,22 @@ export class TasksPageComponent implements OnInit {
   taskIds: number[] = [];
   unfilteredTasks: Task[] = [];
 
+  private filterSub: Subscription;
+  private taskSub: Subscription;
+  private routeSub: Subscription;
+
   subscribeToTasks(): void {
-    this.filterService.getFilteredTaskIds()
+    this.filterSub = this.filterService.getFilteredTaskIds()
       .subscribe(taskIds => this.taskIds = taskIds);
   }
 
   subscribeToUnfilteredTasks(): void {
-    this.taskService.getTasks()
+    this.taskSub = this.taskService.getTasks()
       .subscribe(tasks => this.unfilteredTasks = tasks);
   }
 
   subscribeToRouteChanges(): void {
-    this.route.params.subscribe((params) => {
+    this.routeSub = this.route.params.subscribe((params) => {
       const id = params.projectId;
       const parsedId = parseInt(id, 10);
       if (parsedId) {
@@ -42,7 +47,7 @@ export class TasksPageComponent implements OnInit {
       } else {
         this.filterService.setProject(undefined);
       }
-    })
+    });
   }
 
   ngOnInit() {
@@ -52,6 +57,9 @@ export class TasksPageComponent implements OnInit {
   }
 
   ngOnDestroy() {
+    this.filterSub.unsubscribe();
+    this.taskSub.unsubscribe();
+    this.routeSub.unsubscribe();
   }
 
 }

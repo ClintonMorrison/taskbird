@@ -3,6 +3,7 @@ import { Task } from "../../../models/item";
 import { TaskSidebarComponent } from '../task-sidebar/task-sidebar.component';
 import { utc } from 'moment';
 import { TaskService } from '../../../services/item.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'task-item',
@@ -16,6 +17,8 @@ export class TaskItemComponent implements OnInit {
 
   task: Task;
 
+  private sub: Subscription;
+
   @ViewChild(TaskSidebarComponent)
   private sidebar: TaskSidebarComponent;
 
@@ -24,8 +27,12 @@ export class TaskItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.taskService.getTaskById(String(this.taskId))
+    this.sub = this.taskService.getTaskById(String(this.taskId))
       .subscribe(task => this.task = task);
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   onSelect(event) {
