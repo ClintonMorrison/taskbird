@@ -39,22 +39,15 @@ export class DueDatePickerComponent implements OnInit {
   ngOnInit(
   ) {
     this.today = Date.fromMoment(utc());
-
-    if (this.task.date_due) {
-      const dateDue = utc(this.task.date_due);
-      this.selectedDate = Date.fromMoment(dateDue);
-      this.month = Month.fromMoment(dateDue);
-    } else {
-      this.selectedDate = this.today;
-      this.month = Month.fromMoment(utc());
-    }
-
+    this.resetSelectedDate();
     this.refreshMonth();
   }
 
   ngOnChanges(changes) {
     if (changes.task) {
-      this.dateString = utc(this.task.date_due).format('MMM DD, YYYY');
+      this.dateString = this.task.date_due ? 
+        utc(this.task.date_due).format('MMM DD, YYYY') :
+        'Click to choose a date';
     }
     if (changes.month) {
       this.refreshMonth();
@@ -62,6 +55,8 @@ export class DueDatePickerComponent implements OnInit {
   }
 
   showModal() {
+    this.resetSelectedDate();
+    this.refreshMonth();
     this.modal.showModal();
   }
 
@@ -96,5 +91,32 @@ export class DueDatePickerComponent implements OnInit {
   goToNext() {
     this.month = this.month.getNext();
     this.refreshMonth();
+  }
+
+  modalClosed(confirmed: boolean) {
+    if (confirmed) {
+      const updatedTask = {
+        ...this.task,
+        date_due: this.selectedDate.toMoment().format('YYYY-MM-DD')
+      };
+
+      this.taskService.updateTask(updatedTask);
+    }
+  }
+
+  clearDate() {
+    const updatedTask = { ...this.task, date_due: null };
+    this.taskService.updateTask(updatedTask);
+  }
+
+  resetSelectedDate() {
+    if (this.task.date_due) {
+      const dateDue = utc(this.task.date_due);
+      this.selectedDate = Date.fromMoment(dateDue);
+      this.month = Month.fromMoment(dateDue);
+    } else {
+      this.selectedDate = this.today;
+      this.month = Month.fromMoment(utc());
+    }
   }
 }

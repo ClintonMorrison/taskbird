@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
 import { uniqueId } from 'lodash';
 
 declare var $: any;
@@ -15,15 +15,24 @@ export class ModalComponent implements OnInit {
   @Input()
   title: string;
 
+  @Output()
+  modalClosed = new EventEmitter<boolean>();
+
   constructor() { }
 
   ngOnInit() {
     this.id = uniqueId('modal-');
-    setTimeout(() => this.getModal().modal(), 0);
+    setTimeout(() => {
+      this.getModal().modal({
+        onApprove: () => this.modalClosed.emit(true),
+        onDeny: () => this.modalClosed.emit(false)
+      });
+    }, 0);
   }
 
   showModal() {
-    this.getModal().modal('show');
+    this.getModal().modal('hide');
+    setTimeout(() => this.getModal().modal('show'), 0);
   }
 
   hideModal() {

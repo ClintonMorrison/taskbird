@@ -1,14 +1,16 @@
 <div class="field">
   <label>Date Due</label>
   <div class="ui action input">
-    <input type="text" readonly [(ngModel)]="dateString" />
-    <button (click)="showModal()" class="ui icon button">
-      <i class="pencil icon"></i>
+    <input (click)="showModal()" type="text" readonly [(ngModel)]="dateString" />
+    <button (click)="clearDate()" class="ui icon negative button">
+      <i class="trash alternate icon"></i>
     </button>
   </div>
 </div>
 
-<taskbird-modal title="Select a Date">
+<taskbird-modal 
+  (modalClosed)="modalClosed($event)"
+  title="Select a Date">
 
   <div class="heading">
     <button (click)="goToPrevious()" class="ui icon button">
