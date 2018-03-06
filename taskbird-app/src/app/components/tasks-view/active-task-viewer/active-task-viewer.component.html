@@ -1,0 +1,3 @@
+<taskbird-sidebar *ngIf="activeTask" (closed)="closed()">
+  <taskbird-task-detail [taskId]="activeTask.id"></taskbird-task-detail>
+</taskbird-sidebar>

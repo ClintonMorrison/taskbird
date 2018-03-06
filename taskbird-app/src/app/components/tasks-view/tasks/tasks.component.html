@@ -2,6 +2,10 @@
   <task-item *ngFor="let taskId of taskIds | slice:0:numberToShow" [taskId]="taskId"></task-item>
 </div>
 
+<p class="tasks-count" *ngIf="numberToShow < taskIds.length">
+  <em>Showing {{numberToShow}} of {{taskIds.length}} tasks</em>
+</p>
+
 <div class="bottom-controls">
   <div>
     <button

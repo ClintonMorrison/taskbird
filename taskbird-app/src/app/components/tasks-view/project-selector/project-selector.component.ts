@@ -57,7 +57,12 @@ export class ProjectSelectorComponent implements OnInit {
 
   handleChange() {
     const id = parseInt(this.selectedProjectId, 10);
-    const project = chain(this.projects).filter({ id }).first().value();
+    let project = chain(this.projects).filter({ id }).first().value();
+
+    if (!project) {
+      project = null;
+    }
+
     const updatedTask = { ...this.task, project };
     this.taskService.updateTask(updatedTask);
   }

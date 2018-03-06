@@ -10,6 +10,10 @@ export class BrowserService {
     this.scrollToBottom = _.debounce(this.scrollToBottom, 250);
   }
 
+  scrollToTop() {
+    window.scrollTo(0, 0);
+  }
+
   scrollToBottom() {
     $("html, body").animate({ scrollTop: $(document).height() }, 0);
   }

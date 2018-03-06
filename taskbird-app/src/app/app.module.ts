@@ -54,6 +54,7 @@ import { BrowserService } from './browser.service';
 import { SidebarComponent } from './components/base/sidebar/sidebar.component';
 import { DueDatePickerComponent } from './components/tasks-view/due-date-picker/due-date-picker.component';
 import { ModalComponent } from './components/base/modal/modal.component';
+import { ActiveTaskViewerComponent } from './components/tasks-view/active-task-viewer/active-task-viewer.component';
 
 
 @NgModule({
@@ -100,7 +101,8 @@ import { ModalComponent } from './components/base/modal/modal.component';
     TaskCheckboxComponent,
     SidebarComponent,
     DueDatePickerComponent,
-    ModalComponent
+    ModalComponent,
+    ActiveTaskViewerComponent
   ],
   imports: [
     BrowserModule,

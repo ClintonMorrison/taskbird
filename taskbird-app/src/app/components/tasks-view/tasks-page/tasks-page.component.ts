@@ -5,6 +5,7 @@ import { FilterService } from '../../../services/filter.service';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { SidebarComponent } from '../../base/sidebar/sidebar.component';
+import { BrowserService } from '../../../browser.service';
 
 @Component({
   selector: 'taskbird-tasks-page',
@@ -16,7 +17,8 @@ export class TasksPageComponent implements OnInit {
   constructor(
     private taskService: TaskService,
     private filterService: FilterService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private browserService: BrowserService
   ) {}
   
   selectedProjectId: number;
@@ -25,13 +27,8 @@ export class TasksPageComponent implements OnInit {
   activeTask: Task;
 
   private filterSub: Subscription;
-  private activeTaskSub: Subscription;
   private taskSub: Subscription;
   private routeSub: Subscription;
-
-  @ViewChild(SidebarComponent)
-  private sidebar: SidebarComponent;
-
 
   subscribeToTasks(): void {
     this.filterSub = this.filterService.getFilteredTaskIds()
@@ -41,17 +38,6 @@ export class TasksPageComponent implements OnInit {
   subscribeToUnfilteredTasks(): void {
     this.taskSub = this.taskService.getTasks()
       .subscribe(tasks => this.unfilteredTasks = tasks);
-  }
-
-  subscribeToActiveTask(): void {
-    this.activeTaskSub = this.filterService.getActiveTask()
-      .subscribe(task => {
-        this.activeTask = task;
-
-        if (this.activeTask) {
-          setTimeout(() => this.sidebar.openSidebar(), 0);
-        }
-      });
   }
 
   subscribeToRouteChanges(): void {
@@ -72,14 +58,15 @@ export class TasksPageComponent implements OnInit {
     this.subscribeToTasks();
     this.subscribeToUnfilteredTasks();
     this.subscribeToRouteChanges();
-    this.subscribeToActiveTask();
+    this.browserService.scrollToTop();
+    console.log('tasks page init');
+
   }
 
   ngOnDestroy() {
     this.filterSub.unsubscribe();
     this.taskSub.unsubscribe();
     this.routeSub.unsubscribe();
-    this.activeTaskSub.unsubscribe();    
   }
 
 }

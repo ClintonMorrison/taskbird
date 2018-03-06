@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { uniqueId } from 'lodash';
 
 declare var $: any;
@@ -12,6 +12,9 @@ export class SidebarComponent implements OnInit {
 
   id: string;
 
+  @Output()
+  closed: EventEmitter<void> = new EventEmitter();
+
   constructor() { }
 
   ngOnInit() {
@@ -24,6 +27,11 @@ export class SidebarComponent implements OnInit {
 
   openSidebar() {
     this.getSidebar()
+      .sidebar({
+        onHidden: () => {
+          this.closed.emit();
+        }
+      })
       .sidebar('setting', 'exclusive', true)
       .sidebar('show');
   }

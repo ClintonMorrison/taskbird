@@ -6,3 +6,8 @@ form {
   display: flex;
   justify-content: space-between;
 }
+
+textarea {
+  height: 6em !important;
+  min-height: 6em !important;
+}

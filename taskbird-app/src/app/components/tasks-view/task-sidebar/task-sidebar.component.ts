@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { uniqueId } from 'lodash';
 
 import { Task } from '../../../models/item';
+import { FilterService } from '../../../services/filter.service';
 
 declare var $: any;
 
@@ -15,10 +16,11 @@ export class TaskSidebarComponent implements OnInit {
   @Input()
   task: Task;
 
-  constructor() {
+  constructor(
+    private filterService: FilterService
+  ) {
   }
 
   ngOnInit() {
   }
-
 }
