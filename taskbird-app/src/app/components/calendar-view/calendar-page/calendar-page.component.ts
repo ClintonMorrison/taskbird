@@ -6,6 +6,7 @@ import { Observable } from 'rxjs/Observable';
 import { BrowserService } from '../../../browser.service';
 import 'rxjs/add/operator/first';
 import * as _ from 'lodash';
+import { utc } from 'moment';
 
 @Component({
   selector: "calendar-page",
@@ -13,7 +14,7 @@ import * as _ from 'lodash';
   styleUrls: ["./calendar-page.component.scss"]
 })
 export class CalendarPageComponent implements OnInit {
-  month: Month = new Month("2017", "12");
+  month: Month = Month.fromMoment(utc());
 
   private selectedDay: Date;
   taskIds: number[];

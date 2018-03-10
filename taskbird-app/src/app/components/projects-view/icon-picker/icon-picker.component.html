@@ -1,0 +1,15 @@
+<div class="field">
+  <label>Icon</label>
+  <div class="ui input">
+    <input (click)="showModal()" type="text" readonly [(ngModel)]="project.icon" />
+  </div>
+</div>
+
+<taskbird-modal [hideButtons]="true" title="Select an Icon">
+  <div class="icons">
+    <button *ngFor="let icon of icons" class="ui large basic icon button" (click)="selectIcon(icon)">
+      <div class="icon-wrapper"><i class="big icon {{icon}}"></i></div>
+      <div>{{icon}}</div>
+    </button>
+  </div>
+</taskbird-modal>

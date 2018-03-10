@@ -58,6 +58,7 @@ import { ActiveTaskViewerComponent } from './components/tasks-view/active-task-v
 import { ActiveProjectViewerComponent } from './components/projects-view/active-project-viewer/active-project-viewer.component';
 import { ProjectDetailComponent } from './components/projects-view/project-detail/project-detail.component';
 import { ColorPickerComponent } from './components/projects-view/color-picker/color-picker.component';
+import { IconPickerComponent } from './components/projects-view/icon-picker/icon-picker.component';
 
 
 @NgModule({
@@ -108,7 +109,8 @@ import { ColorPickerComponent } from './components/projects-view/color-picker/co
     ActiveTaskViewerComponent,
     ActiveProjectViewerComponent,
     ProjectDetailComponent,
-    ColorPickerComponent
+    ColorPickerComponent,
+    IconPickerComponent
   ],
   imports: [
     BrowserModule,
