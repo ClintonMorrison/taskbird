@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Project } from '../../../models/project';
 import { utc } from 'moment';
+import { FilterService } from '../../../services/filter.service';
 
 @Component({
   selector: 'taskbird-project-item',
@@ -18,7 +19,9 @@ export class ProjectItemComponent implements OnInit {
   @Input()
   project: Project;
 
-  constructor() { }
+  constructor(
+    private filterService: FilterService
+  ) { }
 
   ngOnInit() {
   }
@@ -27,4 +30,7 @@ export class ProjectItemComponent implements OnInit {
     return utc(this.project.date_created).format('MMM DD, YYYY');
   }
 
+  editProject() {
+    this.filterService.setActiveProject(this.project);
+  }
 }

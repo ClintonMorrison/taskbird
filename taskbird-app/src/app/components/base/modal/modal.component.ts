@@ -15,6 +15,9 @@ export class ModalComponent implements OnInit {
   @Input()
   title: string;
 
+  @Input()
+  hideButtons: boolean;
+
   @Output()
   modalClosed = new EventEmitter<boolean>();
 

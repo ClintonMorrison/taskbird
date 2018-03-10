@@ -1,0 +1,29 @@
+<div *ngIf="project">
+  <div class="details-heading">
+    <h2>Project Details</h2>
+    <div>
+      <i className="large icon {{ project.icon }} {{ project.color }}"></i>
+    </div>
+  </div>
+
+  <form class="ui form">
+    <div class="field">
+      <label>Title</label>
+      <input autofocus type="text" name="title" [(ngModel)]="project.title">
+    </div>
+
+    <div class="field">
+      <label>Description</label>
+      <textarea name="description" [(ngModel)]="project.description"></textarea>
+    </div>
+
+    <!-- color picker -->
+    <taskbird-color-picker [project]="project"></taskbird-color-picker>
+
+    <!-- icon picker -->
+
+    <!-- delete button? -->
+
+    <!-- delete and migrate tasks button ? -->
+  </form>
+</div>

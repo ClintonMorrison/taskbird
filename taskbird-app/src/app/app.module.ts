@@ -55,6 +55,9 @@ import { SidebarComponent } from './components/base/sidebar/sidebar.component';
 import { DueDatePickerComponent } from './components/tasks-view/due-date-picker/due-date-picker.component';
 import { ModalComponent } from './components/base/modal/modal.component';
 import { ActiveTaskViewerComponent } from './components/tasks-view/active-task-viewer/active-task-viewer.component';
+import { ActiveProjectViewerComponent } from './components/projects-view/active-project-viewer/active-project-viewer.component';
+import { ProjectDetailComponent } from './components/projects-view/project-detail/project-detail.component';
+import { ColorPickerComponent } from './components/projects-view/color-picker/color-picker.component';
 
 
 @NgModule({
@@ -102,7 +105,10 @@ import { ActiveTaskViewerComponent } from './components/tasks-view/active-task-v
     SidebarComponent,
     DueDatePickerComponent,
     ModalComponent,
-    ActiveTaskViewerComponent
+    ActiveTaskViewerComponent,
+    ActiveProjectViewerComponent,
+    ProjectDetailComponent,
+    ColorPickerComponent
   ],
   imports: [
     BrowserModule,

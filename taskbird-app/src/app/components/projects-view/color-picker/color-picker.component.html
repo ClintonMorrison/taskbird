@@ -1,0 +1,20 @@
+<div class="field">
+  <label>Color</label>
+  <div class="ui action input">
+    <input (click)="showModal()" type="text" readonly [(ngModel)]="project.color" />
+    <button (click)="clearColor()" class="ui icon negative button">
+      <i class="trash alternate icon"></i>
+    </button>
+  </div>
+</div>
+
+<taskbird-modal [hideButtons]="true" title="Select a Color">
+  <div class="colors">
+    <button 
+      *ngFor="let color of colors"
+      class="ui {{ color }} button"
+      (click)="selectColor(color)">
+      {{color}}
+    </button>
+  </div>
+</taskbird-modal>

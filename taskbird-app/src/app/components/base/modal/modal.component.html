@@ -8,7 +8,7 @@
       <ng-content></ng-content>
     </div>
   </div>
-  <div class="actions">
+  <div *ngIf="!hideButtons" class="actions">
     <div class="ui black deny button">
       Cancel
     </div>

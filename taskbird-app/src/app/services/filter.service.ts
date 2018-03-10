@@ -18,6 +18,9 @@ export class FilterService {
 
   private activeTask: Task;
   private activeTaskSubject: BehaviorSubject<Task>;
+  
+  private filterProject: Project;
+  private filterProjectSubject: BehaviorSubject<Project>;
 
   private tasks: Task[];
   private projects: Project[];
@@ -41,13 +44,15 @@ export class FilterService {
     this.filteredTasksSubject = new BehaviorSubject([]);
     this.filteredTaskIdsSubject = new BehaviorSubject([]);
 
+    this.filterProjectSubject = <BehaviorSubject<Project>>new BehaviorSubject(undefined);
     this.activeProjectSubject = <BehaviorSubject<Project>>new BehaviorSubject(undefined);
+
     this.showCompletedTasksSubject = new BehaviorSubject(false);
     this.searchQuerySubject = new BehaviorSubject('');
     this.sortSubject = new BehaviorSubject('date_due_asc');
     this.activeTaskSubject = new BehaviorSubject(null);
 
-    this.getActiveProjet().subscribe(() => this.updateFilteredTasks());
+    this.getFilterProject().subscribe(() => this.updateFilteredTasks());
     this.getShowCompletedTasks().subscribe(() => this.updateFilteredTasks());
     this.getSearchQuery().subscribe(() => this.updateFilteredTasks());
     this.getSort().subscribe(() => this.updateFilteredTasks());
@@ -81,8 +86,8 @@ export class FilterService {
   }
 
   setProject(project: Project) {
-    this.activeProject = project;
-    this.activeProjectSubject.next(project);
+    this.filterProject = project;
+    this.filterProjectSubject.next(project);
   }
 
   setProjectById(id: number): void {
@@ -106,14 +111,17 @@ export class FilterService {
     return this.showCompletedTasksSubject.asObservable();
   }
 
-  getActiveProjet(): Observable<Project> {
+  getActiveProject(): Observable<Project> {
     return this.activeProjectSubject.asObservable();
   }
 
-  projectIsActive(project: Project): Observable<Boolean> {
-    return this.activeProjectSubject.asObservable().map((activeProject: Project) => {
-      return this.projectMatchesActive(project);
-    });
+  setActiveProject(project: Project) {
+    this.activeProject = project;
+    this.activeProjectSubject.next(project);
+  }
+
+  getFilterProject(): Observable<Project> {
+    return this.filterProjectSubject.asObservable();
   }
 
   getFilteredTasks(): Observable<Task[]> {
@@ -128,7 +136,7 @@ export class FilterService {
 
   private updateFilteredTasks() {
     const filteredTasks = _(this.tasks).filter((task) => {
-      return this.projectMatchesActive(task.project) &&
+      return this.projectMatchesFilter(task.project) &&
         this.taskMatchesCompletedFilter(task) &&
         this.taskMatchesSearchFilter(task);
     }).value();
@@ -138,10 +146,10 @@ export class FilterService {
     this.filteredTasksSubject.next(sortedTasks);
   }
 
-  private projectMatchesActive(project: Project) {
-    if (this.activeProject === undefined || this.activeProject === project) {
+  private projectMatchesFilter(project: Project) {
+    if (this.filterProject === undefined || this.filterProject === project) {
       return true;
-    } else if (this.activeProject && project && this.activeProject.id === project.id) {
+    } else if (this.filterProject && project && this.filterProject.id === project.id) {
       return true;
     }
 

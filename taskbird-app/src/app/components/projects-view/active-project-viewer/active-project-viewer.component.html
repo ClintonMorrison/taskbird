@@ -1,0 +1,3 @@
+<taskbird-sidebar *ngIf="activeProject" (closed)="closed()">
+  <taskbird-project-detail [projectId]="activeProject.id"></taskbird-project-detail>
+</taskbird-sidebar>

@@ -31,7 +31,7 @@ export class ProjectFilterComponent implements OnInit {
   }
 
   projectActive(project: Project) {
-    return this.filterService.getActiveProjet().map((activeProject) => {
+    return this.filterService.getFilterProject().map((activeProject) => {
       return activeProject === project;
     });
   }
