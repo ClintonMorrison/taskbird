@@ -21,7 +21,7 @@ export class CalendarComponent implements OnInit {
   dateSelected = new EventEmitter<Date>();
 
   @Input()
-  private selectedDay: Date;
+  selectedDay: Date;
 
   daysOfWeek: String[];
 

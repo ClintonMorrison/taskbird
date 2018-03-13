@@ -11,7 +11,7 @@ import { Project } from '../../../models/project';
 })
 export class ActiveProjectViewerComponent implements OnInit {
 
-  private activeProject: Project;
+  activeProject: Project;
   private sub: Subscription;
 
   @ViewChild(SidebarComponent)

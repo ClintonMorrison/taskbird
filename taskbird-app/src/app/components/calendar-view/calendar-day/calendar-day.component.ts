@@ -12,13 +12,13 @@ import { TaskService } from '../../../services/item.service';
 export class CalendarDayComponent implements OnInit {
 
   @Input()
-  private active: boolean;
+  active: boolean;
 
   @Input()
-  private selected: boolean;
+  selected: boolean;
 
   @Input()
-  private today: boolean;
+  today: boolean;
 
   @Input()
   tasks: Task[];
@@ -29,11 +29,11 @@ export class CalendarDayComponent implements OnInit {
   @Output()
   dateSelected = new EventEmitter<Date>();
 
-  private getClass(): string {
+  getClass(): string {
     return this.active ? '' : 'inactive';
   }
 
-  private handleClick(e) {
+  handleClick(e) {
     e.preventDefault();
     this.dateSelected.emit(this.date);
   }

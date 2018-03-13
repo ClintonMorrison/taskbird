@@ -11,7 +11,7 @@ import { SidebarComponent } from '../../base/sidebar/sidebar.component';
 })
 export class ActiveTaskViewerComponent implements OnInit {
 
-  private activeTask: Task;
+  activeTask: Task;
   private sub: Subscription;
 
   @ViewChild(SidebarComponent)

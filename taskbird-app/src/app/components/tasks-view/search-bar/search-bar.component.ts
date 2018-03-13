@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
   template: `
     <form class="ui icon task-search input">
       <input
-        (input)="handleChange($event)"
+        (input)="handleChange()"
         [(ngModel)]="query"
         name="search" 
         placeholder="Search">

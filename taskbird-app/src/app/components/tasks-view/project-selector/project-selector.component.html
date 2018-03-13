@@ -3,7 +3,7 @@
   <select 
     [id]="id"
     [(ngModel)]="selectedProjectId"
-    (change)="handleChange($event)"
+    (change)="handleChange()"
     class="ui dropdown">
     <option *ngFor="let project of projects" [value]="project.id">{{project.title}}</option>
     <option value="">Uncategorized</option>

@@ -10,7 +10,7 @@ declare var Plotly: any;
 })
 export class GraphComponent implements OnInit {
 
-  private id: string;
+  id: string;
   
   @Input()
   layout: object;

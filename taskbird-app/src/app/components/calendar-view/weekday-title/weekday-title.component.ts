@@ -12,15 +12,15 @@ export class WeekdayTitleComponent implements OnInit {
 
   constructor() { }
 
-  private getShortName() {
+  getShortName() {
     return this.weekday.slice(0, 1);
   }
 
-  private getMediumName() {
+  getMediumName() {
     return this.weekday.slice(0, 3);
   }
 
-  private getFullName() {
+  getFullName() {
     return this.weekday;
   }
 

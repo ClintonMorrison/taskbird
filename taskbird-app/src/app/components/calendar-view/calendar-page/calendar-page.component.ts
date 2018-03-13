@@ -16,7 +16,7 @@ import { utc } from 'moment';
 export class CalendarPageComponent implements OnInit {
   month: Month = Month.fromMoment(utc());
 
-  private selectedDay: Date;
+  selectedDay: Date;
   taskIds: number[];
 
   constructor(
