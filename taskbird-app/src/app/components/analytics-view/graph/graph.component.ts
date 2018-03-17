@@ -49,12 +49,23 @@ export class GraphComponent implements OnInit {
       layout = { ...layout, ...this.layout }
     }
 
+    if (!layout.yaxis) {
+      layout.yaxis = {};
+    }
+
+    if (!layout.xaxis) {
+      layout.xaxis = {};
+    }
+
+    layout.yaxis.fixedrange = true;
+    layout.xaxis.fixedrange = true;
+
     if (this.xTitle) {
-      layout.xaxis = { title: this.xTitle };
+      layout.xaxis.xTitle = this.xTitle;
     }
 
     if (this.yTitle) {
-      layout.yaxis = { title: this.yTitle };
+      layout.yaxis.title = this.yTitle;
     }
 
     var options = {

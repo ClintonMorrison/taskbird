@@ -2,4 +2,8 @@
   max-width: 90%;
   width: 40em;
   padding: 1.5em;
+
+  @media screen and (max-width: 500px) {
+    max-width: 100%;
+  }
 }

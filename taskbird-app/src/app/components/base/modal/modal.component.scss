@@ -1,0 +1,12 @@
+.ui.modal.transition.visible.active {
+  @media screen and (max-width: 500px) {
+    border-radius: 0;
+    margin: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+
+    > .actions {
+      background-color: #fff;
+    }
+  }
+}
