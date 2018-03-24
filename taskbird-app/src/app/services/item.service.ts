@@ -132,7 +132,8 @@ export class TaskService {
   }
 
   createTask(taskFields: object): Task {
-    const task: Task = {
+    const task: any = {
+      id: 0,
       title: "New Task",
       date_completed: null,
       date_created: null,
@@ -140,7 +141,6 @@ export class TaskService {
       date_modified: null,
       description: "",
       done: false,
-      id: 0,
       priority: "Normal",
       project: null,
       ...taskFields

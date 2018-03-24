@@ -59,6 +59,7 @@ import { ActiveProjectViewerComponent } from './components/projects-view/active-
 import { ProjectDetailComponent } from './components/projects-view/project-detail/project-detail.component';
 import { ColorPickerComponent } from './components/projects-view/color-picker/color-picker.component';
 import { IconPickerComponent } from './components/projects-view/icon-picker/icon-picker.component';
+import { NewProjectButtonComponent } from './components/projects-view/new-project-button/new-project-button.component';
 
 
 @NgModule({
@@ -110,7 +111,8 @@ import { IconPickerComponent } from './components/projects-view/icon-picker/icon
     ActiveProjectViewerComponent,
     ProjectDetailComponent,
     ColorPickerComponent,
-    IconPickerComponent
+    IconPickerComponent,
+    NewProjectButtonComponent
   ],
   imports: [
     BrowserModule,

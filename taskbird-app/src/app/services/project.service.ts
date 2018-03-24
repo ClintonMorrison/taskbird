@@ -10,6 +10,7 @@ import 'rxjs/add/operator/mergeMap';
 import { Project } from '../models/project';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as _ from 'lodash';
+import { utc } from 'moment';
 
 interface ProjectMap {
   [key: number]: Project
@@ -22,6 +23,8 @@ export class ProjectService {
   private projects: Project[];
   private projectsSubject: BehaviorSubject<Project[]>;
   private projectsByIdSubject: BehaviorSubject<ProjectMap>;
+
+  private nextNewProjectId: number = -1;
 
   constructor() {
     this.projectsSubject = new BehaviorSubject([]);
@@ -51,6 +54,27 @@ export class ProjectService {
     return this.getProjectsById().map((projectsById) => {
       return projectsById[id];
     });
+  }
+
+  createProject(): Project {
+    const project = {
+      id: 0,
+      title: 'New Project',
+      description: '',
+      icon: 'circle',
+      color: 'black',
+      date_created: utc().format()
+    };
+
+    if (project.id === 0) {
+      project.id = this.nextNewProjectId;
+      this.nextNewProjectId -= 1;
+    }
+
+    this.projectsById[project.id] = project;
+    this.projectsByIdSubject.next(this.projectsById);
+
+    return project;
   }
 
   private findById(projects, id) {
