@@ -9,17 +9,4 @@ a {
       display: inline-block;
     }
   }
-  
-
-  &:hover {
-    i {
-      &.check {
-        display: inline-block;
-      }
-
-      &:not(.check) {
-        display: none;
-      }
-    }
-  }
 }

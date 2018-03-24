@@ -5,7 +5,18 @@
   <taskbird-project-filter></taskbird-project-filter>
 </div>
 <div class="ui bottom attached segment">
+  <div *ngIf="taskIds.length === 0" class="ui message">
+    <p>
+      There are no tasks matching these filters.
+    </p>
+  
+    <p>
+      Create a task by clicking the "New Task" button above.
+    </p>
+  </div>
+
   <taskbird-tasks [taskIds]="taskIds" [showCompletedToggle]="true"></taskbird-tasks>
 </div>
+
 
 <taskbird-active-task-viewer></taskbird-active-task-viewer>

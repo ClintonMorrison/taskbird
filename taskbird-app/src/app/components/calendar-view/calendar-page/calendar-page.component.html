@@ -30,6 +30,20 @@
   *ngIf="selectedDay && taskIds"
   class="selected-day-tasks ui segment">
   <h2>Tasks for {{ getSelectedDayTitle() }}</h2>
+
+  <taskbird-create-task-button c
+    [fields]="{ date_due: selectedDay.toMoment().format() }">
+  </taskbird-create-task-button>
+
+  <div *ngIf="taskIds.length === 0" class="ui message">
+    <p>
+      There are no tasks on this day.
+    </p>
+  
+    <p>
+      Create a task by clicking the "New Task" button above.
+    </p>
+  </div>
   <taskbird-tasks [taskIds]="taskIds"></taskbird-tasks>
 </div>
 

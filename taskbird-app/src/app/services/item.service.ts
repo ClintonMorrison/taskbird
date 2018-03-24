@@ -33,6 +33,8 @@ export class TaskService {
 
   private tasksById: TaskMap = null;
 
+  private nextNewTaskId: number = -1;
+
   constructor(
     private http: HttpClient,
     private messageService: MessageService
@@ -127,6 +129,32 @@ export class TaskService {
   updateTask(task: Task) {
     this.tasksById[task.id] = task;
     this.tasksByIdSubject.next(this.tasksById);
+  }
+
+  createTask(taskFields: object): Task {
+    const task: Task = {
+      title: "New Task",
+      date_completed: null,
+      date_created: null,
+      date_due: null,
+      date_modified: null,
+      description: "",
+      done: false,
+      id: 0,
+      priority: "Normal",
+      project: null,
+      ...taskFields
+    };
+
+    if (task.id === 0) {
+      task.id = this.nextNewTaskId;
+      this.nextNewTaskId -= 1;
+    }
+
+    this.tasksById[task.id] = task;
+    this.tasksByIdSubject.next(this.tasksById);
+
+    return task;
   }
 
   private groupByCallback(tasks: Task[], callback: Function): StringTaskMap {

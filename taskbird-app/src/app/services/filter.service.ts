@@ -134,6 +134,16 @@ export class FilterService {
     });
   }
 
+  createTaskMatchingFilters(taskFields: object): void {
+    const task = this.taskService.createTask({
+      title: this.searchQuery || 'New Task',
+      project: this.filterProject,
+      ...taskFields
+    });
+
+    this.setActiveTask(task);
+  }
+
   private updateFilteredTasks() {
     const filteredTasks = _(this.tasks).filter((task) => {
       return this.projectMatchesFilter(task.project) &&

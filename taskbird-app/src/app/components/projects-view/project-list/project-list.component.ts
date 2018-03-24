@@ -14,6 +14,13 @@ export class ProjectListComponent implements OnInit {
   @Input()
   taskCountsByProject: object;
 
+  getTaskCountsForProject(project: Project) {
+    return this.taskCountsByProject[project.id] || {
+      totalTaskCount: 0,
+      completedTaskCount: 0
+    };
+  } 
+
   constructor() { }
 
   ngOnInit() {
