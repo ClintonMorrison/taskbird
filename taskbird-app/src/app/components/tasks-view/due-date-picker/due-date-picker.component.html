@@ -1,7 +1,9 @@
 <div class="field">
   <label>Date Due</label>
-  <div class="ui action input">
-    <input (click)="showModal()" type="text" readonly [(ngModel)]="dateString" />
+  <div class="ui fluid buttons">
+    <button (click)="showModal()" [(ngModel)]="dateString" class="ui basic grey date button">
+      {{ dateString }}
+    </button>
     <button (click)="clearDate()" class="ui icon negative button">
       <i class="trash alternate icon"></i>
     </button>

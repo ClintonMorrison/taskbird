@@ -12,7 +12,11 @@ import { Task } from '../../../models/item';
     -->
     <span *ngIf="!task.done"class="ui grey label">NOT DONE</span>
   `,
-  styles: []
+  styles: [`
+    .label {
+      white-space: nowrap;
+    }
+  `]
 })
 export class StatusLabelComponent implements OnInit {
 

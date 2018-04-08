@@ -1,5 +1,13 @@
 .field {
   margin-top: 1em !important;
+
+  .icon.button {
+    max-width: 3em;
+  }
+
+  .date.button {
+    text-align: left;
+  }
 }
 
 table {

@@ -1,9 +1,8 @@
 <div class="field">
   <label>Color</label>
-  <div class="ui action input">
-    <input (click)="showModal()" type="text" readonly [(ngModel)]="project.color" />
-    <button (click)="clearColor()" class="ui icon negative button">
-      <i class="trash alternate icon"></i>
+  <div class="ui input">
+    <button (click)="showModal()" class="ui fluid basic button {{ project.color }}">
+      {{ project.color }}
     </button>
   </div>
 </div>

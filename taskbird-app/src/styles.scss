@@ -13,9 +13,3 @@
 body {
   background-color: #fafafa;
 }
-
-@media screen and (max-width: 500px) {
-  .ui.dimmer.modals.page.transition.visible.active {
-    padding: 0 !important;
-  }
-}

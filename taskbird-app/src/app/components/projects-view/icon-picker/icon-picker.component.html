@@ -1,7 +1,10 @@
 <div class="field">
   <label>Icon</label>
   <div class="ui input">
-    <input (click)="showModal()" type="text" readonly [(ngModel)]="project.icon" />
+    <button (click)="showModal()" class="ui labeled icon basic fluid button">
+      <i class="icon {{ project.icon }}"></i>
+      {{ project.icon }}
+    </button>
   </div>
 </div>
 

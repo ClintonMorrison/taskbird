@@ -1,6 +1,6 @@
 <div *ngIf="task">
   <div class="details-heading">
-    <h2>Task Details</h2>
+    <h2>{{ task.title }}</h2>
     <div>
       <taskbird-status-label [task]="task"></taskbird-status-label>
     </div>
