@@ -1,8 +1,6 @@
 .top-row {
   display: flex;
   justify-content: space-between;
-
-
 }
 
 .right-controls {
@@ -27,11 +25,22 @@
 
     .right-controls {
       width: 100%;
-      display: flex;
-      justify-content: space-between;
+
+      * + * {
+        margin-left: 0;
+      }
 
       > * {
-        width: 50%;
+        width: 100%;
+      }
+    }
+
+    .left-controls {
+      width: 100%;
+
+      .control,
+      /deep/ button {
+        width: 100%;
       }
     }
   }

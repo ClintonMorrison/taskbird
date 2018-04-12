@@ -14,7 +14,7 @@
   <button
     (click)="goToNext()"
     class="ui icon button">
-    <span class="hidden-on-small">Previous Month</span>
+    <span class="hidden-on-small">Next Month</span>
     <i class="icon chevron right"></i>
   </button>
 </div>
@@ -31,7 +31,7 @@
   class="selected-day-tasks ui segment">
   <h2>Tasks for {{ getSelectedDayTitle() }}</h2>
 
-  <taskbird-create-task-button c
+  <taskbird-create-task-button
     [fields]="{ date_due: selectedDay.toMoment().format() }">
   </taskbird-create-task-button>
 
@@ -39,9 +39,11 @@
     <p>
       There are no tasks on this day.
     </p>
-
   </div>
-  <taskbird-tasks [taskIds]="taskIds"></taskbird-tasks>
+
+  <div class="tasks">
+    <taskbird-tasks [taskIds]="taskIds"></taskbird-tasks>
+  </div>
 </div>
 
 <taskbird-active-task-viewer></taskbird-active-task-viewer>
