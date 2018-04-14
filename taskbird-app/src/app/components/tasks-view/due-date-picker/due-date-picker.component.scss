@@ -15,6 +15,13 @@ table {
 
   td,
   th {
+    @media screen and (max-width: 381px) {
+      font-size: 80%;
+    }
+  }
+
+  td,
+  th {
     width: 14.28%;
   }
 

@@ -11,3 +11,9 @@ textarea {
   height: 6em !important;
   min-height: 6em !important;
 }
+
+@media screen and (max-width: 500px) {
+  .status-label {
+    display: none;
+  }
+}
