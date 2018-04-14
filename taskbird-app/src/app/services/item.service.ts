@@ -157,6 +157,11 @@ export class TaskService {
     return task;
   }
 
+  deleteTask(taskId: number) {
+    delete this.tasksById[taskId];
+    this.tasksByIdSubject.next(this.tasksById);
+  }
+
   private groupByCallback(tasks: Task[], callback: Function): StringTaskMap {
     const result = {};
 

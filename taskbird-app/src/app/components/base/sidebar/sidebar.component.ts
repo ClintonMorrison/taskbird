@@ -28,11 +28,12 @@ export class SidebarComponent implements OnInit {
   openSidebar() {
     this.getSidebar()
       .sidebar({
+        scrollLock: true,
+        exclusive: true,
         onHidden: () => {
           this.closed.emit();
         }
       })
-      .sidebar('setting', 'exclusive', true)
       .sidebar('show');
   }
 

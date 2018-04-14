@@ -60,6 +60,8 @@ import { ProjectDetailComponent } from './components/projects-view/project-detai
 import { ColorPickerComponent } from './components/projects-view/color-picker/color-picker.component';
 import { IconPickerComponent } from './components/projects-view/icon-picker/icon-picker.component';
 import { NewProjectButtonComponent } from './components/projects-view/new-project-button/new-project-button.component';
+import { DeleteTaskButtonComponent } from './components/tasks-view/delete-task-button/delete-task-button.component';
+import { DeleteProjectButtonComponent } from './components/projects-view/delete-project-button/delete-project-button.component';
 
 
 @NgModule({
@@ -112,7 +114,9 @@ import { NewProjectButtonComponent } from './components/projects-view/new-projec
     ProjectDetailComponent,
     ColorPickerComponent,
     IconPickerComponent,
-    NewProjectButtonComponent
+    NewProjectButtonComponent,
+    DeleteTaskButtonComponent,
+    DeleteProjectButtonComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,12 @@
+
+<button (click)="showModal()"
+class="ui basic negative right button">
+  Delete Task
+</button>
+  
+
+<taskbird-modal
+  (modalClosed)="modalClosed($event)"
+  title="Delete Task">
+  Are you sure you want to delete the task "<em>{{task.title}}</em>"?
+</taskbird-modal>

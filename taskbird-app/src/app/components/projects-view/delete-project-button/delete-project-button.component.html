@@ -1,0 +1,14 @@
+<button (click)="showModal()" class="ui basic negative right button">
+  Delete Project
+</button>
+
+
+<taskbird-modal (modalClosed)="modalClosed($event)" title="Delete Project">
+  <p>
+    Are you sure you want to delete the project "<em>{{project.title}}</em>"?
+  </p>
+
+  <p>
+    The tasks in the project will be marked as uncategorized.
+  </p>
+</taskbird-modal>

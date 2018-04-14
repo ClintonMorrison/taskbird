@@ -77,6 +77,11 @@ export class ProjectService {
     return project;
   }
 
+  deleteProject(projectId: number) {
+    delete this.projectsById[projectId];
+    this.projectsByIdSubject.next(this.projectsById);
+  }
+
   private findById(projects, id) {
     return _(projects).chain().filter({ id }).first().value();
   }

@@ -61,6 +61,18 @@ export class FilterService {
       this.tasks = tasks;
       this.updateFilteredTasks();
     });
+
+    this.taskService.getTasksById().subscribe((tasksById) => {
+      if (this.activeTask && this.activeTask.id && !tasksById[this.activeTask.id]) {
+        this.setActiveTask(undefined);
+      }
+    });
+
+    this.projectService.getProjectsById().subscribe((projectsById) => {
+      if (this.activeProject && this.activeProject.id && !projectsById[this.activeProject.id]) {
+        this.setActiveProject(undefined);
+      }
+    });
   }
 
   getSort(): Observable<String> {
