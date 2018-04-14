@@ -30,6 +30,9 @@ export class SidebarComponent implements OnInit {
       .sidebar({
         scrollLock: true,
         exclusive: true,
+        onVisible: () => {
+          $('body').css({ overflow: 'hidden' });
+        },
         onHidden: () => {
           this.closed.emit();
         }
@@ -38,6 +41,7 @@ export class SidebarComponent implements OnInit {
   }
 
   closeSidebar() {
+    $('body').css({ overflow: 'visible' });
     this.getSidebar()
       .sidebar('hide');
   }
