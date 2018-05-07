@@ -17,6 +17,8 @@ import 'rxjs/add/operator/mergeMap';
 import { FilterService } from './filter.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Project } from '../models/project';
+// import { ApiResponse } from '../models/api-response';
+import { ApiService } from '../api.service';
 import { ApiResponse } from '../models/api-response';
 
 interface TaskSubjectMap {
@@ -35,18 +37,34 @@ export class TaskService {
 
   private nextNewTaskId: number = -1;
 
+  private fetched: boolean;
+
   constructor(
-    private http: HttpClient,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private apiService: ApiService 
   ) {
     this.tasksByIdSubject = new BehaviorSubject({});
-    this.taskSubjectById = {}; 
+    this.taskSubjectById = {};
+    console.log('constructoring!')
+  }
+
+  loadTasks(): void {
+    if (this.fetched) {
+      return;
+    }
+
+    this.fetched = true;
+
+    this.apiService.get('task').first().subscribe((response: ApiResponse) => {
+      console.log('got response');
+      this.tasksById = TaskService.mapResponse(response);
+      this.tasksByIdSubject.next(this.tasksById);
+    });
   }
 
   getTasksById(): Observable<TaskMap> {
     if (!this.tasksById) {
-      this.tasksById = TaskService.mapResponse(MockTaskResponse);
-      this.tasksByIdSubject.next(this.tasksById);
+      this.loadTasks();
     }
 
     return this.tasksByIdSubject.asObservable();
@@ -128,6 +146,7 @@ export class TaskService {
 
   updateTask(task: Task) {
     this.tasksById[task.id] = task;
+    this.apiService.put('task', task.id, task).first().subscribe();
     this.tasksByIdSubject.next(this.tasksById);
   }
 

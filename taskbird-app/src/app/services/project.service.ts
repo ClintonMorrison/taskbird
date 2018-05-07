@@ -11,6 +11,8 @@ import { Project } from '../models/project';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as _ from 'lodash';
 import { utc } from 'moment';
+import { ApiService } from '../api.service';
+import { ApiResponse } from '../models/api-response';
 
 interface ProjectMap {
   [key: number]: Project
@@ -23,10 +25,13 @@ export class ProjectService {
   private projects: Project[];
   private projectsSubject: BehaviorSubject<Project[]>;
   private projectsByIdSubject: BehaviorSubject<ProjectMap>;
-
   private nextNewProjectId: number = -1;
 
-  constructor() {
+  private fetched: boolean;
+
+  constructor(
+    private apiService: ApiService
+  ) {
     this.projectsSubject = new BehaviorSubject([]);
     this.projectsByIdSubject = new BehaviorSubject({});
   }
@@ -36,10 +41,22 @@ export class ProjectService {
     this.projectsByIdSubject.next(this.projectsById);
   }
 
+  loadProjects(): void {
+    if (this.fetched) {
+      return;
+    }
+
+    this.fetched = true;
+
+    this.apiService.get('project').first().subscribe((response: ApiResponse) => {
+      this.projectsById = _.keyBy(response.objects, 'id');
+      this.projectsByIdSubject.next(this.projectsById);
+    });
+  }
+
   getProjectsById(): Observable<ProjectMap> {
     if (!this.projectsById) {
-      this.projectsById = _.keyBy(MockProjectResponse.objects, 'id');
-      this.projectsByIdSubject.next(this.projectsById);
+      this.loadProjects();
     }
 
     return this.projectsByIdSubject.asObservable();

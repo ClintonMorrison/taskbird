@@ -8,7 +8,7 @@ import { AnalyticsPageComponent } from './components/analytics-view/analytics-pa
 import { ProjectsPageComponent } from './components/projects-view/projects-page/projects-page.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/tasks', pathMatch: 'full' },
+  { path: '', redirectTo: 'tasks', pathMatch: 'full' },
   { path: 'tasks', component: TasksPageComponent },
   { path: 'tasks/:projectId', component: TasksPageComponent },
   { path: 'calendar', component: CalendarPageComponent },

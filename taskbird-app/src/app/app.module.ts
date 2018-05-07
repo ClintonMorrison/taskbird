@@ -62,6 +62,7 @@ import { IconPickerComponent } from './components/projects-view/icon-picker/icon
 import { NewProjectButtonComponent } from './components/projects-view/new-project-button/new-project-button.component';
 import { DeleteTaskButtonComponent } from './components/tasks-view/delete-task-button/delete-task-button.component';
 import { DeleteProjectButtonComponent } from './components/projects-view/delete-project-button/delete-project-button.component';
+import { ApiService } from './api.service';
 
 
 @NgModule({
@@ -124,7 +125,15 @@ import { DeleteProjectButtonComponent } from './components/projects-view/delete-
     AppRoutingModule,
     HttpClientModule
   ],
-providers: [ TaskService, ProjectService, MessageService, DateService, FilterService, BrowserService ],
+providers: [
+  ApiService,
+  TaskService,
+  ProjectService,
+  MessageService,
+  DateService,
+  FilterService,
+  BrowserService
+],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

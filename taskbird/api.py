@@ -2,10 +2,16 @@ __author__ = 'Clinton Morrison'
 
 from tastypie.resources import ModelResource
 from tastypie.authorization import Authorization
-from tastypie.authentication import SessionAuthentication
+from tastypie.authentication import Authentication
 from taskbird.models import Task, User, UserSettings, Project
 from tastypie.exceptions import Unauthorized
 from tastypie import fields
+
+
+class BaseAuthentication(Authentication):
+    def is_authenticated(self, request, **kwargs):
+        return request.user.is_authenticated()
+
 
 class UserAuthorization(Authorization):
     def read_list(self, object_list, bundle):
@@ -77,7 +83,7 @@ class ProjectResource(ModelResource):
         queryset = Project.objects.all()
         resource_name = 'project'
         authorization = OwnerOnlyAuthorization()
-        authentication = SessionAuthentication()
+        authentication = BaseAuthentication()
 
     def hydrate(self, bundle, request=None):
         bundle.obj.user = bundle.request.user
@@ -95,7 +101,7 @@ class TaskResource(ModelResource):
         queryset = Task.objects.all()
         resource_name = 'task'
         authorization = OwnerOnlyAuthorization()
-        authentication = SessionAuthentication()
+        authentication = BaseAuthentication()
         limit = 0
         max_limit = 0
 
@@ -115,7 +121,7 @@ class UserResource(ModelResource):
         excludes = ['is_active', 'password', 'is_superuser', 'is_staff', 'is_active']
         allowed_methods = ['get', 'put']
         authorization = UserAuthorization()
-        authentication = SessionAuthentication()
+        authentication = BaseAuthentication()
 
 
 class UserSettingsResource(ModelResource):
@@ -123,7 +129,7 @@ class UserSettingsResource(ModelResource):
         queryset = UserSettings.objects.all()
         resource_name = 'userSettings'
         authorization = OwnerOnlyAuthorization()
-        authentication = SessionAuthentication()
+        authentication = BaseAuthentication()
 
     def hydrate(self, bundle, request=None):
         bundle.obj.user = bundle.request.user

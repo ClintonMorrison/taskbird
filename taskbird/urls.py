@@ -1,5 +1,6 @@
 from taskbird import views
 from django.conf.urls import url, include
+from django.views.decorators.csrf import csrf_exempt
 
 from social.apps.django_app import urls as social_urls
 

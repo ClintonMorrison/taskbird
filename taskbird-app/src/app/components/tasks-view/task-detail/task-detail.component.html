@@ -9,12 +9,12 @@
   <form class="ui form">
     <div class="field">
       <label>Title</label>
-      <input autofocus type="text" name="title" [(ngModel)]="task.title">
+      <input autofocus type="text" name="title" [(ngModel)]="task.title" (input)="updateTask()">
     </div>
 
     <div class="field">
       <label>Description</label>
-      <textarea name="description" [(ngModel)]="task.description"></textarea>
+      <textarea name="description" [(ngModel)]="task.description" (input)="updateTask()"></textarea>
     </div>
     
     <taskbird-priority-selector [task]="task"></taskbird-priority-selector>

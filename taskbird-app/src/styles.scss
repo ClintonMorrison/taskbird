@@ -17,3 +17,9 @@ body {
 .right {
   float: right;
 }
+
+// Stop plotly graphs from capturing mouse drag events
+.draglayer.cursor-crosshair,
+.drag.cursor-pointer {
+  pointer-events: none !important;
+}

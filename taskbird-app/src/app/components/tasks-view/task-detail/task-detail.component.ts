@@ -37,6 +37,10 @@ export class TaskDetailComponent implements OnInit {
     }
   }
 
+  updateTask() {
+    this.taskService.updateTask(this.task);
+  }
+
   private refreshTask() {
     if (this.taskSub) {
       this.taskSub.unsubscribe();

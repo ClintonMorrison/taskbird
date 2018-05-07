@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { TaskService } from '../../../services/item.service';
 import { Task, StringTaskMap } from '../../../models/item';
+import { Subscription } from 'rxjs/Subscription';
 import * as _ from 'lodash';
 
 
@@ -10,7 +11,7 @@ import * as _ from 'lodash';
    <taskbird-graph
      title="Productivity"
      yTitle="Tasks"
-     [data]="getData()">
+     [data]="[createdTasksSeries, completedTaskSeries]">
    </taskbird-graph>
   `,
   styles: []
@@ -18,6 +19,8 @@ import * as _ from 'lodash';
 export class ProductivityGraphComponent implements OnInit {
   createdTasksSeries: any;
   completedTaskSeries: any;
+  dayCreatedSub: Subscription;
+  dayCompletedSub: Subscription;
 
   constructor(
     private taskService: TaskService
@@ -25,22 +28,16 @@ export class ProductivityGraphComponent implements OnInit {
     this.createdTasksSeries = this.createEmptySeries('Tasks Created');
     this.completedTaskSeries = this.createEmptySeries('Tasks Completed');
 
-    taskService.groupTasksByDayCreated().first().subscribe((tasksByDayCreated) => {
+    this.dayCreatedSub = taskService.groupTasksByDayCreated().subscribe((tasksByDayCreated) => {
+      console.log("CALLBACK CCALLED");
       const { x, y } = this.countTasksByDate(tasksByDayCreated);
       this.createdTasksSeries = { ...this.createdTasksSeries, x, y };
     });
 
-    taskService.groupTasksByDayCompleted().first().subscribe((tasksByDayCompleted) => {
+    this.dayCompletedSub = taskService.groupTasksByDayCompleted().subscribe((tasksByDayCompleted) => {
       const { x, y } = this.countTasksByDate(tasksByDayCompleted);
       this.completedTaskSeries = { ...this.completedTaskSeries, x, y };
     });
-  }
-
-  getData() {
-    return [
-      this.createdTasksSeries,
-      this.completedTaskSeries
-    ];
   }
 
   countTasksByDate(tasksByDate: StringTaskMap) {
@@ -60,6 +57,11 @@ export class ProductivityGraphComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
+    this.dayCreatedSub.unsubscribe();
+    this.dayCompletedSub.unsubscribe();
   }
 
   createEmptySeries(name: string) {

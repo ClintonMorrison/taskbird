@@ -15,6 +15,6 @@ export class BrowserService {
   }
 
   scrollToBottom() {
-    $("html, body").animate({ scrollTop: $(document).height() }, 0);
+    $("html, body").animate({ scrollTop: $(document).height() }, 500);
   }
 }

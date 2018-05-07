@@ -8,10 +8,6 @@ import { Task, StringTaskMap } from '../../../models/item';
   styleUrls: ['./analytics-page.component.scss']
 })
 export class AnalyticsPageComponent implements OnInit {
-
-  tasks: Task[];
-  tasksByDate: StringTaskMap;
-
   constructor(
     private taskService: TaskService
   ) {
