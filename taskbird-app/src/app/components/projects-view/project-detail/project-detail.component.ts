@@ -25,6 +25,10 @@ export class ProjectDetailComponent implements OnInit {
       .subscribe((project) => this.project = project);
   }
 
+  updateProject() {
+    this.projectService.updateProject(this.project);
+  }
+
   ngOnDestroy() {
     this.sub.unsubscribe();
   }

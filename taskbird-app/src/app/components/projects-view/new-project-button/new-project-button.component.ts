@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectService } from '../../../services/project.service';
 import { FilterService } from '../../../services/filter.service';
+import { Project } from '../../../models/project';
 
 @Component({
   selector: 'taskbird-new-project-button',
@@ -27,8 +28,9 @@ export class NewProjectButtonComponent implements OnInit {
   }
 
   click() {
-    const project = this.projectService.createProject();
-    this.filterService.setActiveProject(project);
+    this.projectService.createProject().first().subscribe((project: Project) => {
+      this.filterService.setActiveProject(project);
+    });
   }
 
 }

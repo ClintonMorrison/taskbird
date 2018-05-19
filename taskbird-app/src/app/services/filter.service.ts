@@ -147,13 +147,13 @@ export class FilterService {
   }
 
   createTaskMatchingFilters(taskFields: object): void {
-    const task = this.taskService.createTask({
+    this.taskService.createTask({
       title: this.searchQuery || 'New Task',
       project: this.filterProject,
       ...taskFields
+    }).first().subscribe((newTask: Task) => {
+      this.setActiveTask(newTask);
     });
-
-    this.setActiveTask(task);
   }
 
   private updateFilteredTasks() {

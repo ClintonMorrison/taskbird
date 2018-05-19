@@ -38,6 +38,7 @@ export class ProjectService {
 
   updateProject(project: Project): void {
     this.projectsById[project.id] = project;
+    this.apiService.put('project', project.id, project).first().subscribe();
     this.projectsByIdSubject.next(this.projectsById);
   }
 
@@ -73,9 +74,8 @@ export class ProjectService {
     });
   }
 
-  createProject(): Project {
+  createProject(): Observable<Project> {
     const project = {
-      id: 0,
       title: 'New Project',
       description: '',
       icon: 'circle',
@@ -83,20 +83,19 @@ export class ProjectService {
       date_created: utc().format()
     };
 
-    if (project.id === 0) {
-      project.id = this.nextNewProjectId;
-      this.nextNewProjectId -= 1;
-    }
-
-    this.projectsById[project.id] = project;
-    this.projectsByIdSubject.next(this.projectsById);
-
-    return project;
+    return this.apiService.post('project', project).map((newProject: Project) => {
+      console.log('post response', newProject);
+      this.projectsById[newProject.id] = newProject;
+      this.projectsByIdSubject.next(this.projectsById);
+      return newProject;
+    });
   }
 
   deleteProject(projectId: number) {
-    delete this.projectsById[projectId];
-    this.projectsByIdSubject.next(this.projectsById);
+    this.apiService.delete('project', projectId).first().subscribe(() => {
+      delete this.projectsById[projectId];
+      this.projectsByIdSubject.next(this.projectsById);
+    });
   }
 
   private findById(projects, id) {

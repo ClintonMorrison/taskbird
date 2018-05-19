@@ -9,12 +9,12 @@
   <form class="ui form">
     <div class="field">
       <label>Title</label>
-      <input autofocus type="text" name="title" [(ngModel)]="project.title">
+      <input autofocus type="text" name="title" [(ngModel)]="project.title" (input)="updateProject()">
     </div>
 
     <div class="field">
       <label>Description</label>
-      <textarea name="description" [(ngModel)]="project.description"></textarea>
+      <textarea name="description" [(ngModel)]="project.description" (input)="updateProject()"></textarea>
     </div>
 
     <taskbird-color-picker [project]="project"></taskbird-color-picker>

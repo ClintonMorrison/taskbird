@@ -30,11 +30,22 @@ export class ProjectProgressBarComponent implements OnInit {
     this.id = uniqueId('task-progressbar-');
   }
 
-  ngOnInit() {
+  setProgress() {
     setTimeout(() => {
       $(`#${this.id}`).progress({ percent: this.calculatePercent() });
     }, 0);
   }
+
+  ngOnInit() {
+    this.setProgress();
+  }
+
+  ngOnChanges(changes) {
+    if (changes.doneTasks || changes.totalTasks) {
+      this.setProgress();
+    }
+  }
+
 
   calculatePercent(): number {
     return Math.floor(this.doneTasks / this.totalTasks * 100);

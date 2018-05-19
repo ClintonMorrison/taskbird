@@ -26,6 +26,21 @@ export class ApiService {
     );
   }
 
+  post(resource, data): Observable<any> {
+    console.log('post ', resource, data);
+    return this.http.post(
+      `${this.base}/${resource}/?format=json`,
+      data
+    );
+  }
+
+  delete(resource, id): Observable<any> {
+    console.log('delete ', resource, id);
+    return this.http.delete(
+      `${this.base}/${resource}/${id}?format=json`
+    );
+  }
+
   path(resource) {
     return `/api/v1/${resource}/?format=json`;
   }

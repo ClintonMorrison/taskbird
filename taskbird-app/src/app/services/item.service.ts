@@ -56,7 +56,6 @@ export class TaskService {
     this.fetched = true;
 
     this.apiService.get('task').first().subscribe((response: ApiResponse) => {
-      console.log('got response');
       this.tasksById = TaskService.mapResponse(response);
       this.tasksByIdSubject.next(this.tasksById);
     });
@@ -150,9 +149,8 @@ export class TaskService {
     this.tasksByIdSubject.next(this.tasksById);
   }
 
-  createTask(taskFields: object): Task {
+  createTask(taskFields: object): Observable<Task> {
     const task: any = {
-      id: 0,
       title: "New Task",
       date_completed: null,
       date_created: null,
@@ -165,20 +163,20 @@ export class TaskService {
       ...taskFields
     };
 
-    if (task.id === 0) {
-      task.id = this.nextNewTaskId;
-      this.nextNewTaskId -= 1;
-    }
+    return this.apiService.post('task', task).map((newTask: Task) => {
+      console.log('post response', newTask);
+      this.tasksById[newTask.id] = newTask;
+      this.tasksByIdSubject.next(this.tasksById);
+      return newTask;
+    });
 
-    this.tasksById[task.id] = task;
-    this.tasksByIdSubject.next(this.tasksById);
-
-    return task;
   }
 
   deleteTask(taskId: number) {
-    delete this.tasksById[taskId];
-    this.tasksByIdSubject.next(this.tasksById);
+    this.apiService.delete('task', taskId).first().subscribe((response) => {
+      delete this.tasksById[taskId];
+      this.tasksByIdSubject.next(this.tasksById);
+    });
   }
 
   private groupByCallback(tasks: Task[], callback: Function): StringTaskMap {
