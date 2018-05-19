@@ -23,9 +23,11 @@ export class SidebarComponent implements OnInit {
 
   ngOnDestroy() {
     this.closeSidebar();
+    this.getSidebar().remove();
   }
 
   openSidebar() {
+    this.getSidebar().sidebar('destroy');
     this.getSidebar()
       .sidebar({
         scrollLock: true,
