@@ -25,7 +25,7 @@ export class ProjectService {
   private projects: Project[];
   private projectsSubject: BehaviorSubject<Project[]>;
   private projectsByIdSubject: BehaviorSubject<ProjectMap>;
-  private nextNewProjectId: number = -1;
+  private saveProject: Function;
 
   private fetched: boolean;
 
@@ -34,11 +34,16 @@ export class ProjectService {
   ) {
     this.projectsSubject = new BehaviorSubject([]);
     this.projectsByIdSubject = new BehaviorSubject({});
+
+    this.saveProject = _.throttle(
+      (project: Project) => this.apiService.put('project', project.id, project).first().subscribe(),
+      1000
+    );
   }
 
   updateProject(project: Project): void {
     this.projectsById[project.id] = project;
-    this.apiService.put('project', project.id, project).first().subscribe();
+    this.saveProject(project);
     this.projectsByIdSubject.next(this.projectsById);
   }
 

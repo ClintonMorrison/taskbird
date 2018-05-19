@@ -35,9 +35,9 @@ export class TaskService {
 
   private tasksById: TaskMap = null;
 
-  private nextNewTaskId: number = -1;
-
   private fetched: boolean;
+
+  private saveTask: Function;
 
   constructor(
     private messageService: MessageService,
@@ -45,6 +45,11 @@ export class TaskService {
   ) {
     this.tasksByIdSubject = new BehaviorSubject({});
     this.taskSubjectById = {};
+    this.saveTask = _.throttle(
+      (task) => this.apiService.put('task', task.id, task).first().subscribe(),
+      2000
+    );
+
     console.log('constructoring!')
   }
 
@@ -145,7 +150,7 @@ export class TaskService {
 
   updateTask(task: Task) {
     this.tasksById[task.id] = task;
-    this.apiService.put('task', task.id, task).first().subscribe();
+    this.saveTask(task);
     this.tasksByIdSubject.next(this.tasksById);
   }
 

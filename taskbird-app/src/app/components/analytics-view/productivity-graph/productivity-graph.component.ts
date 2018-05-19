@@ -29,7 +29,6 @@ export class ProductivityGraphComponent implements OnInit {
     this.completedTaskSeries = this.createEmptySeries('Tasks Completed');
 
     this.dayCreatedSub = taskService.groupTasksByDayCreated().subscribe((tasksByDayCreated) => {
-      console.log("CALLBACK CCALLED");
       const { x, y } = this.countTasksByDate(tasksByDayCreated);
       this.createdTasksSeries = { ...this.createdTasksSeries, x, y };
     });
