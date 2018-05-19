@@ -36,6 +36,7 @@ export class TaskService {
   private tasksById: TaskMap = null;
 
   private fetched: boolean;
+  private loadingSubject: BehaviorSubject<boolean>;
 
   private saveTask: Function;
 
@@ -50,7 +51,7 @@ export class TaskService {
       2000
     );
 
-    console.log('constructoring!')
+    this.loadingSubject = new BehaviorSubject(true);
   }
 
   loadTasks(): void {
@@ -63,6 +64,7 @@ export class TaskService {
     this.apiService.get('task').first().subscribe((response: ApiResponse) => {
       this.tasksById = TaskService.mapResponse(response);
       this.tasksByIdSubject.next(this.tasksById);
+      this.loadingSubject.next(false);
     });
   }
 
@@ -182,6 +184,10 @@ export class TaskService {
       delete this.tasksById[taskId];
       this.tasksByIdSubject.next(this.tasksById);
     });
+  }
+
+  isLoading() {
+    return this.loadingSubject.asObservable();
   }
 
   private groupByCallback(tasks: Task[], callback: Function): StringTaskMap {

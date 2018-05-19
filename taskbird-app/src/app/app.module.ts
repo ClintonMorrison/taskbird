@@ -63,6 +63,7 @@ import { NewProjectButtonComponent } from './components/projects-view/new-projec
 import { DeleteTaskButtonComponent } from './components/tasks-view/delete-task-button/delete-task-button.component';
 import { DeleteProjectButtonComponent } from './components/projects-view/delete-project-button/delete-project-button.component';
 import { ApiService } from './api.service';
+import { LoadingDimmerComponent } from './components/base/loading-dimmer/loading-dimmer.component';
 
 
 @NgModule({
@@ -117,7 +118,8 @@ import { ApiService } from './api.service';
     IconPickerComponent,
     NewProjectButtonComponent,
     DeleteTaskButtonComponent,
-    DeleteProjectButtonComponent
+    DeleteProjectButtonComponent,
+    LoadingDimmerComponent
   ],
   imports: [
     BrowserModule,

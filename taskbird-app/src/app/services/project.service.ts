@@ -24,6 +24,8 @@ export class ProjectService {
   private saveProject: Function;
 
   private fetched: boolean;
+  private loadingSubject: BehaviorSubject<boolean>;
+
 
   constructor(
     private apiService: ApiService
@@ -35,6 +37,8 @@ export class ProjectService {
       (project: Project) => this.apiService.put('project', project.id, project).first().subscribe(),
       1000
     );
+
+    this.loadingSubject = new BehaviorSubject(true);
   }
 
   updateProject(project: Project): void {
@@ -49,6 +53,7 @@ export class ProjectService {
     }
 
     this.fetched = true;
+    this.loadingSubject.next(false);
 
     this.apiService.get('project').first().subscribe((response: ApiResponse) => {
       this.projectsById = _.keyBy(response.objects, 'id');
@@ -97,6 +102,10 @@ export class ProjectService {
       delete this.projectsById[projectId];
       this.projectsByIdSubject.next(this.projectsById);
     });
+  }
+
+  isLoading() {
+    return this.loadingSubject.asObservable();
   }
 
   private findById(projects, id) {
