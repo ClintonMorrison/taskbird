@@ -7,16 +7,12 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mergeMap';
-import { Project } from '../models/project';
+import { Project, ProjectMap } from '../models/project';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import * as _ from 'lodash';
 import { utc } from 'moment';
 import { ApiService } from '../api.service';
 import { ApiResponse } from '../models/api-response';
-
-interface ProjectMap {
-  [key: number]: Project
-}
 
 @Injectable()
 export class ProjectService {

@@ -6,3 +6,7 @@ export class Project {
   color: string;
   date_created: string;
 }
+
+export interface ProjectMap {
+  [key: number]: Project
+}
