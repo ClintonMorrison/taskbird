@@ -42,6 +42,7 @@ export class LoadingDimmerComponent implements OnInit {
 
   ngOnDestroy() {
     this.taskSub.unsubscribe();
+    this.projectSub.unsubscribe();
   }
 
   updateActive() {

@@ -3,6 +3,7 @@ import { StringTaskMap, Task } from '../../../models/item';
 import * as _ from 'lodash';
 import { utc } from 'moment';
 import { TaskService } from '../../../services/item.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'taskbird-project-completion-time-graph',
@@ -11,7 +12,7 @@ import { TaskService } from '../../../services/item.service';
      title="Average Completion Time by Project"
      yTitle="Days Task is Open"
      [layout]="layout"
-     [data]="getData()">
+     [data]="[this.completedTaskSeries]">
    </taskbird-graph>
   `,
   styles: []
@@ -20,6 +21,8 @@ export class ProjectCompletionTimeGraphComponent implements OnInit {
   completedTaskSeries: any;
 
   layout: object;
+
+  sub: Subscription;
 
   constructor(
     private taskService: TaskService
@@ -37,7 +40,7 @@ export class ProjectCompletionTimeGraphComponent implements OnInit {
       }
     };
 
-    taskService.groupTasksByProjectTitle().first().subscribe((tasksByProject) => {
+    this.sub = taskService.groupTasksByProjectTitle().subscribe((tasksByProject) => {
       const completedTasks = this.getTimeOpenByProject(tasksByProject);
       this.completedTaskSeries = { ...this.completedTaskSeries, x: completedTasks.x, y: completedTasks.y };
     });
@@ -46,10 +49,8 @@ export class ProjectCompletionTimeGraphComponent implements OnInit {
   ngOnInit() {
   }
 
-  getData() {
-    return [
-      this.completedTaskSeries
-    ];
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   createEmptySeries(name: string) {

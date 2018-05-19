@@ -90,7 +90,6 @@ export class ProjectService {
     };
 
     return this.apiService.post('project', project).map((newProject: Project) => {
-      console.log('post response', newProject);
       this.projectsById[newProject.id] = newProject;
       this.projectsByIdSubject.next(this.projectsById);
       return newProject;

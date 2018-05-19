@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener, Input } from '@angular/core';
-import { uniqueId } from 'lodash';
+import { uniqueId, debounce } from 'lodash';
 
 declare var Plotly: any;
 
@@ -27,6 +27,8 @@ export class GraphComponent implements OnInit {
   @Input()
   yTitle: string;
 
+  builtLayout: any;
+  builtOptions: any;
 
   constructor() {
     this.id = uniqueId('graph-');
@@ -72,9 +74,21 @@ export class GraphComponent implements OnInit {
       displayModeBar: false
     };
 
+    this.builtLayout = layout;
+    this.builtOptions = options;
+
     setTimeout(() => {
-      Plotly.newPlot(this.id, this.data, layout, options);
+      const x = Plotly.newPlot(this.id, this.data, this.builtLayout, this.builtOptions);
     }, 0);
+  }
+
+  ngOnChanges(changes) {
+    if (changes.data) {
+      setTimeout(() => {
+        Plotly.purge(this.id);
+        Plotly.newPlot(this.id, this.data, this.builtLayout, this.builtOptions);
+      }, 0);
+    }
   }
 
   @HostListener('window:resize', ['$event'])

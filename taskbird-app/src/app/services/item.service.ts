@@ -171,7 +171,6 @@ export class TaskService {
     };
 
     return this.apiService.post('task', task).map((newTask: Task) => {
-      console.log('post response', newTask);
       this.tasksById[newTask.id] = newTask;
       this.tasksByIdSubject.next(this.tasksById);
       return newTask;

@@ -19,7 +19,6 @@ export class ApiService {
   }
 
   put(resource, id, data): Observable<any> {
-    console.log('put ', resource, id, data);
     return this.http.put(
       `${this.base}/${resource}/${id}?format=json`,
       data
@@ -27,7 +26,6 @@ export class ApiService {
   }
 
   post(resource, data): Observable<any> {
-    console.log('post ', resource, data);
     return this.http.post(
       `${this.base}/${resource}/?format=json`,
       data
@@ -35,7 +33,6 @@ export class ApiService {
   }
 
   delete(resource, id): Observable<any> {
-    console.log('delete ', resource, id);
     return this.http.delete(
       `${this.base}/${resource}/${id}?format=json`
     );

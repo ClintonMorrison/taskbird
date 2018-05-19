@@ -3,6 +3,7 @@ import { StringTaskMap, Task } from '../../../models/item';
 import * as _ from 'lodash';
 import { utc } from 'moment';
 import { TaskService } from '../../../services/item.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'taskbird-week-day-graph',
@@ -10,7 +11,7 @@ import { TaskService } from '../../../services/item.service';
    <taskbird-graph
      title="Tasks by Day of Week"
      yTitle="Tasks"
-     [data]="getData()">
+     [data]="[this.createdTasksSeries, this.completedTaskSeries]">
    </taskbird-graph>
   `,
   styles: []
@@ -18,6 +19,9 @@ import { TaskService } from '../../../services/item.service';
 export class WeekDayGraphComponent implements OnInit {
   createdTasksSeries: any;
   completedTaskSeries: any;
+
+  createdSub: Subscription;
+  completedSub: Subscription;
 
   layout: object;
 
@@ -27,17 +31,15 @@ export class WeekDayGraphComponent implements OnInit {
     this.createdTasksSeries = this.createEmptySeries('Tasks Created');
     this.completedTaskSeries = this.createEmptySeries('Tasks Completed');
 
-    taskService
+    this.createdSub = taskService
       .groupTasksByCallback(WeekDayGraphComponent.getWeekDayCreated)
-      .first()
       .subscribe((tasksByWeekdayCreated) => {
         const createdTasks = this.countTasksByWeekday(tasksByWeekdayCreated);
         this.createdTasksSeries = { ...this.createdTasksSeries, x: createdTasks.x, y: createdTasks.y };
       });
     
-    taskService
+    this.completedSub = taskService
       .groupTasksByCallback(WeekDayGraphComponent.getWeekDayTaskCompleted)
-      .first()
       .subscribe((tasksByWeekdayCompleted) => {
         const completedTasks = this.countTasksByWeekday(tasksByWeekdayCompleted);
         this.completedTaskSeries = { ...this.completedTaskSeries, x: completedTasks.x, y: completedTasks.y };
@@ -47,11 +49,9 @@ export class WeekDayGraphComponent implements OnInit {
   ngOnInit() {
   }
 
-  getData() {
-    return [
-      this.createdTasksSeries,
-      this.completedTaskSeries
-    ];
+  ngOnDestroy() {
+    this.createdSub.unsubscribe();
+    this.completedSub.unsubscribe();
   }
 
   createEmptySeries(name: string) {

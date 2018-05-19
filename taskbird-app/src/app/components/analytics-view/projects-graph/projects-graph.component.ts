@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { StringTaskMap, Task } from '../../../models/item';
 import * as _ from 'lodash';
 import { TaskService } from '../../../services/item.service';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: 'taskbird-projects-graph',
@@ -10,7 +11,7 @@ import { TaskService } from '../../../services/item.service';
      title="Tasks by Project"
      yTitle="Tasks"
      [layout]="layout"
-     [data]="getData()">
+     [data]="[createdTasksSeries, completedTaskSeries]">
    </taskbird-graph>
   `,
   styles: []
@@ -20,6 +21,7 @@ export class ProjectsGraphComponent implements OnInit {
   completedTaskSeries: any;
 
   layout: object;
+  sub: Subscription;
 
   constructor(
     private taskService: TaskService
@@ -43,7 +45,7 @@ export class ProjectsGraphComponent implements OnInit {
        }
     };
 
-    taskService.groupTasksByProjectTitle().first().subscribe((tasksByProject) => {
+    this.sub = taskService.groupTasksByProjectTitle().subscribe((tasksByProject) => {
       const createdTasks = this.countTasksByProject(tasksByProject, () => true);
       this.createdTasksSeries = { ...this.createdTasksSeries, x: createdTasks.x, y: createdTasks.y };
 
@@ -53,13 +55,6 @@ export class ProjectsGraphComponent implements OnInit {
   }
 
   ngOnInit() {
-  }
-
-  getData() {
-    return [
-      this.createdTasksSeries,
-      this.completedTaskSeries
-    ];
   }
 
   createEmptySeries(name: string) {
@@ -79,5 +74,9 @@ export class ProjectsGraphComponent implements OnInit {
     }
 
     return { x, y };
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 }
