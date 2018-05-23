@@ -7,6 +7,7 @@ import { BrowserService } from '../../../browser.service';
 import 'rxjs/add/operator/first';
 import * as _ from 'lodash';
 import { utc } from 'moment';
+import { Subscription } from 'rxjs/Subscription';
 
 @Component({
   selector: "calendar-page",
@@ -18,6 +19,7 @@ export class CalendarPageComponent implements OnInit {
 
   selectedDay: Date;
   taskIds: number[];
+  sub: Subscription;
 
   constructor(
     private taskService: TaskService,
@@ -58,6 +60,13 @@ export class CalendarPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.sub = this.taskService.getTasksById().subscribe(
+      () => this.getTasksForSelectedDay()
+    );
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   getTasksForSelectedDay() {
