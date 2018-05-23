@@ -1,4 +1,5 @@
 .icons {
+  margin-bottom: 1.5em;
   width: 100%;
 
   button {
@@ -9,16 +10,23 @@
     margin-bottom: .5em;
     margin-right: .5em;
 
+    .icon-wrapper {
+      margin-bottom: 1em;
+    }
+
     @media screen and (max-width: 650px) {
       width: calc(33% - .5em);
     }
 
     @media screen and (max-width: 430px) {
-      width: calc(50% - .5em);
-    }
+      // width: calc(50% - .5em);
+      .icon-name {
+        display: none;
+      }
 
-    .icon-wrapper {
-      margin-bottom: 1em;
+      .icon-wrapper {
+        margin-bottom: 0;
+      }
     }
   }
 }

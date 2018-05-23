@@ -10,13 +10,13 @@
 
 <taskbird-modal [hideButtons]="true" title="Select an Icon">
   <div *ngFor="let category of categories">
-    <h2>{{ category }}</h2>
+    <h3>{{ category }}</h3>
     <div class="icons">
       <button *ngFor="let icon of icons[category]" class="ui large basic icon button" (click)="selectIcon(icon)">
         <div class="icon-wrapper">
           <i class="big icon {{icon}}"></i>
         </div>
-        <div>{{icon}}</div>
+        <div class="icon-name">{{icon}}</div>
       </button>
     </div>
   </div>

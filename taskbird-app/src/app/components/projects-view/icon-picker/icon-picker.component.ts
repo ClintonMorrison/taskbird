@@ -16,22 +16,47 @@ export class IconPickerComponent implements OnInit {
   @ViewChild(ModalComponent)
   private modal: ModalComponent;
 
-  categories = ['shapes', 'general'];
+  categories = ['General', 'Shapes', 'Other'];
 
   icons = {
-    shapes: [
+    General: [
+      'smile',
+      'briefcase',
+      'dollar sign',
+      'graduation cap',
+      'shopping cart',
+      'lightbulb',
+      'road',
+    ],
+
+    Shapes: [
       'circle',
       'square',
       'star',
       'heart',
-
+      'certificate',
     ],
 
-    general: [
-      'smile',
-      'frown',
+    Other: [
+      'book',
+      'building',
+      'bug',
+      'child',
+      'envelope',
+      'flask',
+      'medkit',
+      'football ball',
+      'gamepad',
       'gem',
-    ],
+      'gift',
+      'paint brush',
+      'paw',
+      'plane',
+      'puzzle piece',
+      'trophy',
+      'microchip',
+      'world',
+    ]
   };
 
   constructor(
