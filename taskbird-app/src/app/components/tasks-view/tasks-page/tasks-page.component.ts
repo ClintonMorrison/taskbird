@@ -29,6 +29,7 @@ export class TasksPageComponent implements OnInit {
   private filterSub: Subscription;
   private taskSub: Subscription;
   private routeSub: Subscription;
+  private projectSub: Subscription;
 
   subscribeToTasks(): void {
     this.filterSub = this.filterService.getFilteredTaskIds()
@@ -44,6 +45,7 @@ export class TasksPageComponent implements OnInit {
     this.routeSub = this.route.params.subscribe((params) => {
       const id = params.projectId;
       const parsedId = parseInt(id, 10);
+
       if (parsedId) {
         this.filterService.setProjectById(parsedId);
       } else if (id === 'uncategorized'){

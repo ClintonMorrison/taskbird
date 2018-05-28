@@ -22,6 +22,10 @@ export class FilterService {
   private filterProject: Project;
   private filterProjectSubject: BehaviorSubject<Project>;
 
+  private filterProjectId: number;
+  private filterProjectIdSubject: BehaviorSubject<number>;
+
+
   private tasks: Task[];
   private projects: Project[];
   private filteredTasksSubject: BehaviorSubject<Task[]>;
@@ -44,6 +48,8 @@ export class FilterService {
     this.filteredTasksSubject = new BehaviorSubject([]);
     this.filteredTaskIdsSubject = new BehaviorSubject([]);
 
+
+    this.filterProjectIdSubject = <BehaviorSubject<number>>new BehaviorSubject(undefined);
     this.filterProjectSubject = <BehaviorSubject<Project>>new BehaviorSubject(undefined);
     this.activeProjectSubject = <BehaviorSubject<Project>>new BehaviorSubject(undefined);
 
@@ -71,6 +77,13 @@ export class FilterService {
     this.projectService.getProjectsById().subscribe((projectsById) => {
       if (this.activeProject && this.activeProject.id && !projectsById[this.activeProject.id]) {
         this.setActiveProject(undefined);
+      }
+
+      if (this.filterProjectId) {
+        const project = _(this.projects).filter({ id: this.filterProjectId }).first();
+        if (project) {
+          this.setProject(project);
+        }
       }
     });
   }
@@ -103,6 +116,9 @@ export class FilterService {
   }
 
   setProjectById(id: number): void {
+    this.filterProjectId = id;
+    this.filterProjectIdSubject.next(id);
+
     const project = _(this.projects).filter({ id }).first();
     if (project) {
       this.setProject(project);
