@@ -2,6 +2,8 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../../../models/item';
 import { TaskService } from '../../../services/item.service';
 import { Subscription } from 'rxjs/Subscription';
+import { BrowserService } from '../../../browser.service';
+
 
 @Component({
   selector: 'taskbird-task-detail',
@@ -18,7 +20,8 @@ export class TaskDetailComponent implements OnInit {
   private taskSub: Subscription;
 
   constructor(
-    private taskService: TaskService
+    private taskService: TaskService,
+    private browserService: BrowserService
   ) { }
 
   ngOnInit() {
@@ -35,6 +38,10 @@ export class TaskDetailComponent implements OnInit {
     if (this.taskSub) {
       this.taskSub.unsubscribe();
     }
+  }
+
+  ngAfterViewInit() {
+    this.browserService.focusOnId('task-title');
   }
 
   updateTask() {

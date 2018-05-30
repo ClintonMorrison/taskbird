@@ -17,4 +17,8 @@ export class BrowserService {
   scrollToBottom() {
     $("html, body").animate({ scrollTop: $(document).height() }, 500);
   }
+
+  focusOnId(id: string) {
+    setTimeout(() => $(`#${id}`).focus(), 500);    
+  }
 }

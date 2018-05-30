@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { ProjectService } from '../../../services/project.service';
 import { Project } from '../../../models/project';
 import { Subscription } from 'rxjs/Subscription';
+import { BrowserService } from '../../../browser.service';
 
 @Component({
   selector: 'taskbird-project-detail',
@@ -17,12 +18,17 @@ export class ProjectDetailComponent implements OnInit {
   sub: Subscription;
 
   constructor(
-    private projectService: ProjectService
+    private projectService: ProjectService,
+    private browserService: BrowserService
   ) { }
 
   ngOnInit() {
     this.sub = this.projectService.getProjectById(this.projectId)
       .subscribe((project) => this.project = project);
+  }
+
+  ngAfterViewInit() {
+    this.browserService.focusOnId('project-title');
   }
 
   updateProject() {
