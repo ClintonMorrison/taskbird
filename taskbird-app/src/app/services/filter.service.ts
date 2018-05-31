@@ -228,12 +228,14 @@ export class FilterService {
       return true;
     }
 
+    const dueDate = utc(task.date_due).format('YYYY-MM-DD');
+    const createdDate = utc(task.date_created).format('YYYY-MM-DD');
     if (this.sort.includes('date_due')) {
-      return utc(task.date_due).unix();
+      return `${dueDate}/${createdDate}`;
     } else if (this.sort.includes('date_created')) {
-      return utc(task.date_created).unix();
+      return `${createdDate}/${dueDate}`;
     } else if (this.sort === 'project') {
-      return task.project ? task.project.id : null;
+      return task.project ? `${task.project.title}-${dueDate}` : `-${dueDate}`;
     }
   }
 
