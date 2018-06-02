@@ -27,7 +27,6 @@ import { ProjectFilterComponent } from './components/tasks-view/project-filter/p
 import { TasksPageComponent } from './components/tasks-view/tasks-page/tasks-page.component';
 import { TaskSidebarComponent } from './components/tasks-view/task-sidebar/task-sidebar.component';
 import { StatusLabelComponent } from './components/tasks-view/status-label/status-label.component';
-import { ProjectDropdownComponent } from './components/tasks-view/project-dropdown/project-dropdown.component';
 import { ProjectService } from './services/project.service';
 import { FilterService } from './services/filter.service';
 import { ShowCompletedToggleComponent } from './components/tasks-view/show-completed-toggle/show-completed-toggle.component';
@@ -88,7 +87,6 @@ import { DropdownComponent } from './components/base/dropdown/dropdown.component
     TasksPageComponent,
     TaskSidebarComponent,
     StatusLabelComponent,
-    ProjectDropdownComponent,
     ShowCompletedToggleComponent,
     FilteringControlsComponent,
     SearchBarComponent,

@@ -1,8 +1,32 @@
+
 <select 
+  *ngIf="isMobile"
   [id]="id"
   (change)="handleChange($event)" 
   [name]="name"
   [(ngModel)]="value"
   class="ui dropdown">
-  <option *ngFor="let option of options" value="{{ option.value}}">{{ option.name }}</option>
+  <option *ngFor="let option of options" [value]="option.value">{{ option.name }}</option>
 </select>
+
+<div
+  [id]="id"
+  class="ui fluid selection dropdown"
+  *ngIf="!isMobile">
+  <input
+   (change)="handleChange($event)"
+    type="hidden"
+    [(ngModel)]="value"
+    [name]="name">
+  <i class="dropdown icon"></i>
+  <div class="text">Filter Posts</div>
+  <div class="menu">
+    <div
+      *ngFor="let option of options"
+      class="item"
+       [attr.data-value]="option.value">
+      <i *ngIf="option.icon" class="{{ option.icon }} icon"></i>
+      {{ option.name }}
+    </div>
+  </div>
+</div>

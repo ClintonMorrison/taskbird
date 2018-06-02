@@ -31,6 +31,8 @@ export class DropdownComponent implements OnInit {
   @Output()
   change = new EventEmitter<string>();
 
+  isMobile: boolean;
+
   constructor(
     private browserService: BrowserService
   ) {
@@ -38,12 +40,10 @@ export class DropdownComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log('mobile? ', this.browserService.isMobile());
-    console.log('options', this.options);
-
+    this.isMobile = this.browserService.isMobile();
     setTimeout(
       () => {
-        if (!this.browserService.isMobile()) {
+        if (!this.isMobile) {
           this.getElement().dropdown('set selected', this.value);
         }
       },

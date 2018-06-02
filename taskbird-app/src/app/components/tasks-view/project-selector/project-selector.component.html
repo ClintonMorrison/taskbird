@@ -1,11 +1,8 @@
 <div class="field">
-  <label id="label-{{ id }}" [for]="id">Project</label>
-  <select 
-    [id]="id"
-    [(ngModel)]="selectedProjectId"
-    (change)="handleChange()"
-    class="ui dropdown">
-    <option *ngFor="let project of projects" [value]="project.id">{{project.title}}</option>
-    <option value="">Uncategorized</option>
-  </select>
+  <label>Project</label>
+  <taskbird-dropdown
+      [value]="selectedProjectId"
+      [options]="projectOptions"
+      (change)="handleChange()"
+      name="sort"></taskbird-dropdown>
 </div>
