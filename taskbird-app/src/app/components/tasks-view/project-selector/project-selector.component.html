@@ -3,6 +3,6 @@
   <taskbird-dropdown
       [value]="selectedProjectId"
       [options]="projectOptions"
-      (change)="handleChange()"
+      (selectionChange)="handleChange($event)"
       name="sort"></taskbird-dropdown>
 </div>

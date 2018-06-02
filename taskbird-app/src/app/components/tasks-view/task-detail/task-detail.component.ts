@@ -3,6 +3,7 @@ import { Task } from '../../../models/item';
 import { TaskService } from '../../../services/item.service';
 import { Subscription } from 'rxjs/Subscription';
 import { BrowserService } from '../../../browser.service';
+import { Project } from '../../../models/project';
 
 
 @Component({
@@ -46,6 +47,11 @@ export class TaskDetailComponent implements OnInit {
 
   updateTask() {
     this.taskService.updateTask(this.task);
+  }
+
+  updateTaskProject(project: Project) {
+    const updatedTask = { ...this.task, project };
+    this.taskService.updateTask(updatedTask);
   }
 
   private refreshTask() {

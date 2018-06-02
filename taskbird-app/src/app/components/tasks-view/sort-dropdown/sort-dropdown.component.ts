@@ -37,7 +37,6 @@ export class SortDropdownComponent implements OnInit {
   }
 
   handleChange(sort) {
-    console.log('sort by', arguments);
     this.filterService.setSort(sort);
   }
 }

@@ -14,7 +14,7 @@
   class="ui fluid selection dropdown"
   *ngIf="!isMobile">
   <input
-   (change)="handleChange($event)"
+   (change)="handleChange()"
     type="hidden"
     [(ngModel)]="value"
     [name]="name">

@@ -29,7 +29,7 @@ export class DropdownComponent implements OnInit {
   options: DropdownOption[];
 
   @Output()
-  change = new EventEmitter<string>();
+  selectionChange = new EventEmitter<string>();
 
   isMobile: boolean;
 
@@ -44,7 +44,11 @@ export class DropdownComponent implements OnInit {
     setTimeout(
       () => {
         if (!this.isMobile) {
-          this.getElement().dropdown('set selected', this.value);
+          this.getElement()
+            .dropdown({
+              onChange: (value) => this.selectionChange.emit(value)
+            })
+            .dropdown('set selected', this.value);
         }
       },
       0
@@ -56,7 +60,7 @@ export class DropdownComponent implements OnInit {
   }
 
   handleChange(e) {
-    this.change.emit(this.value);
+    this.selectionChange.emit(this.value);
   }
 
   private getElement(): any {
