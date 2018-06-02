@@ -12,6 +12,14 @@ export class SortDropdownComponent implements OnInit {
   sort: string;
   private sub: Subscription;
 
+  options = [
+    { name: 'Date Due: Old to New', value: 'date_due_asc' },
+    { name: 'Date Due: New to Old', value: 'date_due_desc' },
+    { name: 'Date Created: Old to New', value: 'date_created_asc' },
+    { name: 'Date Created: New to Old', value: 'date_created_desc' },
+    { name: 'Project', value: 'project' }
+  ];
+
   constructor(
     private filterService: FilterService
   ) { }
@@ -28,7 +36,8 @@ export class SortDropdownComponent implements OnInit {
     this.sub.unsubscribe();
   }
 
-  handleChange(e) {
-    this.filterService.setSort(this.sort);
+  handleChange(sort) {
+    console.log('sort by', arguments);
+    this.filterService.setSort(sort);
   }
 }

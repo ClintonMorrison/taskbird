@@ -1,0 +1,8 @@
+<select 
+  [id]="id"
+  (change)="handleChange($event)" 
+  [name]="name"
+  [(ngModel)]="value"
+  class="ui dropdown">
+  <option *ngFor="let option of options" value="{{ option.value}}">{{ option.name }}</option>
+</select>

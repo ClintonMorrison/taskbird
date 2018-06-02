@@ -8,8 +8,6 @@ import * as _ from 'lodash';
 import { utc } from 'moment';
 import { ProjectService } from './project.service';
 
-// https://coryrylan.com/blog/angular-observable-data-services
-
 @Injectable()
 export class FilterService {
 

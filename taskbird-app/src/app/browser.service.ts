@@ -21,4 +21,8 @@ export class BrowserService {
   focusOnId(id: string) {
     setTimeout(() => $(`#${id}`).focus(), 500);    
   }
+
+  isMobile() {
+    return /Mobi|Android/i.test(navigator.userAgent);
+  }
 }
