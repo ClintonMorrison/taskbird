@@ -39,11 +39,17 @@ export class ProjectSelectorComponent implements OnInit {
 
     this.sub = this.projectSerivce.getProjects().subscribe((projects) => {
       this.projects = projects;
-      this.projectOptions = this.projects.map(project => ({
+      const options = this.projects.map(project => ({
         name: project.title,
         value: String(project.id),
         icon: project.icon
       }));
+
+      this.projectOptions = [
+        { name: 'All', value: 'all', icon: 'certificate' },
+        ...options,
+        { name: 'Uncategorized', value: '', icon: 'circle outline' }
+      ];
     });
   }
 
