@@ -1,5 +1,4 @@
 import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
-import { Task } from '../../../models/item';
 import { ProjectService } from '../../../services/project.service';
 import { Project } from '../../../models/project';
 import { Subscription } from 'rxjs/Subscription';
@@ -14,9 +13,6 @@ import { DropdownOption } from '../../base/dropdown/dropdown.component';
 })
 export class ProjectSelectorComponent implements OnInit {
 
-  @Input()
-  task: Task;
-
   @Output()
   projectChange = new EventEmitter<Project>();
 
@@ -24,29 +20,30 @@ export class ProjectSelectorComponent implements OnInit {
 
   projectOptions: DropdownOption[];
 
-  selectedProjectId: string;
+  @Input()
+  projectId: string;
+
+  @Input()
+  showSelectAll: boolean;
 
   private sub: Subscription;
 
   constructor(
     private projectSerivce: ProjectService,
-    private taskService: TaskService
   ) {
   }
 
   ngOnInit() {
-    this.selectedProjectId = this.task.project ? String(this.task.project.id) : '';
-
     this.sub = this.projectSerivce.getProjects().subscribe((projects) => {
       this.projects = projects;
       const options = this.projects.map(project => ({
         name: project.title,
         value: String(project.id),
-        icon: project.icon
+        icon: `${project.icon} ${project.color}`
       }));
 
       this.projectOptions = [
-        { name: 'All', value: 'all', icon: 'certificate' },
+        ...(this.showSelectAll ? [{ name: 'All', value: 'all', icon: 'certificate' }] : []),
         ...options,
         { name: 'Uncategorized', value: '', icon: 'circle outline' }
       ];
@@ -55,12 +52,6 @@ export class ProjectSelectorComponent implements OnInit {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
-  }
-
-  ngOnChanges(changes) {
-    if (changes.task) {
-      this.selectedProjectId = this.task.project ? String(this.task.project.id) : '';
-    }
   }
 
   handleChange(selectedId) {

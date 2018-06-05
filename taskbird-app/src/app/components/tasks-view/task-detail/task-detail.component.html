@@ -19,7 +19,7 @@
     
     <taskbird-priority-selector [task]="task"></taskbird-priority-selector>
 
-    <taskbird-project-selector [task]="task" (projectChange)="updateTaskProject($event)"></taskbird-project-selector>
+    <taskbird-project-selector [projectId]="task.project && task.project.id" (projectChange)="updateTaskProject($event)"></taskbird-project-selector>
 
     <taskbird-due-date-picker [task]="task"></taskbird-due-date-picker>
   </form>
