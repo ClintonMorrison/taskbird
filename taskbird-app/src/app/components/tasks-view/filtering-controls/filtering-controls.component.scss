@@ -1,46 +1,73 @@
 .top-row {
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 550px) {
+    display: block;
+
+    .left-controls {
+      .control {
+        width: 100%;
+
+        /deep/ button {
+          margin-bottom: 1em;
+          width: 100%;
+        }
+      }
+    }
+
+    .right-controls {
+      width: 100%;
+    }
+  }
 }
 
 .right-controls {
-  * + * {
-    margin-left: 1em;
+  display: flex;
+  justify-content: flex-end;
+  width: calc(100% - 15em);
+  > * + * {
+    margin-left: 2em;
+  }
+
+  @media screen and (max-width: 1200px) {
+    display: block;
+
+    .field {
+      margin-left: 0;
+      margin-bottom: 1em;
+    }
+  }
+}
+
+.right-controls /deep/ {
+  .field {
+    align-items: baseline;
+    display: flex;
+
+    label {
+      padding-right: 1em;
+      white-space: nowrap;
+      width: 5em;
+    }
+  }
+
+  input,
+  .dropdown {
+    min-width: 14em;
+    width: 100%;
+    
+    .icon {
+      text-align: right;
+    }
   }
 }
 
 .control {
   display: inline-block;
-}
 
-  @media screen and (max-width: 650px) {
-    .top-row {
-      flex-wrap: wrap;
-    }
-
-    .control {
-      margin-bottom: 1em;
-      margin-left: 0;
-    }
-
-    .right-controls {
-      width: 100%;
-
-      * + * {
-        margin-left: 0;
-      }
-
-      > * {
-        width: 100%;
-      }
-    }
-
-    .left-controls {
-      width: 100%;
-
-      .control,
-      /deep/ button {
-        width: 100%;
-      }
-    }
+  /deep/ label {
+    padding-right: 1em;
+    white-space: nowrap;
   }
+}

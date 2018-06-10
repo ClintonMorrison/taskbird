@@ -1,10 +1,12 @@
 <div class="ui form">
   <div class="field">
     <label>Sort By</label>
-    <taskbird-dropdown
-      [value]="sort"
-      [options]="options"
-      (selectionChange)="handleChange($event)"
-      name="sort"></taskbird-dropdown>
+    <div class="dropdown-wrapper">
+      <taskbird-dropdown
+        [value]="sort"
+        [options]="options"
+        (selectionChange)="handleChange($event)"
+        name="sort"></taskbird-dropdown>
+    </div>
   </div>
 </div>

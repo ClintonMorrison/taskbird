@@ -5,14 +5,19 @@ import { Observable } from 'rxjs/Observable';
 @Component({
   selector: 'taskbird-search-bar',
   template: `
-    <form class="ui icon task-search input">
-      <input
-        (input)="handleChange()"
-        [(ngModel)]="query"
-        name="search" 
-        placeholder="Search">
-      <i class="search icon"></i>
-    </form>
+    <div class="ui form">
+      <div class="field">
+        <label>Search</label>
+        <div class="ui icon task-search input">
+          <input
+            (input)="handleChange()"
+            [(ngModel)]="query"
+            name="search" 
+            placeholder="Search">
+          <i class="search icon"></i>
+        </div>
+      </div>
+    </div>
   `,
   styles: [`
     .task-search {

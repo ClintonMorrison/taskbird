@@ -1,19 +1,12 @@
-<div class="ui secondary compact menu filter-links">
-  <a [ngClass]="{'active': projectActive(undefined) | async}" class="item" [routerLink]="['/tasks']">
-    <i class="icon certificate"></i>
-    <span class="title">All</span>
-  </a>
-
-  <a *ngFor="let project of projects" [ngClass]="{'active': projectActive(project) | async}" [routerLink]="['/tasks', project.id]"
-    class="item">
-    <i *ngIf="project" class="icon {{ project.icon }} {{ project.color }}"></i>
-    <div>
-      <div class="title">{{ project.title }}</div>
+<div class="ui form">
+  <div class="field">
+    <label>Project</label>
+    <div class="dropdown-wrapper">
+      <taskbird-dropdown
+        [value]="(activeProject && activeProject.id)"
+        [options]="projectOptions"
+        (selectionChange)="updateActiveProject($event)"
+        name="project"></taskbird-dropdown>
     </div>
-  </a>
-
-  <a [ngClass]="{'active': projectActive(null) | async}" class="item" [routerLink]="['/tasks', 'uncategorized']">
-    <i class="icon circle outline"></i>
-    <span class="title">Uncategorized</span>
-  </a>
+  </div>
 </div>

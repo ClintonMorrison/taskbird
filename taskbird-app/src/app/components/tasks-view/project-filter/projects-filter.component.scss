@@ -8,3 +8,16 @@
 .ui.secondary.menu.filter-links .item {
   margin-bottom: 1em;
 }
+
+.field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.dropdown-wrapper {
+  width: 100%;
+}
+
+label {
+  padding-right: 1em;
+}
