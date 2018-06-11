@@ -7,14 +7,12 @@
 </p>
 
 <div class="bottom-controls">
-  <div>
-    <button
-      *ngIf="taskIds.length > numberToShow"
-      (click)="showMore()"
-      class="ui compact secondary button show-more">
-      Show More
-    </button>
-  </div>
+  <button
+    *ngIf="taskIds.length > numberToShow"
+    (click)="showMore()"
+    class="ui compact secondary button show-more">
+    Show More
+  </button>
 
   <taskbird-show-completed-toggle *ngIf="showCompletedToggle" ></taskbird-show-completed-toggle>
 </div>

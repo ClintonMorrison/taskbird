@@ -2,6 +2,19 @@
   margin-top: 2em;
   display: flex;
   justify-content: space-between;
+
+  @media screen and (max-width: 400px) {
+    display: block;
+
+    > * {
+      &,
+      /deep/ button {
+        display: block;
+        margin-bottom: 1em;
+        width: 100%;
+      }
+    }
+  }
 }
 
 .tasks /deep/ .task {

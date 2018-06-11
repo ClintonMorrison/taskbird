@@ -61,6 +61,7 @@ export class TasksPageComponent implements OnInit {
     this.subscribeToUnfilteredTasks();
     this.subscribeToRouteChanges();
     this.browserService.scrollToTop();
+    this.filterService.setSearchQuery('');
   }
 
   ngOnDestroy() {
