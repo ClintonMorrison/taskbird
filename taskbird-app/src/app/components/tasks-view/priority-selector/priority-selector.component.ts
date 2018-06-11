@@ -12,6 +12,13 @@ export class PrioritySelectorComponent implements OnInit {
   @Input()
   task: Task;
 
+  priorityOptions = [
+    { name: 'Low', value: 'Low', icon: 'green circle' },
+    { name: 'Normal', value: 'Normal', icon: 'black circle' },
+    { name: 'High', value: 'High', icon: 'red circle' }
+  ];
+
+
   constructor(
     private taskService: TaskService
   ) { }
@@ -19,9 +26,8 @@ export class PrioritySelectorComponent implements OnInit {
   ngOnInit() {
   }
 
-  select(priority: string) {
+  handleChange(priority: string) {
     const updatedTask = { ...this.task, priority };
     this.taskService.updateTask(updatedTask);
   }
-
 }
