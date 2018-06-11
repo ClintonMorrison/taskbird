@@ -22,6 +22,8 @@
     <taskbird-project-selector [projectId]="task.project && task.project.id" (projectChange)="updateTaskProject($event)"></taskbird-project-selector>
 
     <taskbird-due-date-picker [task]="task"></taskbird-due-date-picker>
+
+    <taskbird-task-checkbox [task]="task" [showLabel]="true"></taskbird-task-checkbox>
   </form>
 
   <div class="ui divider"></div>

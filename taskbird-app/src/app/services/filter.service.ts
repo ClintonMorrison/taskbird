@@ -162,7 +162,7 @@ export class FilterService {
 
   createTaskMatchingFilters(taskFields: object): void {
     this.taskService.createTask({
-      title: this.searchQuery || 'New Task',
+      title: this.searchQuery || '',
       project: this.filterProject,
       ...taskFields
     }).first().subscribe((newTask: Task) => {

@@ -158,7 +158,7 @@ export class TaskService {
 
   createTask(taskFields: object): Observable<Task> {
     const task: any = {
-      title: "New Task",
+      title: "",
       date_completed: null,
       date_created: null,
       date_due: null,

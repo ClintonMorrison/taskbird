@@ -12,6 +12,9 @@ export class TaskCheckboxComponent implements OnInit {
   @Input()
   task: Task;
 
+  @Input()
+  showLabel: boolean = false;
+
   constructor(
     private taskService: TaskService
   ) { }

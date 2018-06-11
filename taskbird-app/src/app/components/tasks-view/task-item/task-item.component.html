@@ -7,7 +7,7 @@
 
   <a (click)="onSelect($event)" class="item" href="#task-{{ task.id }}-done">
     <div class="top task-row">
-      <div class="title">{{task.title}}</div>
+      <div class="title">{{task.title || 'Unnamed Task'}}</div>
       <div class="date-due">{{getDateDue()}}</div>
     </div>
 
