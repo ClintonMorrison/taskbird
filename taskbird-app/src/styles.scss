@@ -23,3 +23,12 @@ body {
 .drag.cursor-pointer {
   pointer-events: none !important;
 }
+
+select,
+button.basic,
+button.negative,
+button.color {
+  &:focus {
+    border: 2px solid black !important;
+  }
+}
