@@ -3,22 +3,24 @@ a {
   border: 2px solid transparent;
   display: inline-block;
   height: 6.25em;
+  overflow: hidden;
   padding: .5em;
   position: relative;
   width: 100%;
   word-wrap: break-word;
-
-  &.selected {
-    background-color: #e5f5ff;
-    border: 2px solid #dadada;
-
-    .number {
-      text-decoration: underline;
-    }
-  }
+  margin-bottom: -.2em;
 
   &.today {
-    border: 2px solid black;
+    border: 2px solid #aaa;
+  }
+
+  &:focus,
+  &.selected {
+    border: 2px solid #000;
+  }
+
+  &.selected {
+    background-color: #9ED6FF !important;
   }
 
   &.inactive {
@@ -37,7 +39,31 @@ a {
 }
 
 .task-count {
-  position: absolute;
-  bottom: .25em;
-  right: .25em;
+  display: none;
+}
+
+@media screen and (max-width: 700px) {
+  .tasks-on-day {
+    display: none;
+  }
+
+  a {
+    height: 4.5em;
+  }
+
+  .task-count {
+    display: inline;
+    position: absolute;
+    bottom: .25em;
+    right: .25em;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .task-count {
+    position: static;
+    display: block;
+    margin: 0;
+    text-align: center;
+  }
 }

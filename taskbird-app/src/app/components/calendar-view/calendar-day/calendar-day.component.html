@@ -5,10 +5,14 @@
 
   <div class="number">{{ date.day }}</div>
 
-  <span 
+  <div 
     *ngIf="tasks && tasks.length"
-    class="task-count ui small circular label"
-    [ngClass]="{ red: anyUndone(tasks), blue: !anyUndone(tasks) }">{{ tasks.length }}</span>
-
-  <calendar-task *ngFor="let task of tasks" [task]="task"></calendar-task>
+    class="task-count">
+    <span 
+      class=" ui small circular label"
+      [ngClass]="{ red: anyUndone(tasks) }">{{ tasks.length }}</span>
+  </div>
+  <div class='tasks-on-day'>
+    <calendar-task *ngFor="let task of tasks" [task]="task"></calendar-task>
+  </div>
 </a>
