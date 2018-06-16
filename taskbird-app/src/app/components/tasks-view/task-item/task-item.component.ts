@@ -18,7 +18,10 @@ export class TaskItemComponent implements OnInit {
 
   task: Task;
 
-  private sub: Subscription;
+  private taskSub: Subscription;
+  private filterProjectSub: Subscription;
+
+  showProjectIcon: boolean;
 
   constructor(
     private taskService: TaskService,
@@ -26,12 +29,17 @@ export class TaskItemComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.sub = this.taskService.getTaskById(String(this.taskId))
+    this.taskSub = this.taskService.getTaskById(String(this.taskId))
       .subscribe(task => this.task = task);
+    
+    this.filterProjectSub = this.filterService.getFilterProject().subscribe(
+      (project) => (this.showProjectIcon = !project)
+    );
   }
 
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    this.taskSub.unsubscribe();
+    this.filterProjectSub.unsubscribe();
   }
 
   onSelect(event) {

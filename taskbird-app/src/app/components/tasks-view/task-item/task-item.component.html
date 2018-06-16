@@ -13,7 +13,7 @@
 
     <div class="bottom task-row">
       <div class="description">{{getDescription()}}</div>
-      <taskbird-project-icon [task]="task"></taskbird-project-icon>
+      <taskbird-project-icon *ngIf="showProjectIcon" [task]="task"></taskbird-project-icon>
     </div>
   </a>
 </div>

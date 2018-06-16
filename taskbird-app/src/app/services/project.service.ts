@@ -34,12 +34,12 @@ export class ProjectService {
 
     this.saveProject = _.throttle(
       (project: Project) => {
-        this.projectsById[project.id] = { ...project, status: 'saving' };
+        this.projectsById[project.id] = { ...this.projectsById[project.id], status: 'saving' };
         this.projectsByIdSubject.next(this.projectsById);
         return this.apiService
           .put('project', project.id, project)
           .map((project) => {
-            this.projectsById[project.id] = { ...project, status: 'saved' };
+            this.projectsById[project.id] = { ...this.projectsById[project.id], status: 'saved' };
             this.projectsByIdSubject.next(this.projectsById);
             return project;
           })

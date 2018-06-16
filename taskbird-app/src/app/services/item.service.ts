@@ -48,12 +48,12 @@ export class TaskService {
     this.taskSubjectById = {};
     this.saveTask = _.throttle(
       (task) => {
-        this.tasksById[task.id] = { ...task, status: 'saving' };
+        this.tasksById[task.id] = { ...this.tasksById[task.id], status: 'saving' };
         this.tasksByIdSubject.next(this.tasksById);
         return this.apiService
           .put('task', task.id, task)
           .map(task => {
-            this.tasksById[task.id] = { ...task, status: 'saved' };
+            this.tasksById[task.id] = { ...this.tasksById[task.id], status: 'saved' };
             this.tasksByIdSubject.next(this.tasksById);
           })
           .first()
