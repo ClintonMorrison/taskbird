@@ -234,7 +234,9 @@ export class FilterService {
     } else if (this.sort.includes('date_created')) {
       return `${createdDate}/${dueDate}`;
     } else if (this.sort === 'project') {
-      return task.project ? `${task.project.title}-${dueDate}` : `-${dueDate}`;
+      return task.project ? `${task.project.title}-${dueDate}` : `Z${dueDate}`;
+    } else if (this.sort === 'priority') {
+      return `${this.taskPriorities.indexOf(task.priority)}-${dueDate}`;
     }
   }
 
@@ -243,7 +245,7 @@ export class FilterService {
       return this.getSortFieldForTask(task);
     });
 
-    if (this.sort && !this.sort.includes('_asc')) {
+    if (this.sort && !this.sort.includes('_asc') && this.sort !== 'priority' && this.sort !== 'project') {
        _.reverse(sortedTasks);
     }
 

@@ -17,7 +17,8 @@ export class SortDropdownComponent implements OnInit {
     { name: 'Date Due: New to Old', value: 'date_due_desc' },
     { name: 'Date Created: Old to New', value: 'date_created_asc' },
     { name: 'Date Created: New to Old', value: 'date_created_desc' },
-    { name: 'Project', value: 'project' }
+    { name: 'Project', value: 'project' },
+    { name: 'Priority', value: 'priority' }
   ];
 
   constructor(
