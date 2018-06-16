@@ -15,7 +15,14 @@ export class BrowserService {
   }
 
   scrollToBottom() {
-    $("html, body").animate({ scrollTop: $(document).height() }, 500);
+    $("html, body").animate({ scrollTop: $(document).height() }, 'slow');
+  }
+
+  scrollTo(selector) {
+    setTimeout(
+      () => $("html, body").animate({ scrollTop: $(selector).offset().top }, 'slow'),
+      0
+    );
   }
 
   focusOnId(id: string) {
