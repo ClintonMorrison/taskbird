@@ -19,17 +19,16 @@ export class ColorPickerComponent implements OnInit {
   colors = [
     'black',
     'grey',
-    'brown',
-    'pink',
-    'purple',
-    'violet',
-    'blue',
-    'teal',
-    'green',
-    'olive',
-    'yellow',
+    'red',
     'orange',
-    'red'
+    'yellow',
+    'olive',
+    'green',
+    'teal',
+    'blue',
+    'violet',
+    'purple',
+    'pink',
   ];
 
   constructor(

@@ -33,8 +33,7 @@ export class IconPickerComponent implements OnInit {
       'circle',
       'square',
       'star',
-      'heart',
-      'certificate',
+      'heart'
     ],
 
     Other: [
