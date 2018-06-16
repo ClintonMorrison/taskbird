@@ -1,8 +1,14 @@
 <a
-  [ngClass]="{'inactive': !active, 'selected': selected, 'today': today}"
+  [ngClass]="{'inactive': !active, 'selected': selected, 'today': today, 'with-tasks': tasks.length > 0}"
   href="#day-{{ date.day }}"
   (click)="handleClick($event)">
 
   <div class="number">{{ date.day }}</div>
+
+  <span 
+    *ngIf="tasks && tasks.length"
+    class="task-count ui small circular label"
+    [ngClass]="{ red: anyUndone(tasks), blue: !anyUndone(tasks) }">{{ tasks.length }}</span>
+
   <calendar-task *ngFor="let task of tasks" [task]="task"></calendar-task>
 </a>

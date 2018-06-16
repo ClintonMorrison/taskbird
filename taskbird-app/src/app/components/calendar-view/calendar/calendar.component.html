@@ -1,25 +1,23 @@
-<div class="calendar">
-  <table class="ui celled fixed unstackable table">
-    <thead>
-      <tr>
-        <th *ngFor="let day of daysOfWeek">
-          <weekday-title [weekday]="day"></weekday-title>
-        </th>
-      </tr>
-    </thead>
+<table class="ui celled fixed unstackable calendar table" [ngClass]="{'bottom attached': bottomAttached }">
+  <thead>
+    <tr>
+      <th *ngFor="let day of daysOfWeek">
+        <weekday-title [weekday]="day"></weekday-title>
+      </th>
+    </tr>
+  </thead>
 
-    <tbody>
-      <tr *ngFor="let week of weeks">
-        <td *ngFor="let day of week">
-          <calendar-day
-            (dateSelected)="handleDateSelected($event)"
-            [date]="day.date"
-            [tasks]="day.tasks"
-            [today]="dayIsToday(day.date)"
-            [selected]="dayIsSelected(day.date)"
-            [active]="dayIsInCurrentMonth(day.date)"></calendar-day>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-</div>
+  <tbody>
+    <tr *ngFor="let week of weeks">
+      <td *ngFor="let day of week">
+        <calendar-day
+          (dateSelected)="handleDateSelected($event)"
+          [date]="day.date"
+          [tasks]="day.tasks"
+          [today]="dayIsToday(day.date)"
+          [selected]="dayIsSelected(day.date)"
+          [active]="dayIsInCurrentMonth(day.date)"></calendar-day>
+      </td>
+    </tr>
+  </tbody>
+</table>

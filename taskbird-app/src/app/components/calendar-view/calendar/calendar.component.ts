@@ -23,6 +23,9 @@ export class CalendarComponent implements OnInit {
   @Input()
   selectedDay: Date;
 
+  @Input()
+  bottomAttached: boolean;
+
   daysOfWeek: String[];
 
   days: CalendarDay[];

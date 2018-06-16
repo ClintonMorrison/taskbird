@@ -2,10 +2,9 @@ a {
   color: black;
   border: 2px solid transparent;
   display: inline-block;
-  height: 100%;
-  height: 5.5em;
+  height: 6.25em;
   padding: .5em;
-  overflow: hidden;
+  position: relative;
   width: 100%;
   word-wrap: break-word;
 
@@ -33,6 +32,12 @@ a {
 
   .number {
     font-weight: bold;
-    margin-bottom: 1em;
+    margin-bottom: .5em;
   }
+}
+
+.task-count {
+  position: absolute;
+  bottom: .25em;
+  right: .25em;
 }

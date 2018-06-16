@@ -4,6 +4,11 @@ a {
   line-height: 1;
   font-size: .8rem;
   text-overflow: ellipsis;
+  max-width: calc(100% - 2em);
   white-space: nowrap;
   overflow: hidden;
+
+  &.done {
+    text-decoration: line-through;
+  }
 }

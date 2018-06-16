@@ -1,17 +1,13 @@
-.calendar {
-  margin-top: 1em;
+table.calendar {
+  width: 100%;
 
-  table {
-    width: 100%;
+  td,
+  th {
+    width: 14.28%;
+  }
 
-    td,
-    th {
-      width: 14.28%;
-    }
-
-    td {
-      padding: 0;
-      width: 100% !important;
-    }
+  td {
+    padding: 0;
+    width: 100% !important;
   }
 }

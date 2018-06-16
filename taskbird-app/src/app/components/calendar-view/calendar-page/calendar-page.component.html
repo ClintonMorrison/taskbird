@@ -19,13 +19,12 @@
   </button>
 </div>
 
-<div class="ui bottom attached segment">
-  <calendar 
-    (dateSelected)="handleDateSelected($event)"
-    [selectedDay]="selectedDay"
-    [month]="month">
-  </calendar>
-</div>
+<calendar 
+  (dateSelected)="handleDateSelected($event)"
+  [selectedDay]="selectedDay"
+  [bottomAttached]="true"
+  [month]="month">
+</calendar>
 
 <div
   *ngIf="selectedDay && taskIds"

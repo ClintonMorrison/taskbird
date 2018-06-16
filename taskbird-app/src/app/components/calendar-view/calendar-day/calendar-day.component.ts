@@ -2,6 +2,7 @@ import { Component, OnInit , Input, Output, EventEmitter } from '@angular/core';
 import { Task } from '../../../models/item';
 import { Date } from '../../../models/dates';
 import { TaskService } from '../../../services/item.service';
+import * as _ from 'lodash';
 
 
 @Component({
@@ -42,6 +43,10 @@ export class CalendarDayComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+  }
+
+  anyUndone(tasks: Task[]) {
+    return _.some(tasks, task => !task.done);
   }
 
 }
