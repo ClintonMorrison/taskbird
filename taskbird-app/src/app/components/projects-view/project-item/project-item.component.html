@@ -1,8 +1,8 @@
 <div class="project ui segment">
-  <h2 class="heading">
-    {{ project.title }}
-    <i class="icon {{project.icon}} {{project.color}}"></i>
-  </h2>
+  <div class="project-heading">
+    <taskbird-project-heading [project]="project"></taskbird-project-heading>
+  </div>
+
   <taskbird-project-progress-bar [doneTasks]="doneTasks" [totalTasks]="totalTasks">
   </taskbird-project-progress-bar>
 

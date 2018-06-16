@@ -1,0 +1,12 @@
+<h2 *ngIf="project" class="heading">
+  {{ project.title }}
+  <i class="icon {{project.icon}} {{project.color}}"></i>
+</h2>
+<h2 *ngIf="project === undefined" class="heading">
+  All
+  <i class="icon certificate"></i>
+</h2>
+<h2 *ngIf="project === null" class="heading">
+  Uncategorized
+  <i class="icon circle outline"></i>
+</h2>

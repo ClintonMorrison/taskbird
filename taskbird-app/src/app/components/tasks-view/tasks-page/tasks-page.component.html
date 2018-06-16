@@ -3,18 +3,7 @@
 </div>
 
 <div  class="ui top attached segment">
-  <h2 *ngIf="filterProject" class="heading">
-    {{ filterProject.title }}
-    <i class="icon {{filterProject.icon}} {{filterProject.color}}"></i>
-  </h2>
-  <h2 *ngIf="filterProject === undefined" class="heading">
-    All
-    <i class="icon certificate"></i>
-  </h2>
-  <h2 *ngIf="filterProject === null" class="heading">
-    Uncategorized
-    <i class="icon circle outline"></i>
-  </h2> 
+  <taskbird-project-heading [project]="filterProject"></taskbird-project-heading>
 </div>
 
 <div class="ui bottom attached segment">
