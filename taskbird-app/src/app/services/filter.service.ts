@@ -209,7 +209,7 @@ export class FilterService {
     
     const fields = [
       task.title || '',
-      task.description || '',
+      task.description || ''
     ];
 
     if (task.project) {

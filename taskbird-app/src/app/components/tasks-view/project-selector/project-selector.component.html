@@ -1,7 +1,7 @@
 <div class="field">
   <label>Project</label>
   <taskbird-dropdown
-      [value]="projectId"
+      [value]="projectId || ''"
       [options]="projectOptions"
       (selectionChange)="handleChange($event)"
       name="sort"></taskbird-dropdown>
