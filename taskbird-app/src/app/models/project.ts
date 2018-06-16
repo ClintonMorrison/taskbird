@@ -5,6 +5,7 @@ export class Project {
   icon: string;
   color: string;
   date_created: string;
+  status?: string;
 }
 
 export interface ProjectMap {

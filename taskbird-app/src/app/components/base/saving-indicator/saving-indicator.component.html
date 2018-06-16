@@ -1,16 +1,18 @@
-<div class="message-wrapper" *ngIf="visible">
-  <div *ngIf="displayStatus === 'saved'" class="ui visible small success message">
-    <i class="ui checkmark icon"></i>
-    Saved.
-  </div>
-  
-  <div *ngIf="displayStatus === 'saving'" class="ui visible small message">
-    <i class="sync loading icon"></i>
-    Saving...
-  </div>
+<div class="message-wrapper">
+  <div *ngIf="visible">
+    <div *ngIf="displayStatus === 'saved'" class="ui visible small success message">
+      <i class="ui checkmark icon"></i>
+      Saved.
+    </div>
+    
+    <div *ngIf="displayStatus === 'saving'" class="ui visible small message">
+      <i class="sync loading icon"></i>
+      Saving...
+    </div>
 
-  <div *ngIf="displayStatus === 'error'" class="ui visible small error message">
-    <i class="ui x icon"></i>
-    Error saving.
+    <div *ngIf="displayStatus === 'error'" class="ui visible small error message">
+      <i class="ui x icon"></i>
+      Error saving.
+    </div>
   </div>
 </div>

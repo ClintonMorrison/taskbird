@@ -2,3 +2,13 @@
   display: flex;
   justify-content: space-between;
 }
+
+.two-columns {
+  display: flex;
+  justify-content: flex-end; // space-between;
+  align-items: center;
+}
+
+textarea {
+  height: 7em !important;
+}

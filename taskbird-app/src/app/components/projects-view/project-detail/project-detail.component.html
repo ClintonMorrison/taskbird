@@ -21,6 +21,10 @@
 
     <taskbird-icon-picker [project]="project"></taskbird-icon-picker>
 
+    <div class="two-columns">
+      <taskbird-saving-indicator [status]="project.status"></taskbird-saving-indicator>
+    </div>
+
     <div class="ui divider"></div>
     
     <taskbird-delete-project-button [project]="project"></taskbird-delete-project-button>

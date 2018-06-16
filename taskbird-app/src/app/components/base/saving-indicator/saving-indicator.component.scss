@@ -1,3 +1,7 @@
-:host {
-  min-height: 3.5em;
+.message-wrapper {
+  min-height: 3em;
+  
+  .message {
+    padding: .75em;
+  }
 }

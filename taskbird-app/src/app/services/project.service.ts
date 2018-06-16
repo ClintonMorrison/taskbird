@@ -34,7 +34,19 @@ export class ProjectService {
     this.projectsByIdSubject = new BehaviorSubject({});
 
     this.saveProject = _.throttle(
-      (project: Project) => this.apiService.put('project', project.id, project).first().subscribe(),
+      (project: Project) => {
+        this.projectsById[project.id] = { ...project, status: 'saving' };
+        this.projectsByIdSubject.next(this.projectsById);
+        return this.apiService
+          .put('project', project.id, project)
+          .map((project) => {
+            this.projectsById[project.id] = { ...project, status: 'saved' };
+            this.projectsByIdSubject.next(this.projectsById);
+            return project;
+          })
+          .first()
+          .subscribe();
+      },
       1000
     );
 
