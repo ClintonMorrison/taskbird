@@ -11,8 +11,12 @@
   .description {
     max-width: calc(100% - 3.5em);
     text-overflow: ellipsis;
-    white-space: nowrap;
     overflow: hidden;
+  }
+
+  .description {
+    max-height: 5em;
+    white-space: pre-line;
   }
 
   .item {
