@@ -1,5 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { uniqueId } from 'lodash';
+import { HostListener } from '@angular/core';
 
 declare var $: any;
 
@@ -47,6 +48,14 @@ export class SidebarComponent implements OnInit {
     this.getSidebar()
       .sidebar('hide');
   }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.keyCode === 27) {
+      this.closeSidebar();
+    }
+  }
+
 
   private getSidebar(): any {
     return $(`#${this.id}`);

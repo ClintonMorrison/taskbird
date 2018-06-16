@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, EventEmitter, Output } from '@angular/core';
+import { Component, OnInit, Input, EventEmitter, Output, HostListener } from '@angular/core';
 import { uniqueId } from 'lodash';
 
 declare var $: any;
@@ -44,6 +44,13 @@ export class ModalComponent implements OnInit {
 
   getModal() {
     return $(`#${this.id}`);
+  }
+
+  @HostListener('document:keydown', ['$event'])
+  handleKeyboardEvent(event: KeyboardEvent) {
+    if (event.keyCode === 27) {
+      this.hideModal();
+    }
   }
 
 }
