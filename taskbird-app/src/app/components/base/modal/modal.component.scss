@@ -1,0 +1,10 @@
+.ui.modal {
+  position: relative;
+
+  .close.icon {
+    color: #000;
+    position: absolute;
+    top: .5em;
+    right: .5em;
+  }
+}
