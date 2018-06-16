@@ -33,7 +33,6 @@ export class ProjectFilterComponent implements OnInit {
 
   ngOnInit() {
     this.filterSub = this.filterService.getFilterProject().subscribe((activeProject) => {
-      console.log('active project', activeProject);
       if (activeProject === undefined) {
         this.activeProject = { id: 'all' };
       } else if (activeProject === null) {

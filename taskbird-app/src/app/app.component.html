@@ -1,16 +1,14 @@
-<!--The content below is only a placeholder and can be replaced.-->
 <app-nav></app-nav>
 
 <div class="ui container">
-
-    <!-- TODO: global dimmer here -->
   <taskbird-loading-dimmer></taskbird-loading-dimmer>
-  <!--
-  <h1>
-    {{ title }}
-  </h1>
-  -->
-
   <router-outlet></router-outlet>
-  <app-messages></app-messages>
+
+  <div class="ui small info message">
+    <p>
+      You are previewing a new version of TaskBird.
+       If you encouter issues, you can
+      <a class="old-versoin-link" href="/app/">return to the old version</a>.
+    </p>
+  </div>
 </div>

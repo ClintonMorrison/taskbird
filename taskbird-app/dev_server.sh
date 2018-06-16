@@ -1,1 +1,1 @@
-ng serve --deploy-url '/app'
+ng serve --deploy-url '/v2'
