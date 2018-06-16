@@ -6,6 +6,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs/Subscription';
 import { SidebarComponent } from '../../base/sidebar/sidebar.component';
 import { BrowserService } from '../../../browser.service';
+import { Project } from '../../../models/project';
 
 @Component({
   selector: 'taskbird-tasks-page',
@@ -21,10 +22,10 @@ export class TasksPageComponent implements OnInit {
     private browserService: BrowserService
   ) {}
   
-  selectedProjectId: number;
   taskIds: number[] = [];
   unfilteredTasks: Task[] = [];
   activeTask: Task;
+  filterProject: Project;
 
   private filterSub: Subscription;
   private taskSub: Subscription;
@@ -56,10 +57,18 @@ export class TasksPageComponent implements OnInit {
     });
   }
 
+  subscribeToFilterProject(): void {
+    this.projectSub = this.filterService.getFilterProject().subscribe(
+      (project: Project) => this.filterProject = project
+    );
+  }
+
   ngOnInit() {
     this.subscribeToTasks();
     this.subscribeToUnfilteredTasks();
     this.subscribeToRouteChanges();
+    this.subscribeToFilterProject();
+
     this.browserService.scrollToTop();
     this.filterService.setSearchQuery('');
   }
@@ -68,6 +77,7 @@ export class TasksPageComponent implements OnInit {
     this.filterSub.unsubscribe();
     this.taskSub.unsubscribe();
     this.routeSub.unsubscribe();
+    this.projectSub.unsubscribe();
   }
 
 }

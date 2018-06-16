@@ -1,6 +1,22 @@
-<div class="ui top attached segment">
+<div class="ui segment">
   <taskbird-filtering-controls></taskbird-filtering-controls>
 </div>
+
+<div  class="ui top attached segment">
+  <h2 *ngIf="filterProject" class="heading">
+    {{ filterProject.title }}
+    <i class="icon {{filterProject.icon}} {{filterProject.color}}"></i>
+  </h2>
+  <h2 *ngIf="filterProject === undefined" class="heading">
+    All
+    <i class="icon certificate"></i>
+  </h2>
+  <h2 *ngIf="filterProject === null" class="heading">
+    Uncategorized
+    <i class="icon circle outline"></i>
+  </h2> 
+</div>
+
 <div class="ui bottom attached segment">
   <div *ngIf="taskIds.length === 0" class="ui message">
     <p>
