@@ -26,7 +26,6 @@ export class ProjectService {
   private fetched: boolean;
   private loadingSubject: BehaviorSubject<boolean>;
 
-
   constructor(
     private apiService: ApiService
   ) {
@@ -82,7 +81,12 @@ export class ProjectService {
   }
 
   getProjects(): Observable<Project[]> {
-    return this.getProjectsById().map(_.values);
+    return this.getProjectsById().map(projectsById => {
+      return _.chain(projectsById)
+        .values()
+        .sortBy(project => project.title)
+        .value();
+    });
   }
 
   // TODO: maintain subject for every project

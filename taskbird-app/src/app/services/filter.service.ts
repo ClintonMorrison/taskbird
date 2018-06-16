@@ -38,6 +38,7 @@ export class FilterService {
   private sort: string;
   private sortSubject: BehaviorSubject<String>;
 
+  private taskPriorities = ['High', 'Normal', 'Low'];
 
   constructor(
     private taskService: TaskService,
