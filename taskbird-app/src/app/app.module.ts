@@ -64,6 +64,7 @@ import { DeleteProjectButtonComponent } from './components/projects-view/delete-
 import { ApiService } from './api.service';
 import { LoadingDimmerComponent } from './components/base/loading-dimmer/loading-dimmer.component';
 import { DropdownComponent } from './components/base/dropdown/dropdown.component';
+import { SavingIndicatorComponent } from './components/base/saving-indicator/saving-indicator.component';
 
 
 @NgModule({
@@ -119,7 +120,8 @@ import { DropdownComponent } from './components/base/dropdown/dropdown.component
     DeleteTaskButtonComponent,
     DeleteProjectButtonComponent,
     LoadingDimmerComponent,
-    DropdownComponent
+    DropdownComponent,
+    SavingIndicatorComponent
   ],
   imports: [
     BrowserModule,

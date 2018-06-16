@@ -7,6 +7,12 @@ form {
   justify-content: space-between;
 }
 
+.two-columns {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 textarea {
   height: 6em !important;
   min-height: 6em !important;

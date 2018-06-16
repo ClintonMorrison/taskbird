@@ -11,6 +11,7 @@ export class Task {
   date_due: string;
   date_modified: string;
   project?: Project;
+  status?: string;
 }
 
 export interface TaskMap {

@@ -23,8 +23,13 @@
 
     <taskbird-due-date-picker [task]="task"></taskbird-due-date-picker>
 
-    <taskbird-task-checkbox [task]="task" [showLabel]="true"></taskbird-task-checkbox>
+    <div class="two-columns">
+      <taskbird-task-checkbox [task]="task" [showLabel]="true"></taskbird-task-checkbox>
+      <taskbird-saving-indicator [status]="task.status"></taskbird-saving-indicator>
+    </div>
+
   </form>
+
 
   <div class="ui divider"></div>
 
