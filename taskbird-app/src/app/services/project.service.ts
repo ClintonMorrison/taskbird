@@ -38,6 +38,12 @@ export class ProjectService {
         this.projectsByIdSubject.next(this.projectsById);
         return this.apiService
           .put('project', project.id, project)
+          .catch((error) => {
+            this.projectsById[project.id] = { ...this.projectsById[project.id], status: 'error' };
+            this.projectsByIdSubject.next(this.projectsById);
+            return error;
+          })
+
           .map((project) => {
             this.projectsById[project.id] = { ...this.projectsById[project.id], status: 'saved' };
             this.projectsByIdSubject.next(this.projectsById);

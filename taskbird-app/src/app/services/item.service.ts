@@ -52,6 +52,11 @@ export class TaskService {
         this.tasksByIdSubject.next(this.tasksById);
         return this.apiService
           .put('task', task.id, task)
+          .catch((error) => {
+            this.tasksById[task.id] = { ...this.tasksById[task.id], status: 'error' };
+            this.tasksByIdSubject.next(this.tasksById);
+            return error;
+          })
           .map(task => {
             this.tasksById[task.id] = { ...this.tasksById[task.id], status: 'saved' };
             this.tasksByIdSubject.next(this.tasksById);

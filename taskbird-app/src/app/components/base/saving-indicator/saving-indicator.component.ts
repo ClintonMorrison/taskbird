@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 
-const HIDE_TIMEOUT = 2500;
-const SWITCH_TIMEOUT = 1000;
+const HIDE_TIMEOUT = 3000;
+const SWITCH_TIMEOUT = 750;
 
 @Component({
   selector: 'taskbird-saving-indicator',
