@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}body,body.pushable,body .pusher{background-color:#f0f0f0!important}.right{float:right}.drag.cursor-pointer,.draglayer.cursor-crosshair{pointer-events:none!important}button.basic:focus,button.color:focus,button.negative:focus,input:focus,select:focus,textarea:focus{border:2px solid #000!important}
+
+/*
+.ui.container {
+  @media screen and (max-width: 500px) {
+    margin-left: .5em !important;
+    margin-right: .5em !important;
+  }
+}
+*/
