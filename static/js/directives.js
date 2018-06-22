@@ -57,9 +57,9 @@ taskApp.directive('projectSelector', function ($timeout, resources) {
             '<div class="ui fluid search selection dropdown">',
             '<input type="hidden">',
             '<i class="dropdown icon"></i>',
-            '<div class="default text">Select Project</div>',
+            '<div class="default text">Select Project3</div>',
             '<div class="menu">',
-            '<div class="item" data-value="false">Select Project</div>',
+            '<div class="item" data-value="false">Select Project2</div>',
             '<div class="item" ng-repeat="project in projects" data-value="{{project.data.id}}">',
             '<i class="{{project.data.color}} {{project.data.icon}} icon"></i>',
             '{{project.data.title}}',
@@ -87,7 +87,7 @@ taskApp.directive('projectSelector', function ($timeout, resources) {
                 elm.dropdown().dropdown('setting', {
                     onChange: function (value) {
                         $timeout(function () {
-                            var project = _.chain(scope.projects).filter({id : value}).first().value();
+                            var project = _.chain(scope.projects).filter({id : parseInt(value, 10) }).first().value();
                             if (project) {
                                 scope.ngModel = project._formatForAPI();
                             } else {

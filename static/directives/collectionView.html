@@ -142,14 +142,14 @@
                          ng-class  = "{selected: object == selectedObject}">
 
                         <div class="ui three column grid">
-                            <div class="column one wide">
+                            <div class="column two wide">
                                 <i class="large clickable icon task-checkbox"
                                    ng-class="object.getBigIcon()"
                                    ng-click="object.handleBigIconClick()">
                                 </i>
                             </div>
 
-                            <div class="column fourteen wide">
+                            <div class="column thirteen wide">
                               <div class="wide content clickable task-box" ng-click = "selectObject(object)">
 
                                   <div class="ui grid">
@@ -173,7 +173,7 @@
                                             {{object.data[object.config.forms.collection.description]}}
                                         </div>
                                         <div class="column three wide" ng-if="object.data.project">
-                                            <i class="mini right {{object.getSmallIcon()}} icon"></i>
+                                            <i class="right {{object.getSmallIcon()}} icon"></i>
                                         </div>
                                     </div>
                                 </div>
