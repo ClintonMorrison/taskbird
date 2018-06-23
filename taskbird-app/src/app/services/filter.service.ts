@@ -7,6 +7,7 @@ import { TaskService } from './item.service';
 import * as _ from 'lodash';
 import { utc } from 'moment';
 import { ProjectService } from './project.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable()
 export class FilterService {

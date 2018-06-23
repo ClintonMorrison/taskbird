@@ -5,6 +5,8 @@ import { Task } from '../../../models/item';
 import { SidebarComponent } from '../../base/sidebar/sidebar.component';
 import { BrowserService } from '../../../browser.service';
 
+declare var $: any;
+
 @Component({
   selector: 'taskbird-active-task-viewer',
   templateUrl: './active-task-viewer.component.html',
@@ -36,7 +38,7 @@ export class ActiveTaskViewerComponent implements OnInit {
         if (this.activeTask && !this.desktopMode) {
           setTimeout(() => this.sidebar.openSidebar(), 0);
         } else {
-          $('.ui.sticky').sticky();
+          setTimeout(() => $('.ui.sticky').sticky(), 0);
         }
       });
   }

@@ -1,13 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { Month, Date } from '../../../models/dates';
-import { Task, StringTaskMap } from '../../../models/item';
 import { TaskService } from '../../../services/item.service';
-import { Observable } from 'rxjs/Observable';
 import { BrowserService } from '../../../browser.service';
 import 'rxjs/add/operator/first';
 import * as _ from 'lodash';
 import { utc } from 'moment';
 import { Subscription } from 'rxjs/Subscription';
+import { FilterService } from '../../../services/filter.service';
 
 @Component({
   selector: "calendar-page",
@@ -23,6 +22,7 @@ export class CalendarPageComponent implements OnInit {
 
   constructor(
     private taskService: TaskService,
+    private filterService: FilterService,
     private browserService: BrowserService
   ) {}
 
@@ -60,6 +60,8 @@ export class CalendarPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.filterService.setActiveTask(undefined);
+
     this.sub = this.taskService.getTasksById().subscribe(
       () => this.getTasksForSelectedDay()
     );

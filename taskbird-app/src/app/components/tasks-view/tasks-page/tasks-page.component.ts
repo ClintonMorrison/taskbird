@@ -64,6 +64,8 @@ export class TasksPageComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.filterService.setActiveTask(undefined);
+
     this.subscribeToTasks();
     this.subscribeToUnfilteredTasks();
     this.subscribeToRouteChanges();
