@@ -17,6 +17,9 @@ export class TasksComponent implements OnInit {
   @Input()
   showCompletedToggle: boolean;
 
+  @Input()
+  noContentMessage: string;
+
   activeTask: Task;
 
   sub: Subscription;

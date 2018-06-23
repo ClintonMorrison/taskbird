@@ -56,6 +56,7 @@ export class CalendarPageComponent implements OnInit {
       this.selectedDay = date;
     }
 
+    this.filterService.setActiveTask(undefined);
     this.getTasksForSelectedDay();
   }
 

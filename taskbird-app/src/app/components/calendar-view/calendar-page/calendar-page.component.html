@@ -40,14 +40,10 @@
       [fields]="{ date_due: selectedDay.toMoment().format() }">
     </taskbird-create-task-button>
 
-    <div *ngIf="taskIds.length === 0" class="ui message">
-      <p>
-        There are no tasks on this day.
-      </p>
-    </div>
-
     <div class="tasks">
-      <taskbird-tasks [taskIds]="taskIds"></taskbird-tasks>
+      <taskbird-tasks
+        noContentMessage="There are no tasks on this day."
+        [taskIds]="taskIds"></taskbird-tasks>
     </div>
   </div>
 </div>

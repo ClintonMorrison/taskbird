@@ -1,5 +1,11 @@
 <div class="tasks-wrapper" [ngClass]="{ 'task-selected': !!activeTask }">
   <div class="tasks-list">
+    <div *ngIf="taskIds.length === 0" class="ui message">
+      <p>
+        {{ noContentMessage }}
+      </p>
+    </div>
+
     <div class="ui tasks">
       <task-item 
         *ngFor="let taskId of taskIds | slice:0:numberToShow"

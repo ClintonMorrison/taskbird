@@ -2,7 +2,7 @@
   border-radius: 0;
   display: flex;
 
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 550px) {
     a.item {
       display: flex;
       flex-direction: column;
@@ -23,24 +23,29 @@
       margin-bottom: .5em;
       font-size: 1em;
     }
-  }
 
-  /*
-  @media screen and (max-width: 750px) {
-    .header.item {
-      width: 100%;
-    }
-
-    a {
-      width: 33%;
+    .right-area {
+      display: none;
     }
   }
-  */
 
   >.item:first-child,
   >.item:last-child {
     border-radius: 0;
   }
 
+  .right-area {
+    width: 100%;
+    text-align: right;
+  }
+
   margin-bottom: 1em;
+}
+
+.logout-link {
+  color: white;
+  text-decoration: underline;
+  margin-right: 3em;
+  margin-top: .75em;
+  display: inline-block;
 }
