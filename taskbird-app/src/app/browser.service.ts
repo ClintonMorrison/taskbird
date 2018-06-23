@@ -26,7 +26,7 @@ export class BrowserService {
   }
 
   focusOnId(id: string) {
-    setTimeout(() => $(`#${id}`).focus(), 500);    
+    setTimeout(() => $(`#${id}`).focus(), 250);    
   }
 
   isMobile() {

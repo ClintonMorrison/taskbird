@@ -61,6 +61,8 @@ export class TaskDetailComponent implements OnInit {
 
     this.taskSub = this.taskService.getTaskById(String(this.taskId))
       .subscribe(task => this.task = task);
+
+    this.browserService.focusOnId('task-title');
   }
 
 }

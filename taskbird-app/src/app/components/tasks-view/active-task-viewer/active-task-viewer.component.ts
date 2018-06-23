@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener } from '@angular/core';
 import { Subscription } from 'rxjs/Subscription';
 import { FilterService } from '../../../services/filter.service';
 import { Task } from '../../../models/item';
@@ -29,17 +29,11 @@ export class ActiveTaskViewerComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.desktopMode = this.browserService.getWindowWidth() >= 1100;
-
+    this.desktopMode = this.isDesktopMode();
     this.sub = this.filterService.getActiveTask()
       .subscribe(task => {
         this.activeTask = task;
-
-        if (this.activeTask && !this.desktopMode) {
-          setTimeout(() => this.sidebar.openSidebar(), 0);
-        } else {
-          setTimeout(() => $('.ui.sticky').sticky(), 0);
-        }
+        this.showActiveTask();
       });
   }
 
@@ -49,6 +43,24 @@ export class ActiveTaskViewerComponent implements OnInit {
 
   ngOnDestroy() {
     this.sub.unsubscribe();
+  }
+
+  isDesktopMode() {
+    return this.browserService.getWindowWidth() > 991;
+  }
+
+  showActiveTask() {
+    if (this.activeTask && !this.desktopMode) {
+      setTimeout(() => this.sidebar.openSidebar(), 0);
+    } else {
+      setTimeout(() => $('.ui.sticky').sticky(), 0);
+    }
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event) {
+    this.desktopMode = this.isDesktopMode();
+    this.showActiveTask();
   }
 
 }
