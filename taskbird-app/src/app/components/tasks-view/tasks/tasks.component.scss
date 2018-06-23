@@ -21,14 +21,6 @@
   border-bottom: 1px solid #c3c3c3;
 }
 
-.tasks {
-  > * {
-    &:last-child /deep/ .task {
-      border-bottom: none;
-    }
-  }
-}
-
 .tasks-count {
   margin-top: 1em;
 }

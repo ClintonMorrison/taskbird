@@ -3,8 +3,6 @@ import { FilterService } from '../../../services/filter.service';
 import { Subscription } from 'rxjs/Subscription';
 import { Task } from '../../../models/item';
 
-declare var window: any;
-
 @Component({
   selector: 'taskbird-tasks',
   templateUrl: './tasks.component.html',
@@ -19,7 +17,7 @@ export class TasksComponent implements OnInit {
   @Input()
   showCompletedToggle: boolean;
 
-  taskSelected: boolean;
+  activeTask: Task;
 
   sub: Subscription;
 
@@ -29,7 +27,7 @@ export class TasksComponent implements OnInit {
 
   ngOnInit() {
     this.sub = this.filterService.getActiveTask().subscribe(
-      (activeTask: Task) => this.taskSelected = !!activeTask
+      (activeTask: Task) => this.activeTask = activeTask
     );
   }
 

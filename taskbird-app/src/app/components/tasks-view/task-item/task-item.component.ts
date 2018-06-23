@@ -16,6 +16,9 @@ export class TaskItemComponent implements OnInit {
   @Input()
   taskId: number;
 
+  @Input()
+  selected: boolean;
+
   task: Task;
 
   private taskSub: Subscription;
@@ -44,7 +47,7 @@ export class TaskItemComponent implements OnInit {
 
   onSelect(event) {
     event.preventDefault();
-    this.filterService.setActiveTask(this.task);
+    this.filterService.setActiveTask(this.selected ? undefined : this.task);
   }
 
   getDateDue(): string {

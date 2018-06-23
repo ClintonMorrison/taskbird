@@ -25,11 +25,6 @@
     padding: 1em 0;
     margin-left: 1em;
     width: 100%;
-
-    &:hover,
-    &.selected {
-      background-color: #9ED6FF;
-    }
   }
 
   .task-row {
@@ -51,8 +46,13 @@
     margin-top: 1em;
   }
 
-  &:hover {
+  &:hover,
+  &.selected {
     background-color: #9ED6FF;
+  }
+
+  &.selected {
+    border: 2px solid black;
   }
 
   &.done {
