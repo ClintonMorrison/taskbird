@@ -1,3 +1,9 @@
 <taskbird-sidebar *ngIf="activeTask" (closed)="closed()">
   <taskbird-task-detail [taskId]="activeTask.id"></taskbird-task-detail>
 </taskbird-sidebar>
+
+<div class="sticky-wrapper">
+  <div class="ui sticky">
+    <taskbird-task-detail *ngIf="activeTask && desktopMode" [taskId]="activeTask.id"></taskbird-task-detail>
+  </div>
+</div>

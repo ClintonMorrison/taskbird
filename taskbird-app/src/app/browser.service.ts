@@ -32,4 +32,9 @@ export class BrowserService {
   isMobile() {
     return /Mobi|Android/i.test(navigator.userAgent);
   }
+
+  // TODO: should be subscription
+  getWindowWidth() {
+    return $(window).width();
+  }
 }

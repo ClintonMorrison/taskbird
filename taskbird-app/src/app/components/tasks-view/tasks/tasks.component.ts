@@ -1,4 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { FilterService } from '../../../services/filter.service';
+import { Subscription } from 'rxjs/Subscription';
 import { Task } from '../../../models/item';
 
 declare var window: any;
@@ -12,16 +14,27 @@ export class TasksComponent implements OnInit {
   @Input()
   taskIds: number[];
 
-  numberToShow: number;
+  numberToShow: number = 10;
 
   @Input()
   showCompletedToggle: boolean;
 
-  constructor() {
+  taskSelected: boolean;
+
+  sub: Subscription;
+
+  constructor(private filterService: FilterService) {
   }
 
+
   ngOnInit() {
-    this.numberToShow = 10;
+    this.sub = this.filterService.getActiveTask().subscribe(
+      (activeTask: Task) => this.taskSelected = !!activeTask
+    );
+  }
+
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
 
   showMore() {

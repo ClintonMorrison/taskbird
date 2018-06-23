@@ -1,20 +1,30 @@
-<div class="ui tasks">
-  <task-item *ngFor="let taskId of taskIds | slice:0:numberToShow" [taskId]="taskId"></task-item>
-</div>
+<div class="tasks-wrapper" [ngClass]="{ 'task-selected': taskSelected }">
+  <div class="tasks-list">
+    <div class="ui tasks">
+      <task-item *ngFor="let taskId of taskIds | slice:0:numberToShow" [taskId]="taskId"></task-item>
+    </div>
 
-<p class="tasks-count" *ngIf="numberToShow < taskIds.length">
-  <em>Showing {{numberToShow}} of {{taskIds.length}} tasks</em>
-</p>
+    <p class="tasks-count" *ngIf="numberToShow < taskIds.length">
+      <em>Showing {{numberToShow}} of {{taskIds.length}} tasks</em>
+    </p>
 
-<div class="bottom-controls">
-  <div>
-  <button
-    *ngIf="taskIds.length > numberToShow"
-    (click)="showMore()"
-    class="ui compact secondary button show-more">
-    Show More
-  </button>
+    <div class="bottom-controls">
+      <div>
+        <button
+          *ngIf="taskIds.length > numberToShow"
+          (click)="showMore()"
+          class="ui compact secondary button show-more">
+          Show More
+        </button>
+      </div>
+
+      <taskbird-show-completed-toggle *ngIf="showCompletedToggle" ></taskbird-show-completed-toggle>
+    </div>
   </div>
 
-  <taskbird-show-completed-toggle *ngIf="showCompletedToggle" ></taskbird-show-completed-toggle>
+  <div class="desktop-active-task-viewer">
+    <div class='ui sticky'>
+      <taskbird-active-task-viewer></taskbird-active-task-viewer>
+    </div>
+  </div>
 </div>
