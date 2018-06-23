@@ -21,7 +21,7 @@ export class ActiveTaskViewerComponent implements OnInit {
   private sidebar: SidebarComponent;
 
   // display details inline instead of in sidebar on large screens
-  private desktopMode: boolean;
+  desktopMode: boolean;
 
   constructor(
     private filterService: FilterService,

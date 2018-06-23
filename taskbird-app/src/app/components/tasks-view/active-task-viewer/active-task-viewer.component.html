@@ -1,9 +1,9 @@
-<taskbird-sidebar *ngIf="!desktopMode && activeTask" (closed)="closed()">
+<taskbird-sidebar *ngIf="!desktopMode && (!!activeTask)" (closed)="closed()">
   <taskbird-task-detail [taskId]="activeTask.id"></taskbird-task-detail>
 </taskbird-sidebar>
 
 
-<div class="desktop-active-task-viewer" *ngIf="activeTask && desktopMode">
+<div class="desktop-active-task-viewer" *ngIf="(!!activeTask) && desktopMode">
   <div class='ui sticky'>
     <taskbird-task-detail [taskId]="activeTask.id"></taskbird-task-detail>
     <button (click)="closed()" class="ui primary button">
