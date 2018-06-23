@@ -12,6 +12,7 @@ const routes: Routes = [
   { path: 'tasks', component: TasksPageComponent },
   { path: 'tasks/:projectId', component: TasksPageComponent },
   { path: 'calendar', component: CalendarPageComponent },
+  { path: 'calendar/:year/:month', component: CalendarPageComponent },
   { path: 'projects', component: ProjectsPageComponent },
   { path: 'analytics', component: AnalyticsPageComponent }
 ];
