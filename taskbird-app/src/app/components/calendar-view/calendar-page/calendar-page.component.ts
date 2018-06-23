@@ -57,14 +57,14 @@ export class CalendarPageComponent implements OnInit {
     }
 
     this.filterService.setActiveTask(undefined);
-    this.getTasksForSelectedDay();
+    this.getTasksForSelectedDay(true);
   }
 
   ngOnInit() {
     this.filterService.setActiveTask(undefined);
 
     this.sub = this.taskService.getTasksById().subscribe(
-      () => this.getTasksForSelectedDay()
+      () => this.getTasksForSelectedDay(false)
     );
   }
 
@@ -72,7 +72,7 @@ export class CalendarPageComponent implements OnInit {
     this.sub.unsubscribe();
   }
 
-  getTasksForSelectedDay() {
+  getTasksForSelectedDay(scroll: boolean) {
     if (!this.selectedDay) {
       this.taskIds = [];
       return;
@@ -81,7 +81,10 @@ export class CalendarPageComponent implements OnInit {
     this.taskService.groupTasksByDayDue().first().subscribe((tasksByDay) => {
       const tasks = tasksByDay[this.selectedDay.toString()];
       this.taskIds = _.map(tasks, task => task.id);
-      this.browserService.scrollTo('#calendar-tasks');
+
+      if (scroll) {
+        this.browserService.scrollTo('#calendar-tasks');
+      }
     });
   }
 }
