@@ -61,6 +61,7 @@ export class ActiveTaskViewerComponent implements OnInit {
   onResize(event) {
     this.desktopMode = this.isDesktopMode();
     this.showActiveTask();
+    setTimeout(() => $('.ui.sticky').sticky('refresh'), 500);
   }
 
 }
