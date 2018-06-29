@@ -37,6 +37,7 @@
 
       .sticky-task-wrapper {
         position: relative;
+        min-height: 600px;
         width: calc(50% - 1em);
       }
     }
