@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/catch'
-import { ApiResponse } from './models/api-response';
 
 @Injectable()
 export class ApiService {
@@ -20,10 +19,10 @@ export class ApiService {
     );
   }
 
-  put(resource, id, data): Observable<any> {
+  put(resource, id, data): Observable<any> {    
     return this.request(
       'put',
-      `${this.base}/${resource}/${id}?format=json`,
+      `${this.base}/${resource}/${id}/?format=json`,
       data
     );
   }
@@ -39,23 +38,21 @@ export class ApiService {
   delete(resource, id): Observable<any> {
     return this.request(
       'delete',
-      `${this.base}/${resource}/${id}?format=json`
+      `${this.base}/${resource}/${id}/?format=json`
     );
   }
 
   request(method: string, url: string, data = {}): Observable<any> {
     return this.http[method](
       url,
-      data
+      data,
+      {
+        headers: new HttpHeaders({ 'Content-Type': 'application/json' })
+      }
     ).catch(error => {
       if (error.status === 401) {
         window.location.pathname = '/login/';
       }
     });
   }
-
-  path(resource) {
-    return `/api/v1/${resource}/?format=json`;
-  }
-
 }
