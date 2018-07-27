@@ -1,12 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Task, TaskMap, StringTaskMap } from '../models/item';
 import { Observable } from 'rxjs/Observable';
-import { of } from 'rxjs/observable/of';
-import { MessageService } from './message.service';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import MockTaskResponse from '../mocks/mock-task-api-response';
 import * as _ from 'lodash';
-import { Date } from '../models/dates';
 import { utc } from 'moment';
 
 import 'rxjs/add/observable/of';
@@ -14,10 +9,7 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/mergeMap';
-import { FilterService } from './filter.service';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
-import { Project } from '../models/project';
-// import { ApiResponse } from '../models/api-response';
 import { ApiService } from '../api.service';
 import { ApiResponse } from '../models/api-response';
 
@@ -27,9 +19,6 @@ interface TaskSubjectMap {
 
 @Injectable()
 export class TaskService {
-  private baseUrl = 'http://localhost/api/v1/task/?format=json';
-  private tasks: Task[] = null;
-
   private tasksByIdSubject: BehaviorSubject<TaskMap>;
   private taskSubjectById: TaskSubjectMap;
 
@@ -41,7 +30,6 @@ export class TaskService {
   private saveTask: Function;
 
   constructor(
-    private messageService: MessageService,
     private apiService: ApiService 
   ) {
     this.tasksByIdSubject = new BehaviorSubject({});

@@ -7,17 +7,12 @@ import { HttpClientModule} from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { TasksComponent } from './components/tasks-view/tasks/tasks.component';
 import { FormsModule } from '@angular/forms';
-import { ButtonComponent } from './components/base/button/button.component';
 import { NavComponent } from './components/base/nav/nav.component';
 import { TaskDetailComponent } from './components/tasks-view/task-detail/task-detail.component';
 
-import { TaskService } from './services/item.service';
-import { MessagesComponent } from './components/messages/messages.component';
-import { MessageService } from './services/message.service';
+import { TaskService } from './services/task.service';
 import { DateService } from './services/date.service';
-import { AppRoutingModule } from './/app-routing.module';
-import { DashboardComponent } from './components/dashboard-view/dashboard/dashboard.component';
-import { TaskStatisticsComponent } from './components/dashboard-view/task-statistics/task-statistics.component';
+import { AppRoutingModule } from './app-routing.module';
 import { TaskItemComponent } from './components/tasks-view/task-item/task-item.component';
 import { CalendarComponent } from './components/calendar-view/calendar/calendar.component';
 import { CalendarPageComponent } from './components/calendar-view/calendar-page/calendar-page.component';
@@ -74,12 +69,8 @@ import { ProjectHeadingComponent } from './components/projects-view/project-head
   declarations: [
     AppComponent,
     TasksComponent,
-    ButtonComponent,
     NavComponent,
     TaskDetailComponent,
-    MessagesComponent,
-    DashboardComponent,
-    TaskStatisticsComponent,
     TaskItemComponent,
     CalendarComponent,
     CalendarPageComponent,
@@ -137,7 +128,6 @@ providers: [
   ApiService,
   TaskService,
   ProjectService,
-  MessageService,
   DateService,
   FilterService,
   BrowserService

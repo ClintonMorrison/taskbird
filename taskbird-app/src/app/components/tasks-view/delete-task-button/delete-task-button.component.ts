@@ -1,7 +1,7 @@
 import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { ModalComponent } from '../../base/modal/modal.component';
 import { Task } from '../../../models/item';
-import { TaskService } from '../../../services/item.service';
+import { TaskService } from '../../../services/task.service';
 
 @Component({
   selector: 'taskbird-delete-task-button',

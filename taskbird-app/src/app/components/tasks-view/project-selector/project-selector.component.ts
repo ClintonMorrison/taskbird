@@ -3,7 +3,7 @@ import { ProjectService } from '../../../services/project.service';
 import { Project } from '../../../models/project';
 import { Subscription } from 'rxjs/Subscription';
 import { chain } from 'lodash';
-import { TaskService } from '../../../services/item.service';
+import { TaskService } from '../../../services/task.service';
 import { DropdownOption } from '../../base/dropdown/dropdown.component';
 
 @Component({

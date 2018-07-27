@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { TaskService } from '../../../services/item.service';
+import { TaskService } from '../../../services/task.service';
 import { Task } from '../../../models/item';
 import { FilterService } from '../../../services/filter.service';
 import { ActivatedRoute } from '@angular/router';

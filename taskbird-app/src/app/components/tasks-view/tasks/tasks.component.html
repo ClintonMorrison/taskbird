@@ -7,10 +7,10 @@
     </div>
 
     <div class="ui tasks">
-      <task-item 
+      <taskbird-task-item 
         *ngFor="let taskId of taskIds | slice:0:numberToShow"
         [taskId]="taskId"
-        [selected]="activeTask && (activeTask.id === taskId)"></task-item>
+        [selected]="activeTask && (activeTask.id === taskId)"></taskbird-task-item>
     </div>
 
     <p class="tasks-count" *ngIf="numberToShow < taskIds.length">

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TaskService } from '../../../services/item.service';
+import { TaskService } from '../../../services/task.service';
 import { ProjectService } from '../../../services/project.service';
 import { Subscription } from 'rxjs/Subscription';
 

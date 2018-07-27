@@ -1,12 +1,12 @@
 import { Component, OnInit , Input, Output, EventEmitter } from '@angular/core';
 import { Task } from '../../../models/item';
 import { Date } from '../../../models/dates';
-import { TaskService } from '../../../services/item.service';
+import { TaskService } from '../../../services/task.service';
 import * as _ from 'lodash';
 
 
 @Component({
-  selector: 'calendar-day',
+  selector: 'taskbird-calendar-day',
   templateUrl: './calendar-day.component.html',
   styleUrls: ['./calendar-day.component.scss']
 })

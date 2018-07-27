@@ -13,6 +13,6 @@
       [ngClass]="{ red: anyUndone(tasks) }">{{ tasks.length }}</span>
   </div>
   <div class='tasks-on-day'>
-    <calendar-task *ngFor="let task of tasks" [task]="task"></calendar-task>
+    <taskbird-calendar-task *ngFor="let task of tasks" [task]="task"></taskbird-calendar-task>
   </div>
 </a>

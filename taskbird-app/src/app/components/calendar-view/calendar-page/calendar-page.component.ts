@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Month, Date } from '../../../models/dates';
-import { TaskService } from '../../../services/item.service';
+import { TaskService } from '../../../services/task.service';
 import { BrowserService } from '../../../browser.service';
 import 'rxjs/add/operator/first';
 import * as _ from 'lodash';
@@ -10,7 +10,7 @@ import { FilterService } from '../../../services/filter.service';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
-  selector: "calendar-page",
+  selector: "taskbird-calendar-page",
   templateUrl: "./calendar-page.component.html",
   styleUrls: ["./calendar-page.component.scss"]
 })

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../../../models/item';
-import { TaskService } from '../../../services/item.service';
+import { TaskService } from '../../../services/task.service';
 import { Subscription } from 'rxjs/Subscription';
 import { BrowserService } from '../../../browser.service';
 import { Project } from '../../../models/project';

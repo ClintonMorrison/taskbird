@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../../../models/item';
 
 @Component({
-  selector: 'calendar-task',
+  selector: 'taskbird-calendar-task',
   templateUrl: './calendar-task.component.html',
   styleUrls: ['./calendar-task.component.scss']
 })

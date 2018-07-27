@@ -1,7 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'weekday-title',
+  selector: 'taskbird-weekday-title',
   templateUrl: './weekday-title.component.html',
   styleUrls: ['./weekday-title.component.scss']
 })

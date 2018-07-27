@@ -38,8 +38,8 @@
     <tbody>
       <tr *ngFor="let week of weeksForMonth">
         <td *ngFor="let date of week">
-          <calendar-day (dateSelected)="handleDateSelected($event, date)" [date]="date" [tasks]="[]" [today]="dayIsToday(date)"
-            [selected]="dayIsSelected(date)" [active]="dayIsInCurrentMonth(date)"></calendar-day>
+          <taskbird-calendar-day (dateSelected)="handleDateSelected($event, date)" [date]="date" [tasks]="[]" [today]="dayIsToday(date)"
+            [selected]="dayIsSelected(date)" [active]="dayIsInCurrentMonth(date)"></taskbird-calendar-day>
         </td>
       </tr>
     </tbody>

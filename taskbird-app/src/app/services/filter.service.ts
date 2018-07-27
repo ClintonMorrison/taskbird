@@ -3,11 +3,10 @@ import { Project } from '../models/project';
 import { BehaviorSubject } from 'rxjs/BehaviorSubject';
 import { Observable } from 'rxjs/Observable';
 import { Task } from '../models/item';
-import { TaskService } from './item.service';
+import { TaskService } from './task.service';
 import * as _ from 'lodash';
 import { utc } from 'moment';
 import { ProjectService } from './project.service';
-import { ActivatedRoute, Router } from '@angular/router';
 
 @Injectable()
 export class FilterService {
@@ -28,7 +27,6 @@ export class FilterService {
   private tasks: Task[];
   private projects: Project[];
   private filteredTasksSubject: BehaviorSubject<Task[]>;
-  private filteredTaskIdsSubject: BehaviorSubject<string[]>;
 
   private showCompletedTasks: boolean; 
   private showCompletedTasksSubject: BehaviorSubject<Boolean>;
@@ -46,8 +44,6 @@ export class FilterService {
     private projectService: ProjectService
   ) {
     this.filteredTasksSubject = new BehaviorSubject([]);
-    this.filteredTaskIdsSubject = new BehaviorSubject([]);
-
 
     this.filterProjectIdSubject = <BehaviorSubject<number>>new BehaviorSubject(undefined);
     this.filterProjectSubject = <BehaviorSubject<Project>>new BehaviorSubject(undefined);

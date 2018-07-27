@@ -2,7 +2,7 @@
   <thead>
     <tr>
       <th *ngFor="let day of daysOfWeek">
-        <weekday-title [weekday]="day"></weekday-title>
+        <taskbird-weekday-title [weekday]="day"></taskbird-weekday-title>
       </th>
     </tr>
   </thead>
@@ -10,13 +10,13 @@
   <tbody>
     <tr *ngFor="let week of weeks">
       <td *ngFor="let day of week">
-        <calendar-day
+        <taskbird-calendar-day
           (dateSelected)="handleDateSelected($event)"
           [date]="day.date"
           [tasks]="day.tasks"
           [today]="dayIsToday(day.date)"
           [selected]="dayIsSelected(day.date)"
-          [active]="dayIsInCurrentMonth(day.date)"></calendar-day>
+          [active]="dayIsInCurrentMonth(day.date)"></taskbird-calendar-day>
       </td>
     </tr>
   </tbody>

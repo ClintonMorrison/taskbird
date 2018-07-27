@@ -1,13 +1,13 @@
 import { Component, OnInit, Input , ViewChild } from '@angular/core';
 import { Task } from "../../../models/item";
 import { utc } from 'moment';
-import { TaskService } from '../../../services/item.service';
+import { TaskService } from '../../../services/task.service';
 import { Subscription } from 'rxjs/Subscription';
 import { SidebarComponent } from '../../base/sidebar/sidebar.component';
 import { FilterService } from '../../../services/filter.service';
 
 @Component({
-  selector: 'task-item',
+  selector: 'taskbird-task-item',
   templateUrl: './task-item.component.html',
   styleUrls: ['./task-item.component.scss']
 })

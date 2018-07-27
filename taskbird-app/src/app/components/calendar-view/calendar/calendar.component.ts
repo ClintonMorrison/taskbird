@@ -3,12 +3,12 @@ import { CalendarDay } from '../../../models/calendar-day';
 import { utc, Moment } from 'moment';
 import { Date, Month } from '../../../models/dates';
 import { DateService } from '../../../services/date.service';
-import { TaskService } from '../../../services/item.service';
+import { TaskService } from '../../../services/task.service';
 import { StringTaskMap } from '../../../models/item';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
-  selector: 'calendar',
+  selector: 'taskbird-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Task } from '../../../models/item';
-import { TaskService } from '../../../services/item.service';
+import { TaskService } from '../../../services/task.service';
 
 @Component({
   selector: 'taskbird-task-checkbox',

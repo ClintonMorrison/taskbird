@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { StringTaskMap, Task } from '../../../models/item';
 import * as _ from 'lodash';
-import { TaskService } from '../../../services/item.service';
+import { TaskService } from '../../../services/task.service';
 import { Subscription } from 'rxjs/Subscription';
 
 @Component({
