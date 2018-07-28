@@ -1,8 +1,6 @@
 from django.http import HttpResponseRedirect, JsonResponse
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth import authenticate
-from django.contrib.auth import login as djangoLogin
 
 import yaml
 import os
@@ -27,7 +25,7 @@ def siteContact(request):
 
 def login(request):
     if request.user.is_authenticated():
-        return HttpResponseRedirect("/app")
+        return HttpResponseRedirect("/v2/")
 
     return render(request, "site/login.html", {})
 
