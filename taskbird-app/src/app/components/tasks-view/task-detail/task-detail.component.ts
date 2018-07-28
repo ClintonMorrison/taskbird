@@ -18,6 +18,8 @@ export class TaskDetailComponent implements OnInit {
 
   task: Task;
 
+  visible: boolean;
+
   private taskSub: Subscription;
 
   constructor(
@@ -55,14 +57,19 @@ export class TaskDetailComponent implements OnInit {
   }
 
   private refreshTask() {
+    this.visible = false;
     if (this.taskSub) {
       this.taskSub.unsubscribe();
     }
 
+
     this.taskSub = this.taskService.getTaskById(String(this.taskId))
       .subscribe(task => this.task = task);
 
-    this.browserService.focusOnId('task-title');
+    setTimeout(() => {
+      this.visible = true;
+      this.browserService.focusOnId('task-title');
+    }, 0);
   }
 
 }
