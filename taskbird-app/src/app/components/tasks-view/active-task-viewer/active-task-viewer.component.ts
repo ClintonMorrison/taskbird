@@ -4,6 +4,7 @@ import { FilterService } from '../../../services/filter.service';
 import { Task } from '../../../models/item';
 import { SidebarComponent } from '../../base/sidebar/sidebar.component';
 import { BrowserService } from '../../../browser.service';
+import * as _ from 'lodash';
 
 declare var $: any;
 
@@ -23,6 +24,8 @@ export class ActiveTaskViewerComponent implements OnInit {
   // display details inline instead of in sidebar on large screens
   desktopMode: boolean;
 
+  refresh: Function;
+
   constructor(
     private filterService: FilterService,
     private browserService: BrowserService
@@ -35,6 +38,15 @@ export class ActiveTaskViewerComponent implements OnInit {
         this.activeTask = task;
         this.showActiveTask();
       });
+    
+    const refresh = () => {
+      console.log('refresh()');
+      this.desktopMode = this.isDesktopMode();
+      this.showActiveTask();
+      setTimeout(() => $('.ui.sticky').sticky('refresh'), 500);
+    }
+
+    this.refresh = _.throttle(refresh, 500);
   }
 
   closed() {
@@ -59,9 +71,12 @@ export class ActiveTaskViewerComponent implements OnInit {
 
   @HostListener('window:resize', ['$event'])
   onResize(event) {
-    this.desktopMode = this.isDesktopMode();
-    this.showActiveTask();
-    setTimeout(() => $('.ui.sticky').sticky('refresh'), 500);
+    this.refresh();
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onScroll(event) {
+    this.refresh();
   }
 
 }
