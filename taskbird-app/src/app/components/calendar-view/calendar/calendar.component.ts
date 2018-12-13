@@ -49,7 +49,7 @@ export class CalendarComponent implements OnInit {
   }
 
   dayIsToday(date: Date): boolean {
-    return date.equals(Date.fromMoment(utc()));
+    return date.equals(Date.fromMoment(utc().local()));
   }
 
   handleDateSelected(date) {

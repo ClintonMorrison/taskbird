@@ -38,14 +38,14 @@ export class DueDatePickerComponent implements OnInit {
 
   ngOnInit(
   ) {
-    this.today = Date.fromMoment(utc());
+    this.today = Date.fromMoment(utc().local());
     this.resetSelectedDate();
     this.refreshMonth();
   }
 
   ngOnChanges(changes) {
     if (changes.task) {
-      this.dateString = this.task.date_due ? 
+      this.dateString = this.task.date_due ?
         utc(this.task.date_due).format('MMM DD, YYYY') :
         'Click to choose a date';
     }
