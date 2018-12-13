@@ -25,29 +25,23 @@
   </head>
   <body>
 	{% csrf_token %}
-	<div ng-app="taskApp">
-   <div id="wrapper">
+	<div>
+    <div id="wrapper">
       <div id="header">
-      	{% block header %}
-			  {% endblock %}
-		  </div>
+        {% block header %}
+        {% endblock %}
+      </div>
       <div id="content">
         {% block content %}
         {% endblock %}
       </div>
     </div>
-    <div id="footer">
-    </div>
 
-	<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
-	<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/4.0.0/lodash.min.js"></script>
+    <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.js"></script>
 
     {% block js %}
     {% endblock %}
-
-    {%  include "modals.html" %}
 
     <script>
       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
