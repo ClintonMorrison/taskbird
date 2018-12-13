@@ -1,4 +1,4 @@
 # taskbird
-An awesome task management and calendar app
+An awesome task management and calendar app.
 
-Still a work in progrss.
+The website / API part of this site uses Django. The frontend uses Angular.
