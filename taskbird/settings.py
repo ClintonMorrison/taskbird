@@ -1,10 +1,10 @@
 import os
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-SECRET_KEY = 'n-v12v(5k4vmh@bo$+xp=4nws_j7vwss4c79-_07b+hiw+h6g3'
+SECRET_KEY = os.getenv('TASKBIRD_SECRET_KEY')
 DEBUG = True
-ADMINS = (('TaskBird Admin', 'contact@taskbird.ca'),)
-SERVER_EMAIL = 'contact@taskbird.ca'
+ADMINS = ((os.getenv('TASKBIRD_ADMIN_NAME'), os.getenv('TASKBIRD_ADMIN_EMAIL')),)
+SERVER_EMAIL = os.getenv('TASKBIRD_ADMIN_EMAIL')
 PROJECT_PATH = os.path.realpath(os.path.dirname(__file__))
 TEMPLATE_DEBUG = True
 
@@ -27,7 +27,7 @@ TEMPLATES = [
 
 LOGIN_URL = '/login'
 LOGIN_REDIRECT_URL = '/login'
-ALLOWED_HOSTS = ['127.0.0.1', 'taskbird.ca', 'wwww.taskbird.ca', '.taskbird.ca', '.clintonmorrison.com']
+ALLOWED_HOSTS = [os.getenv('TASKBIRD_HOST')]
 INSTALLED_APPS = (
     'django.contrib.admin',
     'django.contrib.auth',
@@ -53,9 +53,9 @@ WSGI_APPLICATION = 'taskbird.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'clintor1_taskbird',
-        'USER': 'root',
-        'PASSWORD': '',
+        'NAME': os.getenv('TASKBIRD_DATABASE_NAME'),
+        'USER': os.getenv('TASKBIRD_DATABASE_USER'),
+        'PASSWORD': os.getenv('TASKBIRD_DATABASE_PASSWORD'),
         'OPTIONS': {
           'autocommit': True
         }
@@ -74,15 +74,14 @@ PROJECT_DIR=os.path.dirname(__file__)
 STATIC_URL = '/static/'
 STATIC_ROOT = ''
 BASE_STATIC_PATH = os.path.join(BASE_DIR, "static")
-#STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATICFILES_DIRS = [
     BASE_STATIC_PATH,
 ]
 
 SOCIAL_AUTH_URL_NAMESPACE = 'social'
 
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '262580710536-jjsrja4992n5n5o4jiq2atb0p8qlrve1'
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'K8GzypN4kF7Gtlu46Y2ipgzR'
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('TASKBIRD_GOOGLE_OAUTH_KEY')
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('TASKBIRD_GOOGLE_OAUTH_SECRET')
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.open_id.OpenIdAuth',
     'social_core.backends.google.GoogleOpenId',
