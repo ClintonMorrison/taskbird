@@ -19,5 +19,5 @@ manage.py
 .htaccess
 *.fcgi
 
-.idea
 .idea/
+.vscode/
