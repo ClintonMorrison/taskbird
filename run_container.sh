@@ -4,6 +4,7 @@ source version.sh
 
 docker run -d \
   --name taskbird \
+  --restart unless-stopped \
   -p 8010:80 \
   -e "TASKBIRD_SECRET_KEY=$TASKBIRD_SECRET_KEY" \
   -e "TASKBIRD_HOST=$TASKBIRD_HOST" \
