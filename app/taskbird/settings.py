@@ -53,6 +53,7 @@ WSGI_APPLICATION = 'taskbird.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
+        'HOST': os.getenv('TASKBIRD_DATABASE_HOST'),
         'NAME': os.getenv('TASKBIRD_DATABASE_NAME'),
         'USER': os.getenv('TASKBIRD_DATABASE_USER'),
         'PASSWORD': os.getenv('TASKBIRD_DATABASE_PASSWORD'),
