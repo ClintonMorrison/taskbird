@@ -26,7 +26,7 @@
     "@types/semantic-ui": "^2.2.6",
     "core-js": "^2.4.1",
     "es6-shim": "^0.35.3",
-    "lodash": "^4.17.4",
+    "lodash": "^4.17.19",
     "moment": "^2.20.1",
     "rxjs": "^6.2.1",
     "zone.js": "^0.8.26",
