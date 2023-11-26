@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --deploy-url '/v2'",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
@@ -28,9 +28,10 @@
     "es6-shim": "^0.35.3",
     "lodash": "^4.17.4",
     "moment": "^2.20.1",
+    "node-sass": "^8.0.0",
     "rxjs": "^6.2.1",
-    "zone.js": "^0.8.26",
-    "rxjs-compat": "^6.0.0-rc.0"
+    "rxjs-compat": "^6.0.0-rc.0",
+    "zone.js": "^0.8.26"
   },
   "devDependencies": {
     "@angular/cli": "^6.0.8",

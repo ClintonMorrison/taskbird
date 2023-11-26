@@ -6,11 +6,15 @@ The website / API part of this site uses Django. The frontend uses Angular.
 ## Running locally
 ```
 # Server
+sudo apt-get install mysql-server libmysqlclient-dev python3-dev python3-pip
+cd app/
+pip3 install -r ./requirements.txt
 sh start_wsgi.sh
 
 # Frontend
-cd ./taskbird-app
-sh dev_server.sh
+cd app/taskbird-app
+npm i
+npm start
 
 ```
 
