@@ -4,6 +4,7 @@ from django.conf.urls import url, include
 from social.apps.django_app import urls as social_urls
 
 from django.contrib.auth import logout
+from django.contrib.auth.views import LogoutView
 
 from taskbird.api import TaskResource, UserResource, UserSettingsResource, ProjectResource
 
@@ -23,7 +24,7 @@ urlpatterns = [
     url('^about/?$', views.siteAbout, name='siteAbout'),
     url('^contact/?$', views.siteContact, name='siteContact'),
     url('^login/?$', views.login, name='login'),
-    url('^logout/?$', logout, name='logout'),
+    url('^logout/?$', LogoutView.as_view(next_page="/"), name='logout'),
     url('^app/?$', views.appIndex, name='appIndex'),
     url('^api/?', include(v1_api.urls))
 ]

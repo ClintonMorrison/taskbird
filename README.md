@@ -15,6 +15,9 @@ source venv/bin/activate
 pip3 install -r ./requirements.txt
 sh start_wsgi.sh
 
+# DB Migrations
+python manage.py migrate
+
 # Frontend
 cd app/taskbird-app
 npm i

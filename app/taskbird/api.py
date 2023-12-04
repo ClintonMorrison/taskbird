@@ -10,7 +10,7 @@ from tastypie import fields
 
 class BaseAuthentication(Authentication):
     def is_authenticated(self, request, **kwargs):
-        return request.user.is_authenticated()
+        return request.user.is_authenticated
 
 
 class UserAuthorization(Authorization):
