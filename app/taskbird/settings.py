@@ -40,7 +40,8 @@ INSTALLED_APPS = (
     'taskbird.apps.TaskbirdConfig'
 )
 
-MIDDLEWARE_CLASSES = (
+MIDDLEWARE = (
+    'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -85,10 +86,8 @@ SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = os.getenv('TASKBIRD_GOOGLE_OAUTH_KEY')
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = os.getenv('TASKBIRD_GOOGLE_OAUTH_SECRET')
 AUTHENTICATION_BACKENDS = (
     'social_core.backends.open_id.OpenIdAuth',
-    'social_core.backends.google.GoogleOpenId',
     'social_core.backends.google.GoogleOAuth2',
     'social_core.backends.google.GoogleOAuth',
     'social_core.backends.twitter.TwitterOAuth',
-    'social_core.backends.yahoo.YahooOpenId',
     'django.contrib.auth.backends.ModelBackend'
 )

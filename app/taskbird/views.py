@@ -17,7 +17,7 @@ def siteIndex(request):
 
 def siteFeatures(request):
     file_path = os.path.join(settings.BASE_STATIC_PATH, 'content/features.yaml')
-    features = yaml.load(open(file_path, 'r'))
+    features = yaml.safe_load(open(file_path, 'r'))
     return render(request, "site/features.html", {'features': features})
 
 
@@ -30,7 +30,7 @@ def siteContact(request):
 
 
 def login(request):
-    if request.user.is_authenticated():
+    if request.user.is_authenticated:
         return HttpResponseRedirect("/v2/")
 
     return render(request, "site/login.html", {})
