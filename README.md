@@ -1,6 +1,6 @@
 # TaskBird
 
-An awesome task management and calendar app: https://taskbird.ca
+An awesome task management and calendar app: https://taskbird.clintonmorrison.com
 
 The website / API part of this site uses Django. The frontend uses Angular.
 
